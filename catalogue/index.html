@@ -1,162 +1,423 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
   <title>Catalogue Solustoc – Lots de bijoux pour revendeurs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
-    header { background: #222; color: white; padding: 25px; text-align: center; }
-    .container { max-width: 900px; margin: auto; padding: 20px; }
-    .lot { background: white; padding: 25px; border-radius: 10px; margin-bottom: 30px; }
-    .lot h2 { margin-top: 0; color: #c49c31; }
-    .price { font-size: 22px; margin: 10px 0; font-weight: bold; }
-    .label-stock { background: #d9534f; color: white; display: inline-block; padding: 6px 12px; border-radius: 5px; margin-top: 8px; font-size: 14px; }
-    .whatsapp-btn {
-        display: block; text-align: center; background: #25D366; color: white; padding: 15px;
-        border-radius: 8px; font-size: 20px; margin-top: 18px; text-decoration: none; font-weight: bold;
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      color: #222;
     }
-    footer { text-align: center; font-size: 14px; padding: 20px; color: #666; }
-    .faq { background: white; padding: 25px; border-radius: 10px; margin-top: 40px; }
-    h3 { margin-top: 0; }
+
+    header {
+      background: #111;
+      color: #fff;
+      padding: 18px 10px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: 0.5px;
+    }
+
+    header p {
+      margin: 4px 0 0;
+      font-size: 14px;
+      color: #ddd;
+    }
+
+    .wrapper {
+      width: 92%;
+      max-width: 980px;
+      margin: 18px auto 40px;
+    }
+
+    .hero {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px 16px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.06);
+      margin-bottom: 18px;
+    }
+
+    .hero h2 {
+      margin-top: 0;
+      text-align: center;
+      font-size: 21px;
+    }
+
+    .hero p {
+      text-align: center;
+      font-size: 15px;
+      margin: 6px 0 14px;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .badge {
+      background: #f0e6d5;
+      border-radius: 999px;
+      padding: 5px 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .section-title {
+      margin: 24px 0 10px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .lots {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 16px 16px 18px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.06);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 6px;
+      font-size: 18px;
+      color: #c9a56b;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 8px 0 4px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .pill {
+      display: inline-block;
+      font-size: 12px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #ffe1e1;
+      color: #b32121;
+      margin-bottom: 10px;
+    }
+
+    .btn-whatsapp {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: #25D366;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    .btn-whatsapp:hover {
+      background: #1ebe5c;
+    }
+
+    .link-pdf {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 14px;
+      text-decoration: none;
+      color: #1155cc;
+    }
+
+    .link-pdf:hover {
+      text-decoration: underline;
+    }
+
+    .cols-2 {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .cols-2 .card {
+      flex: 1 1 260px;
+    }
+
+    ul {
+      padding-left: 18px;
+      margin: 8px 0;
+      font-size: 14px;
+    }
+
+    .small {
+      font-size: 13px;
+      color: #555;
+    }
+
+    /* Accordéons FAQ */
+    .faq {
+      margin-top: 10px;
+    }
+
+    details {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.04);
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "▼";
+      float: right;
+      font-size: 11px;
+      margin-top: 3px;
+      color: #777;
+    }
+
+    details[open] summary::after {
+      content: "▲";
+    }
+
+    details p,
+    details ul {
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+      padding: 18px 10px 26px;
+    }
+
+    @media (min-width: 768px) {
+      header h1 { font-size: 24px; }
+      .hero h2 { font-size: 22px; }
+    }
   </style>
 </head>
 
 <body>
 
 <header>
-  <h1>Catalogue Solustoc – Bijoux acier pour revendeurs</h1>
-  <p>Qualité premium • Prix revendeur • Livraison rapide partout en France</p>
+  <h1>Solustoc – Déstockage pour les pros</h1>
+  <p>Lots de bijoux en acier inoxydable doré à l’or fin</p>
 </header>
-<div style="background:white; padding:25px 15px; width: 92%; max-width: 900px; margin: 25px auto; border-radius: 12px; box-shadow:0 0 10px rgba(0,0,0,0.06);">
-    <h2 style="text-align:center; color:#222; font-size:24px; margin-bottom:10px;">
-        Bijoux acier inoxydable – Qualité revendeur – Marges élevées
-    </h2>
-    <p style="text-align:center; font-size:16px; margin-bottom:18px;">
-        Des lots prêts à vendre en boutique et en ligne, livraison rapide partout en France.
+
+<div class="wrapper">
+
+  <!-- HERO -->
+  <section class="hero">
+    <h2>Bijoux prêts à revendre avec de fortes marges</h2>
+    <p>Deux lots simples à comprendre, livrés rapidement, pensés pour les revendeurs sérieux (boutiques, e-commerce, marchés).</p>
+
+    <div class="badges">
+      <span class="badge">💎 Acier inoxydable doré à l’or fin</span>
+      <span class="badge">🚚 Livraison incluse en France métropolitaine</span>
+      <span class="badge">🇫🇷 Société française – KBIS disponible</span>
+      <span class="badge">📦 Paiement sécurisé avant expédition</span>
+    </div>
+  </section>
+
+  <!-- LOTS -->
+  <h2 class="section-title">Lots disponibles</h2>
+
+  <section class="lots">
+
+    <article class="card">
+      <h3>Lot 150 bijoux</h3>
+      <div class="price">200 € TTC — Livraison incluse</div>
+      <div class="subtitle">Idéal pour tester une gamme : médailles, colliers, bracelets, bagues, boucles d’oreilles…</div>
+      <span class="pill">Stock limité</span>
+      <ul>
+        <li>Acier inoxydable doré à l’or fin — ne noircit pas</li>
+        <li>Mix équilibré entre best-sellers et modèles “coup de cœur”</li>
+        <li>Convient aux boutiques physiques, sites internet et marchés</li>
+      </ul>
+      <a
+        class="btn-whatsapp"
+        href="https://wa.me/33756923323?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20le%20lot%20150%20bijoux%20%C3%A0%20200%E2%82%AC%20TTC."
+        target="_blank" rel="noopener noreferrer"
+      >
+        Commander ce lot via WhatsApp
+      </a>
+      <a
+        class="link-pdf"
+        href="/solustoc-catalogue/pdf/Catalogue-150.pdf"
+        target="_blank" rel="noopener noreferrer"
+      >
+        📄 Voir le catalogue détaillé (150 bijoux)
+      </a>
+    </article>
+
+    <article class="card">
+      <h3>Lot 370 bijoux</h3>
+      <div class="price">480 € TTC — Livraison incluse</div>
+      <div class="subtitle">Le meilleur rapport quantité/prix pour ceux qui veulent un rayon bien rempli et de fortes marges.</div>
+      <span class="pill">Très forte demande</span>
+      <ul>
+        <li>Acier inoxydable doré à l’or fin – qualité premium</li>
+        <li>Très grande variété de modèles pour plaire à un large public</li>
+        <li>Permet de créer immédiatement un univers bijoux complet</li>
+      </ul>
+      <a
+        class="btn-whatsapp"
+        href="https://wa.me/33756923323?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20le%20lot%20370%20bijoux%20%C3%A0%20480%E2%82%AC%20TTC."
+        target="_blank" rel="noopener noreferrer"
+      >
+        Réserver ce lot via WhatsApp
+      </a>
+      <a
+        class="link-pdf"
+        href="/solustoc-catalogue/pdf/Catalogue-370.pdf"
+        target="_blank" rel="noopener noreferrer"
+      >
+        📄 Voir le catalogue détaillé (370 bijoux)
+      </a>
+    </article>
+
+  </section>
+
+  <!-- BLOCS CONFIANCE -->
+  <h2 class="section-title">Informations pour revendeurs</h2>
+
+  <section class="cols-2">
+
+    <article class="card">
+      <h3>À qui conviennent ces lots ?</h3>
+      <ul>
+        <li>Boutiques physiques / concept stores</li>
+        <li>Sites e-commerce et marketplaces (Vinted, Etsy, etc.)</li>
+        <li>Marchés, foires, pop-up stores, ventes privées</li>
+        <li>Revendeurs qui veulent tester sans immobiliser trop de trésorerie</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h3>Pourquoi choisir Solustoc ?</h3>
+      <ul>
+        <li>Positionnement clair : bijoux en acier inoxydable doré à l’or fin</li>
+        <li>Prix pros compétitifs avec marge de revente confortable</li>
+        <li>Lots préparés et vérifiés avant expédition</li>
+        <li>Échange WhatsApp direct avec un interlocuteur unique</li>
+      </ul>
+    </article>
+
+  </section>
+
+  <section class="card" style="margin-top:16px;">
+    <h3>Entreprise française, documents disponibles</h3>
+    <p class="small">
+      Solustoc est une SAS immatriculée en France. KBIS et documents légaux peuvent être fournis sur demande pour les revendeurs, boutiques
+      et plateformes qui en ont besoin.
     </p>
-
-    <div style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:14px; font-size:14px;">
-        <div>💎 Acier inoxydable doré à l’or fin</div>
-        <div>🚚 Livraison incluse</div>
-        <div>🇫🇷 Société française</div>
-        <div>📦 Paiement sécurisé avant expédition</div>
-    </div>
-</div>
-<div class="container">
-
-    <div class="lot">
-        <h2>À qui conviennent ces lots ?</h2>
-        <ul>
-            <li>Boutiques physiques souhaitant élargir rapidement leur offre</li>
-            <li>Sites e-commerce et marketplaces</li>
-            <li>Marchés, foires, pop-up stores, ventes privées</li>
-            <li>Nouveaux revendeurs cherchant à tester l’activité</li>
-        </ul>
-    </div>
-
-    <div class="lot">
-        <h2>Pourquoi choisir Solustoc ?</h2>
-        <ul>
-            <li>Prix pros parmi les plus compétitifs du marché</li>
-            <li>Acier inoxydable doré à l’or fin → haute valeur perçue</li>
-            <li>Lots triés et vérifiés avant expédition</li>
-            <li>Expédition express partout en France</li>
-        </ul>
-    </div>
-
-    <div class="lot" style="border-left:4px solid #c9a56b;">
-        <h2>Entreprise française, KBIS disponible</h2>
-        <p>SAS Solustoc, immatriculée en France. Documents légaux fournis sur demande.</p>
-        <p>Support WhatsApp Pro 7j/7 pour répondre à vos questions.</p>
-        <a href="https://wa.me/33756923323?text=Bonjour%2C%20je%20veux%20des%20informations%20avant%20d%27acheter%20un%20lot">
-            <button>Parler à un conseiller</button>
-        </a>
-    </div>
-
-</div>
-
-<div class="container">
-
-  <div class="lot">
-    <h2>📦 Lot 150 bijoux</h2>
-    <p class="price">200 € TTC — Livraison incluse</p>
-    <p>Idéal pour démarrer ou tester une première gamme. Variété de colliers, bracelets, bagues, boucles d’oreilles.</p>
-    <p>Acier inoxydable doré à l’or fin — ne noircit pas — parfait pour la revente en boutique ou en ligne.</p>
-    <span class="label-stock">Stock limité</span>
-    <a class="whatsapp-btn" href="https://wa.me/33756923323?text=Bonjour%2C%20j%27aimerais%20en%20savoir%20plus%20sur%20le%20lot%20de%20bijoux%20de%20No%C3%ABl">
-      Commander sur WhatsApp
+    <a
+      class="btn-whatsapp"
+      href="https://wa.me/33756923323?text=Bonjour%2C%20j%27aimerais%20poser%20quelques%20questions%20avant%20de%20commander%20un%20lot%20de%20bijoux."
+      target="_blank" rel="noopener noreferrer"
+    >
+      Poser une question rapide sur WhatsApp
     </a>
-  </div>
+  </section>
 
-  <div class="lot">
-    <h2>📦 Lot 370 bijoux</h2>
-    <p class="price">480 € TTC — Livraison incluse</p>
-    <p>Le meilleur rapport quantité/prix. Idéal pour avoir du choix en rayon, faire de la marge et fidéliser les clients.</p>
-    <p>Acier inoxydable doré à l’or fin — qualité premium — marges élevées pour revendeurs.</p>
-    <span class="label-stock">Très forte demande</span>
-    <a class="whatsapp-btn" href="https://wa.me/33756923323?text=Bonjour%2C%20j%27aimerais%20en%20savoir%20plus%20sur%20le%20lot%20de%20bijoux%20de%20No%C3%ABl">
-      Commander sur WhatsApp
-    </a>
-  </div>
+  <!-- FAQ EN ACCORDÉONS -->
+  <h2 class="section-title">FAQ revendeurs</h2>
 
-  <div class="faq">
-    <h3>❓ FAQ Revendeurs</h3>
-    <p><strong>Les bijoux noircissent-ils ?</strong><br>Non — acier inoxydable doré à l’or fin.</p>
-    <p><strong>Quels types de bijoux dans les lots ?</strong><br>Médaille, cœur, ange, papillon, zircon, perle, chaînes etc.</p>
-    <p><strong>Délais de livraison ?</strong><br>1 à 3 jours ouvrés en France métropolitaine.</p>
-    <p><strong>Paiement ?</strong><br>Paiement sécurisé avant expédition.</p>
-  </div>
+  <section class="faq">
 
-</div>
-<div class="container" style="margin-top: 30px;">
+    <details>
+      <summary>Les bijoux noircissent-ils ou s’abîment-ils ?</summary>
+      <p>
+        Non. Les bijoux sont en acier inoxydable doré à l’or fin. C’est un matériau
+        stable, qui résiste bien à l’eau et à la transpiration, avec une très bonne
+        tenue dans le temps par rapport au simple plaqué fantaisie.
+      </p>
+    </details>
 
-    <div class="lot">
-        <h2>Pourquoi choisir Solustoc ?</h2>
-        <ul>
-            <li>Prix pros ultra compétitifs</li>
-            <li>Livraison rapide en France</li>
-            <li>Contrôle qualité sur chaque lot</li>
-            <li>Paiement sécurisé avant expédition</li>
-        </ul>
-    </div>
+    <details>
+      <summary>Quel type de bijoux trouve-t-on dans les lots ?</summary>
+      <p>
+        Les lots contiennent un mélange de :
+      </p>
+      <ul>
+        <li>Médailles et pampilles (ange, colombe, initiales, symboles…)</li>
+        <li>Colliers chaîne</li>
+        <li>Bracelets chaîne</li>
+        <li>Bagues et boucles d’oreilles</li>
+      </ul>
+      <p class="small">
+        Le détail précis de chaque lot est disponible dans les PDF à télécharger.
+      </p>
+    </details>
 
-    <div class="lot">
-        <h2>Qualité des Bijoux</h2>
-        <p>Nos modèles sont en <strong>acier inoxydable doré à l’or fin</strong> :</p>
-        <ul>
-            <li>Ne noircit pas</li>
-            <li>Résistant à l’eau et à la transpiration</li>
-            <li>Compatible peau sensible</li>
-            <li>Forte valeur perçue pour vos clients</li>
-        </ul>
-    </div>
+    <details>
+      <summary>Quels sont les délais de livraison ?</summary>
+      <p>
+        Expédition rapide en général sous 1 à 3 jours ouvrés après réception du
+        paiement, livraison en France métropolitaine.
+      </p>
+    </details>
 
-    <div class="lot">
-        <h2>Pour quels revendeurs ?</h2>
-        <p>Ces lots conviennent parfaitement aux :</p>
-        <ul>
-            <li>Boutiques physiques / concept stores</li>
-            <li>Sites internet et marketplaces</li>
-            <li>Marchés, foires, pop-up stores</li>
-        </ul>
-    </div>
+    <details>
+      <summary>Comment se passe le paiement ?</summary>
+      <p>
+        Le paiement se fait avant expédition, par les moyens convenus avec vous
+        (virement principalement). Une facture est toujours émise au nom de votre
+        société.
+      </p>
+    </details>
 
-    <div class="lot" style="border:2px solid #c9a56b;">
-        <h2>Besoin d’un conseil immédiat ?</h2>
-        <p>Contact direct WhatsApp Pro :</p>
-        <a href="https://wa.me/33756923323">
-            <button>Parler à un conseiller</button>
-        </a>
-        <p style="text-align:center; font-size:13px; margin-top:10px;">
-            Disponibilité : Lun–Sam / 9h–19h
-        </p>
-    </div>
+    <details>
+      <summary>Y a-t-il un minimum de commande ?</summary>
+      <p>
+        Le lot 150 bijoux (200&nbsp;€ TTC livrés) est le minimum conseillé pour avoir
+        un choix suffisant à présenter à vos clients. Le lot 370 bijoux permet de
+        constituer un rayon beaucoup plus complet.
+      </p>
+    </details>
+
+  </section>
 
 </div>
 
 <footer>
-  Solustoc — Déstockage pour professionnels • Siret fourni sur demande
+  Solustoc – Déstockage pour les pros • Bijoux en acier inoxydable doré à l’or fin • France
 </footer>
 
 </body>
