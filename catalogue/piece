@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Catalogue Solustoc – Bijoux à la pièce pour revendeurs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    header {
+      background: #111;
+      color: #fff;
+      padding: 18px 10px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    header p {
+      margin: 4px 0 0;
+      font-size: 14px;
+      color: #ddd;
+    }
+
+    .wrapper {
+      width: 94%;
+      max-width: 1100px;
+      margin: 18px auto 40px;
+    }
+
+    .hero {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 18px 16px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.06);
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    .hero p {
+      margin: 6px 0;
+      font-size: 14px;
+    }
+
+    .badge-row {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .badge {
+      background: #f0e6d5;
+      border-radius: 999px;
+      padding: 4px 10px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .section-title {
+      margin: 24px 0 10px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    /* Grille produits */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+      padding: 10px 10px 12px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      background: #ddd;
+      cursor: pointer;
+    }
+
+    .card h3 {
+      font-size: 15px;
+      margin: 4px 0 6px;
+      min-height: 38px;
+    }
+
+    .price-line {
+      font-size: 14px;
+      margin: 2px 0;
+    }
+
+    .price-solustoc {
+      font-weight: bold;
+      color: #b32121;
+    }
+
+    .stock {
+      font-size: 13px;
+      color: #555;
+      margin-top: 2px;
+    }
+
+    .btn-small {
+      margin-top: 8px;
+      padding: 8px 10px;
+      font-size: 14px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      background: #25D366;
+      color: #fff;
+      width: 100%;
+    }
+
+    .btn-small:hover {
+      background: #1ebe5c;
+    }
+
+    /* Panier */
+    .cart-block {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 18px 14px 16px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.06);
+      margin-top: 26px;
+    }
+
+    .cart-block h2 {
+      margin-top: 0;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .cart-info {
+      font-size: 13px;
+      margin-bottom: 8px;
+      text-align: center;
+      color: #444;
+    }
+
+    table.cart-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    table.cart-table th,
+    table.cart-table td {
+      padding: 4px 6px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+    }
+
+    table.cart-table th {
+      background: #fafafa;
+      font-weight: bold;
+    }
+
+    .cart-total {
+      margin-top: 10px;
+      font-weight: bold;
+      text-align: right;
+      font-size: 14px;
+    }
+
+    .cart-actions {
+      margin-top: 14px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .btn-main {
+      padding: 11px 14px;
+      border-radius: 999px;
+      border: none;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #fff;
+      background: #25D366;
+    }
+
+    .btn-main[disabled] {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn-secondary {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: none;
+      font-size: 13px;
+      cursor: pointer;
+      background: #f0f0f0;
+      color: #333;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+      padding: 24px 10px 28px;
+    }
+
+    /* Lightbox simple */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 14px;
+      right: 20px;
+      font-size: 26px;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      .card img {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Solustoc – Bijoux à la pièce pour revendeurs</h1>
+    <p>Composez votre propre sélection de bijoux en acier inoxydable doré à l’or fin</p>
+  </header>
+
+  <div class="wrapper">
+    <section class="hero">
+      <h2>Choisissez vos bijoux à l’unité</h2>
+      <p>
+        Sélectionnez les références qui vous intéressent, ajoutez-les à votre commande,
+        puis envoyez le récapitulatif directement via WhatsApp.
+      </p>
+      <p>
+        <strong>Livraison gratuite à partir de 200 € TTC de commande.</strong><br>
+        Prix affichés en TTC – facturation possible en HT sur demande.
+      </p>
+
+      <div class="badge-row">
+        <span class="badge">💎 Acier inoxydable doré à l’or fin</span>
+        <span class="badge">📦 Stock réel contrôlé</span>
+        <span class="badge">🚚 Livraison rapide en France</span>
+        <span class="badge">🇫🇷 Société française – facture fournie</span>
+      </div>
+    </section>
+
+    <h2 class="section-title">Bijoux disponibles à la pièce</h2>
+    <section id="products" class="grid">
+      <!-- Cartes produits générées en JavaScript -->
+    </section>
+
+    <section class="cart-block" id="cart-block">
+      <h2>Votre sélection de bijoux</h2>
+      <div class="cart-info">
+        Ajoutez les bijoux qui vous intéressent. Vous pourrez ajuster les quantités avant d’envoyer votre commande.
+        <br>
+        <strong>Rappel :</strong> livraison offerte à partir de 200 € TTC de commande.
+      </div>
+      <div id="cart-content">
+        <p style="text-align:center; font-size:13px; color:#555;">
+          Aucun bijou dans votre sélection pour le moment.
+        </p>
+      </div>
+      <div class="cart-actions">
+        <button id="btn-whatsapp" class="btn-main" disabled>
+          📲 Envoyer la commande via WhatsApp
+        </button>
+        <button id="btn-clear" class="btn-secondary">
+          🗑️ Vider la sélection
+        </button>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    Solustoc – Déstockage pour les pros • Bijoux en acier inoxydable doré à l’or fin • France
+  </footer>
+
+  <!-- Lightbox photo -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightbox-close">×</span>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <script>
+    // Données produits générées depuis ton fichier Excel
+    const produits = [
+      {"titre":"Médaille Précieuse Doré Clé – Symbole de Réussite","stock":17,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"medaille-precieuse-dore-cle-symbole-de-reussite.webp"},
+      {"titre":"Collier Chaîne Perles Colorées Doré Safran – Élégance Bohème","stock":10,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"collier-chaine-perles-colorees-dore-safran-elegance-boheme.webp"},
+      {"titre":"Collier Grande Maille Doré – Style Intemporel","stock":5,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"collier-grande-maille-dore-style-intemporel.webp"},
+      {"titre":"Médaille Pampille Doré Je t'aime Maman – Cadeau Émotion","stock":145,"prixPublic":15.0,"prixSolustoc":2.25,"photo":"medaille-pampille-dore-je-t-aime-maman-cadeau-emotion.webp"},
+      {"titre":"Collier Chaîne Doré – Minimaliste & Chic","stock":100,"prixPublic":15.0,"prixSolustoc":2.25,"photo":"collier-chaine-dore-minimaliste-chic.webp"},
+      {"titre":"Médaille Fleur Doré – Délicate & Féminine","stock":34,"prixPublic":15.0,"prixSolustoc":2.25,"photo":"medaille-fleur-dore-delicate-feminine.webp"},
+      {"titre":"Médaille Coquillage Doré – Esprit Bord de Mer","stock":26,"prixPublic":15.0,"prixSolustoc":2.25,"photo":"medaille-coquillage-dore-esprit-bord-de-mer.webp"},
+      {"titre":"Médaille Plaque Doré – Design Épuré","stock":60,"prixPublic":15.0,"prixSolustoc":2.25,"photo":"medaille-plaque-dore-design-epure.webp"},
+      {"titre":"Médaille Love Doré – Message Romantique","stock":45,"prixPublic":15.0,"prixSolustoc":2.25,"photo":"medaille-love-dore-message-romantique.webp"},
+      {"titre":"Médaille Cœur Doré – Intemporel & Romantique","stock":69,"prixPublic":15.0,"prixSolustoc":2.25,"photo":"medaille-coeur-dore-intemporel-romantique.webp"},
+      {"titre":"Médaille Précieuse Doré Cœur – Élégance Romantique","stock":101,"prixPublic":15.0,"prixSolustoc":2.25,"photo":"medaille-precieuse-dore-coeur-elegance-romantique.webp"},
+      {"titre":"Médaille Précieuse Doré Ovale – Sobriété Chic","stock":93,"prixPublic":15.0,"prixSolustoc":2.25,"photo":"medaille-precieuse-dore-ovale-sobriete-chic.webp"},
+      {"titre":"Médaille Précieuse Doré Ronde – Classique Indémodable","stock":65,"prixPublic":15.0,"prixSolustoc":2.25,"photo":"medaille-precieuse-dore-ronde-classique-indemodable.webp"},
+      {"titre":"Médaille Précieuse Doré Croix – Esprit Spirituel","stock":42,"prixPublic":15.0,"prixSolustoc":2.25,"photo":"medaille-precieuse-dore-croix-esprit-spirituel.webp"},
+      {"titre":"Médaille Précieuse Doré Ange – Protection & Douceur","stock":34,"prixPublic":15.0,"prixSolustoc":2.25,"photo":"medaille-precieuse-dore-ange-protection-douceur.webp"},
+      {"titre":"Médaille Précieuse Doré Arbre de Vie – Harmonie & Énergie","stock":60,"prixPublic":15.0,"prixSolustoc":2.25,"photo":"medaille-precieuse-dore-arbre-de-vie-harmonie-energie.webp"},
+      {"titre":"Collier Médaille Doré Ange – Protecteur et Lumineux","stock":40,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"collier-medaille-dore-ange-protecteur-lumineux.webp"},
+      {"titre":"Collier Cœur Doré – Grand Format Romantique","stock":24,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"collier-coeur-dore-grand-format-romantique.webp"},
+      {"titre":"Collier Cœur Doré – Double Chaîne Fine","stock":28,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"collier-coeur-dore-double-chaine-fine.webp"},
+      {"titre":"Collier Étoile Doré – Touche Céleste","stock":45,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"collier-etoile-dore-touche-celeste.webp"},
+      {"titre":"Collier Plume Doré – Esprit Bohème","stock":30,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"collier-plume-dore-esprit-boheme.webp"},
+      {"titre":"Collier Médaille Doré Pierre Blanche – Raffinement Discret","stock":38,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"collier-medaille-dore-pierre-blanche-raffinement-discret.webp"},
+      {"titre":"Collier Médaille Doré Pierre Verte – Élégance Colorée","stock":40,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"collier-medaille-dore-pierre-verte-elegance-coloree.webp"},
+      {"titre":"Collier Médaille Doré Pierre Turquoise – Esprit Riviera","stock":40,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"collier-medaille-dore-pierre-turquoise-esprit-riviera.webp"},
+      {"titre":"Bracelet Médaille Doré – Fin & Intemporel","stock":50,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bracelet-medaille-dore-fin-intemporel.webp"},
+      {"titre":"Bracelet Cœur Doré – Délicat & Féminin","stock":52,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bracelet-coeur-dore-delicat-feminin.webp"},
+      {"titre":"Bracelet Précieux Doré – Mailles Fines","stock":45,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bracelet-preccieux-dore-mailles-fines.webp"},
+      {"titre":"Bracelet Plume Doré – Bohème Chic","stock":46,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bracelet-plume-dore-boheme-chic.webp"},
+      {"titre":"Bracelet Étoile Doré – Discret & Lumineux","stock":40,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bracelet-etoile-dore-discret-lumineux.webp"},
+      {"titre":"Bracelet Pampille Doré – Charme Subtil","stock":38,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bracelet-pampille-dore-charme-subtil.webp"},
+      {"titre":"Bracelet Médaille Doré Pierre Blanche – Chic Minimaliste","stock":32,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bracelet-medaille-dore-pierre-blanche-chic-minimaliste.webp"},
+      {"titre":"Bracelet Médaille Doré Pierre Verte – Touche Couleur","stock":32,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bracelet-medaille-dore-pierre-verte-touche-couleur.webp"},
+      {"titre":"Bracelet Médaille Doré Pierre Turquoise – Accent Estival","stock":32,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bracelet-medaille-dore-pierre-turquoise-accent-estival.webp"},
+      {"titre":"Bracelet Chaîne Doré – Simplicité Chic","stock":55,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bracelet-chaine-dore-simplicite-chic.webp"},
+      {"titre":"Bracelet Chaîne Doré Pierre Blanche – Style Lumineux","stock":35,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bracelet-chaine-dore-pierre-blanche-style-lumineux.webp"},
+      {"titre":"Bracelet Chaîne Doré Pierre Verte – Touche Élégante","stock":35,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bracelet-chaine-dore-pierre-verte-touche-elegante.webp"},
+      {"titre":"Bracelet Chaîne Doré Pierre Turquoise – Vibes Méditerranéennes","stock":35,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bracelet-chaine-dore-pierre-turquoise-vibes-mediterraneennes.webp"},
+      {"titre":"Bracelet Grande Maille Doré – Caractère & Présence","stock":24,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bracelet-grande-maille-dore-caractere-presence.webp"},
+      {"titre":"Bracelet Multi Rangs Doré – Effet Manchette Léger","stock":28,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bracelet-multi-rangs-dore-effet-manchette-leger.webp"},
+      {"titre":"Boucles D’oreilles Cœur Doré – Romantiques & Lumineuses","stock":42,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"boucles-d-oreilles-coeur-dore-romantiques-lumineuses.webp"},
+      {"titre":"Boucles D’oreilles Étoile Doré – Discrètes & Étincelantes","stock":40,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"boucles-d-oreilles-etoile-dore-discretes-etincelantes.webp"},
+      {"titre":"Boucles D’oreilles Plume Doré – Bohème Légère","stock":34,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"boucles-d-oreilles-plume-dore-boheme-legere.webp"},
+      {"titre":"Boucles D’oreilles Pampille Doré – Mouvement & Lumière","stock":28,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"boucles-d-oreilles-pampille-dore-mouvement-lumiere.webp"},
+      {"titre":"Boucles D’oreilles Pierre Blanche Doré – Chic Intemporel","stock":38,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"boucles-d-oreilles-pierre-blanche-dore-chic-intemporel.webp"},
+      {"titre":"Boucles D’oreilles Pierre Verte Doré – Élégance Colorée","stock":32,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"boucles-d-oreilles-pierre-verte-dore-elegance-coloree.webp"},
+      {"titre":"Boucles D’oreilles Pierre Turquoise Doré – Fraîcheur Estivale","stock":32,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"boucles-d-oreilles-pierre-turquoise-dore-fraicheur-estivale.webp"},
+      {"titre":"Bague Cœur Doré – Ajustable & Romantique","stock":60,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bague-coeur-dore-ajustable-romantique.webp"},
+      {"titre":"Bague Étoile Doré – Fine & Lumineuse","stock":55,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bague-etoile-dore-fine-lumineuse.webp"},
+      {"titre":"Bague Plume Doré – Esprit Libre","stock":50,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bague-plume-dore-esprit-libre.webp"},
+      {"titre":"Bague Pierre Blanche Doré – Élégance Classique","stock":45,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bague-pierre-blanche-dore-elegance-classique.webp"},
+      {"titre":"Bague Pierre Verte Doré – Touche de Couleur","stock":42,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bague-pierre-verte-dore-touche-de-couleur.webp"},
+      {"titre":"Bague Pierre Turquoise Doré – Style Soleil","stock":40,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bague-pierre-turquoise-dore-style-soleil.webp"},
+      {"titre":"Bague Multi Anneaux Doré – Effet Stacké","stock":36,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bague-multi-anneaux-dore-effet-stacke.webp"},
+      {"titre":"Bague Large Doré – Look Moderne","stock":30,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bague-large-dore-look-moderne.webp"},
+      {"titre":"Bague Fine Doré – Discrète & Chic","stock":40,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bague-fine-dore-discrete-chic.webp"},
+      {"titre":"Collier Perles Blanches Doré – Inspiration Riviera","stock":24,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"collier-perles-blanches-dore-inspiration-riviera.webp"},
+      {"titre":"Collier Perles Colorées Pastel Doré – Esprit Été","stock":26,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"collier-perles-colorees-pastel-dore-esprit-ete.webp"},
+      {"titre":"Collier Perles Multicolores Doré – Look Festival","stock":28,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"collier-perles-multicolores-dore-look-festival.webp"},
+      {"titre":"Bracelet Perles Blanches Doré – Chic & Intemporel","stock":30,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bracelet-perles-blanches-dore-chic-intemporel.webp"},
+      {"titre":"Bracelet Perles Colorées Doré – Touche Fun","stock":30,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bracelet-perles-colorees-dore-touche-fun.webp"},
+      {"titre":"Bracelet Perles Multicolores Doré – Esprit Bohème","stock":32,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bracelet-perles-multicolores-dore-esprit-boheme.webp"},
+      {"titre":"Boucles D’oreilles Perles Blanches Doré – Chic Discret","stock":32,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"boucles-d-oreilles-perles-blanches-dore-chic-discret.webp"},
+      {"titre":"Boucles D’oreilles Perles Colorées Doré – Note Joyeuse","stock":30,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"boucles-d-oreilles-perles-colorees-dore-note-joyeuse.webp"},
+      {"titre":"Boucles D’oreilles Perles Multicolores Doré – Style Bohème","stock":28,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"boucles-d-oreilles-perles-multicolores-dore-style-boheme.webp"},
+      {"titre":"Collier Médaille Initiale Doré – Personnalisable","stock":52,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"collier-medaille-initiale-dore-personnalisable.webp"},
+      {"titre":"Bracelet Médaille Initiale Doré – Cadeau Personnalisé","stock":48,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bracelet-medaille-initiale-dore-cadeau-personnalise.webp"},
+      {"titre":"Boucles D’oreilles Initiale Doré – Signature Discrète","stock":45,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"boucles-d-oreilles-initiale-dore-signature-discrete.webp"},
+      {"titre":"Collier Multi Médailles Doré – Effet Superposé","stock":26,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"collier-multi-medailles-dore-effet-superpose.webp"},
+      {"titre":"Collier Multi Pierres Doré – Couleurs Subtiles","stock":28,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"collier-multi-pierres-dore-couleurs-subtiles.webp"},
+      {"titre":"Bracelet Multi Médailles Doré – Charme Délicat","stock":30,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bracelet-multi-medailles-dore-charme-delicat.webp"},
+      {"titre":"Bracelet Multi Pierres Doré – Nuances Élégantes","stock":30,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bracelet-multi-pierres-dore-nuances-elegantes.webp"},
+      {"titre":"Boucles D’oreilles Multi Médailles Doré – Mouvement Chic","stock":26,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"boucles-d-oreilles-multi-medailles-dore-mouvement-chic.webp"},
+      {"titre":"Boucles D’oreilles Multi Pierres Doré – Couleurs Raffinées","stock":24,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"boucles-d-oreilles-multi-pierres-dore-couleurs-raffinees.webp"},
+      {"titre":"Collier Long Doré – Superposition Facile","stock":22,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"collier-long-dore-superposition-facile.webp"},
+      {"titre":"Sautoir Médaille Doré – Effet Élancé","stock":20,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"sautoir-medaille-dore-effet-elance.webp"},
+      {"titre":"Bracelet Long Doré – Double Tour","stock":24,"prixPublic":17.0,"prixSolustoc":2.55,"photo":"bracelet-long-dore-double-tour.webp"},
+      {"titre":"Choker Doré – Ras de Cou Tendance","stock":30,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"choker-dore-ras-de-cou-tendance.webp"},
+      {"titre":"Choker Perles Doré – Finesse & Lumière","stock":26,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"choker-perles-dore-finesse-lumiere.webp"},
+      {"titre":"Choker Pierres Doré – Couleur Subtile","stock":24,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"choker-pierres-dore-couleur-subtile.webp"}
+    ];
+
+    const PHOTO_BASE = "/solustoc-catalogue/photos-produit/";
+
+    const produitsContainer = document.getElementById('products');
+    const cartContent = document.getElementById('cart-content');
+    const btnWhatsapp = document.getElementById('btn-whatsapp');
+    const btnClear = document.getElementById('btn-clear');
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.getElementById('lightbox-close');
+
+    const cart = {}; // clé: index produit -> {qty, produit}
+
+    function formatPrice(value) {
+      return value.toFixed(2).replace('.', ',') + " €";
+    }
+
+    function renderProduits() {
+      produitsContainer.innerHTML = "";
+      produits.forEach((p, index) => {
+        const card = document.createElement('article');
+        card.className = "card";
+
+        const img = document.createElement('img');
+        img.src = PHOTO_BASE + p.photo;
+        img.alt = p.titre;
+        img.onerror = () => { img.style.background = "#ccc"; img.src = ""; };
+        img.addEventListener('click', () => openLightbox(p));
+
+        const h3 = document.createElement('h3');
+        h3.textContent = p.titre;
+
+        const pricePublic = document.createElement('div');
+        pricePublic.className = "price-line";
+        pricePublic.textContent = "Prix public conseillé : " + formatPrice(p.prixPublic);
+
+        const priceSol = document.createElement('div');
+        priceSol.className = "price-line price-solustoc";
+        priceSol.textContent = "Prix Solustoc : " + formatPrice(p.prixSolustoc) + " TTC";
+
+        const stock = document.createElement('div');
+        stock.className = "stock";
+        stock.textContent = "Stock indicatif : " + p.stock + " pièces";
+
+        const btn = document.createElement('button');
+        btn.className = "btn-small";
+        btn.textContent = "Ajouter à ma sélection";
+        btn.addEventListener('click', () => addToCart(index));
+
+        card.appendChild(img);
+        card.appendChild(h3);
+        card.appendChild(pricePublic);
+        card.appendChild(priceSol);
+        card.appendChild(stock);
+        card.appendChild(btn);
+
+        produitsContainer.appendChild(card);
+      });
+    }
+
+    function addToCart(index) {
+      const p = produits[index];
+      let qtyStr = prompt(`Quantité pour :\n${p.titre}`, "1");
+      if (!qtyStr) return;
+      const qty = parseInt(qtyStr, 10);
+      if (isNaN(qty) || qty <= 0) return;
+
+      if (!cart[index]) {
+        cart[index] = { qty: 0, produit: p };
+      }
+      cart[index].qty += qty;
+      renderCart();
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+    }
+
+    function renderCart() {
+      const entries = Object.values(cart);
+      if (entries.length === 0) {
+        cartContent.innerHTML = '<p style="text-align:center; font-size:13px; color:#555;">Aucun bijou dans votre sélection pour le moment.</p>';
+        btnWhatsapp.disabled = true;
+        return;
+      }
+
+      let html = '<table class="cart-table"><thead><tr><th>Bijou</th><th>Qté</th><th>PU TTC</th><th>Total</th></tr></thead><tbody>';
+      let total = 0;
+
+      entries.forEach((entry, idx) => {
+        const p = entry.produit;
+        const qty = entry.qty;
+        const lineTotal = qty * p.prixSolustoc;
+        total += lineTotal;
+        html += `<tr>
+          <td>${p.titre}</td>
+          <td>${qty}</td>
+          <td>${formatPrice(p.prixSolustoc)}</td>
+          <td>${formatPrice(lineTotal)}</td>
+        </tr>`;
+      });
+
+      html += '</tbody></table>';
+      html += `<div class="cart-total">Total estimé commande : ${formatPrice(total)} TTC</div>`;
+      html += `<div class="cart-info"><strong>Rappel :</strong> livraison gratuite à partir de 200 € TTC. Minimum conseillé : 100 € TTC pour une sélection cohérente.</div>`;
+
+      cartContent.innerHTML = html;
+      btnWhatsapp.disabled = false;
+    }
+
+    function clearCart() {
+      for (const key in cart) {
+        delete cart[key];
+      }
+      renderCart();
+    }
+
+    function buildWhatsappMessage() {
+      const entries = Object.values(cart);
+      if (entries.length === 0) return "";
+
+      let total = 0;
+      let lines = [];
+      lines.push("Bonjour, je souhaite passer une commande de bijoux à la pièce chez Solustoc.");
+      lines.push("");
+      lines.push("Détail des bijoux :");
+
+      entries.forEach(entry => {
+        const p = entry.produit;
+        const qty = entry.qty;
+        const lineTotal = qty * p.prixSolustoc;
+        total += lineTotal;
+        lines.push(`- ${qty} x ${p.titre} à ${p.prixSolustoc.toFixed(2)} € TTC (total ${lineTotal.toFixed(2)} €)`);
+      });
+
+      lines.push("");
+      lines.push("Total estimé : " + total.toFixed(2) + " € TTC.");
+      lines.push("Merci de me confirmer la disponibilité, le mode de paiement et le délai de livraison.");
+
+      return lines.join("\n");
+    }
+
+    function sendWhatsapp() {
+      const message = buildWhatsappMessage();
+      if (!message) return;
+      const encoded = encodeURIComponent(message);
+      const url = "https://wa.me/33756923323?text=" + encoded;
+      window.open(url, "_blank");
+    }
+
+    function openLightbox(p) {
+      lightboxImg.src = PHOTO_BASE + p.photo;
+      lightboxImg.alt = p.titre;
+      lightbox.style.display = "flex";
+    }
+
+    function closeLightbox() {
+      lightbox.style.display = "none";
+      lightboxImg.src = "";
+    }
+
+    // Événements
+    btnWhatsapp.addEventListener('click', sendWhatsapp);
+    btnClear.addEventListener('click', clearCart);
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    // Init
+    renderProduits();
+    renderCart();
+  </script>
+</body>
+</html>
