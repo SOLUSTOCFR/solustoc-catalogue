@@ -417,7 +417,8 @@
       {"titre":"Choker Pierres Doré – Couleur Subtile","stock":24,"prixPublic":19.0,"prixSolustoc":2.85,"photo":"choker-pierres-dore-couleur-subtile.webp"}
     ];
 
-    const PHOTO_BASE = "/solustoc-catalogue/photos-produit/";
+  const PHOTO_BASE = "/solustoc-catalogue/catalogue/photos/";
+
 
     const produitsContainer = document.getElementById('products');
     const cartContent = document.getElementById('cart-content');
