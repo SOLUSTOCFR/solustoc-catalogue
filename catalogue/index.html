@@ -24,7 +24,6 @@
     header h1 {
       margin: 0;
       font-size: 22px;
-      letter-spacing: 0.5px;
     }
 
     header p {
@@ -73,7 +72,6 @@
       padding: 5px 10px;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
     }
 
     .section-title {
@@ -97,7 +95,6 @@
 
     .card h3 {
       margin-top: 0;
-      margin-bottom: 6px;
       font-size: 18px;
       color: #c9a56b;
     }
@@ -105,13 +102,13 @@
     .price {
       font-size: 20px;
       font-weight: bold;
-      margin: 8px 0 4px;
+      margin: 6px 0;
     }
 
     .subtitle {
       font-size: 13px;
       color: #555;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .pill {
@@ -124,82 +121,40 @@
       margin-bottom: 10px;
     }
 
-    .btn-whatsapp {
-      display: block;
-      width: 100%;
-      text-align: center;
-      background: #25D366;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 12px 16px;
-      font-size: 15px;
-      font-weight: bold;
-      text-decoration: none;
-      cursor: pointer;
-      margin-top: 8px;
-    }
-
-    .btn-whatsapp:hover {
-      background: #1ebe5c;
-    }
-
-    .btn-photos {
-      display: block;
-      width: 100%;
-      text-align: center;
-      background: #007bff;
-      color: #fff;
-      border-radius: 8px;
-      padding: 12px 16px;
-      font-size: 15px;
-      font-weight: bold;
-      text-decoration: none;
-      cursor: pointer;
-      margin: 25px 0;
-    }
-
-    .btn-photos:hover {
-      background: #0067d6;
-    }
-
-    .link-pdf {
-      display: inline-block;
-      margin-top: 8px;
-      font-size: 14px;
-      text-decoration: none;
-      color: #1155cc;
-    }
-
-    .link-pdf:hover {
-      text-decoration: underline;
-    }
-
-    .cols-2 {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .cols-2 .card {
-      flex: 1 1 260px;
-    }
-
     ul {
       padding-left: 18px;
-      margin: 8px 0;
+      margin: 6px 0;
       font-size: 14px;
     }
 
-    .small {
-      font-size: 13px;
-      color: #555;
+    /* Groupe de boutons corrigé */
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      max-width: 330px;
+      margin: 18px auto 6px;
     }
 
-    .faq {
-      margin-top: 10px;
+    .btn-action {
+      display: block;
+      text-align: center;
+      padding: 13px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
     }
 
+    .btn-action.green { background: #25D366; }
+    .btn-action.green:hover { background: #1ebe5c; }
+
+    .btn-action.grey { background: #555; }
+    .btn-action.grey:hover { background: #333; }
+
+    /* ACCORDÉONS FAQ */
     details {
       background: #ffffff;
       border-radius: 10px;
@@ -223,27 +178,20 @@
       content: "▼";
       float: right;
       font-size: 11px;
-      margin-top: 3px;
       color: #777;
+      margin-top: 3px;
     }
 
     details[open] summary::after {
       content: "▲";
     }
 
-    details p,
-    details ul {
-      margin-top: 8px;
-      font-size: 14px;
-    }
-
     footer {
       text-align: center;
       font-size: 12px;
       color: #777;
-      padding: 18px 10px 26px;
+      padding: 24px 10px 28px;
     }
-
   </style>
 </head>
 
@@ -251,133 +199,89 @@
 
 <header>
   <h1>Solustoc – Déstockage pour les pros</h1>
-  <p>Lots de bijoux en acier inoxydable doré à l’or fin</p>
+  <p>Bijoux en acier inoxydable doré à l’or fin</p>
 </header>
 
 <div class="wrapper">
 
-  <!-- HERO -->
   <section class="hero">
     <h2>Bijoux prêts à revendre avec de fortes marges</h2>
-    <p>Deux lots simples à comprendre, livrés rapidement, pensés pour les revendeurs sérieux (boutiques, e-commerce, marchés).</p>
+    <p>Deux lots simples à comprendre, livrés rapidement, pensés pour les revendeurs sérieux.</p>
 
     <div class="badges">
       <span class="badge">💎 Acier inoxydable doré à l’or fin</span>
-      <span class="badge">🚚 Livraison incluse en France métropolitaine</span>
-      <span class="badge">🇫🇷 Société française – KBIS disponible</span>
+      <span class="badge">🚚 Livraison incluse</span>
+      <span class="badge">🇫🇷 Société française</span>
       <span class="badge">📦 Paiement sécurisé avant expédition</span>
     </div>
   </section>
 
-  <!-- LOTS -->
   <h2 class="section-title">Lots disponibles</h2>
 
   <section class="lots">
 
+    <!-- LOT 150 -->
     <article class="card">
       <h3>Lot 150 bijoux</h3>
       <div class="price">200 € TTC — Livraison incluse</div>
-      <div class="subtitle">Idéal pour tester une gamme : médailles, colliers, bracelets, bagues, boucles d’oreilles…</div>
+      <div class="subtitle">Idéal pour tester une gamme complète de bijoux tendance.</div>
       <span class="pill">Stock limité</span>
       <ul>
         <li>Acier inoxydable doré à l’or fin — ne noircit pas</li>
         <li>Mix équilibré entre best-sellers et modèles “coup de cœur”</li>
-        <li>Convient aux boutiques physiques, sites internet et marchés</li>
       </ul>
-      <a class="btn-whatsapp" href="https://wa.me/33756923323?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20le%20lot%20150%20bijoux%20%C3%A0%20200%E2%82%AC%20TTC.">Commander ce lot via WhatsApp</a>
-      <a class="link-pdf" href="../pdf/Catalogue-150.pdf" target="_blank">📄 Voir le catalogue détaillé (150 bijoux)</a>
+
+      <div class="btn-group">
+        <a class="btn-action green" href="https://wa.me/33756923323?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20le%20lot%20150%20bijoux%20%C3%A0%20200%E2%82%AC%20TTC." target="_blank">Commander via WhatsApp</a>
+        <a class="btn-action grey" href="/solustoc-catalogue/pdf/Catalogue-150.pdf" target="_blank">📄 Voir le catalogue PDF</a>
+      </div>
     </article>
 
+    <!-- LOT 370 -->
     <article class="card">
       <h3>Lot 370 bijoux</h3>
       <div class="price">480 € TTC — Livraison incluse</div>
-      <div class="subtitle">Le meilleur rapport quantité/prix pour rayon complet et marges confortables.</div>
+      <div class="subtitle">Meilleur rapport quantité/prix pour un rayon complet.</div>
       <span class="pill">Très forte demande</span>
       <ul>
         <li>Acier inoxydable doré à l’or fin — qualité premium</li>
         <li>Très grande variété de modèles pour plaire à un large public</li>
-        <li>Permet de créer immédiatement un univers bijoux complet</li>
       </ul>
-      <a class="btn-whatsapp" href="https://wa.me/33756923323?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20le%20lot%20370%20bijoux%20%C3%A0%20480%E2%82%AC%20TTC.">Réserver ce lot via WhatsApp</a>
-      <a class="link-pdf" href="../pdf/Catalogue-370.pdf" target="_blank">📄 Voir le catalogue détaillé (370 bijoux)</a>
+
+      <div class="btn-group">
+        <a class="btn-action green" href="https://wa.me/33756923323?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20le%20lot%20370%20bijoux%20%C3%A0%20480%E2%82%AC%20TTC." target="_blank">Réserver via WhatsApp</a>
+        <a class="btn-action grey" href="/solustoc-catalogue/pdf/Catalogue-370.pdf" target="_blank">📄 Voir le catalogue PDF</a>
+      </div>
     </article>
 
   </section>
 
-  <!-- ⚠️ BOUTON VOIR LES PHOTOS A ÉTÉ AJOUTÉ ICI -->
-  <a class="btn-photos" href="photos.html">📸 Voir les photos des bijoux</a>
-
-  <!-- BLOCS CONFIANCE -->
-  <h2 class="section-title">Informations pour revendeurs</h2>
-
-  <section class="cols-2">
-
-    <article class="card">
-      <h3>À qui conviennent ces lots ?</h3>
-      <ul>
-        <li>Boutiques physiques / concept stores</li>
-        <li>Sites e-commerce et marketplaces (Vinted, Etsy…)</li>
-        <li>Marchés, foires, pop-up stores, ventes privées</li>
-        <li>Revendeurs débutants souhaitant tester avant d’investir davantage</li>
-      </ul>
-    </article>
-
-    <article class="card">
-      <h3>Pourquoi choisir Solustoc ?</h3>
-      <ul>
-        <li>Positionnement clair : bijoux en acier inoxydable doré à l’or fin</li>
-        <li>Prix pros compétitifs avec marge de revente confortable</li>
-        <li>Lots préparés et vérifiés avant expédition</li>
-        <li>Échange WhatsApp direct avec un interlocuteur unique</li>
-      </ul>
-    </article>
-
-  </section>
-
-  <section class="card" style="margin-top:16px;">
-    <h3>Entreprise française, documents disponibles</h3>
-    <p class="small">
-      SAS Solustoc, immatriculée en France. KBIS et documents légaux fournis sur demande pour déclarations marketplaces et exigences professionnelles.
-    </p>
-    <a class="btn-whatsapp" href="https://wa.me/33756923323?text=Bonjour%2C%20j%27aimerais%20poser%20quelques%20questions%20avant%20de%20commander%20un%20lot%20de%20bijoux.">Poser une question rapide sur WhatsApp</a>
-  </section>
-
-  <!-- FAQ -->
   <h2 class="section-title">FAQ revendeurs</h2>
 
-  <section class="faq">
-    <details>
-      <summary>Les bijoux noircissent-ils ?</summary>
-      <p>Non — ils sont en acier inoxydable doré à l’or fin, résistant à l’eau et à la transpiration.</p>
-    </details>
+  <details>
+    <summary>Les bijoux noircissent-ils ?</summary>
+    <p>Non : acier inoxydable doré à l’or fin, très bonne tenue dans le temps.</p>
+  </details>
 
-    <details>
-      <summary>Quel type de bijoux trouve-t-on dans les lots ?</summary>
-      <ul>
-        <li>Colliers</li>
-        <li>Bracelets</li>
-        <li>Bagues</li>
-        <li>Boucles d’oreilles</li>
-        <li>Médailles / pampilles (anges, colombes, initiales, symboles, etc.)</li>
-      </ul>
-    </details>
+  <details>
+    <summary>Quel type de bijoux dans les lots ?</summary>
+    <p>Médailles, colliers, bracelets, bagues, boucles d’oreilles…</p>
+  </details>
 
-    <details>
-      <summary>Délais de livraison ?</summary>
-      <p>Expédition en général sous 1–3 jours ouvrés après paiement, livraison France métropolitaine.</p>
-    </details>
+  <details>
+    <summary>Délais de livraison ?</summary>
+    <p>1 à 3 jours ouvrés après paiement.</p>
+  </details>
 
-    <details>
-      <summary>Mode de paiement ?</summary>
-      <p>Paiement avant expédition (virement principalement). Facture fournie au nom de votre société.</p>
-    </details>
-
-  </section>
+  <details>
+    <summary>Mode de paiement ?</summary>
+    <p>Virement bancaire avant expédition + facture au nom de votre société.</p>
+  </details>
 
 </div>
 
 <footer>
-  Solustoc — Déstockage pour les pros • Bijoux en acier inoxydable doré à l’or fin • France
+  Solustoc – Déstockage pour les pros • Bijoux en acier inoxydable doré à l’or fin • France
 </footer>
 
 </body>
