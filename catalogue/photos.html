@@ -1,52 +1,104 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Photos — Solustoc</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photos — Solustoc</title>
 
-<style>
-body { font-family: Arial, sans-serif; margin: 0; background: #f8f8f8; }
-header { background: #000; color: #fff; padding: 18px; text-align: center; font-size: 20px; }
-.btn { display: block; width: 240px; margin: 20px auto; background: #25D366; color: #fff; text-align: center; padding: 14px; border-radius: 6px; font-size: 18px; text-decoration: none; }
-.back { background: #444; margin-top: 5px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; padding: 20px; }
-.grid img { width: 100%; border-radius: 6px; cursor: pointer; transition: 0.2s; }
-.grid img:hover { transform: scale(1.04); }
-</style>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f8f8f8;
+    }
+
+    header {
+      background: #000;
+      color: #fff;
+      padding: 18px;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    .btn {
+      display: block;
+      width: 260px;
+      margin: 18px auto 0;
+      background: #25D366;
+      color: #fff;
+      text-align: center;
+      padding: 12px 14px;
+      border-radius: 6px;
+      font-size: 16px;
+      text-decoration: none;
+    }
+
+    .btn.back {
+      background: #444;
+      margin-top: 8px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+      padding: 20px;
+    }
+
+    .grid a {
+      display: block;
+    }
+
+    .grid img {
+      width: 100%;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s;
+      display: block;
+    }
+
+    .grid img:hover {
+      transform: scale(1.04);
+    }
+  </style>
 </head>
 
 <body>
 
 <header>Photos des bijoux — Solustoc</header>
 
-<a class="btn" href="https://wa.me/33756923323?text=Bonjour%2C%20je%20souhaite%20commander%20un%20lot%20de%20bijoux">Commander via WhatsApp</a>
+<a class="btn"
+   href="https://wa.me/33756923323?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20lots%20de%20bijoux">
+  Commander via WhatsApp
+</a>
 
-<a class="btn back" href="../index.html">⬅ Retour au catalogue</a>
+<a class="btn back" href="../index.html">
+  ⬅ Retour au catalogue
+</a>
 
 <div class="grid">
-  <img src="img/Photo1.webp" alt="Photo 1" />
-  <img src="img/Photo2.webp" alt="Photo 2" />
-  <img src="img/Photo3.webp" alt="Photo 3" />
-  <img src="img/Photo4.webp" alt="Photo 4" />
-  <img src="img/Photo5.webp" alt="Photo 5" />
-  <img src="img/Photo6.webp" alt="Photo 6" />
-  <img src="img/Photo7.webp" alt="Photo 7" />
-  <img src="img/Photo8.webp" alt="Photo 8" />
-  <img src="img/Photo9.webp" alt="Photo 9" />
-  <img src="img/Photo10.webp" alt="Photo 10" />
-  <img src="img/Photo11.webp" alt="Photo 11" />
-  <img src="img/Photo12.webp" alt="Photo 12" />
-  <img src="img/Photo13.webp" alt="Photo 13" />
-  <img src="img/Photo14.webp" alt="Photo 14" />
-  <img src="img/Photo15.webp" alt="Photo 15" />
-  <img src="img/Photo16.webp" alt="Photo 16" />
-  <img src="img/Photo17.webp" alt="Photo 17" />
-  <img src="img/Photo18.webp" alt="Photo 18" />
-  <img src="img/Photo19.webp" alt="Photo 19" />
-  <img src="img/Photo20.webp" alt="Photo 20" />
-  <img src="img/Photo21.webp" alt="Photo 21" />
-  <img src="img/Photo22.webp" alt="Photo 22" />
+  <a href="../photos/Photo1.webp" target="_blank"><img src="../photos/Photo1.webp" alt="Photo 1" /></a>
+  <a href="../photos/Photo2.webp" target="_blank"><img src="../photos/Photo2.webp" alt="Photo 2" /></a>
+  <a href="../photos/Photo3.webp" target="_blank"><img src="../photos/Photo3.webp" alt="Photo 3" /></a>
+  <a href="../photos/Photo4.webp" target="_blank"><img src="../photos/Photo4.webp" alt="Photo 4" /></a>
+  <a href="../photos/Photo5.webp" target="_blank"><img src="../photos/Photo5.webp" alt="Photo 5" /></a>
+  <a href="../photos/Photo6.webp" target="_blank"><img src="../photos/Photo6.webp" alt="Photo 6" /></a>
+  <a href="../photos/Photo7.webp" target="_blank"><img src="../photos/Photo7.webp" alt="Photo 7" /></a>
+  <a href="../photos/Photo8.webp" target="_blank"><img src="../photos/Photo8.webp" alt="Photo 8" /></a>
+  <a href="../photos/Photo9.webp" target="_blank"><img src="../photos/Photo9.webp" alt="Photo 9" /></a>
+  <a href="../photos/Photo10.webp" target="_blank"><img src="../photos/Photo10.webp" alt="Photo 10" /></a>
+  <a href="../photos/Photo11.webp" target="_blank"><img src="../photos/Photo11.webp" alt="Photo 11" /></a>
+  <a href="../photos/Photo12.webp" target="_blank"><img src="../photos/Photo12.webp" alt="Photo 12" /></a>
+  <a href="../photos/Photo13.webp" target="_blank"><img src="../photos/Photo13.webp" alt="Photo 13" /></a>
+  <a href="../photos/Photo14.webp" target="_blank"><img src="../photos/Photo14.webp" alt="Photo 14" /></a>
+  <a href="../photos/Photo15.webp" target="_blank"><img src="../photos/Photo15.webp" alt="Photo 15" /></a>
+  <a href="../photos/Photo16.webp" target="_blank"><img src="../photos/Photo16.webp" alt="Photo 16" /></a>
+  <a href="../photos/Photo17.webp" target="_blank"><img src="../photos/Photo17.webp" alt="Photo 17" /></a>
+  <a href="../photos/Photo18.webp" target="_blank"><img src="../photos/Photo18.webp" alt="Photo 18" /></a>
+  <a href="../photos/Photo19.webp" target="_blank"><img src="../photos/Photo19.webp" alt="Photo 19" /></a>
+  <a href="../photos/Photo20.webp" target="_blank"><img src="../photos/Photo20.webp" alt="Photo 20" /></a>
+  <a href="../photos/Photo21.webp" target="_blank"><img src="../photos/Photo21.webp" alt="Photo 21" /></a>
+  <a href="../photos/Photo22.webp" target="_blank"><img src="../photos/Photo22.webp" alt="Photo 22" /></a>
 </div>
 
 </body>
