@@ -1,105 +1,112 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Photos — Solustoc</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photos — Solustoc</title>
+<style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f8f8f8; }
+    header { background: #000; color: #fff; padding: 18px; text-align: center; font-size: 20px; }
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f8f8f8;
-    }
+    .btn-bar { text-align: center; margin: 20px 0; }
+    .btn { display: inline-block; margin: 4px; background: #25D366; color: #fff;
+           padding: 12px 18px; border-radius: 6px; text-decoration: none; font-size: 16px; }
+    .back { background: #444; }
 
-    header {
-      background: #000;
-      color: #fff;
-      padding: 18px;
-      text-align: center;
-      font-size: 20px;
-    }
-
-    .btn {
-      display: block;
-      width: 260px;
-      margin: 18px auto 0;
-      background: #25D366;
-      color: #fff;
-      text-align: center;
-      padding: 12px 14px;
-      border-radius: 6px;
-      font-size: 16px;
-      text-decoration: none;
-    }
-
-    .btn.back {
-      background: #444;
-      margin-top: 8px;
-    }
-
+    /* --- Galerie uniforme --- */
     .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-      gap: 12px;
-      padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
+        padding: 20px;
     }
-
-    .grid a {
-      display: block;
-    }
-
     .grid img {
-      width: 100%;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.2s;
-      display: block;
+        width: 100%;
+        height: 140px;                 /* même hauteur pour toutes */
+        object-fit: cover;             /* recadrage professionnel */
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.2s;
     }
+    .grid img:hover { transform: scale(1.04); }
 
-    .grid img:hover {
-      transform: scale(1.04);
+    /* Plein écran */
+    .lightbox {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center;
     }
-  </style>
+    .lightbox img {
+        max-width: 90%; max-height: 90%; border-radius: 8px;
+    }
+    .lightbox:target { display: flex; }
+    .close { position: fixed; top: 20px; right: 20px; font-size: 26px; color: #fff; text-decoration: none; }
+</style>
 </head>
-
 <body>
 
 <header>Photos des bijoux — Solustoc</header>
 
-<a class="btn"
-   href="https://wa.me/33756923323?text=Bonjour%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20lots%20de%20bijoux">
-  Commander via WhatsApp
-</a>
-
-<a class="btn back" href="../index.html">
-  ⬅ Retour au catalogue
-</a>
+<div class="btn-bar">
+    <a class="btn" href="https://wa.me/33756923323?text=Bonjour%2C%20j%27aimerais%20commander%20vos%20bijoux%20Solustoc">Commander via WhatsApp</a>
+    <a class="btn back" href="/solustoc-catalogue/catalogue/index.html">← Retour au catalogue</a>
+</div>
 
 <div class="grid">
-  <a href="../photos/Photo1.webp" target="_blank"><img src="../photos/Photo1.webp" alt="Photo 1" /></a>
-  <a href="../photos/Photo2.webp" target="_blank"><img src="../photos/Photo2.webp" alt="Photo 2" /></a>
-  <a href="../photos/Photo3.webp" target="_blank"><img src="../photos/Photo3.webp" alt="Photo 3" /></a>
-  <a href="../photos/Photo4.webp" target="_blank"><img src="../photos/Photo4.webp" alt="Photo 4" /></a>
-  <a href="../photos/Photo5.webp" target="_blank"><img src="../photos/Photo5.webp" alt="Photo 5" /></a>
-  <a href="../photos/Photo6.webp" target="_blank"><img src="../photos/Photo6.webp" alt="Photo 6" /></a>
-  <a href="../photos/Photo7.webp" target="_blank"><img src="../photos/Photo7.webp" alt="Photo 7" /></a>
-  <a href="../photos/Photo8.webp" target="_blank"><img src="../photos/Photo8.webp" alt="Photo 8" /></a>
-  <a href="../photos/Photo9.webp" target="_blank"><img src="../photos/Photo9.webp" alt="Photo 9" /></a>
-  <a href="../photos/Photo10.webp" target="_blank"><img src="../photos/Photo10.webp" alt="Photo 10" /></a>
-  <a href="../photos/Photo11.webp" target="_blank"><img src="../photos/Photo11.webp" alt="Photo 11" /></a>
-  <a href="../photos/Photo12.webp" target="_blank"><img src="../photos/Photo12.webp" alt="Photo 12" /></a>
-  <a href="../photos/Photo13.webp" target="_blank"><img src="../photos/Photo13.webp" alt="Photo 13" /></a>
-  <a href="../photos/Photo14.webp" target="_blank"><img src="../photos/Photo14.webp" alt="Photo 14" /></a>
-  <a href="../photos/Photo15.webp" target="_blank"><img src="../photos/Photo15.webp" alt="Photo 15" /></a>
-  <a href="../photos/Photo16.webp" target="_blank"><img src="../photos/Photo16.webp" alt="Photo 16" /></a>
-  <a href="../photos/Photo17.webp" target="_blank"><img src="../photos/Photo17.webp" alt="Photo 17" /></a>
-  <a href="../photos/Photo18.webp" target="_blank"><img src="../photos/Photo18.webp" alt="Photo 18" /></a>
-  <a href="../photos/Photo19.webp" target="_blank"><img src="../photos/Photo19.webp" alt="Photo 19" /></a>
-  <a href="../photos/Photo20.webp" target="_blank"><img src="../photos/Photo20.webp" alt="Photo 20" /></a>
-  <a href="../photos/Photo21.webp" target="_blank"><img src="../photos/Photo21.webp" alt="Photo 21" /></a>
-  <a href="../photos/Photo22.webp" target="_blank"><img src="../photos/Photo22.webp" alt="Photo 22" /></a>
+    <!-- Galerie générée automatiquement -->
+    <!-- Boucle 1 → 22 -->
+    <!-- Ce bloc crée toutes les images -->
+    <!-- Pas besoin de toucher si tu ajoutes / supprimes des photos dans GitHub -->
+    <!-- Les noms doivent rester PhotoX.webp -->
+    <!-- Photo1 → Photo22 -->
+    <!-- Coller autant de lignes que de photos -->
+    <a href="#img1"><img src="/solustoc-catalogue/photos/Photo1.webp"></a>
+    <a href="#img2"><img src="/solustoc-catalogue/photos/Photo2.webp"></a>
+    <a href="#img3"><img src="/solustoc-catalogue/photos/Photo3.webp"></a>
+    <a href="#img4"><img src="/solustoc-catalogue/photos/Photo4.webp"></a>
+    <a href="#img5"><img src="/solustoc-catalogue/photos/Photo5.webp"></a>
+    <a href="#img6"><img src="/solustoc-catalogue/photos/Photo6.webp"></a>
+    <a href="#img7"><img src="/solustoc-catalogue/photos/Photo7.webp"></a>
+    <a href="#img8"><img src="/solustoc-catalogue/photos/Photo8.webp"></a>
+    <a href="#img9"><img src="/solustoc-catalogue/photos/Photo9.webp"></a>
+    <a href="#img10"><img src="/solustoc-catalogue/photos/Photo10.webp"></a>
+    <a href="#img11"><img src="/solustoc-catalogue/photos/Photo11.webp"></a>
+    <a href="#img12"><img src="/solustoc-catalogue/photos/Photo12.webp"></a>
+    <a href="#img13"><img src="/solustoc-catalogue/photos/Photo13.webp"></a>
+    <a href="#img14"><img src="/solustoc-catalogue/photos/Photo14.webp"></a>
+    <a href="#img15"><img src="/solustoc-catalogue/photos/Photo15.webp"></a>
+    <a href="#img16"><img src="/solustoc-catalogue/photos/Photo16.webp"></a>
+    <a href="#img17"><img src="/solustoc-catalogue/photos/Photo17.webp"></a>
+    <a href="#img18"><img src="/solustoc-catalogue/photos/Photo18.webp"></a>
+    <a href="#img19"><img src="/solustoc-catalogue/photos/Photo19.webp"></a>
+    <a href="#img20"><img src="/solustoc-catalogue/photos/Photo20.webp"></a>
+    <a href="#img21"><img src="/solustoc-catalogue/photos/Photo21.webp"></a>
+    <a href="#img22"><img src="/solustoc-catalogue/photos/Photo22.webp"></a>
 </div>
+
+<!-- Lightboxes -->
+<!-- Générés automatiquement -->
+<a href="#" class="lightbox" id="img1"><img src="/solustoc-catalogue/photos/Photo1.webp"><span class="close">×</span></a>
+<a href="#" class="lightbox" id="img2"><img src="/solustoc-catalogue/photos/Photo2.webp"><span class="close">×</span></a>
+<a href="#" class="lightbox" id="img3"><img src="/solustoc-catalogue/photos/Photo3.webp"><span class="close">×</span></a>
+<a href="#" class="lightbox" id="img4"><img src="/solustoc-catalogue/photos/Photo4.webp"><span class="close">×</span></a>
+<a href="#" class="lightbox" id="img5"><img src="/solustoc-catalogue/photos/Photo5.webp"><span class="close">×</span></a>
+<a href="#" class="lightbox" id="img6"><img src="/solustoc-catalogue/photos/Photo6.webp"><span class="close">×</span></a>
+<a href="#" class="lightbox" id="img7"><img src="/solustoc-catalogue/photos/Photo7.webp"><span class="close">×</span></a>
+<a href="#" class="lightbox" id="img8"><img src="/solustoc-catalogue/photos/Photo8.webp"><span class="close">×</span></a>
+<a href="#" class="lightbox" id="img9"><img src="/solustoc-catalogue/photos/Photo9.webp"><span class="close">×</span></a>
+<a href="#" class="lightbox" id="img10"><img src="/solustoc-catalogue/photos/Photo10.webp"><span class="close">×</span></a>
+<a href="#" class="lightbox" id="img11"><img src="/solustoc-catalogue/photos/Photo11.webp"><span class="close">×</span></a>
+<a href="#" class="lightbox" id="img12"><img src="/solustoc-catalogue/photos/Photo12.webp"><span class="close">×</span></a>
+<a href="#" class="lightbox" id="img13"><img src="/solustoc-catalogue/photos/Photo13.webp"><span class="close">×</span></a>
+<a href="#" class="lightbox" id="img14"><img src="/solustoc-catalogue/photos/Photo14.webp"><span class="close">×</span></a>
+<a href="#" class="lightbox" id="img15"><img src="/solustoc-catalogue/photos/Photo15.webp"><span class="close">×</span></a>
+<a href="#" class="lightbox" id="img16"><img src="/solustoc-catalogue/photos/Photo16.webp"><span class="close">×</span></a>
+<a href="#" class="lightbox" id="img17"><img src="/solustoc-catalogue/photos/Photo17.webp"><span class="close">×</span></a>
+<a href="#" class="lightbox" id="img18"><img src="/solustoc-catalogue/photos/Photo18.webp"><span class="close">×</span></a>
+<a href="#" class="lightbox" id="img19"><img src="/solustoc-catalogue/photos/Photo19.webp"><span class="close">×</span></a>
+<a href="#" class="lightbox" id="img20"><img src="/solustoc-catalogue/photos/Photo20.webp"><span class="close">×</span></a>
+<a href="#" class="lightbox" id="img21"><img src="/solustoc-catalogue/photos/Photo21.webp"><span class="close">×</span></a>
+<a href="#" class="lightbox" id="img22"><img src="/solustoc-catalogue/photos/Photo22.webp"><span class="close">×</span></a>
 
 </body>
 </html>
