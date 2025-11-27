@@ -169,8 +169,6 @@
       <option value="Médaille précieuse">Médailles précieuses</option>
       <option value="Médaille symbole">Médailles symbole / bijou</option>
     </select>
-
-    <input type="text" id="search-input" placeholder="Recherche (ex : Ange, Safran, J, Cactus…)">
   </div>
 
   <section id="products" class="grid"></section>
@@ -374,7 +372,6 @@ function applyFilters() {
 
 /* listeners filtre */
 document.getElementById("filter-category").addEventListener("change", applyFilters);
-document.getElementById("search-input").addEventListener("input", applyFilters);
 
 /* affichage catalogue */
 function renderProduits() {
