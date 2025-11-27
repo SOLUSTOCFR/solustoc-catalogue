@@ -6,194 +6,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f5f5f5;
-      color: #222;
-    }
+    body { font-family: Arial, sans-serif; margin: 0; background: #f5f5f5; color: #222; }
+    header { background: #111; color: #fff; padding: 18px 10px; text-align: center; }
+    header h1 { margin: 0; font-size: 22px; }
+    header p { margin: 4px 0 0; font-size: 14px; color: #ddd; }
 
-    header {
-      background: #111;
-      color: #fff;
-      padding: 18px 10px;
-      text-align: center;
-    }
+    .wrapper { width: 92%; max-width: 980px; margin: 18px auto 40px; }
 
-    header h1 {
-      margin: 0;
-      font-size: 22px;
-    }
+    .hero { background: #ffffff; border-radius: 12px; padding: 20px 16px; box-shadow: 0 0 10px rgba(0,0,0,0.06); margin-bottom: 18px; }
+    .hero h2 { margin-top: 0; text-align: center; font-size: 21px; }
+    .hero p { text-align: center; font-size: 15px; margin: 6px 0 14px; }
+    .badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; font-size: 13px; }
+    .badge { background: #f0e6d5; border-radius: 999px; padding: 5px 10px; display: inline-flex; align-items: center; }
 
-    header p {
-      margin: 4px 0 0;
-      font-size: 14px;
-      color: #ddd;
-    }
+    .section-title { margin: 24px 0 10px; font-size: 18px; font-weight: bold; }
 
-    .wrapper {
-      width: 92%;
-      max-width: 980px;
-      margin: 18px auto 40px;
-    }
+    .lots { display: flex; flex-direction: column; gap: 16px; }
+    .card { background: #ffffff; border-radius: 12px; padding: 16px 16px 18px; box-shadow: 0 0 10px rgba(0,0,0,0.06); }
+    .card h3 { margin-top: 0; font-size: 18px; color: #c9a56b; }
+    .price { font-size: 20px; font-weight: bold; margin: 6px 0; }
+    .subtitle { font-size: 13px; color: #555; margin-bottom: 8px; }
+    .pill { display: inline-block; font-size: 12px; padding: 4px 8px; border-radius: 999px; background: #ffe1e1; color: #b32121; margin-bottom: 10px; }
+    ul { padding-left: 18px; margin: 6px 0; font-size: 14px; }
 
-    .hero {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 20px 16px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.06);
-      margin-bottom: 18px;
-    }
-
-    .hero h2 {
-      margin-top: 0;
-      text-align: center;
-      font-size: 21px;
-    }
-
-    .hero p {
-      text-align: center;
-      font-size: 15px;
-      margin: 6px 0 14px;
-    }
-
-    .badges {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-      font-size: 13px;
-    }
-
-    .badge {
-      background: #f0e6d5;
-      border-radius: 999px;
-      padding: 5px 10px;
-      display: inline-flex;
-      align-items: center;
-    }
-
-    .section-title {
-      margin: 24px 0 10px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .lots {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .card {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 16px 16px 18px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.06);
-    }
-
-    .card h3 {
-      margin-top: 0;
-      font-size: 18px;
-      color: #c9a56b;
-    }
-
-    .price {
-      font-size: 20px;
-      font-weight: bold;
-      margin: 6px 0;
-    }
-
-    .subtitle {
-      font-size: 13px;
-      color: #555;
-      margin-bottom: 8px;
-    }
-
-    .pill {
-      display: inline-block;
-      font-size: 12px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: #ffe1e1;
-      color: #b32121;
-      margin-bottom: 10px;
-    }
-
-    ul {
-      padding-left: 18px;
-      margin: 6px 0;
-      font-size: 14px;
-    }
-
-    /* Groupe de boutons sous chaque lot */
-    .btn-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      width: 100%;
-      max-width: 330px;
-      margin: 16px auto 4px;
-    }
-
-    .btn-action {
-      display: block;
-      text-align: center;
-      padding: 12px 14px;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: bold;
-      color: #fff;
-      text-decoration: none;
-    }
-
+    .btn-group { display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 330px; margin: 16px auto 4px; }
+    .btn-action { display: block; text-align: center; padding: 12px 14px; border-radius: 8px; font-size: 15px; font-weight: bold; color: #fff; text-decoration: none; }
     .btn-action.green { background: #25D366; }
     .btn-action.green:hover { background: #1ebe5c; }
-
     .btn-action.grey { background: #555; }
     .btn-action.grey:hover { background: #333; }
-
     .btn-action.blue { background: #0075ff; }
     .btn-action.blue:hover { background: #005fcc; }
 
-    /* FAQ accordéon */
-    details {
-      background: #ffffff;
-      border-radius: 10px;
-      padding: 10px 12px;
-      margin-bottom: 8px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.04);
-    }
+    details { background: #ffffff; border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.04); }
+    summary { cursor: pointer; font-weight: bold; font-size: 14px; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "▼"; float: right; font-size: 11px; color: #777; margin-top: 3px; }
+    details[open] summary::after { content: "▲"; }
 
-    summary {
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 14px;
-      list-style: none;
-    }
-
-    summary::-webkit-details-marker {
-      display: none;
-    }
-
-    summary::after {
-      content: "▼";
-      float: right;
-      font-size: 11px;
-      color: #777;
-      margin-top: 3px;
-    }
-
-    details[open] summary::after {
-      content: "▲";
-    }
-
-    footer {
-      text-align: center;
-      font-size: 12px;
-      color: #777;
-      padding: 24px 10px 28px;
-    }
+    footer { text-align: center; font-size: 12px; color: #777; padding: 24px 10px 28px; }
   </style>
 </head>
 
@@ -237,28 +88,9 @@
       </ul>
 
       <div class="btn-group">
-        <a
-          class="btn-action green"
-          href="https://wa.me/33756923323?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20le%20lot%20150%20bijoux%20%C3%A0%20200%E2%82%AC%20TTC."
-          target="_blank" rel="noopener noreferrer"
-        >
-          Commander ce lot via WhatsApp
-        </a>
-
-        <a
-          class="btn-action grey"
-          href="pdf/Catalogue-150.pdf"
-          target="_blank" rel="noopener noreferrer"
-        >
-          📄 Voir le catalogue PDF (150 bijoux)
-        </a>
-
-        <a
-          class="btn-action blue"
-          href="catalogue/photos.html"
-        >
-          📸 Voir les photos du lot
-        </a>
+        <a class="btn-action green" href="https://wa.me/33756923323?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20le%20lot%20150%20bijoux%20%C3%A0%20200%E2%82%AC%20TTC." target="_blank">Commander ce lot via WhatsApp</a>
+        <a class="btn-action grey" href="pdf/Catalogue-150.pdf" target="_blank">📄 Voir le catalogue PDF (150 bijoux)</a>
+        <a class="btn-action blue" href="/solustoc-catalogue/photos/photos.html">📸 Voir les photos du lot</a>
       </div>
     </article>
 
@@ -275,28 +107,9 @@
       </ul>
 
       <div class="btn-group">
-        <a
-          class="btn-action green"
-          href="https://wa.me/33756923323?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20le%20lot%20370%20bijoux%20%C3%A0%20480%E2%82%AC%20TTC."
-          target="_blank" rel="noopener noreferrer"
-        >
-          Réserver ce lot via WhatsApp
-        </a>
-
-        <a
-          class="btn-action grey"
-          href="pdf/Catalogue-370.pdf"
-          target="_blank" rel="noopener noreferrer"
-        >
-          📄 Voir le catalogue PDF (370 bijoux)
-        </a>
-
-        <a
-          class="btn-action blue"
-          href="catalogue/photos.html"
-        >
-          📸 Voir les photos du lot
-        </a>
+        <a class="btn-action green" href="https://wa.me/33756923323?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20le%20lot%20370%20bijoux%20%C3%A0%20480%E2%82%AC%20TTC." target="_blank">Réserver ce lot via WhatsApp</a>
+        <a class="btn-action grey" href="pdf/Catalogue-370.pdf" target="_blank">📄 Voir le catalogue PDF (370 bijoux)</a>
+        <a class="btn-action blue" href="/solustoc-catalogue/photos/photos.html">📸 Voir les photos du lot</a>
       </div>
     </article>
 
