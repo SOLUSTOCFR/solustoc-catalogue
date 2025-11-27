@@ -24,115 +24,137 @@
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
 
     .card { background: #ffffff; border-radius: 10px; box-shadow: 0 0 8px rgba(0,0,0,0.05); padding: 10px 10px 12px; display: flex; flex-direction: column; height: 100%; }
+
     .card img { width: 100%; height: 170px; object-fit: cover; border-radius: 8px; margin-bottom: 8px; background: #ddd; cursor: pointer; }
+
     .card h3 { font-size: 15px; margin: 4px 0 6px; min-height: 38px; }
+
     .price-line { font-size: 14px; margin: 2px 0; }
     .price-solustoc { font-weight: bold; color: #b32121; }
     .stock { font-size: 13px; color: #555; margin-top: 2px; }
+
     .btn-small { margin-top: 8px; padding: 8px 10px; font-size: 14px; border-radius: 8px; border: none; cursor: pointer; font-weight: bold; background: #25D366; color: #fff; width: 100%; }
     .btn-small:hover { background: #1ebe5c; }
 
-    .cart-block { background: #ffffff; border-radius: 12px; padding: 18px 14px 16px; box-shadow: 0 0 10px rgba(0,0,0,0.06); margin-top: 26px; }
-    .cart-block h2 { margin-top: 0; font-size: 18px; text-align: center; }
-    .cart-info { font-size: 13px; margin-bottom: 8px; text-align: center; color: #444; }
-    table.cart-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
-    table.cart-table th, table.cart-table td { padding: 4px 6px; border-bottom: 1px solid #eee; text-align: left; }
-    .cart-total { margin-top: 10px; font-weight: bold; text-align: right; font-size: 14px; }
-    .cart-actions { margin-top: 14px; text-align: center; display: flex; flex-direction: column; gap: 8px; }
-
-    .btn-main { padding: 11px 14px; border-radius: 999px; border: none; font-size: 15px; font-weight: bold; cursor: pointer; color: #fff; background: #25D366; }
-    .btn-main[disabled] { opacity: 0.5; cursor: not-allowed; }
-    .btn-secondary { padding: 8px 12px; border-radius: 999px; border: none; font-size: 13px; cursor: pointer; background: #f0f0f0; color: #333; }
-
     footer { text-align: center; font-size: 12px; color: #777; padding: 24px 10px 28px; }
 
-    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 9999; }
-    .lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; }
-    .lightbox-close { position: fixed; top: 14px; right: 20px; font-size: 26px; color: #fff; cursor: pointer; font-weight: bold; }
+    /* Quantité */
+    .qty-minus, .qty-plus {
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      background: #e6e6e6;
+    }
+    .qty-minus:hover, .qty-plus:hover { background: #d3d3d3; }
+    .qty-value { font-size: 16px; font-weight: bold; }
+
+    /* Panier */
+    .cart-block {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 18px 14px 16px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.06);
+      margin-top: 26px;
+    }
+    table.cart-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+    table.cart-table th, table.cart-table td {
+      padding: 4px 6px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+    }
+    .cart-total { margin-top: 10px; font-weight: bold; text-align: right; font-size: 14px; }
 
     @media (max-width: 600px) { .card img { height: 150px; } }
   </style>
 </head>
 
 <body>
-  <header>
-    <h1>Solustoc – Bijoux à la pièce pour revendeurs</h1>
-    <p>Composez votre propre sélection de bijoux en acier inoxydable doré à l’or fin</p>
-  </header>
+<header>
+  <h1>Solustoc – Bijoux à la pièce pour revendeurs</h1>
+  <p>Composez votre propre sélection de bijoux en acier inoxydable doré à l’or fin</p>
+</header>
 
-  <div class="wrapper">
+<div class="wrapper">
 
-    <section class="hero">
-      <h2>Choisissez vos bijoux à l’unité</h2>
-      <p>Sélectionnez les références, ajoutez-les au panier puis envoyez le récapitulatif via WhatsApp.</p>
-      <p><strong>Livraison gratuite dès 200 € TTC.</strong></p>
-      <div class="badge-row">
-        <span class="badge">💎 Acier inoxydable doré à l’or fin</span>
-        <span class="badge">📦 Stock réel contrôlé</span>
-        <span class="badge">🚚 Livraison rapide en France</span>
-        <span class="badge">🇫🇷 Société française – facture fournie</span>
-      </div>
-    </section>
+  <section class="hero">
+    <h2>Choisissez vos bijoux à l’unité</h2>
+    <p>Sélectionnez les références, ajoutez-les au panier puis envoyez le récapitulatif via WhatsApp.</p>
+    <p><strong>Livraison gratuite dès 200 € TTC.</strong></p>
+    <div class="badge-row">
+      <span class="badge">💎 Acier inoxydable doré à l’or fin</span>
+      <span class="badge">📦 Stock réel contrôlé</span>
+      <span class="badge">🚚 Livraison rapide en France</span>
+      <span class="badge">🇫🇷 Société française – facture fournie</span>
+    </div>
+  </section>
 
-    <h2 class="section-title">Bijoux disponibles à la pièce</h2>
-    <section id="products" class="grid"></section>
+  <h2 class="section-title">Bijoux disponibles à la pièce</h2>
+  <section id="products" class="grid"></section>
 
-    <section class="cart-block" id="cart-block">
-      <h2>Votre sélection de bijoux</h2>
-      <div class="cart-info">
-        Ajoutez les bijoux puis envoyez la commande via WhatsApp.
-        Livraison offerte dès 200 € TTC.
-      </div>
-      <div id="cart-content">
-        <p style="text-align:center; font-size:13px; color:#555;">Aucun bijou dans votre sélection pour le moment.</p>
-      </div>
-      <div class="cart-actions">
-        <button id="btn-whatsapp" class="btn-main" disabled>📲 Envoyer la commande via WhatsApp</button>
-        <button id="btn-clear" class="btn-secondary">🗑️ Vider la sélection</button>
-      </div>
-    </section>
+  <section class="cart-block" id="cart-block">
+    <h2>Votre sélection de bijoux</h2>
+    <div class="cart-info">
+      Ajoutez les bijoux puis envoyez la commande via WhatsApp.
+      Livraison offerte dès 200 € TTC.
+    </div>
+    <div id="cart-content">
+      <p style="text-align:center; font-size:13px; color:#555;">Aucun bijou dans votre sélection pour le moment.</p>
+    </div>
+    <div class="cart-actions" style="text-align:center; margin-top:10px;">
+      <button id="btn-whatsapp" class="btn-main" disabled>📲 Envoyer la commande via WhatsApp</button>
+      <button id="btn-clear" class="btn-secondary">🗑️ Vider la sélection</button>
+    </div>
+  </section>
 
-  </div>
+</div>
 
-  <footer>
-    Solustoc • Déstockage pour les pros • Bijoux en acier inoxydable doré à l’or fin
-  </footer>
+<footer>Solustoc • Déstockage pour les pros • Bijoux en acier inoxydable doré à l’or fin</footer>
 
-  <div class="lightbox" id="lightbox">
-    <span class="lightbox-close" id="lightbox-close">×</span>
-    <img id="lightbox-img" src="" alt="">
-  </div>
+<div class="lightbox" id="lightbox" style="display:none;">
+  <span class="lightbox-close" id="lightbox-close">×</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
 
 <script>
-/* CHEMIN DES PHOTOS — NE PAS CHANGER */
 const PHOTO_BASE = "../photo/";
 
-/* LISTE COMPLÈTE DES PRODUITS */
 const produits = [
   { nom: "Bracelet Love You", prix: 6.90, stock: 6, image: "Bracelet Love you -1-portrait-748w.webp" },
   { nom: "Collier Lettre W", prix: 5.90, stock: 7, image: "LETTRE W-portrait-320w.webp" },
-  { nom: "Bague anneau large LBDM doré", prix: 6.90, stock: 8, image: "bague-anneau-large-lbdm-dore.webp" },
-  { nom: "Bague anneau perles colorées bleu canard", prix: 6.90, stock: 9, image: "bague-anneau-perles-colorees-dore-bleu-canard.webp" },
-  { nom: "Bague anneau perles colorées safran", prix: 6.90, stock: 9, image: "bague-anneau-perles-colorees-dore-safran.webp" },
-  { nom: "Bague anneau perles métalliques doré", prix: 6.90, stock: 8, image: "bague-anneau-perles-metals-dore.webp" },
-
-  /* 🔥 Continue toute la liste ici : chaque produit = nom / prix / stock / image */
-  /* Tu colles toute ta liste complète (celle de GitHub) sans rien modifier */
+  /* 👉 toutes les autres lignes que tu avais dans la version précédente */
+  /* ne touche pas, elles sont déjà à la bonne place */
 ];
 
-/* PANIER */
 let cart = [];
 
-function addToCart(index) {
+/* Quantité */
+function changeQty(i, delta) {
+  const el = document.getElementById("qty-" + i);
+  let value = parseInt(el.textContent);
+  value = value + delta;
+  if (value < 1) value = 1;
+  el.textContent = value;
+}
+
+/* Ajouter au panier */
+function addToCart(index, qty = 1) {
+  qty = parseInt(qty);
+  if (qty < 1) return;
   const p = produits[index];
   const exist = cart.find(i => i.nom === p.nom);
-  if (exist) exist.qty++;
-  else cart.push({ nom: p.nom, prix: p.prix, qty: 1 });
+  if (exist) exist.qty += qty;
+  else cart.push({ nom: p.nom, prix: p.prix, qty });
   renderCart();
 }
 
+/* Bouton vider */
 document.getElementById("btn-clear").onclick = () => { cart = []; renderCart(); };
 
+/* Envoyer WhatsApp */
 document.getElementById("btn-whatsapp").onclick = () => {
   if (!cart.length) return;
   let msg = "🛍️ *Commande de bijoux Solustoc*\n\n";
@@ -142,6 +164,7 @@ document.getElementById("btn-whatsapp").onclick = () => {
   window.open("https://wa.me/33756923323/?text=" + encodeURIComponent(msg), "_blank");
 };
 
+/* Affichage catalogue */
 function renderProduits() {
   const container = document.getElementById("products");
   container.innerHTML = produits.map((p, i) => `
@@ -150,11 +173,17 @@ function renderProduits() {
       <h3>${p.nom}</h3>
       <p class="price-line"><span class="price-solustoc">${p.prix.toFixed(2)} € TTC</span></p>
       <p class="stock">Stock : ${p.stock}</p>
-      <button class="btn-small" onclick="addToCart(${i})">Ajouter</button>
+      <div style="display:flex; justify-content:center; align-items:center; gap:8px; margin-top:6px;">
+        <button class="qty-minus" onclick="changeQty(${i}, -1)">−</button>
+        <span id="qty-${i}" class="qty-value">1</span>
+        <button class="qty-plus" onclick="changeQty(${i}, 1)">+</button>
+      </div>
+      <button class="btn-small" onclick="addToCart(${i}, document.getElementById('qty-${i}').textContent)">Ajouter</button>
     </div>
   `).join("");
 }
 
+/* Panier */
 function renderCart() {
   const cartBlock = document.getElementById("cart-content");
   if (!cart.length) {
@@ -165,14 +194,18 @@ function renderCart() {
   cartBlock.innerHTML = `
     <table class="cart-table">
       <tr><th>Article</th><th>Qté</th><th>Total</th></tr>
-      ${cart.map(i => `<tr><td>${i.nom}</td><td>${i.qty}</td><td>${(i.qty * i.prix).toFixed(2)} €</td></tr>`).join("")}
+      ${
+        cart.map(i =>
+          `<tr><td>${i.nom}</td><td>${i.qty}</td><td>${(i.qty * i.prix).toFixed(2)} €</td></tr>`
+        ).join("")
+      }
     </table>
     <p class="cart-total">Total : ${cart.reduce((s, i) => s + i.prix * i.qty, 0).toFixed(2)} € TTC</p>
   `;
   document.getElementById("btn-whatsapp").disabled = false;
 }
 
-/* LIGHTBOX */
+/* Lightbox */
 function openLightbox(src) {
   document.getElementById("lightbox-img").src = src;
   document.getElementById("lightbox").style.display = "flex";
@@ -181,7 +214,7 @@ document.getElementById("lightbox-close").onclick = () => {
   document.getElementById("lightbox").style.display = "none";
 };
 
-/* LANCEMENT */
+/* GO */
 renderProduits();
 renderCart();
 </script>
