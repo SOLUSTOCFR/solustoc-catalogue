@@ -6,154 +6,253 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #f5f5f5; color: #222; }
-    header { background: #111; color: #fff; padding: 18px 10px; text-align: center; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f5f5;
+      color: #222;
+    }
+    header {
+      background: #111;
+      color: #fff;
+      padding: 18px 10px;
+      text-align: center;
+    }
     header h1 { margin: 0; font-size: 22px; }
     header p { margin: 4px 0 0; font-size: 14px; color: #ddd; }
+
     .wrapper { width: 94%; max-width: 1100px; margin: 18px auto 40px; }
-    .hero { background: #ffffff; border-radius: 12px; padding: 18px 16px; box-shadow: 0 0 10px rgba(0,0,0,0.06); margin-bottom: 18px; text-align: center; }
-    .hero h2 { font-size: 20px; margin-top: 0; }
-    .section-title { margin: 24px 0 10px; font-size: 18px; font-weight: bold; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
-    .card { background: #ffffff; border-radius: 10px; box-shadow: 0 0 8px rgba(0,0,0,0.05); padding: 10px 10px 12px; display: flex; flex-direction: column; height: 100%; }
-    .card img { width: 100%; height: 170px; object-fit: cover; border-radius: 8px; margin-bottom: 8px; background: #ddd; cursor: pointer; }
+
+    .hero {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 18px 16px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.06);
+      margin-bottom: 18px;
+      text-align: center;
+    }
+    .hero h2 { margin-top: 0; font-size: 20px; }
+    .hero p { margin: 6px 0; font-size: 14px; }
+
+    .badge-row {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+    .badge {
+      background: #f0e6d5;
+      border-radius: 999px;
+      padding: 4px 10px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .section-title {
+      margin: 24px 0 10px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+      padding: 10px 10px 12px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      background: #ddd;
+      cursor: pointer;
+    }
+
     .card h3 { font-size: 15px; margin: 4px 0 6px; min-height: 38px; }
+
     .price-line { font-size: 14px; margin: 2px 0; }
     .price-solustoc { font-weight: bold; color: #b32121; }
     .stock { font-size: 13px; color: #555; margin-top: 2px; }
-    .btn-small { margin-top: 8px; padding: 8px 10px; font-size: 14px; border-radius: 8px; border: none; cursor: pointer; font-weight: bold; background: #25D366; color: #fff; width: 100%; }
-    .cart-block { background: #ffffff; border-radius: 12px; padding: 18px 14px 16px; box-shadow: 0 0 10px rgba(0,0,0,0.06); margin-top: 26px; }
-    footer { text-align: center; font-size: 12px; color: #777; padding: 24px 10px 28px; }
-    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 9999; }
+
+    .btn-small {
+      margin-top: 8px;
+      padding: 8px 10px;
+      font-size: 14px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      background: #25D366;
+      color: #fff;
+      width: 100%;
+    }
+    .btn-small:hover { background: #1ebe5c; }
+
+    .cart-block {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 18px 14px 16px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.06);
+      margin-top: 26px;
+    }
+
+    .cart-block h2 { margin-top: 0; font-size: 18px; text-align: center; }
+    .cart-info { font-size: 13px; margin-bottom: 8px; text-align: center; color: #444; }
+
+    table.cart-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+    table.cart-table th, table.cart-table td {
+      padding: 4px 6px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+    }
+
+    .cart-total {
+      margin-top: 10px;
+      font-weight: bold;
+      text-align: right;
+      font-size: 14px;
+    }
+    .cart-actions {
+      margin-top: 14px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .btn-main {
+      padding: 11px 14px;
+      border-radius: 999px;
+      border: none;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #fff;
+      background: #25D366;
+    }
+    .btn-main[disabled] { opacity: 0.5; cursor: not-allowed; }
+
+    .btn-secondary {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: none;
+      font-size: 13px;
+      cursor: pointer;
+      background: #f0f0f0;
+      color: #333;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+      padding: 24px 10px 28px;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
     .lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; }
-    .lightbox-close { position: fixed; top: 14px; right: 20px; font-size: 26px; color: #fff; cursor: pointer; font-weight: bold; }
+    .lightbox-close {
+      position: fixed;
+      top: 14px;
+      right: 20px;
+      font-size: 26px;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      .card img { height: 150px; }
+    }
   </style>
 </head>
 
 <body>
-<header>
-  <h1>Solustoc – Bijoux à la pièce pour revendeurs</h1>
-  <p>Composez votre propre sélection de bijoux en acier inoxydable doré à l’or fin</p>
-</header>
+  <header>
+    <h1>Solustoc – Bijoux à la pièce pour revendeurs</h1>
+    <p>Composez votre propre sélection de bijoux en acier inoxydable doré à l’or fin</p>
+  </header>
 
-<div class="wrapper">
-  <section class="hero">
-    <h2>Choisissez vos bijoux à l’unité</h2>
-    <p>Sélectionnez les références, ajoutez-les au panier puis envoyez la commande sur WhatsApp.</p>
-    <p><strong>Livraison gratuite à partir de 200 € TTC</strong></p>
-  </section>
+  <div class="wrapper">
 
-  <h2 class="section-title">Bijoux disponibles à la pièce</h2>
-  <section id="products" class="grid"></section>
+    <section class="hero">
+      <h2>Choisissez vos bijoux à l’unité</h2>
+      <p>Sélectionnez les références, ajoutez-les au panier puis envoyez le récapitulatif via WhatsApp.</p>
+      <p><strong>Livraison gratuite dès 200 € TTC.</strong></p>
+      <div class="badge-row">
+        <span class="badge">💎 Acier inoxydable doré à l’or fin</span>
+        <span class="badge">📦 Stock réel contrôlé</span>
+        <span class="badge">🚚 Livraison rapide en France</span>
+        <span class="badge">🇫🇷 Société française – facture fournie</span>
+      </div>
+    </section>
 
-  <section class="cart-block" id="cart-block">
-    <h2>Votre sélection de bijoux</h2>
-    <div id="cart-content"><p style="text-align:center; color:#555;">Aucun bijou dans votre sélection pour le moment.</p></div>
-    <div class="cart-actions">
-      <button id="btn-whatsapp" class="btn-main" disabled>📲 Envoyer la commande via WhatsApp</button>
-      <button id="btn-clear" class="btn-secondary">🗑️ Vider la sélection</button>
-    </div>
-  </section>
-</div>
+    <h2 class="section-title">Bijoux disponibles à la pièce</h2>
+    <section id="products" class="grid"></section>
 
-<footer>
-  Solustoc – Déstockage pour les pros • Bijoux en acier inoxydable doré à l’or fin • France
-</footer>
+    <section class="cart-block" id="cart-block">
+      <h2>Votre sélection de bijoux</h2>
+      <div class="cart-info">
+        Ajoutez les bijoux puis envoyez la commande via WhatsApp.
+        Livraison offerte dès 200 € TTC.
+      </div>
+      <div id="cart-content">
+        <p style="text-align:center; font-size:13px; color:#555;">Aucun bijou dans votre sélection pour le moment.</p>
+      </div>
+      <div class="cart-actions">
+        <button id="btn-whatsapp" class="btn-main" disabled>📲 Envoyer la commande via WhatsApp</button>
+        <button id="btn-clear" class="btn-secondary">🗑️ Vider la sélection</button>
+      </div>
+    </section>
 
-<div class="lightbox" id="lightbox">
-  <span class="lightbox-close" id="lightbox-close">×</span>
-  <img id="lightbox-img" src="" alt="">
-</div>
+  </div>
 
-<script>
-const PHOTO_BASE = "/solustoc-catalogue/photo/";
-const produits = [
-  // 👉 LA LISTE PRODUITS EXISTANTE RESTE TELLE QU’ELLE EST
-];
+  <footer>
+    Solustoc • Déstockage pour les pros • Bijoux en acier inoxydable doré à l’or fin
+  </footer>
 
-const produitsContainer = document.getElementById('products');
-const cartContent = document.getElementById('cart-content');
-const btnWhatsapp = document.getElementById('btn-whatsapp');
-const btnClear = document.getElementById('btn-clear');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const lightboxClose = document.getElementById('lightbox-close');
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightbox-close">×</span>
+    <img id="lightbox-img" src="" alt="">
+  </div>
 
-const cart = {};
+  <!-- ================ LIGNES QUI RÉSOLVENT TON PROBLÈME ================ -->
+  <script>
+    const PHOTO_BASE = "/solustoc-catalogue/photo/";
+  </script>
+  <script src="produits.js"></script>
+  <script>
+    renderProduits();
+    renderCart();
+  </script>
+  <!-- ================================================================ -->
 
-function formatPrice(v){ return v.toFixed(2).replace('.', ',')+" €"; }
-
-function renderProduits(){
-  produitsContainer.innerHTML = "";
-  produits.forEach((p, i)=>{
-    produitsContainer.insertAdjacentHTML("beforeend", `
-      <article class="card">
-        <img src="${PHOTO_BASE + p.photo}" alt="${p.titre}" onclick="openLightbox('${p.photo}','${p.titre}')">
-        <h3>${p.titre}</h3>
-        <div class="price-line">Prix public conseillé : ${formatPrice(p.prixPublic)}</div>
-        <div class="price-line price-solustoc">Prix Solustoc : ${formatPrice(p.prixSolustoc)} TTC</div>
-        <div class="stock">Stock indicatif : ${p.stock} pièces</div>
-        <button class="btn-small" onclick="addToCart(${i})">Ajouter à ma sélection</button>
-      </article>
-    `);
-  });
-}
-
-function addToCart(i){
-  const p = produits[i];
-  let q = prompt("Quantité ?", "1");
-  if(!q) return;
-  q = parseInt(q,10);
-  if(q<=0) return;
-  if(!cart[i]) cart[i]={qty:0, produit:p};
-  cart[i].qty+=q;
-  renderCart();
-  window.scrollTo({ top: document.body.scrollHeight, behavior:"smooth" });
-}
-
-function renderCart(){
-  const items = Object.values(cart);
-  if(items.length===0){
-    cartContent.innerHTML = "<p style='text-align:center;color:#555;'>Aucun bijou dans votre sélection pour le moment.</p>";
-    btnWhatsapp.disabled=true;
-    return;
-  }
-  let total=0;
-  let html = "<table class='cart-table'><thead><tr><th>Bijou</th><th>Qté</th><th>PU TTC</th><th>Total</th></tr></thead><tbody>";
-  items.forEach(e=>{
-    let t=e.qty * e.produit.prixSolustoc;
-    total+=t;
-    html += `<tr><td>${e.produit.titre}</td><td>${e.qty}</td><td>${formatPrice(e.produit.prixSolustoc)}</td><td>${formatPrice(t)}</td></tr>`;
-  });
-  html+="</tbody></table>";
-  html+=`<div class="cart-total">Total estimé : ${formatPrice(total)} TTC</div>`;
-  cartContent.innerHTML = html;
-  btnWhatsapp.disabled=false;
-}
-
-function sendWhatsapp(){
-  let msg = "Commande Solustoc – Bijoux à la pièce%0A%0A";
-  Object.values(cart).forEach(e=>{
-    msg += `• ${e.qty} x ${e.produit.titre} (%20${formatPrice(e.produit.prixSolustoc)})%0A`;
-  });
-  window.open("https://wa.me/33756923323?text="+msg, "_blank");
-}
-
-function clearCart(){ for(const k in cart) delete cart[k]; renderCart(); }
-
-function openLightbox(photo,titre){
-  lightboxImg.src = PHOTO_BASE + photo;
-  lightboxImg.alt = titre;
-  lightbox.style.display="flex";
-}
-lightboxClose.onclick = ()=> lightbox.style.display="none";
-
-btnWhatsapp.onclick = sendWhatsapp;
-btnClear.onclick = clearCart;
-
-// init
-renderProduits();
-renderCart();
-</script>
 </body>
 </html>
