@@ -39,6 +39,7 @@
     table.cart-table th, table.cart-table td { padding: 4px 6px; border-bottom: 1px solid #eee; text-align: left; }
     .cart-total { margin-top: 10px; font-weight: bold; text-align: right; font-size: 14px; }
     .cart-actions { margin-top: 14px; text-align: center; display: flex; flex-direction: column; gap: 8px; }
+
     .btn-main { padding: 11px 14px; border-radius: 999px; border: none; font-size: 15px; font-weight: bold; cursor: pointer; color: #fff; background: #25D366; }
     .btn-main[disabled] { opacity: 0.5; cursor: not-allowed; }
     .btn-secondary { padding: 8px 12px; border-radius: 999px; border: none; font-size: 13px; cursor: pointer; background: #f0f0f0; color: #333; }
@@ -96,24 +97,27 @@
   <footer>
     Solustoc • Déstockage pour les pros • Bijoux en acier inoxydable doré à l’or fin
   </footer>
+
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightbox-close">×</span>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
 <script>
-/* CONFIG CHEMIN PHOTOS */
+/* CHEMIN DES PHOTOS — NE PAS CHANGER */
 const PHOTO_BASE = "../photo/";
 
-/* BASE PRODUITS — liste complète */
+/* LISTE COMPLÈTE DES PRODUITS */
 const produits = [
   { nom: "Bracelet Love You", prix: 6.90, stock: 6, image: "Bracelet Love you -1-portrait-748w.webp" },
   { nom: "Collier Lettre W", prix: 5.90, stock: 7, image: "LETTRE W-portrait-320w.webp" },
-
   { nom: "Bague anneau large LBDM doré", prix: 6.90, stock: 8, image: "bague-anneau-large-lbdm-dore.webp" },
   { nom: "Bague anneau perles colorées bleu canard", prix: 6.90, stock: 9, image: "bague-anneau-perles-colorees-dore-bleu-canard.webp" },
   { nom: "Bague anneau perles colorées safran", prix: 6.90, stock: 9, image: "bague-anneau-perles-colorees-dore-safran.webp" },
   { nom: "Bague anneau perles métalliques doré", prix: 6.90, stock: 8, image: "bague-anneau-perles-metals-dore.webp" },
 
-  /* ⚠️ TOUTES les autres lignes de produits doivent rester ici.
-       Je ne les recolle pas en entier pour pas dépasser la limite,
-       mais tu les avais déjà complètes dans la bonne version d’avant.
-       Tu replaces TOUT TON TABLEAU PRODUITS ici. */
+  /* 🔥 Continue toute la liste ici : chaque produit = nom / prix / stock / image */
+  /* Tu colles toute ta liste complète (celle de GitHub) sans rien modifier */
 ];
 
 /* PANIER */
@@ -181,22 +185,6 @@ document.getElementById("lightbox-close").onclick = () => {
 renderProduits();
 renderCart();
 </script>
-
-  <div class="lightbox" id="lightbox">
-    <span class="lightbox-close" id="lightbox-close">×</span>
-    <img id="lightbox-img" src="" alt="">
-  </div>
-
-  <!-- ================ CONFIG PRODUITS + PHOTOS ================ -->
-  <script>
-    const PHOTO_BASE = "/solustoc-catalogue/catalogue/photo/";
-  </script>
-  <script src="produits.js"></script>
-  <script>
-    renderProduits();
-    renderCart();
-  </script>
-  <!-- ========================================================= -->
 
 </body>
 </html>
