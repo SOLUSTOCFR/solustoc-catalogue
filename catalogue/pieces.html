@@ -35,15 +35,11 @@
       font-weight: bold;
       margin-right: 4px;
     }
-    .filter-bar select,
-    .filter-bar input {
+    .filter-bar select {
       padding: 6px 8px;
       border-radius: 6px;
       border: 1px solid #ccc;
       font-size: 13px;
-    }
-    .filter-bar input {
-      flex: 1 1 160px;
     }
 
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
@@ -355,16 +351,12 @@ document.getElementById("btn-whatsapp").onclick = () => {
   window.open("https://wa.me/33756923323/?text=" + encodeURIComponent(msg), "_blank");
 };
 
-/* filtrage par catégorie + recherche */
+/* filtrage par catégorie SEULEMENT */
 function applyFilters() {
   const cat = document.getElementById("filter-category").value;
-  const q = document.getElementById("search-input").value.trim().toLowerCase();
 
   filteredProduits = produits.filter(p => {
-    const okCat = cat ? p.categorie === cat : true;
-    const text = (p.nom + " " + p.categorie).toLowerCase();
-    const okSearch = q ? text.includes(q) : true;
-    return okCat && okSearch;
+    return cat ? p.categorie === cat : true;
   });
 
   renderProduits();
