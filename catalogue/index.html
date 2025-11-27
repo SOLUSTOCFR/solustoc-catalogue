@@ -11,7 +11,6 @@
         .card-section { background:#fff; border-radius:16px; padding:20px; margin-bottom:20px; }
         .badge-custom { background:#e8d9b5; padding:6px 10px; border-radius:8px; font-size:14px; }
         .btn-green { background:#28a745; color:#fff; font-weight:bold; border-radius:10px; padding:12px; width:100%; display:block; }
-        .btn-gold { background:#c9a66b; color:#fff; border-radius:10px; padding:12px; width:100%; display:block; }
         .btn-outline-gold { border:2px solid #c9a66b; color:#c9a66b; border-radius:10px; padding:12px; width:100%; display:block; }
         .btn-space { margin-top:10px; margin-bottom:10px; }
         .title-main { font-size:22px; font-weight:bold; }
@@ -28,27 +27,30 @@
         <h1 class="title-main">Solustoc – Grossiste Bijoux Acier</h1>
         <p class="subtitle">Choisissez vos bijoux à la pièce — Prix revendeurs</p>
 
-        <span class="badge-custom d-block mb-2">Marge x5 à x7</span>
+        <span class="badge-custom d-block mb-2">Marge moyenne x5 à x7</span>
         <span class="badge-custom d-block mb-2">Livraison France 24/48h</span>
         <span class="badge-custom d-block mb-3">Société française – Facture fournie</span>
 
+        <!-- catalogue à la pièce (page dans le même dossier "catalogue") -->
         <a href="pieces.html" class="btn-green mb-2">Accéder au Catalogue à la pièce</a>
-        <a href="photos.html" class="btn-outline-gold mb-2">Voir les photos réelles</a>
+
+        <!-- photos réelles (page à la racine du dépôt : ../photos.html) -->
+        <a href="../photos.html" class="btn-outline-gold mb-2">Voir les photos réelles</a>
     </div>
 
     <!-- AVANTAGES -->
     <div class="card-section">
         <h5><strong>Pourquoi acheter à la pièce ?</strong></h5>
         <ul>
-            <li>Vous choisissez exactement ce que vous voulez</li>
-            <li>Aucun risque : vous prenez uniquement ce qui se vend</li>
-            <li>Idéal boutiques, marchés, créateurs & e-commerce</li>
+            <li>Vous choisissez exactement les modèles que vous voulez.</li>
+            <li>Vous payez uniquement ce qui vous intéresse.</li>
+            <li>Idéal boutiques, marchés, créateurs & e-commerce.</li>
         </ul>
 
         <a href="pieces.html" class="btn-outline-gold mt-3">Voir les bijoux à la pièce</a>
     </div>
 
-    <!-- SECTION LOTS SECONDAIRE -->
+    <!-- SECTION LOTS (SECOND PLAN, MAIS TOUJOURS ACCESSIBLE) -->
     <div class="card-section">
         <h4><strong>Lots prêts à vendre</strong></h4>
         <p>Pour ceux qui veulent aller vite : livraison immédiate, bijoux triés & contrôlés.</p>
@@ -59,18 +61,21 @@
             <p><strong>200 € TTC — Livraison incluse</strong></p>
             <p>Idéal pour tester une première gamme rentable.</p>
 
+            <!-- WhatsApp -->
             <a class="btn-green btn-space"
                href="https://wa.me/33756923323?text=Bonjour,%20je%20suis%20intéressé%20par%20le%20lot%20150%20bijoux%20à%20200€">
                Commander le lot 150 via WhatsApp
             </a>
 
+            <!-- PDF : remonte d’un dossier vers /pdf/ -->
             <a class="btn-outline-gold btn-space"
-               href="https://solustocfr.github.io/solustoc-catalogue/catalogue/pdf/Catalogue_150.pdf">
+               href="../pdf/Catalogue-150.pdf">
                Télécharger le PDF (150 bijoux)
             </a>
 
+            <!-- Photos lot : remonte d’un dossier vers /photos.html -->
             <a class="btn-outline-gold btn-space"
-               href="https://solustocfr.github.io/solustoc-catalogue/catalogue/photos.html">
+               href="../photos.html">
                Voir les photos du lot
             </a>
         </div>
@@ -81,11 +86,32 @@
             <p><strong>480 € TTC — Livraison incluse</strong></p>
             <p>Best-seller revendeurs — marge maximale.</p>
 
+            <!-- WhatsApp -->
             <a class="btn-green btn-space"
                href="https://wa.me/33756923323?text=Bonjour,%20je%20souhaite%20le%20lot%20370%20bijoux%20à%20480€">
                Commander le lot 370 via WhatsApp
             </a>
 
+            <!-- PDF : remonte vers /pdf/ -->
             <a class="btn-outline-gold btn-space"
-               href="https://solustocfr.github.io/solustoc-catalogue/catalogue/pdf/Catalogue_370.pdf">
-               Télécharger
+               href="../pdf/Catalogue-370.pdf">
+               Télécharger le PDF (370 bijoux)
+            </a>
+
+            <!-- Photos lot : même page photos globale -->
+            <a class="btn-outline-gold btn-space"
+               href="../photos.html">
+               Voir les photos du lot
+            </a>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="card-section">
+        <h4><strong>Questions fréquentes</strong></h4>
+        <p>Vous pouvez commander à la pièce ou en lots selon vos besoins. Nous livrons partout en France en 24/48h.</p>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="text-center mt-3 mb-5">
+        <a class="btn-green"
