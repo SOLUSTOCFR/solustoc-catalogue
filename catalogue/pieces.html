@@ -13,41 +13,100 @@
 
     .wrapper { width: 94%; max-width: 1100px; margin: 18px auto 40px; }
 
-    .hero { background: #ffffff; border-radius: 12px; padding: 18px 16px; box-shadow: 0 0 10px rgba(0,0,0,0.06); margin-bottom: 18px; text-align: center; }
+    .hero {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 18px 16px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.06);
+      margin-bottom: 18px;
+      text-align: center;
+    }
     .hero h2 { margin-top: 0; font-size: 20px; }
     .hero p { margin: 6px 0; font-size: 14px; }
 
-    .badge-row { margin-top: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; font-size: 13px; }
-    .badge { background: #f0e6d5; border-radius: 999px; padding: 4px 10px; display: inline-flex; align-items: center; }
-
-    .section-title { margin: 24px 0 10px; font-size: 18px; font-weight: bold; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
-
-    .card { background: #ffffff; border-radius: 10px; box-shadow: 0 0 8px rgba(0,0,0,0.05); padding: 10px 10px 12px; display: flex; flex-direction: column; height: 100%; }
-
-    /* images carrées */
-    .card img { 
-      width: 100%; 
-      aspect-ratio: 1 / 1; 
-      object-fit: cover; 
-      border-radius: 8px; 
-      margin-bottom: 8px; 
-      background: #ddd; 
-      cursor: pointer; 
+    .badge-row {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+    .badge {
+      background: #f0e6d5;
+      border-radius: 999px;
+      padding: 4px 10px;
+      display: inline-flex;
+      align-items: center;
     }
 
-    .card h3 { font-size: 15px; margin: 4px 0 6px; min-height: 40px; }
+    .section-title { margin: 24px 0 10px; font-size: 18px; font-weight: bold; }
+
+    /* 🔎 FILTRES (catégorie + recherche) */
+    .filters {
+      margin: 6px 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      font-size: 14px;
+    }
+    .filters label {
+      font-weight: bold;
+    }
+    .filters select,
+    .filters input {
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+
+    .card {
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+      padding: 10px 10px 12px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;   /* si tu veux carré parfait: mets 200px ici */
+      border-radius: 8px;
+      margin-bottom: 8px;
+      background: #ddd;
+      cursor: pointer;
+    }
+
+    .card h3 { font-size: 15px; margin: 4px 0 6px; min-height: 38px; }
 
     .price-line { font-size: 14px; margin: 2px 0; }
     .price-solustoc { font-weight: bold; color: #b32121; }
-    .price-public { font-size: 13px; color: #444; }
     .stock { font-size: 13px; color: #555; margin-top: 2px; }
 
-    .btn-small { margin-top: 8px; padding: 8px 10px; font-size: 14px; border-radius: 8px; border: none; cursor: pointer; font-weight: bold; background: #25D366; color: #fff; width: 100%; }
+    .btn-small {
+      margin-top: 8px;
+      padding: 8px 10px;
+      font-size: 14px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      background: #25D366;
+      color: #fff;
+      width: 100%;
+    }
     .btn-small:hover { background: #1ebe5c; }
 
+    footer { text-align: center; font-size: 12px; color: #777; padding: 24px 10px 28px; }
+
     /* Quantité */
-    .qty-row { display:flex; justify-content:center; align-items:center; gap:8px; margin-top:6px; }
     .qty-minus, .qty-plus {
       width: 30px;
       height: 30px;
@@ -69,9 +128,6 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.06);
       margin-top: 26px;
     }
-    .cart-block h2 { margin-top:0; font-size:18px; text-align:center; }
-    .cart-info { font-size:13px; margin-bottom:8px; text-align:center; color:#444; }
-
     table.cart-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
     table.cart-table th, table.cart-table td {
       padding: 4px 6px;
@@ -80,18 +136,41 @@
     }
     .cart-total { margin-top: 10px; font-weight: bold; text-align: right; font-size: 14px; }
 
-    .cart-actions { margin-top: 14px; text-align: center; display:flex; flex-direction:column; gap:8px; }
-    .btn-main { padding: 11px 14px; border-radius: 999px; border: none; font-size: 15px; font-weight: bold; cursor: pointer; color: #fff; background: #25D366; }
-    .btn-main[disabled] { opacity: 0.5; cursor: not-allowed; }
-    .btn-secondary { padding: 8px 12px; border-radius: 999px; border: none; font-size: 13px; cursor: pointer; background: #f0f0f0; color: #333; }
+    .cart-actions {
+      margin-top: 14px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
 
-    footer { text-align: center; font-size: 12px; color: #777; padding: 24px 10px 28px; }
+    .btn-main {
+      padding: 11px 14px;
+      border-radius: 999px;
+      border: none;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #fff;
+      background: #25D366;
+    }
+    .btn-main[disabled] { opacity: 0.5; cursor: not-allowed; }
+
+    .btn-secondary {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: none;
+      font-size: 13px;
+      cursor: pointer;
+      background: #f0f0f0;
+      color: #333;
+    }
 
     .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 9999; }
     .lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; }
     .lightbox-close { position: fixed; top: 14px; right: 20px; font-size: 26px; color: #fff; cursor: pointer; font-weight: bold; }
 
-    @media (max-width: 600px) { .card img { aspect-ratio: 1 / 1; } }
+    @media (max-width: 600px) { .card img { height: 150px; } }
   </style>
 </head>
 
@@ -116,6 +195,16 @@
   </section>
 
   <h2 class="section-title">Bijoux disponibles à la pièce</h2>
+
+  <!-- 🔎 Filtres catalogue -->
+  <div class="filters">
+    <label for="filter-category">Filtrer :</label>
+    <select id="filter-category">
+      <option value="">Toutes les catégories</option>
+    </select>
+    <input id="search-input" type="text" placeholder="Rechercher un bijou...">
+  </div>
+
   <section id="products" class="grid"></section>
 
   <section class="cart-block" id="cart-block">
@@ -142,99 +231,22 @@
   <img id="lightbox-img" src="" alt="">
 </div>
 
+<!-- ================== SCRIPT CATALOGUE / PANIER ================== -->
 <script>
 const PHOTO_BASE = "../photo/";
 
-/* ====== CATALOGUE COMPLET (fichier Excel) ====== */
+/* 👉 ICI tu gardes TA LISTE COMPLETE de produits
+   (celle qui fonctionne avec toutes les photos)
+   Je mets juste 2 exemples pour la structure : */
 const produits = [
-  { nom: "Médaille Symbole Doré Plume", stock: 52, prixPublic: 12.00, prixSolustoc: 1.80, image: "medaille-symbole-dore-plume.webp" },
-  { nom: "Médaille Symbole Doré Pieds", stock: 79, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-symbole-dore-pieds.webp" },
-  { nom: "Médaille Symbole Doré Motlove", stock: 93, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-symbole-dore-motlove.webp" },
-  { nom: "Médaille Symbole Doré Merci", stock: 100, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-symbole-dore-merci.webp" },
-  { nom: "Médaille Symbole Doré Mains", stock: 24, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-symbole-dore-mains.webp" },
-  { nom: "Médaille Symbole Doré Lucky", stock: 49, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-symbole-dore-lucky.webp" },
-  { nom: "Médaille Symbole Doré Loveyou", stock: 61, prixPublic: 12.00, prixSolustoc: 1.80, image: "medaille-symbole-dore-loveyou.webp" },
-  { nom: "Médaille Symbole Doré Je T Aime", stock: 79, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-symbole-dore-je-t-aime.webp" },
-  { nom: "Médaille Symbole Doré Eye", stock: 25, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-symbole-dore-eye.webp" },
-  { nom: "Médaille Symbole Doré Dune", stock: 23, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-symbole-dore-dune.webp" },
-  { nom: "Médaille Symbole Doré Cactus", stock: 10, prixPublic: 12.00, prixSolustoc: 1.80, image: "medaille-symbole-dore-cactus.webp" },
-  { nom: "Médaille Symbole Doré Bebe", stock: 38, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-symbole-dore-bebe.webp" },
-  { nom: "Médaille Symbole Doré Arccachon", stock: 33, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-symbole-dore-arccachon.webp" },
-  { nom: "Médaille Symbole Doré Ange – Protection & Élégance", stock: 104, prixPublic: 12.00, prixSolustoc: 1.80, image: "medaille-symbole-dore-ange-protection-elegance.webp" },
-  { nom: "Médaille Symbole Doré Anchor", stock: 4, prixPublic: 12.00, prixSolustoc: 1.80, image: "medaille-symbole-dore-anchor.webp" },
-  { nom: "Médaille Symbole Doré Amour", stock: 51, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-symbole-dore-amour.webp" },
-  { nom: "Médaille Symbole Doré Alveole 15", stock: 80, prixPublic: 12.00, prixSolustoc: 1.80, image: "medaille-symbole-dore-alveole-15.webp" },
-  { nom: "Médaille Symbole Doré Alveole 10", stock: 41, prixPublic: 12.00, prixSolustoc: 1.80, image: "medaille-symbole-dore-alveole-10.webp" },
-  { nom: "Médaille Précieuse Doré Rose", stock: 23, prixPublic: 12.00, prixSolustoc: 1.80, image: "medaille-precieuse-dore-rose.webp" },
-  { nom: "Médaille Précieuse Doré Duo Coccinelle", stock: 20, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-precieuse-dore-duo-coccinelle.webp" },
-  { nom: "Médaille Précieuse Doré Clé – Symbole de Réussite", stock: 17, prixPublic: 19.00, prixSolustoc: 2.85, image: "medaille-precieuse-dore-cle-symbole-de-reussite.webp" },
-  { nom: "Médaille Pompon Doré Safran – Charme & Fantaisie", stock: 39, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-pompon-dore-safran-charme-fantaisie.webp" },
-  { nom: "Médaille Pompon Doré Perfect Pink – Charme & Fantaisie", stock: 11, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-pompon-dore-perfect-pink-charme-fantaisie.webp" },
-  { nom: "Médaille Pompon Doré Fluo Pink – Charme & Fantaisie", stock: 33, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-pompon-dore-fluo-pink-charme-fantaisie.webp" },
-  { nom: "Médaille Pompon Doré Corail – Charme & Fantaisie", stock: 40, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-pompon-dore-corail-charme-fantaisie.webp" },
-  { nom: "Médaille Pompon Doré Bleu Canard – Charme & Fantaisie", stock: 45, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-pompon-dore-bleu-canard-charme-fantaisie.webp" },
-  { nom: "Médaille Pampille Doré Papillon", stock: 15, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-pampille-dore-papillon.webp" },
-  { nom: "Médaille Pampille Doré Je t'aime Maman – Cadeau Parfait", stock: 145, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-pampille-dore-je-taime-maman-cadeau-parfait.webp" },
-  { nom: "Médaille Pampille Doré Crown", stock: 25, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-pampille-dore-crown.webp" },
-  { nom: "Médaille Pampille Doré Colombe – Paix & Sérénité", stock: 61, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-pampille-dore-colombe-paix-serenite.webp" },
-  { nom: "Médaille Pampille Doré Angel – Protection & Élégance", stock: 72, prixPublic: 12.00, prixSolustoc: 1.80, image: "medaille-pampille-dore-angel-protection-elegance.webp" },
-  { nom: "Médaille Initiale Doré Z", stock: 59, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-z.webp" },
-  { nom: "Médaille Initiale Doré Y", stock: 47, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-y.webp" },
-  { nom: "Médaille Initiale Doré X", stock: 67, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-x.webp" },
-  { nom: "Médaille Initiale Doré W", stock: 28, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-w.webp" },
-  { nom: "Médaille Initiale Doré V", stock: 54, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-v.webp" },
-  { nom: "Médaille Initiale Doré U", stock: 68, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-u.webp" },
-  { nom: "Médaille Initiale Doré T", stock: 102, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-t.webp" },
-  { nom: "Médaille Initiale Doré S", stock: 77, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-s.webp" },
-  { nom: "Médaille Initiale Doré R", stock: 62, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-r.webp" },
-  { nom: "Médaille Initiale Doré Q", stock: 80, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-q.webp" },
-  { nom: "Médaille Initiale Doré P", stock: 82, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-p.webp" },
-  { nom: "Médaille Initiale Doré O", stock: 65, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-o.webp" },
-  { nom: "Médaille Initiale Doré N", stock: 98, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-n.webp" },
-  { nom: "Médaille Initiale Doré K", stock: 63, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-k.webp" },
-  { nom: "Médaille Initiale Doré J", stock: 76, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-j.webp" },
-  { nom: "Médaille Initiale Doré I", stock: 70, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-i.webp" },
-  { nom: "Médaille Initiale Doré H", stock: 33, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-h.webp" },
-  { nom: "Médaille Initiale Doré G", stock: 57, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-g.webp" },
-  { nom: "Médaille Initiale Doré F", stock: 31, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-f.webp" },
-  { nom: "Médaille Initiale Doré E", stock: 33, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-e.webp" },
-  { nom: "Médaille Initiale Doré D", stock: 41, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-d.webp" },
-  { nom: "Médaille Initiale Doré C", stock: 41, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-c.webp" },
-  { nom: "Médaille Initiale Doré B", stock: 60, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-b.webp" },
-  { nom: "Médaille Bijou Doré Petit Ange – Protection & Élégance", stock: 87, prixPublic: 12.00, prixSolustoc: 1.80, image: "medaille-bijou-dore-petit-ange-protection-elegance.webp" },
-  { nom: "Médaille Bijou Doré Love", stock: 78, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-bijou-dore-love.webp" },
-  { nom: "Médaille Bijou Doré Dreams – Rêves & Aspirations", stock: 50, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-bijou-dore-dreams-reves-aspirations.webp" },
-  { nom: "Médaille Bijou Doré Chance", stock: 38, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-bijou-dore-chance.webp" },
-  { nom: "Médaille Bijou Doré Astre", stock: 24, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-bijou-dore-astre.webp" },
-  { nom: "Cordon Doré Safran", stock: 231, prixPublic: 9.00, prixSolustoc: 1.35, image: "cordon-dore-safran.webp" },
-  { nom: "Cordon Doré Lurex Jaune", stock: 31, prixPublic: 9.00, prixSolustoc: 1.35, image: "cordon-dore-lurex-jaune.webp" },
-  { nom: "Cordon Doré Fluo Yellow", stock: 38, prixPublic: 9.00, prixSolustoc: 1.35, image: "cordon-dore-fluo-yellow.webp" },
-  { nom: "Cordon Doré Flame Orange", stock: 26, prixPublic: 9.00, prixSolustoc: 1.35, image: "cordon-dore-flame-orange.webp" },
-  { nom: "Cordon Doré Bouton D Or", stock: 17, prixPublic: 9.00, prixSolustoc: 1.35, image: "cordon-dore-bouton-d-or.webp" },
-  { nom: "Cordon Doré Bleu Jean", stock: 37, prixPublic: 9.00, prixSolustoc: 1.35, image: "cordon-dore-bleu-jean.webp" },
-  { nom: "Collier Grande Maille Doré – Style Intemporel", stock: 5, prixPublic: 19.00, prixSolustoc: 2.85, image: "collier-grande-maille-dore-style-intemporel.webp" },
-  { nom: "Collier Chaîne Perles Colorées Doré Safran – Élégance Colorée", stock: 10, prixPublic: 19.00, prixSolustoc: 2.85, image: "collier-chaine-perles-colorees-dore-safran-elegance-coloree.webp" },
-  { nom: "Collier Chaîne Doré – Minimaliste & Chic", stock: 100, prixPublic: 15.00, prixSolustoc: 2.25, image: "collier-chaine-dore-minimaliste-chic.webp" },
-  { nom: "Bracelet Chaîne Bijou De Mimi Doré Poinsettia – Porte-bonheur", stock: 18, prixPublic: 12.00, prixSolustoc: 1.80, image: "bracelet-chaine-bijou-de-mimi-dore-poinsettia-porte-bonheur.webp" },
-  { nom: "Bracelet Chaîne Bijou De Mimi Doré Fluo Pink – Porte-bonheur", stock: 2, prixPublic: 15.00, prixSolustoc: 2.25, image: "bracelet-chaine-bijou-de-mimi-dore-fluo-pink-porte-bonheur.webp" },
-  { nom: "Bracelet Chaîne Bijou De Mimi Doré Black – Porte-bonheur", stock: 13, prixPublic: 12.00, prixSolustoc: 1.80, image: "bracelet-chaine-bijou-de-mimi-dore-black-porte-bonheur.webp" },
-  { nom: "Bracelet Chaîne Bijou De Mimi Doré – Porte-bonheur", stock: 51, prixPublic: 12.00, prixSolustoc: 1.80, image: "bracelet-chaine-bijou-de-mimi-dore-porte-bonheur.webp" },
-  { nom: "Boucles D'oreilles Studs Doré", stock: 21, prixPublic: 9.00, prixSolustoc: 1.35, image: "boucles-d-oreilles-studs-dore.webp" },
-  { nom: "Boucles D'oreilles Créole Doré Bleu Canard", stock: 5, prixPublic: 15.00, prixSolustoc: 2.25, image: "boucles-d-oreilles-creole-dore-bleu-canard.webp" },
-  { nom: "Boucles D'oreilles Créole 40mm Doré Safran", stock: 81, prixPublic: 12.00, prixSolustoc: 1.80, image: "boucles-d-oreilles-creole-40mm-dore-safran.webp" },
-  { nom: "Boucles D'oreilles Créole 40mm Doré", stock: 17, prixPublic: 9.00, prixSolustoc: 1.35, image: "boucles-d-oreilles-creole-40mm-dore.webp" },
-  { nom: "Boucles D'oreilles Créole 20 Mm Doré Safran", stock: 36, prixPublic: 9.00, prixSolustoc: 1.35, image: "boucles-d-oreilles-creole-20mm-dore-safran.webp" },
-  { nom: "Bague Anneau Perles Métals Doré", stock: 11, prixPublic: 12.00, prixSolustoc: 1.80, image: "bague-anneau-perles-metals-dore.webp" },
-  { nom: "Bague Anneau Perles Colorées Doré Safran", stock: 38, prixPublic: 12.00, prixSolustoc: 1.80, image: "bague-anneau-perles-colorees-dore-safran.webp" },
-  { nom: "Bague Anneau Perles Colorées Doré Bleu Canard", stock: 25, prixPublic: 12.00, prixSolustoc: 1.80, image: "bague-anneau-perles-colorees-dore-bleu-canard.webp" },
-  { nom: "Bague Anneau Large Lbdm Doré", stock: 5, prixPublic: 15.00, prixSolustoc: 2.25, image: "bague-anneau-large-lbdm-dore.webp" }
+  { nom: "Bracelet Love You", prix: 1.80, stock: 6, image: "Bracelet Love you -1-portrait-748w.webp" },
+  { nom: "Médaille Symbole Doré Plume", prix: 1.80, stock: 52, image: "medaille-symbole-dore-plume.webp" },
+  /* 👉 remets ici toutes TES autres lignes comme dans ton code correct 1924 */
 ];
-
-/* ====== LOGIQUE PANIER & AFFICHAGE ====== */
 
 let cart = [];
 
-/* changer quantité sur la carte produit */
+/* Quantité par carte */
 function changeQty(i, delta) {
   const el = document.getElementById("qty-" + i);
   let value = parseInt(el.textContent);
@@ -243,59 +255,53 @@ function changeQty(i, delta) {
   el.textContent = value;
 }
 
-/* ajouter au panier */
+/* Ajouter au panier */
 function addToCart(index, qty = 1) {
   qty = parseInt(qty);
   if (qty < 1) return;
   const p = produits[index];
   const exist = cart.find(i => i.nom === p.nom);
   if (exist) exist.qty += qty;
-  else cart.push({ nom: p.nom, prix: p.prixSolustoc, prixPublic: p.prixPublic, qty });
+  else cart.push({ nom: p.nom, prix: p.prix, qty });
   renderCart();
 }
 
-/* vider panier */
+/* Bouton vider */
 document.getElementById("btn-clear").onclick = () => { cart = []; renderCart(); };
 
-/* envoyer sur WhatsApp */
+/* Envoyer WhatsApp */
 document.getElementById("btn-whatsapp").onclick = () => {
   if (!cart.length) return;
-  let msg = "🛍️ *Commande de bijoux Solustoc*\\n\\n";
-  cart.forEach(i => {
-    msg += `• ${i.nom} × ${i.qty} — ${i.prix.toFixed(2)}€ TTC (PV conseillé ${i.prixPublic.toFixed(2)}€)\\n`;
-  });
+  let msg = "🛍️ *Commande de bijoux Solustoc*\n\n";
+  cart.forEach(i => msg += `• ${i.nom} × ${i.qty} — ${i.prix}€\n`);
   const total = cart.reduce((s, i) => s + i.prix * i.qty, 0);
-  msg += `\\n📦 Total Solustoc : *${total.toFixed(2)} € TTC*`;
+  msg += `\n📦 Total : *${total.toFixed(2)} € TTC*`;
   window.open("https://wa.me/33756923323/?text=" + encodeURIComponent(msg), "_blank");
 };
 
-/* affichage catalogue */
+/* Affichage catalogue */
 function renderProduits() {
   const container = document.getElementById("products");
-  container.innerHTML = produits.map((p, i) => {
-    const coef = p.prixPublic && p.prixSolustoc ? (p.prixPublic / p.prixSolustoc) : null;
-    const coefTxt = coef ? `Marge revendeur ≈ x${coef.toFixed(1)}` : "";
-    return `
+  container.innerHTML = produits.map((p, i) => `
     <div class="card">
-      <img src="${PHOTO_BASE + p.image}" alt="${p.nom}" onclick="openLightbox('${PHOTO_BASE + p.image}')">
+      <img src="${PHOTO_BASE + p.image}" onclick="openLightbox('${PHOTO_BASE + p.image}')">
       <h3>${p.nom}</h3>
-      <p class="price-line">
-        <span class="price-solustoc">Prix Solustoc : ${p.prixSolustoc.toFixed(2)} € TTC</span><br>
-        <span class="price-public">Prix public constaté : ${p.prixPublic.toFixed(2)} € TTC</span><br>
-        <span class="price-public">${coefTxt}</span>
-      </p>
-      <p class="stock">Stock disponible : ${p.stock}</p>
-      <div class="qty-row">
+      <p class="price-line"><span class="price-solustoc">${p.prix.toFixed(2)} € TTC</span></p>
+      <p class="stock">Stock : ${p.stock}</p>
+      <div style="display:flex; justify-content:center; align-items:center; gap:8px; margin-top:6px;">
         <button class="qty-minus" onclick="changeQty(${i}, -1)">−</button>
         <span id="qty-${i}" class="qty-value">1</span>
         <button class="qty-plus" onclick="changeQty(${i}, 1)">+</button>
       </div>
       <button class="btn-small" onclick="addToCart(${i}, document.getElementById('qty-${i}').textContent)">Ajouter</button>
-    </div>`;
-  }).join("");
+    </div>
+  `).join("");
+
+  // Après rendu, on initialise/rafraîchit les filtres (au cas où)
+  initCatalogueFilters();
 }
 
-/* affichage panier */
+/* Panier */
 function renderCart() {
   const cartBlock = document.getElementById("cart-content");
   if (!cart.length) {
@@ -303,27 +309,21 @@ function renderCart() {
     document.getElementById("btn-whatsapp").disabled = true;
     return;
   }
-  const total = cart.reduce((s, i) => s + i.prix * i.qty, 0);
   cartBlock.innerHTML = `
     <table class="cart-table">
-      <tr><th>Article</th><th>Qté</th><th>PU Solustoc</th><th>Total</th></tr>
+      <tr><th>Article</th><th>Qté</th><th>Total</th></tr>
       ${
         cart.map(i =>
-          `<tr>
-             <td>${i.nom}</td>
-             <td>${i.qty}</td>
-             <td>${i.prix.toFixed(2)} €</td>
-             <td>${(i.qty * i.prix).toFixed(2)} €</td>
-           </tr>`
+          `<tr><td>${i.nom}</td><td>${i.qty}</td><td>${(i.qty * i.prix).toFixed(2)} €</td></tr>`
         ).join("")
       }
     </table>
-    <p class="cart-total">Total Solustoc : ${total.toFixed(2)} € TTC</p>
+    <p class="cart-total">Total : ${cart.reduce((s, i) => s + i.prix * i.qty, 0).toFixed(2)} € TTC</p>
   `;
   document.getElementById("btn-whatsapp").disabled = false;
 }
 
-/* lightbox */
+/* Lightbox */
 function openLightbox(src) {
   document.getElementById("lightbox-img").src = src;
   document.getElementById("lightbox").style.display = "flex";
@@ -332,9 +332,73 @@ document.getElementById("lightbox-close").onclick = () => {
   document.getElementById("lightbox").style.display = "none";
 };
 
+/* ========= FILTRES : catégorie + recherche ========= */
+
+/* Catégorie à partir du titre (si tu n'as pas encore mis de vraie catégorie dans les données) */
+function inferCategoryFromLabel(label) {
+  const t = label.toLowerCase().replace("’", "'");
+  if (t.startsWith("médaille symbole")) return "Médailles symboles";
+  if (t.startsWith("médaille initiale")) return "Médailles initiales";
+  if (t.startsWith("médaille pompon"))  return "Médailles pompons";
+  if (t.startsWith("médaille pampille"))return "Médailles pampilles";
+  if (t.startsWith("médaille précieuse"))return "Médailles précieuses";
+  if (t.startsWith("médaille bijou"))   return "Médailles bijoux";
+  if (t.startsWith("cordon"))           return "Cordons";
+  if (t.startsWith("collier"))          return "Colliers";
+  if (t.startsWith("bracelet"))         return "Bracelets";
+  if (t.startsWith("boucles d'oreilles")) return "Boucles d’oreilles";
+  if (t.startsWith("bague"))            return "Bagues";
+  return "Autres";
+}
+
+function initCatalogueFilters() {
+  const cards = Array.from(document.querySelectorAll("#products .card"));
+  const select = document.getElementById("filter-category");
+  const searchInput = document.getElementById("search-input");
+  if (!cards.length || !select || !searchInput) return;
+
+  // On vide les options sauf "Toutes les catégories"
+  select.querySelectorAll("option:not([value=''])").forEach(o => o.remove());
+
+  const catsSet = new Set();
+
+  cards.forEach(card => {
+    const titleEl = card.querySelector("h3");
+    const title = titleEl ? titleEl.textContent.trim() : "";
+    const cat = inferCategoryFromLabel(title);
+    card.dataset.category = cat;
+    card.dataset.title = title.toLowerCase();
+    catsSet.add(cat);
+  });
+
+  Array.from(catsSet).sort().forEach(cat => {
+    const opt = document.createElement("option");
+    opt.value = cat;
+    opt.textContent = cat;
+    select.appendChild(opt);
+  });
+
+  function applyFilters() {
+    const selected = select.value;
+    const term = searchInput.value.toLowerCase().trim();
+    cards.forEach(card => {
+      const cardCat = card.dataset.category || "";
+      const cardTitle = card.dataset.title || "";
+      const matchCat = !selected || cardCat === selected;
+      const matchSearch = !term || cardTitle.includes(term);
+      card.style.display = (matchCat && matchSearch) ? "" : "none";
+    });
+  }
+
+  select.onchange = applyFilters;
+  searchInput.oninput = applyFilters;
+}
+
 /* GO */
 renderProduits();
 renderCart();
+
+window.addEventListener("load", initCatalogueFilters);
 </script>
 
 </body>
