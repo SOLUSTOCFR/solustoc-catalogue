@@ -50,16 +50,46 @@
     .ambiance-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
     .ambiance-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; border: 1px solid #eee; }
 
-    /* CATALOGUE & FILTRES */
-    .filter-bar { 
-      background: #fff; padding: 12px; border-radius: 12px; border: 1px solid #eedfcb; 
-      display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: center;
-      margin-bottom: 16px; 
-      position: sticky; top: 10px; z-index: 100; box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    /* --- NOUVEAU : NAVIGATION VISUELLE (APP-LIKE) --- */
+    .cat-nav-container {
+      position: sticky; top: 0; z-index: 100;
+      background: #fff7ea; /* Fond pour cacher le défilement derrière */
+      padding: 10px 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      margin-left: -3%; margin-right: -3%; /* Pour aller bord à bord sur mobile */
     }
-    .filter-bar select { padding: 10px; border-radius: 8px; border: 1px solid #c9a66b; background: #fffdf8; font-size: 14px; min-width: 220px; }
+    .cat-scroller {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 0 15px;
+      scrollbar-width: none; /* Cache scrollbar Firefox */
+      -ms-overflow-style: none; /* Cache scrollbar IE */
+    }
+    .cat-scroller::-webkit-scrollbar { display: none; /* Cache scrollbar Chrome */ }
+    
+    .cat-btn {
+      flex: 0 0 auto;
+      background: #fff;
+      border: 1px solid #e0cdb0;
+      border-radius: 50px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #555;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .cat-btn.active {
+      background: #8d3b42;
+      color: #fff;
+      border-color: #8d3b42;
+      box-shadow: 0 2px 8px rgba(141, 59, 66, 0.3);
+    }
+    .cat-icon { font-size: 16px; }
 
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-top: 20px; }
     @media (min-width: 600px) { .grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; } }
 
     /* CARTE PRODUIT */
@@ -202,11 +232,9 @@
 
   <div id="catalogue-start" style="height:10px;"></div>
 
-  <div class="filter-bar">
-    <label for="filter-category" style="font-weight:bold;">Filtrer :</label>
-    <select id="filter-category">
-      <option value="">Chargement...</option>
-    </select>
+  <div class="cat-nav-container">
+    <div id="category-scroller" class="cat-scroller">
+      </div>
   </div>
 
   <div id="sheet-error" class="error-msg"></div>
@@ -293,11 +321,10 @@
   const produits = [];
   let filteredProduits = [];
   let cart = [];
+  let currentCategory = "";
 
   /* --- POPUP LOGIC --- */
   setTimeout(() => {
-    // On affiche le popup uniquement si le panier est vide (optionnel, sinon toujours)
-    // Ici on laisse toujours pour maximiser l'effet
     document.getElementById("promo-popup").style.display = "flex";
   }, 3000);
 
@@ -305,7 +332,7 @@
     document.getElementById("promo-popup").style.display = "none";
   };
 
-  /* --- PARSER CSV --- */
+  /* --- CSV PARSER --- */
   function CSVToArray(strData, strDelimiter) {
     strDelimiter = (strDelimiter || ",");
     var objPattern = new RegExp(("(\\" + strDelimiter + "|\\r?\\n|\\r|^)" + "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" + "([^\"\\" + strDelimiter + "\\r\\n]*))"), "gi");
@@ -376,13 +403,10 @@
         });
       }
 
-      generateFilters();
+      generateNav();
       filteredProduits = [...produits];
       renderProduits();
-      
-      // CHARGEMENT DU PANIER SAUVEGARDÉ (LocalStorage)
       loadStoredCart();
-      
       document.getElementById("sheet-error").style.display = "none";
 
     } catch (e) {
@@ -392,36 +416,62 @@
     }
   }
 
-  /* --- STORAGE (PANIER PERSISTANT) --- */
+  /* --- STORAGE --- */
   function loadStoredCart() {
     const stored = localStorage.getItem('solustoc_cart');
     if (stored) {
       try {
         cart = JSON.parse(stored);
         updateCartUI();
-      } catch (e) {
-        console.error("Erreur lecture panier", e);
-        localStorage.removeItem('solustoc_cart');
-      }
+      } catch (e) { localStorage.removeItem('solustoc_cart'); }
     }
   }
+  function saveCart() { localStorage.setItem('solustoc_cart', JSON.stringify(cart)); }
 
-  function saveCart() {
-    localStorage.setItem('solustoc_cart', JSON.stringify(cart));
+  /* --- NAVIGATION VISUELLE --- */
+  function getCategoryIcon(name) {
+    const n = name.toLowerCase();
+    if (n.includes("bague") || n.includes("anneau")) return "💍";
+    if (n.includes("collier") || n.includes("chaîne")) return "📿";
+    if (n.includes("bracelet")) return "⛓️";
+    if (n.includes("boucle") || n.includes("créole")) return "👂";
+    if (n.includes("médaille")) return "🏅";
+    if (n.includes("cordon")) return "🧶";
+    return "💎";
   }
 
-  /* --- FILTRES --- */
-  function generateFilters() {
+  function generateNav() {
     const cats = [...new Set(produits.map(p => p.cat).filter(Boolean))].sort();
-    const sel = document.getElementById("filter-category");
-    let html = `<option value="">Tout voir (${produits.length})</option>`;
-    cats.forEach(c => html += `<option value="${c}">${c}</option>`);
-    sel.innerHTML = html;
+    const container = document.getElementById("category-scroller");
+    
+    // Bouton "Tout"
+    let html = `
+      <div class="cat-btn active" onclick="filterByCat('', this)">
+        <span class="cat-icon">∞</span> Tout
+      </div>
+    `;
+
+    cats.forEach(c => {
+      html += `
+        <div class="cat-btn" onclick="filterByCat('${c}', this)">
+          <span class="cat-icon">${getCategoryIcon(c)}</span> ${c}
+        </div>
+      `;
+    });
+    
+    container.innerHTML = html;
   }
-  
-  document.getElementById("filter-category").onchange = (e) => {
-    const val = e.target.value;
-    filteredProduits = val ? produits.filter(p => p.cat === val) : produits;
+
+  window.filterByCat = (cat, btnElement) => {
+    currentCategory = cat;
+    
+    // Mise à jour visuelle des boutons
+    const btns = document.querySelectorAll('.cat-btn');
+    btns.forEach(b => b.classList.remove('active'));
+    btnElement.classList.add('active');
+
+    // Filtre des produits
+    filteredProduits = cat ? produits.filter(p => p.cat === cat) : produits;
     renderProduits();
   };
 
@@ -495,9 +545,7 @@
   };
 
   function updateCartUI() {
-    // Sauvegarde à chaque changement
     saveCart();
-
     const section = document.getElementById("cart-block");
     const content = document.getElementById("cart-content");
     const totalDisplay = document.getElementById("cart-total-display");
@@ -516,12 +564,8 @@
     let total = cart.reduce((acc, i) => acc + (i.prixSolus * i.qty), 0);
     const count = cart.reduce((acc, i) => acc + i.qty, 0);
     
-    // GESTION PROMO UI
-    if (total >= 300) {
-      discountMsg.style.display = "block";
-    } else {
-      discountMsg.style.display = "none";
-    }
+    if (total >= 300) discountMsg.style.display = "block";
+    else discountMsg.style.display = "none";
 
     content.innerHTML = `
       <table class="cart-table">
@@ -539,10 +583,7 @@
     document.getElementById("sticky-sum").innerText = formatPrix(total);
   }
 
-  document.getElementById("btn-clear").onclick = () => { 
-    cart = []; 
-    updateCartUI(); 
-  };
+  document.getElementById("btn-clear").onclick = () => { cart = []; updateCartUI(); };
 
   document.getElementById("btn-whatsapp").onclick = () => {
     if (!cart.length) return;
@@ -551,7 +592,6 @@
     
     let total = cart.reduce((acc, i) => acc + (i.prixSolus * i.qty), 0);
     
-    // LOGIQUE DE REMISE DANS LE MESSAGE
     if (total >= 300) {
         let remise = total * 0.10;
         let final = total - remise;
