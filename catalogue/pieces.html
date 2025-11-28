@@ -295,8 +295,9 @@
   let cart = [];
 
   /* --- POPUP LOGIC --- */
-  // Affiche le popup après 3 secondes
   setTimeout(() => {
+    // On affiche le popup uniquement si le panier est vide (optionnel, sinon toujours)
+    // Ici on laisse toujours pour maximiser l'effet
     document.getElementById("promo-popup").style.display = "flex";
   }, 3000);
 
@@ -378,6 +379,10 @@
       generateFilters();
       filteredProduits = [...produits];
       renderProduits();
+      
+      // CHARGEMENT DU PANIER SAUVEGARDÉ (LocalStorage)
+      loadStoredCart();
+      
       document.getElementById("sheet-error").style.display = "none";
 
     } catch (e) {
@@ -385,6 +390,24 @@
       document.getElementById("sheet-error").textContent = "Erreur catalogue : " + e.message;
       document.getElementById("sheet-error").style.display = "block";
     }
+  }
+
+  /* --- STORAGE (PANIER PERSISTANT) --- */
+  function loadStoredCart() {
+    const stored = localStorage.getItem('solustoc_cart');
+    if (stored) {
+      try {
+        cart = JSON.parse(stored);
+        updateCartUI();
+      } catch (e) {
+        console.error("Erreur lecture panier", e);
+        localStorage.removeItem('solustoc_cart');
+      }
+    }
+  }
+
+  function saveCart() {
+    localStorage.setItem('solustoc_cart', JSON.stringify(cart));
   }
 
   /* --- FILTRES --- */
@@ -472,6 +495,9 @@
   };
 
   function updateCartUI() {
+    // Sauvegarde à chaque changement
+    saveCart();
+
     const section = document.getElementById("cart-block");
     const content = document.getElementById("cart-content");
     const totalDisplay = document.getElementById("cart-total-display");
@@ -491,9 +517,7 @@
     const count = cart.reduce((acc, i) => acc + i.qty, 0);
     
     // GESTION PROMO UI
-    let displayTotal = total;
     if (total >= 300) {
-      // displayTotal = total * 0.9; (On n'applique pas la réduc visuelle ici pour ne pas embrouiller, on le fait sur WhatsApp ou on met un message)
       discountMsg.style.display = "block";
     } else {
       discountMsg.style.display = "none";
@@ -515,7 +539,10 @@
     document.getElementById("sticky-sum").innerText = formatPrix(total);
   }
 
-  document.getElementById("btn-clear").onclick = () => { cart = []; updateCartUI(); };
+  document.getElementById("btn-clear").onclick = () => { 
+    cart = []; 
+    updateCartUI(); 
+  };
 
   document.getElementById("btn-whatsapp").onclick = () => {
     if (!cart.length) return;
