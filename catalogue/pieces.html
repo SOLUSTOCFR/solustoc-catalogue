@@ -2,83 +2,91 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Catalogue Solustoc – Bijoux à la pièce</title>
+  <title>Catalogue Solustoc – Grossiste Bijoux France</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Grossiste bijoux acier inoxydable. Commande à la pièce via WhatsApp. Stock France.">
+
   <style>
-    /* STYLE SOLUSTOC */
-    body { font-family: Arial, sans-serif; margin: 0; background: #fff7ea; color: #222; padding-bottom: 80px; /* Espace pour la barre fixe */ }
-    header { background: #fff7ea; text-align: center; padding: 22px 14px; }
-    header img { max-width: 160px; height: auto; }
-    .wrapper { width: 94%; max-width: 1100px; margin: 18px auto 40px; }
+    /* --- CHARTE GRAPHIQUE SOLUSTOC --- */
+    body { font-family: system-ui, -apple-system, sans-serif; margin: 0; background: #fff7ea; color: #222; padding-bottom: 90px; }
     
-    /* HERO */
-    .hero { background: #ffffff; border-radius: 16px; padding: 22px 18px; box-shadow: 0 0 12px rgba(0,0,0,0.08); margin-bottom: 22px; text-align: center; border: 1px solid #f2dfc8; }
-    .hero h2 { margin-top: 0; font-size: 20px; font-weight: bold; color: #8d3b42; }
-    .hero p { margin: 6px 0; font-size: 14px; }
-    .badge-row { margin-top: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; font-size: 13px; }
-    .badge { background: #f6e5c1; border-radius: 999px; padding: 5px 12px; border: 1px solid #e4d5b1; }
-    
-    .section-title { margin: 24px 0 10px; font-size: 19px; font-weight: bold; color: #8d3b42; }
-    
-    /* BARRE DE FILTRE */
-    .filter-bar { margin: 10px 0 16px; background: #fff; padding: 12px; border-radius: 12px; border: 1px solid #eedfcb; box-shadow: 0 0 8px rgba(0,0,0,0.04); display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 14px; }
-    .filter-bar select { padding: 8px 10px; border-radius: 8px; border: 1px solid #c9a66b; background: #fffdf8; font-size: 14px; color: #333; min-width: 200px; }
+    /* HEADER & LOGO */
+    header { background: #fff7ea; text-align: center; padding: 20px 14px 10px; }
+    header img { max-width: 180px; height: auto; }
+    .header-subtitle { font-size: 13px; color: #666; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 5px; }
 
-    /* GRID */
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
-    .card { background: #ffffff; border-radius: 14px; box-shadow: 0 0 10px rgba(0,0,0,0.07); border: 1px solid #f3e5d2; padding: 12px 12px 14px; display: flex; flex-direction: column; height: 100%; }
-    .card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 10px; margin-bottom: 8px; background: #ddd; cursor: pointer; }
-    .card h3 { font-size: 15px; margin: 4px 0 4px; font-weight: bold; min-height: 40px; color: #333; }
-    .cat-label { font-size: 12px; color: #8d3b42; margin-bottom: 3px; font-weight: bold; }
-    .price-line { font-size: 14px; margin: 2px 0; line-height: 1.3; }
-    .price-solustoc { font-weight: bold; color: #b32121; }
-    .price-public { font-size: 13px; color: #444; display:block; }
-    .stock { font-size: 13px; color: #555; margin-top: 2px; }
-    
-    /* CONTROLES */
-    .qty-row { display:flex; justify-content:center; align-items:center; gap:8px; margin-top:6px; }
-    .qty-minus, .qty-plus { width: 32px; height: 32px; border-radius: 8px; font-size: 18px; border: 1px solid #ccbda3; cursor: pointer; background: #faf3e3; }
-    .btn-small { margin-top: 10px; padding: 9px 10px; font-size: 14px; border-radius: 999px; border: none; background: #25D366; color: #fff; font-weight: bold; cursor: pointer; }
-    
-    /* PANIER COMPLET EN BAS */
-    .cart-block { background: #ffffff; border-radius: 16px; padding: 18px 14px 16px; box-shadow: 0 0 12px rgba(0,0,0,0.06); border: 1px solid #ecdcc4; margin-top: 30px; }
-    .cart-block h2 { margin-top:0; font-size:20px; text-align:center; color: #8d3b42; }
-    .cart-info { font-size:13px; text-align:center; color:#555; margin-bottom:8px; }
-    table.cart-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
-    table.cart-table th, table.cart-table td { padding: 4px 6px; border-bottom: 1px solid #eee; text-align: left; }
-    .cart-total { margin-top: 10px; font-weight: bold; text-align: right; font-size: 15px; color: #333; }
-    .cart-actions { margin-top: 14px; display:flex; flex-direction:column; gap:10px; }
-    .btn-main { padding: 12px 14px; border-radius: 999px; border: none; font-size: 15px; font-weight: bold; cursor: pointer; color: #fff; background: #25D366; }
-    .btn-main[disabled] { opacity: 0.5; cursor: not-allowed; }
-    .btn-secondary { padding: 8px 12px; border-radius: 999px; border: none; font-size: 13px; cursor: pointer; background: #f0f0f0; color: #333; }
-    
-    /* NOUVEAU : BARRE FIXE EN BAS (STICKY CART) */
-    .sticky-cart {
-      position: fixed; bottom: 0; left: 0; right: 0;
-      background: #ffffff;
-      border-top: 1px solid #e0cda8;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-      padding: 12px 20px;
-      display: none; /* Masqué si vide */
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-    }
-    .sticky-info { font-size: 15px; color: #8d3b42; font-weight: bold; }
-    .sticky-btn {
-      background: #25D366; color: #fff; padding: 8px 16px;
-      border-radius: 999px; text-decoration: none; font-weight: bold; font-size: 14px;
-      border:none; cursor: pointer;
-    }
-    .sticky-btn:hover { background: #1ebe5c; }
+    .wrapper { width: 94%; max-width: 1100px; margin: 10px auto 40px; }
 
-    footer { text-align: center; font-size: 12px; color: #777; padding: 24px 10px 28px; }
+    /* SECTION STYLE GÉNÉRAL */
+    .section-card {
+      background: #ffffff; border-radius: 16px; padding: 20px 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #f2dfc8;
+      margin-bottom: 20px; text-align: center;
+    }
+    .section-title { margin: 0 0 12px; font-size: 18px; font-weight: bold; color: #8d3b42; }
     
+    /* ÉTAPES COMMANDE */
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px; }
+    .step-item { background: #fffdf8; border: 1px solid #eaddc5; padding: 12px; border-radius: 10px; font-size: 13px; }
+    .step-icon { font-size: 20px; display: block; margin-bottom: 6px; }
+
+    /* PHOTOS D'AMBIANCE (Rassurance) */
+    .ambiance-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+    .ambiance-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; border: 1px solid #eee; }
+    @media (max-width: 600px) { .ambiance-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    /* CATALOGUE & FILTRES */
+    .filter-bar { background: #fff; padding: 12px; border-radius: 12px; border: 1px solid #eedfcb; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 16px; justify-content: center; }
+    .filter-bar select { padding: 10px; border-radius: 8px; border: 1px solid #c9a66b; background: #fffdf8; font-size: 14px; min-width: 220px; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+    @media (min-width: 600px) { .grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; } }
+
+    /* CARTE PRODUIT */
+    .card { background: #ffffff; border-radius: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid #f3e5d2; padding: 10px; display: flex; flex-direction: column; height: 100%; transition: transform 0.2s; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    
+    .card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 10px; margin-bottom: 8px; background: #f0f0f0; cursor: pointer; }
+    .card h3 { font-size: 14px; margin: 4px 0; font-weight: bold; color: #333; line-height: 1.3; min-height: 36px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .cat-label { font-size: 11px; color: #8d3b42; font-weight: bold; text-transform: uppercase; margin-bottom: 2px; }
+
+    .price-block { background: #fffdf5; padding: 6px; border-radius: 8px; border: 1px solid #f1e6d0; margin: 6px 0; }
+    .price-solustoc { font-weight: bold; color: #b32121; font-size: 15px; display: block; }
+    .price-public { font-size: 12px; color: #666; }
+
+    .stock { font-size: 12px; color: #2e7d32; margin-top: 4px; font-weight: 500; }
+    .stock-low { color: #d32f2f; font-weight: bold; animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
+
+    /* CONTROLES QUANTITÉ */
+    .qty-row { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: auto; padding-top: 10px; }
+    .qty-btn { width: 28px; height: 28px; border-radius: 6px; border: 1px solid #ccc; background: #fff; cursor: pointer; font-weight: bold; color: #555; }
+    .qty-val { font-size: 15px; font-weight: bold; width: 24px; text-align: center; }
+    
+    .btn-add { width: 100%; margin-top: 8px; padding: 10px; border-radius: 8px; border: none; background: #25D366; color: #fff; font-weight: bold; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .btn-add:hover { background: #1ebe5c; }
+    
+    /* PANIER FIXE (STICKY) */
+    .sticky-cart { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; border-top: 1px solid #e0cda8; box-shadow: 0 -4px 15px rgba(0,0,0,0.1); padding: 12px 20px; display: none; justify-content: space-between; align-items: center; z-index: 900; }
+    .sticky-info { font-weight: bold; color: #333; font-size: 15px; }
+    .sticky-btn { background: #25D366; color: #fff; padding: 10px 20px; border-radius: 50px; font-weight: bold; text-decoration: none; border: none; cursor: pointer; font-size: 14px; }
+
+    /* PANIER COMPLET (SECTION) */
+    .cart-section { display: none; } /* On le montre via JS si rempli */
+    .cart-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+    .cart-table td { padding: 6px; border-bottom: 1px solid #eee; }
+    .cart-total-line { text-align: right; font-weight: bold; font-size: 16px; margin-top: 10px; color: #b32121; }
+
+    /* FOOTER */
+    footer { background: #e8f9ec; padding: 20px; font-size: 11px; text-align: center; color: #555; border-top: 1px solid #cdecd6; margin-top: 40px; }
+    footer a { color: #8d3b42; text-decoration: none; }
+
     /* LIGHTBOX */
     .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 9999; }
-    .lightbox img { max-width: 90%; max-height: 90%; border-radius: 10px; }
-    .lightbox-close { position: fixed; top: 14px; right: 20px; font-size: 28px; color: #fff; cursor: pointer; font-weight: bold; }
-    .error-msg { margin-top: 10px; font-size: 13px; color: #b00020; text-align: center; background: #ffe6e6; padding: 10px; border-radius: 8px; }
+    .lightbox img { max-width: 95%; max-height: 90vh; border-radius: 8px; }
+    .lightbox-close { position: fixed; top: 15px; right: 20px; font-size: 30px; color: #fff; cursor: pointer; }
+    
+    .error-msg { background: #ffebee; color: #c62828; padding: 10px; border-radius: 8px; margin: 10px 0; display: none; text-align: center; font-size: 13px; }
   </style>
 </head>
 
@@ -86,57 +94,104 @@
 
 <header>
   <img src="../img/logosbijouxfrancais.webp" alt="Les Bijoux Français / Solustoc">
+  <div class="header-subtitle">Espace Revendeurs & Grossiste</div>
 </header>
 
 <div class="wrapper">
-  <section class="hero">
-    <h2>Bijoux de Mimi – Achat à la pièce pour revendeurs</h2>
-    <p>Sélectionnez les références, ajoutez au panier et commandez via WhatsApp.</p>
-    <p><strong>Livraison offerte dès 200 € TTC.</strong></p>
-    <div class="badge-row">
-      <span class="badge">💎 Qualité boutique</span>
-      <span class="badge">📦 Stock réel</span>
-      <span class="badge">🇫🇷 Expédition France</span>
+
+  <div class="section-card">
+    <h1 class="section-title">Achat à la pièce – Qualité Boutique</h1>
+    <p style="font-size:14px; color:#555; margin-bottom:15px;">
+      Fournisseur français pour boutiques, marchés et e-commerces.<br>
+      <strong>Livraison offerte dès 200 € TTC.</strong>
+    </p>
+    
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:8px;">
+      <span style="background:#f6e5c1; padding:5px 10px; border-radius:20px; font-size:12px; font-weight:bold;">🇫🇷 Société Française</span>
+      <span style="background:#f6e5c1; padding:5px 10px; border-radius:20px; font-size:12px; font-weight:bold;">🚀 Expédition 24/48h</span>
+      <span style="background:#f6e5c1; padding:5px 10px; border-radius:20px; font-size:12px; font-weight:bold;">🔒 Paiement Sécurisé</span>
     </div>
-  </section>
+  </div>
 
-  <h2 class="section-title">Catalogue</h2>
+  <div class="section-card">
+    <h2 class="section-title">Comment commander ?</h2>
+    <div class="steps-grid">
+      <div class="step-item">
+        <span class="step-icon">🛒</span>
+        <strong>1. Faites votre panier</strong><br>
+        Ajoutez les bijoux qui vous intéressent sur cette page.
+      </div>
+      <div class="step-item">
+        <span class="step-icon">📲</span>
+        <strong>2. Envoyez sur WhatsApp</strong><br>
+        Cliquez sur "Envoyer" pour transmettre la liste à Brice.
+      </div>
+      <div class="step-item">
+        <span class="step-icon">📦</span>
+        <strong>3. Validation & Envoi</strong><br>
+        On confirme le stock, vous réglez, on expédie !
+      </div>
+    </div>
+  </div>
 
+  <div class="section-card" style="padding:15px;">
+    <h2 class="section-title" style="font-size:16px;">Ils nous font confiance (Photos réelles)</h2>
+    <div class="ambiance-grid">
+      <img src="../img/ambiance-packshot.webp" alt="Stock">
+      <img src="../img/marche-normandie.webp" alt="Marché">
+      <img src="../img/atelier-fabrication-artisanal.webp" alt="Atelier">
+    </div>
+    <p style="font-size:12px; color:#777; margin-top:8px; margin-bottom:0;">
+      Plus de 500 revendeurs livrés en 2024.
+    </p>
+  </div>
+
+  <h2 class="section-title" style="text-align:center; margin-top:30px;">Le Catalogue</h2>
+  
   <div class="filter-bar">
-    <label for="filter-category">Catégorie :</label>
+    <label for="filter-category" style="font-weight:bold;">Filtrer :</label>
     <select id="filter-category">
-      <option value="">Chargement...</option>
+      <option value="">Chargement des catégories...</option>
     </select>
   </div>
 
-  <div id="sheet-error" class="error-msg" style="display:none;"></div>
+  <div id="sheet-error" class="error-msg"></div>
 
-  <section id="products" class="grid">
-    <p style="text-align:center; width:100%;">Chargement des produits...</p>
-  </section>
+  <div id="products" class="grid">
+    <p style="text-align:center; grid-column:1/-1;">Chargement des produits en cours...</p>
+  </div>
 
-  <section class="cart-block" id="cart-block">
-    <h2>Votre sélection</h2>
-    <div class="cart-info">Minimum conseillé pour livraison offerte : 200 €</div>
+  <div id="cart-block" class="section-card cart-section" style="margin-top:40px; border-color:#25D366;">
+    <h2 class="section-title">Votre sélection</h2>
     <div id="cart-content"></div>
-    <div class="cart-actions">
-      <button id="btn-whatsapp" class="btn-main" disabled>📲 Envoyer via WhatsApp</button>
-      <button id="btn-clear" class="btn-secondary">🗑️ Vider</button>
-    </div>
-  </section>
+    <div class="cart-total-line" id="cart-total-display"></div>
+    
+    <button id="btn-whatsapp" class="btn-add" style="margin-top:15px; background:#25D366; font-size:16px;">
+      📲 Valider ma commande sur WhatsApp
+    </button>
+    <button id="btn-clear" style="margin-top:10px; background:none; border:none; text-decoration:underline; cursor:pointer; font-size:12px; color:#666;">
+      Vider le panier
+    </button>
+  </div>
+
 </div>
 
 <div id="sticky-cart" class="sticky-cart">
   <div class="sticky-info">
-    <span id="sticky-count">0 art.</span> • 
-    <span id="sticky-total">0,00 €</span>
+    <span id="sticky-count">0</span> art. • <span id="sticky-sum">0,00 €</span>
   </div>
-  <button class="sticky-btn" onclick="scrollToCart()">
-    Voir panier 🛒
-  </button>
+  <button class="sticky-btn" onclick="scrollToCart()">Voir Panier 🛒</button>
 </div>
 
-<footer>Solustoc • Grossiste bijoux</footer>
+<footer>
+  <strong>SOLUSTOC SAS</strong><br>
+  69 bis rue du Bêle, 44200 Nantes<br>
+  SIREN : 929 179 579<br><br>
+  <a href="mailto:contact@solustoc.fr">contact@solustoc.fr</a> • 
+  <a href="https://wa.me/33756923323">07 56 92 33 23</a><br>
+  <br>
+  Conditions Générales de Vente • Mentions Légales
+</footer>
 
 <div class="lightbox" id="lightbox">
   <span class="lightbox-close" id="lightbox-close">×</span>
@@ -144,242 +199,242 @@
 </div>
 
 <script>
-  // CONFIGURATION
+  /* --- CONFIGURATION --- */
   const PHOTO_BASE = "../photo/"; 
   const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTeb1HY3fqUcP26tcQ_crdY2PIIyjT_73TakK1neuc0cxwq-QMyChF2w5Q5kYSkmd14GRSGwYeZCION/pub?output=csv";
 
-  // DATA
+  /* --- ÉTAT --- */
   const produits = [];
   let filteredProduits = [];
   let cart = [];
 
-  // PARSER CSV ROBUSTE
+  /* --- PARSER CSV ROBUSTE --- */
   function CSVToArray(strData, strDelimiter) {
     strDelimiter = (strDelimiter || ",");
-    var objPattern = new RegExp(
-      (
-        "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
-        "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
-        "([^\"\\" + strDelimiter + "\\r\\n]*))"
-      ),
-      "gi"
-    );
+    var objPattern = new RegExp(("(\\" + strDelimiter + "|\\r?\\n|\\r|^)" + "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" + "([^\"\\" + strDelimiter + "\\r\\n]*))"), "gi");
     var arrData = [[]];
     var arrMatches = null;
     while (arrMatches = objPattern.exec(strData)) {
       var strMatchedDelimiter = arrMatches[1];
-      if (strMatchedDelimiter.length && strMatchedDelimiter !== strDelimiter) {
-        arrData.push([]);
-      }
+      if (strMatchedDelimiter.length && strMatchedDelimiter !== strDelimiter) { arrData.push([]); }
       var strMatchedValue;
-      if (arrMatches[2]) {
-        strMatchedValue = arrMatches[2].replace(new RegExp("\"\"", "g"), "\"");
-      } else {
-        strMatchedValue = arrMatches[3];
-      }
+      if (arrMatches[2]) { strMatchedValue = arrMatches[2].replace(new RegExp("\"\"", "g"), "\""); } else { strMatchedValue = arrMatches[3]; }
       arrData[arrData.length - 1].push(strMatchedValue);
     }
     return arrData;
   }
 
-  // PRIX
   function parsePrix(str) {
     if (!str) return 0;
     const clean = str.toString().replace(/[^0-9.,]/g, "").replace(",", ".");
-    const val = parseFloat(clean);
-    return isNaN(val) ? 0 : val;
+    return parseFloat(clean) || 0;
   }
-
   function formatPrix(val) {
     return val.toLocaleString("fr-FR", { style: "currency", currency: "EUR" });
   }
 
-  // CHARGEMENT
-  async function loadProduitsFromSheet() {
-    const errBox = document.getElementById("sheet-error");
+  /* --- CHARGEMENT --- */
+  async function loadProduits() {
     try {
       const res = await fetch(SHEET_CSV_URL);
-      if (!res.ok) throw new Error("Erreur HTTP " + res.status);
-      const csvText = await res.text();
-
-      const firstLine = csvText.split('\n')[0];
-      const separator = firstLine.includes(';') ? ';' : ',';
+      if (!res.ok) throw new Error("Erreur serveur");
+      const text = await res.text();
       
-      const data = CSVToArray(csvText, separator);
+      const firstLine = text.split('\n')[0];
+      const sep = firstLine.includes(';') ? ';' : ',';
+      const data = CSVToArray(text, sep);
       
-      if (!data || data.length < 2) throw new Error("Fichier vide ou illisible");
-
+      if (data.length < 2) throw new Error("Catalogue vide");
+      
       const headers = data[0].map(h => h.trim().toLowerCase());
+      const getIdx = (keys) => headers.findIndex(h => keys.some(k => h.includes(k)));
 
-      const getIdx = (keywords) => headers.findIndex(h => keywords.some(k => h.includes(k)));
-      const idxTitre      = getIdx(["nom", "titre"]);     
-      const idxStock      = getIdx(["stock", "quantité"]);
-      const idxPrixPublic = getIdx(["public"]);
-      const idxPrixSolus  = getIdx(["solustoc", "revendeur"]);
-      const idxImage      = getIdx(["image", "photo"]);
-      const idxCategorie  = getIdx(["cat", "égorie"]);
+      const idxTitre = getIdx(["nom", "titre"]);
+      const idxStock = getIdx(["stock", "quantité"]);
+      const idxSolus = getIdx(["solustoc", "revendeur"]);
+      const idxPublic = getIdx(["public"]);
+      const idxImg = getIdx(["image", "photo"]);
+      const idxCat = getIdx(["cat", "égorie"]);
 
-      if (idxTitre === -1) throw new Error("Colonne Nom introuvable");
-      if (idxImage === -1) throw new Error("Colonne Image introuvable");
+      if (idxTitre < 0 || idxImg < 0) throw new Error("Colonnes manquantes dans le fichier source.");
 
-      let idCounter = 1;
+      let id = 1;
       produits.length = 0;
 
       for (let i = 1; i < data.length; i++) {
         const row = data[i];
-        if (row.length < headers.length) continue; 
-
+        if (row.length < headers.length) continue;
+        
         const titre = (row[idxTitre] || "").trim();
         if (!titre) continue;
-
-        const stock = parseInt((row[idxStock] || "0").replace(/\D/g, ""), 10) || 0;
-        const prixPublic = parsePrix(row[idxPrixPublic]);
-        const prixSolustoc = parsePrix(row[idxPrixSolus]);
-        const image = (row[idxImage] || "").trim();
-        const categorie = (row[idxCategorie] || "Divers").trim();
-
+        
         produits.push({
-          id: idCounter++,
+          id: id++,
           nom: titre,
-          stock,
-          prixPublic,
-          prixSolustoc,
-          image,
-          categorie
+          stock: parseInt((row[idxStock] || "0").replace(/\D/g, "")) || 0,
+          prixSolus: parsePrix(row[idxSolus]),
+          prixPublic: parsePrix(row[idxPublic]),
+          image: (row[idxImg] || "").trim(),
+          cat: (row[idxCat] || "Autre").trim()
         });
       }
 
       generateFilters();
       filteredProduits = [...produits];
-      errBox.style.display = "none";
       renderProduits();
+      document.getElementById("sheet-error").style.display = "none";
 
     } catch (e) {
       console.error(e);
-      errBox.textContent = "Problème technique : " + e.message;
-      errBox.style.display = "block";
+      document.getElementById("sheet-error").textContent = "Erreur catalogue : " + e.message;
+      document.getElementById("sheet-error").style.display = "block";
     }
   }
 
-  // LOGIQUE UI
+  /* --- FILTRES --- */
   function generateFilters() {
-    const cats = [...new Set(produits.map(p => p.categorie).filter(c => c))].sort();
-    const select = document.getElementById("filter-category");
-    let html = `<option value="">Toutes les catégories (${produits.length})</option>`;
+    const cats = [...new Set(produits.map(p => p.cat).filter(Boolean))].sort();
+    const sel = document.getElementById("filter-category");
+    let html = `<option value="">Tout voir (${produits.length})</option>`;
     cats.forEach(c => html += `<option value="${c}">${c}</option>`);
-    select.innerHTML = html;
+    sel.innerHTML = html;
   }
-
-  function applyFilters() {
-    const cat = document.getElementById("filter-category").value;
-    filteredProduits = produits.filter(p => !cat || p.categorie === cat);
+  
+  document.getElementById("filter-category").onchange = (e) => {
+    const val = e.target.value;
+    filteredProduits = productos = val ? produits.filter(p => p.cat === val) : produits;
     renderProduits();
-  }
-  document.getElementById("filter-category").addEventListener("change", applyFilters);
+  };
 
+  /* --- RENDU --- */
   function renderProduits() {
-    const container = document.getElementById("products");
+    const div = document.getElementById("products");
     if (!filteredProduits.length) {
-      container.innerHTML = `<p style="grid-column:1/-1; text-align:center;">Aucun produit trouvé.</p>`;
+      div.innerHTML = `<p style="text-align:center; grid-column:1/-1;">Aucun produit trouvé.</p>`;
       return;
     }
-    container.innerHTML = filteredProduits.map(p => {
-      const imgSrc = PHOTO_BASE + p.image;
+    
+    div.innerHTML = filteredProduits.map(p => {
+      // LOGIQUE STOCK URGENT
+      let stockHtml = `<div class="stock">En stock : ${p.stock}</div>`;
+      if (p.stock > 0 && p.stock < 6) {
+        stockHtml = `<div class="stock stock-low">⚠️ Vite ! Plus que ${p.stock} ex.</div>`;
+      } else if (p.stock === 0) {
+        stockHtml = `<div class="stock" style="color:#999;">Épuisé</div>`;
+      }
+
+      const img = PHOTO_BASE + p.image;
+      
       return `
         <div class="card">
-          <img src="${imgSrc}" alt="${p.nom}" 
-               onerror="this.src='https://via.placeholder.com/300?text=Image+introuvable'"
-               onclick="openLightbox('${imgSrc}')">
-          <div class="cat-label">${p.categorie}</div>
+          <img src="${img}" onerror="this.src='https://via.placeholder.com/200?text=Image+non+dispo'" onclick="openLightbox('${img}')">
+          <div class="cat-label">${p.cat}</div>
           <h3>${p.nom}</h3>
-          <div class="price-line">
-             <span class="price-solustoc">Prix : ${formatPrix(p.prixSolustoc)}</span><br>
-             <span class="price-public">PV conseillé : ${formatPrix(p.prixPublic)}</span>
+          
+          <div class="price-block">
+            <span class="price-solustoc">${formatPrix(p.prixSolus)} HT</span>
+            <span class="price-public">PV conseillé: ${formatPrix(p.prixPublic)}</span>
           </div>
-          <p class="stock">En stock : ${p.stock}</p>
+          
+          ${stockHtml}
+
           <div class="qty-row">
-            <button class="qty-minus" onclick="changeQty(${p.id}, -1)">−</button>
-            <span id="qty-${p.id}" class="qty-value">1</span>
-            <button class="qty-plus" onclick="changeQty(${p.id}, 1)">+</button>
+            <button class="qty-btn" onclick="updQty(${p.id}, -1)">-</button>
+            <span id="q-${p.id}" class="qty-val">1</span>
+            <button class="qty-btn" onclick="updQty(${p.id}, 1)">+</button>
           </div>
-          <button class="btn-small" onclick="addToCart(${p.id})">Ajouter</button>
-        </div>`;
+          
+          <button class="btn-add" onclick="add(${p.id})">
+            🛒 Ajouter
+          </button>
+        </div>
+      `;
     }).join("");
   }
 
-  window.changeQty = function(id, delta) {
-    const el = document.getElementById("qty-" + id);
-    if (!el) return;
-    let v = parseInt(el.textContent, 10) + delta;
+  /* --- PANIER --- */
+  window.updQty = (id, d) => {
+    const el = document.getElementById("q-"+id);
+    let v = parseInt(el.innerText) + d;
     if (v < 1) v = 1;
-    el.textContent = v;
+    el.innerText = v;
   };
 
-  window.addToCart = function(id) {
-    const qty = parseInt(document.getElementById("qty-" + id).textContent, 10);
+  window.add = (id) => {
+    const qty = parseInt(document.getElementById("q-"+id).innerText);
     const p = produits.find(x => x.id === id);
     if (!p) return;
+    
     const exist = cart.find(x => x.id === id);
     if (exist) exist.qty += qty;
-    else cart.push({ ...p, qty });
-    renderCart();
+    else cart.push({...p, qty});
+    
+    updateCartUI();
+    
+    // Feedback visuel (Optionnel)
+    const btn = event.target;
+    const old = btn.innerText;
+    btn.innerText = "✅ Ajouté !";
+    setTimeout(() => btn.innerText = old, 1000);
   };
 
-  // MISE A JOUR DU PANIER (ET DE LA BARRE FLOTTANTE)
-  function renderCart() {
-    const box = document.getElementById("cart-content");
-    const btn = document.getElementById("btn-whatsapp");
+  function updateCartUI() {
+    const section = document.getElementById("cart-block");
+    const content = document.getElementById("cart-content");
+    const totalDisplay = document.getElementById("cart-total-display");
     const sticky = document.getElementById("sticky-cart");
-    
-    // Calcul totaux
-    const totalItems = cart.reduce((acc, i) => acc + i.qty, 0);
-    const totalPrix = cart.reduce((acc, i) => acc + (i.prixSolustoc * i.qty), 0);
 
-    // GESTION BARRE FLOTTANTE
-    if (totalItems > 0) {
-      sticky.style.display = "flex";
-      document.getElementById("sticky-count").textContent = totalItems + (totalItems > 1 ? " arts." : " art.");
-      document.getElementById("sticky-total").textContent = formatPrix(totalPrix);
-    } else {
-      sticky.style.display = "none";
-    }
-
-    // GESTION PANIER BAS DE PAGE
     if (!cart.length) {
-      box.innerHTML = `<p style="text-align:center; font-size:13px; color:#555;">Votre panier est vide.</p>`;
-      btn.disabled = true;
+      section.style.display = "none";
+      sticky.style.display = "none";
       return;
     }
-    
-    box.innerHTML = `
+
+    section.style.display = "block";
+    sticky.style.display = "flex";
+
+    const total = cart.reduce((acc, i) => acc + (i.prixSolus * i.qty), 0);
+    const count = cart.reduce((acc, i) => acc + i.qty, 0);
+
+    content.innerHTML = `
       <table class="cart-table">
-        <tr><th>Produit</th><th>Qté</th><th>Total</th></tr>
         ${cart.map(i => `
-          <tr><td>${i.nom}</td><td>${i.qty}</td><td>${formatPrix(i.prixSolustoc * i.qty)}</td></tr>
+          <tr>
+            <td>${i.nom}</td>
+            <td>x${i.qty}</td>
+            <td style="text-align:right;">${formatPrix(i.prixSolus * i.qty)}</td>
+          </tr>
         `).join("")}
       </table>
-      <p class="cart-total">Total HT : ${formatPrix(totalPrix)}</p>
     `;
-    btn.disabled = false;
+    totalDisplay.innerText = "Total HT : " + formatPrix(total);
+
+    // Sticky Bar
+    document.getElementById("sticky-count").innerText = count;
+    document.getElementById("sticky-sum").innerText = formatPrix(total);
   }
 
-  document.getElementById("btn-clear").onclick = () => { cart = []; renderCart(); };
+  document.getElementById("btn-clear").onclick = () => { cart = []; updateCartUI(); };
 
   document.getElementById("btn-whatsapp").onclick = () => {
     if (!cart.length) return;
-    let msg = "🛍️ *Commande Solustoc*\n\n";
-    cart.forEach(i => msg += `• ${i.nom} (x${i.qty})\n`);
-    const total = cart.reduce((acc, i) => acc + (i.prixSolustoc * i.qty), 0);
-    msg += `\n💰 *Total Solustoc : ${formatPrix(total)}*`;
+    let msg = "👋 Bonjour Brice, je souhaite commander :\n\n";
+    cart.forEach(i => msg += `- ${i.nom} (x${i.qty})\n`);
+    const total = cart.reduce((acc, i) => acc + (i.prixSolus * i.qty), 0);
+    msg += `\n💰 *Total HT : ${formatPrix(total)}*`;
+    msg += `\n\nMerci de me confirmer le stock et le montant TTC avec livraison.`;
+    
+    // Pixel Facebook (Placeholder) : fbq('track', 'InitiateCheckout');
+    
     window.open("https://wa.me/33756923323/?text=" + encodeURIComponent(msg), "_blank");
   };
 
-  // FONCTION DE SCROLL VERS PANIER
-  window.scrollToCart = function() {
-    document.getElementById("cart-block").scrollIntoView({ behavior: 'smooth' });
+  window.scrollToCart = () => {
+    document.getElementById("cart-block").scrollIntoView({behavior:"smooth"});
   };
 
-  window.openLightbox = function(src) {
+  /* --- LIGHTBOX --- */
+  window.openLightbox = (src) => {
     document.getElementById("lightbox-img").src = src;
     document.getElementById("lightbox").style.display = "flex";
   };
@@ -387,8 +442,9 @@
     document.getElementById("lightbox").style.display = "none";
   };
 
-  loadProduitsFromSheet();
-  renderCart();
+  /* --- INIT --- */
+  loadProduits();
+
 </script>
 </body>
 </html>
