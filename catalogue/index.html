@@ -70,6 +70,12 @@
       font-size: 12px;
     }
 
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+
     .lot-card {
       background: #fffdf8;
       border-radius: 14px;
@@ -95,6 +101,75 @@
       background: #fff4d2;
       font-weight: 600;
     }
+
+    /* Boutons */
+    .btn-main,
+    .btn-ghost,
+    .btn-whatsapp {
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 8px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      box-sizing: border-box;
+      margin-top: 8px;
+    }
+
+    .btn-main,
+    .btn-whatsapp {
+      background: #1ba64a;
+      color: #fff;
+      border: none;
+    }
+
+    .btn-main:hover,
+    .btn-whatsapp:hover {
+      background: #168a3d;
+    }
+
+    .btn-ghost {
+      background: #fff;
+      border: 1px solid #e0d5bb;
+      color: #444;
+    }
+
+    .btn-ghost:hover {
+      background: #f7f0e1;
+    }
+
+    /* Footer */
+    .footer {
+      background: #e8f9ec;
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-size: 11px;
+      border: 1px solid #cdecd6;
+      margin-top: 4px;
+    }
+
+    .footer-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .footer-small {
+      margin-top: 4px;
+      font-size: 10px;
+      color: #555;
+    }
+
+    .footer a {
+      color: #8d3b42;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -105,14 +180,25 @@
     <!-- LOGO -->
     <div class="logo-block">
       <img src="../img/logosbijouxfrancais.webp"
-           alt="Le Bijoux Français – La qualité française à prix discount">
+           alt="Les Bijoux Français – La qualité française à prix discount">
 
       <div class="badge-top">Bijoux en acier inoxydable doré à l’or fin</div>
 
       <h1>Solustoc – Grossiste Bijoux France</h1>
     </div>
 
-    <!-- PRESENTATION -->
+    <!-- CTA CATALOGUE À LA PIÈCE -->
+    <section class="section">
+      <h2 class="section-title">Bijoux à la pièce pour revendeurs</h2>
+      <p style="margin-bottom:8px;">
+        Composez votre sélection référence par référence puis envoyez votre commande par WhatsApp.
+      </p>
+      <a class="btn-main" href="pieces.html">
+        Accéder au catalogue à la pièce
+      </a>
+    </section>
+
+    <!-- PRÉSENTATION ENTREPRISE -->
     <section class="section">
       <h2 class="section-title">Solustoc – Grossiste bijoux en acier inoxydable doré à l’or fin</h2>
 
@@ -188,7 +274,7 @@
       </table>
     </section>
 
-    <!-- LOTS -->
+    <!-- LOTS PRÊTS À VENDRE -->
     <h2 class="section-title" style="margin-top:10px;">Lots prêts à vendre</h2>
 
     <section class="lot-card">
@@ -225,16 +311,9 @@
       <div class="footer-small">
         SIRET : 943 702 126 00013<br>
         Les Bijoux Français est une marque exploitée par la société SOLUSTOC SAS.<br>
-
-        <a href="https://lesbijouxfrancais.fr/mentions-legales">
-          Mentions légales
-        </a> ·
-        <a href="https://lesbijouxfrancais.fr/politique-de-confidentialite">
-          Politique de confidentialité
-        </a> ·
-        <a href="https://lesbijouxfrancais.fr/bijoux-de-mimi-bijoux-creation-francaise">
-          À propos des Bijoux de Mimi
-        </a>
+        <a href="https://lesbijouxfrancais.fr/mentions-legales">Mentions légales</a> ·
+        <a href="https://lesbijouxfrancais.fr/politique-de-confidentialite">Politique de confidentialité</a> ·
+        <a href="https://lesbijouxfrancais.fr/bijoux-de-mimi-bijoux-creation-francaise">À propos des Bijoux de Mimi</a>
       </div>
     </section>
 
