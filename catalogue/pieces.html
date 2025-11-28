@@ -342,7 +342,7 @@
     <select id="filter-category">
       <option value="">Toutes les catégories</option>
       <option value="Bague anneau">Bagues</option>
-      <option value="Boucles d'oreilles & Créoles">Boucles & Créoles</option>
+      <option value="Boucles d'oreilles & Créoles">Boucles &amp; Créoles</option>
       <option value="Bracelet chaîne">Bracelets</option>
       <option value="Collier chaîne">Colliers</option>
       <option value="Collier grande">Grande maille</option>
@@ -384,193 +384,286 @@
 </div>
 
 <script>
-const PHOTO_BASE = "../photo/";
-const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTeb1HY3fqUcP26tcQ_crdY2PIIyjT_73TakK1neuc0cxwq-QMyChF2w5Q5kYSkmd14GRSGwYeZCION/pub?output=csv";
+  // =========================
+  // PARAMÈTRES
+  // =========================
+  const PHOTO_BASE = "../photo/"; // NE PAS TOUCHER
+  const SHEET_CSV_URL =
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTeb1HY3fqUcP26tcQ_crdY2PIIyjT_73TakK1neuc0cxwq-QMyChF2w5Q5kYSkmd14GRSGwYeZCION/pub?output=csv";
 
-let produits = [];
-let filteredProduits = [];
-let cart = [];
+  let produits = [];
+  let filteredProduits = [];
+  let cart = [];
 
-/* ==============================
-   CHARGEMENT GOOGLE SHEET (CSV)
-============================== */
-async function loadProduits() {
-  const container = document.getElementById("products");
+  const productsContainer = document.getElementById("products");
+  const cartContent = document.getElementById("cart-content");
+  const btnWhatsapp = document.getElementById("btn-whatsapp");
+  const btnClear = document.getElementById("btn-clear");
+  const selectCategory = document.getElementById("filter-category");
 
-  try {
-    const res = await fetch(CSV_URL, { cache: "no-store" });
-    if (!res.ok) {
-      throw new Error("HTTP " + res.status);
-    }
+  productsContainer.innerHTML =
+    '<p style="font-size:14px; color:#555;">Chargement des bijoux en cours…</p>';
 
-    const text = await res.text();
+  // =========================
+  // OUTILS
+  // =========================
+
+  function parsePrice(value) {
+    if (!value) return 0;
+    // enlève € espaces etc + remplace virgule par point
+    let v = value.toString()
+      .replace(/€/g, "")
+      .replace(/\s/g, "")
+      .replace(",", ".");
+    const n = parseFloat(v);
+    return isNaN(n) ? 0 : n;
+  }
+
+  function parseCSV(text) {
     const lines = text.trim().split(/\r?\n/);
-    // En-tête : Titre ARTICLE, Quantité en stock, Prix public TTC,
-    // Prix Solustoc TTC, Prix HT, Nom de la photo (.webp), Catégorie
-    lines.shift();
+    if (!lines.length) return [];
 
-    produits = lines
-      .map((line, idx) => {
-        const cols = line.split(",");
+    // détecte le séparateur principal (virgule ou point-virgule)
+    const first = lines[0];
+    const countComma = (first.match(/,/g) || []).length;
+    const countSemi = (first.match(/;/g) || []).length;
+    const sep = countSemi > countComma ? ";" : ",";
 
-        // Sécurité si ligne vide
-        if (!cols[0]) return null;
+    const rows = lines.map(l => l.split(sep));
+    const headers = rows[0].map(h => h.trim());
+    const data = rows.slice(1);
 
+    return data
+      .map(cols => {
+        if (!cols[0]) return null; // aucune désignation
         return {
-          id: idx + 1,
-          nom: cols[0] || "",
-          stock: parseInt(cols[1] || "0", 10),
-          prixPublic: parseFloat(cols[2] || "0"),
-          prixSolustoc: parseFloat(cols[3] || "0"),
-          image: cols[5] || "",
-          categorie: cols[6] || ""
+          // on se base sur l’ordre des colonnes du fichier :
+          // A Titre ARTICLE
+          // B Quantité en stock
+          // C Prix public TTC
+          // D Prix Solustoc TTC
+          // E Prix HT
+          // F Nom de la photo (.webp)
+          // G Catégorie
+          nom: (cols[0] || "").trim(),
+          stock: parseInt((cols[1] || "0").trim(), 10) || 0,
+          prixPublic: parsePrice(cols[2]),
+          prixSolustoc: parsePrice(cols[3]),
+          prixHT: parsePrice(cols[4]),
+          image: (cols[5] || "").trim(),
+          categorie: (cols[6] || "").trim()
         };
       })
       .filter(p => p && p.nom);
+  }
 
-    filteredProduits = [...produits];
+  // =========================
+  // CHARGEMENT GOOGLE SHEET
+  // =========================
+
+  async function loadProduits() {
+    try {
+      const res = await fetch(SHEET_CSV_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const text = await res.text();
+      produits = parseCSV(text);
+      filteredProduits = [...produits];
+      renderProduits();
+    } catch (e) {
+      console.error("Erreur Google Sheet :", e);
+      productsContainer.innerHTML =
+        '<p style="font-size:14px; color:#b32121;">Erreur chargement Google Sheet. Vérifiez que le fichier est bien publié en CSV et réessayez.</p>';
+    }
+  }
+
+  // =========================
+  // QTE + / -
+  // =========================
+
+  function changeQty(id, delta) {
+    const el = document.getElementById("qty-" + id);
+    if (!el) return;
+    let value = parseInt(el.textContent || "1", 10);
+    value = value + delta;
+    if (value < 1) value = 1;
+    el.textContent = value;
+  }
+
+  // =========================
+  // PANIER
+  // =========================
+
+  function addToCart(id, qty = 1) {
+    qty = parseInt(qty, 10);
+    if (qty < 1) return;
+    const p = produits.find(pr => pr.id === id || pr._id === id);
+    // si pas trouvé par id numérique, on essaie via index
+    const product = p || produits.find(pr => pr._id === id);
+    if (!product) return;
+
+    const exist = cart.find(i => i.id === id);
+    if (exist) exist.qty += qty;
+    else {
+      cart.push({
+        id: id,
+        nom: product.nom,
+        prix: product.prixSolustoc,
+        prixPublic: product.prixPublic,
+        qty
+      });
+    }
+    renderCart();
+  }
+
+  btnClear.onclick = () => {
+    cart = [];
+    renderCart();
+  };
+
+  btnWhatsapp.onclick = () => {
+    if (!cart.length) return;
+    let msg = "🛍️ *Commande de bijoux Solustoc*\n\n";
+
+    cart.forEach(i => {
+      msg += `• ${i.nom} × ${i.qty} — ${i.prix.toFixed(2)}€ TTC (PV conseillé ${i.prixPublic.toFixed(2)}€)\n`;
+    });
+
+    const total = cart.reduce((s, i) => s + i.prix * i.qty, 0);
+    msg += `\n📦 Total Solustoc : *${total.toFixed(2)} € TTC*`;
+
+    window.open(
+      "https://wa.me/33756923323/?text=" + encodeURIComponent(msg),
+      "_blank"
+    );
+  };
+
+  function renderCart() {
+    if (!cart.length) {
+      cartContent.innerHTML =
+        '<p style="text-align:center; font-size:13px; color:#555;">Aucun bijou dans votre sélection pour le moment.</p>';
+      btnWhatsapp.disabled = true;
+      return;
+    }
+
+    const total = cart.reduce((s, i) => s + i.prix * i.qty, 0);
+
+    cartContent.innerHTML = `
+      <table class="cart-table">
+        <tr><th>Article</th><th>Qté</th><th>Prix</th><th>Total</th></tr>
+        ${cart
+          .map(
+            i => `
+          <tr>
+            <td>${i.nom}</td>
+            <td>${i.qty}</td>
+            <td>${i.prix.toFixed(2)} €</td>
+            <td>${(i.prix * i.qty).toFixed(2)} €</td>
+          </tr>`
+          )
+          .join("")}
+      </table>
+      <p class="cart-total">Total Solustoc : ${total.toFixed(2)} € TTC</p>
+    `;
+
+    btnWhatsapp.disabled = false;
+  }
+
+  // =========================
+  // FILTRES + RENDU PRODUITS
+  // =========================
+
+  function applyFilters() {
+    const cat = selectCategory.value;
+    filteredProduits = produits.filter(p => {
+      return cat ? p.categorie === cat : true;
+    });
     renderProduits();
-  } catch (e) {
-    console.error("Erreur chargement Google Sheet :", e);
-    container.innerHTML =
-      '<p style="color:red; font-size:14px;">Erreur chargement Google Sheet.</p>';
   }
-}
 
-/* QTY + / - */
-function changeQty(id, delta) {
-  const el = document.getElementById("qty-" + id);
-  if (!el) return;
-  let value = parseInt(el.textContent || "1", 10);
-  value = value + delta;
-  if (value < 1) value = 1;
-  el.textContent = value;
-}
+  selectCategory.addEventListener("change", applyFilters);
 
-/* AJOUTER AU PANIER */
-function addToCart(id, qty = 1) {
-  qty = parseInt(qty, 10);
-  if (qty < 1) return;
-  const p = produits.find(pr => pr.id === id);
-  if (!p) return;
+  function renderProduits() {
+    if (!filteredProduits.length) {
+      productsContainer.innerHTML = `
+        <p style="font-size:14px; color:#555;">
+          Aucun bijou ne correspond à ce filtre pour le moment.
+        </p>`;
+      return;
+    }
 
-  const exist = cart.find(i => i.id === id);
-  if (exist) exist.qty += qty;
-  else cart.push({ id: p.id, nom: p.nom, prix: p.prixSolustoc, prixPublic: p.prixPublic, qty });
+    // on attribue un id interne si besoin
+    filteredProduits.forEach((p, index) => {
+      if (typeof p.id === "undefined") p.id = index + 1;
+      p._id = p.id;
+    });
 
+    productsContainer.innerHTML = filteredProduits
+      .map(p => {
+        const coef =
+          p.prixSolustoc > 0 ? p.prixPublic / p.prixSolustoc : 0;
+        const coefTxt =
+          p.prixSolustoc > 0
+            ? `Marge revendeur ≈ x${coef.toFixed(1)}`
+            : "";
+
+        const imgSrc = PHOTO_BASE + (p.image || "");
+
+        return `
+        <div class="card">
+          <img src="${imgSrc}" alt="${p.nom}"
+               onerror="this.style.background='#eee';this.src='';"
+               onclick="openLightbox('${imgSrc}')">
+          <div class="cat-label">${p.categorie || ""}</div>
+          <h3>${p.nom}</h3>
+          <p class="price-line">
+            <span class="price-solustoc">Prix Solustoc : ${p.prixSolustoc.toFixed(2)} € TTC</span>
+            <span class="price-public">Prix public constaté : ${p.prixPublic.toFixed(2)} € TTC</span>
+            ${
+              coefTxt
+                ? `<span class="price-public">${coefTxt}</span>`
+                : ""
+            }
+          </p>
+          <p class="stock">Stock disponible : ${p.stock}</p>
+
+          <div class="qty-row">
+            <button class="qty-minus" onclick="changeQty(${p.id}, -1)">−</button>
+            <span id="qty-${p.id}" class="qty-value">1</span>
+            <button class="qty-plus" onclick="changeQty(${p.id}, 1)">+</button>
+          </div>
+
+          <button class="btn-small"
+                  onclick="addToCart(${p.id}, document.getElementById('qty-${p.id}').textContent)">
+            Ajouter
+          </button>
+        </div>`;
+      })
+      .join("");
+  }
+
+  // =========================
+  // LIGHTBOX
+  // =========================
+
+  function openLightbox(src) {
+    document.getElementById("lightbox-img").src = src;
+    document.getElementById("lightbox").style.display = "flex";
+  }
+  document.getElementById("lightbox-close").onclick = () => {
+    document.getElementById("lightbox").style.display = "none";
+  };
+
+  // on met la fonction dans le scope global pour l'attribut onclick
+  window.openLightbox = openLightbox;
+  window.changeQty = changeQty;
+  window.addToCart = addToCart;
+
+  // =========================
+  // INIT
+  // =========================
+
+  loadProduits();
   renderCart();
-}
-
-/* SUPPRIMER PANIER */
-document.getElementById("btn-clear").onclick = () => { cart = []; renderCart(); };
-
-/* ENVOI WHATSAPP */
-document.getElementById("btn-whatsapp").onclick = () => {
-  if (!cart.length) return;
-  let msg = "🛍️ *Commande de bijoux Solustoc*\n\n";
-
-  cart.forEach(i => {
-    msg += `• ${i.nom} × ${i.qty} — ${i.prix.toFixed(2)}€ TTC (PV conseillé ${i.prixPublic.toFixed(2)}€)\n`;
-  });
-
-  const total = cart.reduce((s, i) => s + i.prix * i.qty, 0);
-  msg += `\n📦 Total Solustoc : *${total.toFixed(2)} € TTC*`;
-
-  window.open("https://wa.me/33756923323/?text=" + encodeURIComponent(msg), "_blank");
-};
-
-/* FILTRES */
-function applyFilters() {
-  const cat = document.getElementById("filter-category").value;
-
-  filteredProduits = produits.filter(p => {
-    return cat ? p.categorie === cat : true;
-  });
-
-  renderProduits();
-}
-document.getElementById("filter-category").addEventListener("change", applyFilters);
-
-/* RENDU PRODUITS */
-function renderProduits() {
-  const container = document.getElementById("products");
-
-  if (!filteredProduits.length) {
-    container.innerHTML = `<p style="font-size:14px; color:#555;">Aucun bijou ne correspond à ce filtre pour le moment.</p>`;
-    return;
-  }
-
-  container.innerHTML = filteredProduits.map(p => {
-    const coef = p.prixSolustoc > 0 ? (p.prixPublic / p.prixSolustoc) : 0;
-    const coefTxt = p.prixSolustoc > 0 ? `Marge revendeur ≈ x${coef.toFixed(1)}` : "";
-
-    const imgSrc = PHOTO_BASE + p.image;
-
-    return `
-    <div class="card">
-      <img src="${imgSrc}" alt="${p.nom}" onclick="openLightbox('${imgSrc}')">
-      <div class="cat-label">${p.categorie || ""}</div>
-      <h3>${p.nom}</h3>
-      <p class="price-line">
-        <span class="price-solustoc">Prix Solustoc : ${p.prixSolustoc.toFixed(2)} € TTC</span>
-        <span class="price-public">Prix public constaté : ${p.prixPublic.toFixed(2)} € TTC</span>
-        <span class="price-public">${coefTxt}</span>
-      </p>
-      <p class="stock">Stock disponible : ${p.stock}</p>
-
-      <div class="qty-row">
-        <button class="qty-minus" onclick="changeQty(${p.id}, -1)">−</button>
-        <span id="qty-${p.id}" class="qty-value">1</span>
-        <button class="qty-plus" onclick="changeQty(${p.id}, 1)">+</button>
-      </div>
-
-      <button class="btn-small" onclick="addToCart(${p.id}, document.getElementById('qty-${p.id}').textContent)">Ajouter</button>
-    </div>`;
-  }).join("");
-}
-
-/* RENDU PANIER */
-function renderCart() {
-  const cartBlock = document.getElementById("cart-content");
-
-  if (!cart.length) {
-    cartBlock.innerHTML = `<p style="text-align:center; font-size:13px; color:#555;">Aucun bijou dans votre sélection pour le moment.</p>`;
-    document.getElementById("btn-whatsapp").disabled = true;
-    return;
-  }
-
-  const total = cart.reduce((s, i) => s + i.prix * i.qty, 0);
-
-  cartBlock.innerHTML = `
-    <table class="cart-table">
-      <tr><th>Article</th><th>Qté</th><th>Prix</th><th>Total</th></tr>
-      ${cart.map(i => `
-        <tr>
-          <td>${i.nom}</td>
-          <td>${i.qty}</td>
-          <td>${i.prix.toFixed(2)} €</td>
-          <td>${(i.prix * i.qty).toFixed(2)} €</td>
-        </tr>
-      `).join("")}
-    </table>
-    <p class="cart-total">Total Solustoc : ${total.toFixed(2)} € TTC</p>
-  `;
-
-  document.getElementById("btn-whatsapp").disabled = false;
-}
-
-/* LIGHTBOX */
-function openLightbox(src) {
-  document.getElementById("lightbox-img").src = src;
-  document.getElementById("lightbox").style.display = "flex";
-}
-document.getElementById("lightbox-close").onclick = () => {
-  document.getElementById("lightbox").style.display = "none";
-};
-
-/* INIT */
-loadProduits();
-renderCart();
 </script>
 
 </body>
