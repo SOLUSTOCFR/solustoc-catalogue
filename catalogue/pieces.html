@@ -78,8 +78,10 @@
     .cart-total-line { text-align: right; font-weight: bold; font-size: 16px; margin-top: 10px; color: #b32121; }
 
     /* FOOTER */
-    footer { background: #e8f9ec; padding: 20px; font-size: 11px; text-align: center; color: #555; border-top: 1px solid #cdecd6; margin-top: 40px; }
+    footer { background: #e8f9ec; padding: 24px 14px; font-size: 12px; text-align: center; color: #555; border-top: 1px solid #cdecd6; margin-top: 40px; line-height: 1.6; }
+    footer strong { color: #333; font-size: 13px; }
     footer a { color: #8d3b42; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
 
     /* LIGHTBOX */
     .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 9999; }
@@ -184,13 +186,18 @@
 </div>
 
 <footer>
-  <strong>SOLUSTOC SAS</strong><br>
-  69 bis rue du Bêle, 44200 Nantes<br>
-  SIREN : 929 179 579<br><br>
-  <a href="mailto:contact@solustoc.fr">contact@solustoc.fr</a> • 
-  <a href="https://wa.me/33756923323">07 56 92 33 23</a><br>
-  <br>
-  Conditions Générales de Vente • Mentions Légales
+  <strong>Solustoc – Déstockage pour les pros</strong><br>
+  Email : <a href="mailto:contact@solustoc.fr">contact@solustoc.fr</a><br>
+  WhatsApp : <a href="https://wa.me/33756923323">07 56 92 33 23</a><br><br>
+  
+  <div style="font-size:11px; color:#666; margin-bottom:10px;">
+    SIRET : 943 702 126 00013<br>
+    Les Bijoux Français est une marque exploitée par la société SOLUSTOC SAS.
+  </div>
+
+  <a href="https://lesbijouxfrancais.fr/mentions-legales" target="_blank">Mentions légales</a> · 
+  <a href="https://lesbijouxfrancais.fr/politique-de-confidentialite" target="_blank">Politique de confidentialité</a> · 
+  <a href="https://lesbijouxfrancais.fr/bijoux-de-mimi-bijoux-creation-francaise" target="_blank">À propos des Bijoux de Mimi</a>
 </footer>
 
 <div class="lightbox" id="lightbox">
@@ -371,7 +378,7 @@
     
     updateCartUI();
     
-    // Feedback visuel (Optionnel)
+    // Feedback visuel
     const btn = event.target;
     const old = btn.innerText;
     btn.innerText = "✅ Ajouté !";
@@ -423,8 +430,6 @@
     const total = cart.reduce((acc, i) => acc + (i.prixSolus * i.qty), 0);
     msg += `\n💰 *Total HT : ${formatPrix(total)}*`;
     msg += `\n\nMerci de me confirmer le stock et le montant TTC avec livraison.`;
-    
-    // Pixel Facebook (Placeholder) : fbq('track', 'InitiateCheckout');
     
     window.open("https://wa.me/33756923323/?text=" + encodeURIComponent(msg), "_blank");
   };
