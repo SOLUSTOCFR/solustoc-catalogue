@@ -2,383 +2,111 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Catalogue Solustoc – Bijoux à la pièce pour revendeurs</title>
+  <title>Catalogue Solustoc – Bijoux à la pièce</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #fff7ea;
-      color: #222;
-    }
-
-    header {
-      background: #fff7ea;
-      text-align: center;
-      padding: 22px 14px;
-    }
-    header img {
-      max-width: 160px;
-      height: auto;
-    }
-
-    .wrapper {
-      width: 94%;
-      max-width: 1100px;
-      margin: 18px auto 40px;
-    }
-
-    /* HERO */
-    .hero {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 22px 18px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.08);
-      margin-bottom: 22px;
-      text-align: center;
-      border: 1px solid #f2dfc8;
-    }
-    .hero h2 {
-      margin-top: 0;
-      font-size: 20px;
-      font-weight: bold;
-      color: #8d3b42;
-    }
-    .hero p {
-      margin: 6px 0;
-      font-size: 14px;
-    }
-
-    .badge-row {
-      margin-top: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-      font-size: 13px;
-    }
-    .badge {
-      background: #f6e5c1;
-      border-radius: 999px;
-      padding: 5px 12px;
-      border: 1px solid #e4d5b1;
-    }
-
-    /* SECTION TITLES */
-    .section-title {
-      margin: 24px 0 10px;
-      font-size: 19px;
-      font-weight: bold;
-      color: #8d3b42;
-    }
-
+    /* STYLE IDENTIQUE A L'ORIGINAL POUR CONSERVER TA CHARTE */
+    body { font-family: Arial, sans-serif; margin: 0; background: #fff7ea; color: #222; }
+    header { background: #fff7ea; text-align: center; padding: 22px 14px; }
+    header img { max-width: 160px; height: auto; }
+    .wrapper { width: 94%; max-width: 1100px; margin: 18px auto 40px; }
+    .hero { background: #ffffff; border-radius: 16px; padding: 22px 18px; box-shadow: 0 0 12px rgba(0,0,0,0.08); margin-bottom: 22px; text-align: center; border: 1px solid #f2dfc8; }
+    .hero h2 { margin-top: 0; font-size: 20px; font-weight: bold; color: #8d3b42; }
+    .hero p { margin: 6px 0; font-size: 14px; }
+    .badge-row { margin-top: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; font-size: 13px; }
+    .badge { background: #f6e5c1; border-radius: 999px; padding: 5px 12px; border: 1px solid #e4d5b1; }
+    .section-title { margin: 24px 0 10px; font-size: 19px; font-weight: bold; color: #8d3b42; }
+    
     /* BARRE DE FILTRE */
-    .filter-bar {
-      margin: 10px 0 16px;
-      background: #fff;
-      padding: 12px;
-      border-radius: 12px;
-      border: 1px solid #eedfcb;
-      box-shadow: 0 0 8px rgba(0,0,0,0.04);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-      font-size: 14px;
-    }
-    .filter-bar label {
-      font-weight: bold;
-      margin-right: 4px;
-      color: #8d3b42;
-    }
-    .filter-bar select {
-      padding: 8px 10px;
-      border-radius: 8px;
-      border: 1px solid #c9a66b;
-      background: #fffdf8;
-      font-size: 14px;
-      color: #333;
-    }
+    .filter-bar { margin: 10px 0 16px; background: #fff; padding: 12px; border-radius: 12px; border: 1px solid #eedfcb; box-shadow: 0 0 8px rgba(0,0,0,0.04); display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 14px; }
+    .filter-bar select { padding: 8px 10px; border-radius: 8px; border: 1px solid #c9a66b; background: #fffdf8; font-size: 14px; color: #333; min-width: 200px; }
 
-    /* GRID PRODUITS */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 14px;
-    }
-
-    .card {
-      background: #ffffff;
-      border-radius: 14px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.07);
-      border: 1px solid #f3e5d2;
-      padding: 12px 12px 14px;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .card img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 8px;
-      background: #ddd;
-      cursor: pointer;
-    }
-
-    .card h3 {
-      font-size: 15px;
-      margin: 4px 0 4px;
-      font-weight: bold;
-      min-height: 40px;
-      color: #333;
-    }
-
-    .cat-label {
-      font-size: 12px;
-      color: #8d3b42;
-      margin-bottom: 3px;
-      font-weight: bold;
-    }
-
-    .price-line {
-      font-size: 14px;
-      margin: 2px 0;
-      line-height: 1.3;
-    }
-
+    /* GRID */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+    .card { background: #ffffff; border-radius: 14px; box-shadow: 0 0 10px rgba(0,0,0,0.07); border: 1px solid #f3e5d2; padding: 12px 12px 14px; display: flex; flex-direction: column; height: 100%; }
+    .card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 10px; margin-bottom: 8px; background: #ddd; cursor: pointer; }
+    .card h3 { font-size: 15px; margin: 4px 0 4px; font-weight: bold; min-height: 40px; color: #333; }
+    .cat-label { font-size: 12px; color: #8d3b42; margin-bottom: 3px; font-weight: bold; }
+    .price-line { font-size: 14px; margin: 2px 0; line-height: 1.3; }
     .price-solustoc { font-weight: bold; color: #b32121; }
-    .price-public   { font-size: 13px; color: #444; display:block; }
-
+    .price-public { font-size: 13px; color: #444; display:block; }
     .stock { font-size: 13px; color: #555; margin-top: 2px; }
-
-    /* QUANTITÉ */
-    .qty-row {
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:8px;
-      margin-top:6px;
-    }
-    .qty-minus, .qty-plus {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      font-size: 18px;
-      border: 1px solid #ccbda3;
-      cursor: pointer;
-      background: #faf3e3;
-    }
-    .qty-minus:hover, .qty-plus:hover { background: #f1e3c8; }
-    .qty-value { font-size: 16px; font-weight: bold; color: #333; }
-
-    .btn-small {
-      margin-top: 10px;
-      padding: 9px 10px;
-      font-size: 14px;
-      border-radius: 999px;
-      border: none;
-      background: #25D366;
-      color: #fff;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .btn-small:hover { background: #1ebe5c; }
-
+    
+    /* CONTROLES */
+    .qty-row { display:flex; justify-content:center; align-items:center; gap:8px; margin-top:6px; }
+    .qty-minus, .qty-plus { width: 32px; height: 32px; border-radius: 8px; font-size: 18px; border: 1px solid #ccbda3; cursor: pointer; background: #faf3e3; }
+    .btn-small { margin-top: 10px; padding: 9px 10px; font-size: 14px; border-radius: 999px; border: none; background: #25D366; color: #fff; font-weight: bold; cursor: pointer; }
+    
     /* PANIER */
-    .cart-block {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 18px 14px 16px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.06);
-      border: 1px solid #ecdcc4;
-      margin-top: 30px;
-    }
-    .cart-block h2 {
-      margin-top:0;
-      font-size:20px;
-      text-align:center;
-      color: #8d3b42;
-    }
-    .cart-info {
-      font-size:13px;
-      text-align:center;
-      color:#555;
-      margin-bottom:8px;
-    }
-
-    table.cart-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-      margin-top: 8px;
-    }
-    table.cart-table th,
-    table.cart-table td {
-      padding: 4px 6px;
-      border-bottom: 1px solid #eee;
-      text-align: left;
-    }
-
-    .cart-total {
-      margin-top: 10px;
-      font-weight: bold;
-      text-align: right;
-      font-size: 15px;
-      color: #333;
-    }
-
-    .cart-actions {
-      margin-top: 14px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-    }
-    .btn-main {
-      padding: 12px 14px;
-      border-radius: 999px;
-      border: none;
-      font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
-      color: #fff;
-      background: #25D366;
-    }
+    .cart-block { background: #ffffff; border-radius: 16px; padding: 18px 14px 16px; box-shadow: 0 0 12px rgba(0,0,0,0.06); border: 1px solid #ecdcc4; margin-top: 30px; }
+    .cart-block h2 { margin-top:0; font-size:20px; text-align:center; color: #8d3b42; }
+    .cart-info { font-size:13px; text-align:center; color:#555; margin-bottom:8px; }
+    table.cart-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+    table.cart-table th, table.cart-table td { padding: 4px 6px; border-bottom: 1px solid #eee; text-align: left; }
+    .cart-total { margin-top: 10px; font-weight: bold; text-align: right; font-size: 15px; color: #333; }
+    .cart-actions { margin-top: 14px; display:flex; flex-direction:column; gap:10px; }
+    .btn-main { padding: 12px 14px; border-radius: 999px; border: none; font-size: 15px; font-weight: bold; cursor: pointer; color: #fff; background: #25D366; }
     .btn-main[disabled] { opacity: 0.5; cursor: not-allowed; }
-    .btn-secondary {
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: none;
-      font-size: 13px;
-      cursor: pointer;
-      background: #f0f0f0;
-      color: #333;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 12px;
-      color: #777;
-      padding: 24px 10px 28px;
-    }
-
+    .btn-secondary { padding: 8px 12px; border-radius: 999px; border: none; font-size: 13px; cursor: pointer; background: #f0f0f0; color: #333; }
+    
+    footer { text-align: center; font-size: 12px; color: #777; padding: 24px 10px 28px; }
+    
     /* LIGHTBOX */
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.9);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 10px;
-    }
-    .lightbox-close {
-      position: fixed;
-      top: 14px;
-      right: 20px;
-      font-size: 28px;
-      color: #fff;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .error-msg {
-      margin-top: 10px;
-      font-size: 13px;
-      color: #b00020;
-      text-align: center;
-    }
+    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 9999; }
+    .lightbox img { max-width: 90%; max-height: 90%; border-radius: 10px; }
+    .lightbox-close { position: fixed; top: 14px; right: 20px; font-size: 28px; color: #fff; cursor: pointer; font-weight: bold; }
+    .error-msg { margin-top: 10px; font-size: 13px; color: #b00020; text-align: center; background: #ffe6e6; padding: 10px; border-radius: 8px; }
   </style>
 </head>
 
 <body>
 
 <header>
-  <img src="../img/logosbijouxfrancais.webp"
-       alt="Les Bijoux Français / Bijoux de Mimi">
+  <img src="../img/logosbijouxfrancais.webp" alt="Les Bijoux Français / Bijoux de Mimi">
 </header>
 
 <div class="wrapper">
 
   <section class="hero">
     <h2>Bijoux de Mimi – Achat à la pièce pour revendeurs</h2>
-
-    <p>
-      Sélectionnez les références souhaitées, ajoutez-les au panier puis envoyez votre commande
-      directement via WhatsApp. Idéal pour boutiques, marchés, stands, auto-entrepreneurs et
-      e-commerces.
-    </p>
-
-    <p>
-      Bijoux en <strong>acier inoxydable doré à l’or fin</strong> avec un prix public constaté entre
-      <strong>5 € et 15 €</strong>. Marges revendeurs typiques : <strong>x3 à x5</strong>.
-    </p>
-
-    <p><strong>Livraison offerte dès 200 € TTC de commande.</strong></p>
-
+    <p>Sélectionnez les références, ajoutez au panier et commandez via WhatsApp.</p>
+    <p><strong>Livraison offerte dès 200 € TTC.</strong></p>
     <div class="badge-row">
-      <span class="badge">💎 Bijoux de Mimi – qualité boutique</span>
-      <span class="badge">📦 Stock réel disponible</span>
-      <span class="badge">🚚 Expédition rapide depuis la France</span>
-      <span class="badge">🇫🇷 Société française – facture fournie</span>
+      <span class="badge">💎 Qualité boutique</span>
+      <span class="badge">📦 Stock réel</span>
+      <span class="badge">🇫🇷 Expédition France</span>
     </div>
   </section>
 
-  <h2 class="section-title">Bijoux disponibles à la pièce</h2>
+  <h2 class="section-title">Catalogue</h2>
 
-  <!-- FILTRES -->
   <div class="filter-bar">
     <label for="filter-category">Catégorie :</label>
     <select id="filter-category">
-      <option value="">Toutes les catégories</option>
-      <option value="Bague anneau">Bagues</option>
-      <option value="Boucles d'oreilles & Créoles">Boucles & Créoles</option>
-      <option value="Bracelet chaîne">Bracelets</option>
-      <option value="Collier chaîne">Colliers</option>
-      <option value="Collier grande">Grandes mailles</option>
-      <option value="Cordon doré">Cordons</option>
-      <option value="Médaille initiale">Initiales</option>
-      <option value="Médaille pampille">Médailles pampille</option>
-      <option value="Médaille pompon">Médailles pompon</option>
-      <option value="Médaille précieuse">Médailles précieuses</option>
-      <option value="Médaille symbole">Médailles symbole</option>
+      <option value="">Chargement des catégories...</option>
     </select>
   </div>
 
-  <div id="sheet-error" class="error-msg" style="display:none;">
-    Erreur chargement Google Sheet.
-  </div>
+  <div id="sheet-error" class="error-msg" style="display:none;"></div>
 
-  <section id="products" class="grid"></section>
+  <section id="products" class="grid">
+    <p style="text-align:center; width:100%;">Chargement des produits en cours...</p>
+  </section>
 
   <section class="cart-block" id="cart-block">
     <h2>Votre sélection</h2>
-    <div class="cart-info">
-      Ajoutez vos bijoux puis envoyez votre commande via WhatsApp.  
-      Livraison offerte dès 200 € TTC.
-    </div>
-    <div id="cart-content">
-      <p style="text-align:center; font-size:13px; color:#555;">
-        Aucun bijou dans votre sélection pour l’instant.
-      </p>
-    </div>
+    <div class="cart-info">Minimum conseillé pour livraison offerte : 200 €</div>
+    <div id="cart-content"></div>
     <div class="cart-actions">
       <button id="btn-whatsapp" class="btn-main" disabled>📲 Envoyer via WhatsApp</button>
-      <button id="btn-clear" class="btn-secondary">🗑️ Vider la sélection</button>
+      <button id="btn-clear" class="btn-secondary">🗑️ Vider</button>
     </div>
   </section>
 
 </div>
 
-<footer>Solustoc • Grossiste bijoux • Acier inoxydable doré à l’or fin</footer>
+<footer>Solustoc • Grossiste bijoux</footer>
 
 <div class="lightbox" id="lightbox">
   <span class="lightbox-close" id="lightbox-close">×</span>
@@ -386,97 +114,80 @@
 </div>
 
 <script>
-  // IMPORTANT : on ne touche pas au dossier images.
-  const PHOTO_BASE = "../photo/";
+  // CONFIGURATION
+  // IMPORTANT : Assure-toi que le dossier 'photo' est au bon endroit sur le serveur
+  const PHOTO_BASE = "../photo/"; 
+  const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTeb1HY3fqUcP26tcQ_crdY2PIIyjT_73TakK1neuc0cxwq-QMyChF2w5Q5kYSkmd14GRSGwYeZCION/pub?output=csv";
 
-  // URL CSV publié depuis ton Google Sheet
-  const SHEET_CSV_URL =
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTeb1HY3fqUcP26tcQ_crdY2PIIyjT_73TakK1neuc0cxwq-QMyChF2w5Q5kYSkmd14GRSGwYeZCION/pub?output=csv";
+  // VARIABLES GLOBALES
+  const produits = [];
+  let filteredProduits = [];
+  let cart = [];
 
-  /* ==============================
-         DONNÉES ET PANIER
-  ===============================*/
-  const produits = [];           // rempli depuis Google Sheet
-  let   filteredProduits = [];   // vue filtrée
-  let   cart = [];               // panier
-
-  /* ==============================
-        UTILITAIRES FORMATTAGE
-  ===============================*/
+  // UTILITAIRES
   function parsePrix(str) {
     if (!str) return 0;
-    // enlève € et espaces, remplace virgule par point
-    const clean = str
-      .toString()
-      .replace(/[€]/g, "")
-      .replace(/\s/g, "")
-      .replace(",", ".");
+    // Nettoyage agressif : garde chiffres, virgule, point
+    const clean = str.toString().replace(/[^0-9.,]/g, "").replace(",", ".");
     const val = parseFloat(clean);
     return isNaN(val) ? 0 : val;
   }
 
   function formatPrix(val) {
-    return val.toLocaleString("fr-FR", {
-      style: "currency",
-      currency: "EUR",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    });
+    return val.toLocaleString("fr-FR", { style: "currency", currency: "EUR" });
   }
 
-  /* ==============================
-          CHARGEMENT SHEET
-  ===============================*/
+  // CHARGEMENT DU CSV
   async function loadProduitsFromSheet() {
+    const errBox = document.getElementById("sheet-error");
     try {
       const res = await fetch(SHEET_CSV_URL);
-      if (!res.ok) throw new Error("HTTP " + res.status);
+      if (!res.ok) throw new Error("Erreur HTTP " + res.status);
       const csv = await res.text();
 
       const lines = csv.trim().split(/\r?\n/);
-      if (!lines.length) throw new Error("CSV vide");
+      if (lines.length < 2) throw new Error("Le fichier CSV semble vide ou illisible.");
 
-      // détecte le séparateur : ; ou ,
-      const headerLine = lines.shift();
+      // Détection séparateur (, ou ;)
+      const headerLine = lines[0];
       const delimiter = headerLine.includes(";") ? ";" : ",";
       const headers = headerLine.split(delimiter).map(h => h.trim().toLowerCase());
 
-      function indexOfHeader(label) {
-        return headers.findIndex(h => h.startsWith(label));
-      }
+      console.log("En-têtes trouvées :", headers); // Pour le debug (F12)
 
-      const idxTitre      = indexOfHeader("titre article");
-      const idxStock      = indexOfHeader("quantité en stock");
-      const idxPrixPublic = indexOfHeader("prix public");
-      const idxPrixSolus  = indexOfHeader("prix solustoc");
-      const idxImage      = indexOfHeader("nom de la photo");
-      const idxCategorie  = indexOfHeader("catégorie");
+      // Recherche "intelligente" des colonnes (contient le mot clé)
+      const getIdx = (keyword) => headers.findIndex(h => h.includes(keyword));
 
-      if (idxTitre < 0 || idxImage < 0) {
-        throw new Error("En-têtes CSV inattendues");
+      const idxTitre      = getIdx("titre");    // cherche 'titre'
+      const idxStock      = getIdx("stock");    // cherche 'stock'
+      const idxPrixPublic = getIdx("public");   // cherche 'public'
+      const idxPrixSolus  = getIdx("solustoc"); // cherche 'solustoc'
+      const idxImage      = getIdx("photo");    // cherche 'photo'
+      const idxCategorie  = getIdx("cat");      // cherche 'cat' (catégorie)
+
+      if (idxTitre === -1 || idxImage === -1) {
+        throw new Error(`Colonnes introuvables. Vérifiez le CSV. (Titre:${idxTitre}, Photo:${idxImage})`);
       }
 
       let idCounter = 1;
       produits.length = 0;
 
-      for (const line of lines) {
+      // Lecture des données (on saute la ligne 0)
+      for (let i = 1; i < lines.length; i++) {
+        const line = lines[i];
         if (!line.trim()) continue;
+
+        // Split simple (attention si virgules dans le titre, le CSV doit utiliser ;)
         const cells = line.split(delimiter);
 
-        const titre = (cells[idxTitre] || "").trim();
+        const titre = (cells[idxTitre] || "").trim().replace(/"/g, ""); // on vire les guillemets
         if (!titre) continue;
 
-        const stockStr = (cells[idxStock] || "").toString().replace(/\s/g, "");
-        const stock    = parseInt(stockStr, 10) || 0;
-
-        const prixPublicStr = (cells[idxPrixPublic] || "").toString();
-        const prixSolusStr  = (cells[idxPrixSolus]  || "").toString();
-
-        const prixPublic   = parsePrix(prixPublicStr);
-        const prixSolustoc = parsePrix(prixSolusStr);
-
+        const stock = parseInt((cells[idxStock] || "0").replace(/\D/g, ""), 10) || 0;
+        const prixPublic = parsePrix(cells[idxPrixPublic]);
+        const prixSolustoc = parsePrix(cells[idxPrixSolus]);
         const image = (cells[idxImage] || "").trim();
-        const categorie = (cells[idxCategorie] || "").trim();
+        const categorie = (cells[idxCategorie] || "Divers").trim();
 
         produits.push({
           id: idCounter++,
@@ -489,190 +200,151 @@
         });
       }
 
+      console.log("Produits chargés :", produits.length);
+      
+      // Générer les filtres dynamiquement
+      generateFilters();
+      
+      // Affichage initial
       filteredProduits = [...produits];
-      document.getElementById("sheet-error").style.display = "none";
-      renderProduits();      // on affiche les cartes une fois que tout est prêt
-    } catch (e) {
-      console.error("Erreur Google Sheet :", e);
-      document.getElementById("sheet-error").style.display = "block";
-      // si erreur, on laisse la grille vide plutôt que des données fausses
-      filteredProduits = [];
+      errBox.style.display = "none";
       renderProduits();
+
+    } catch (e) {
+      console.error(e);
+      errBox.textContent = "Erreur technique : " + e.message;
+      errBox.style.display = "block";
+      document.getElementById("products").innerHTML = "";
     }
   }
 
-  /* ==============================
-            QTE + / -
-  ===============================*/
-  function changeQty(id, delta) {
-    const el = document.getElementById("qty-" + id);
-    if (!el) return;
-    let value = parseInt(el.textContent || "1", 10);
-    value = value + delta;
-    if (value < 1) value = 1;
-    el.textContent = value;
+  // GÉNÉRATION AUTOMATIQUE DES FILTRES
+  function generateFilters() {
+    // Récupère les catégories uniques
+    const cats = [...new Set(produits.map(p => p.categorie).filter(c => c))].sort();
+    const select = document.getElementById("filter-category");
+    
+    let html = `<option value="">Toutes les catégories (${produits.length})</option>`;
+    cats.forEach(c => {
+      html += `<option value="${c}">${c}</option>`;
+    });
+    select.innerHTML = html;
   }
 
-  /* ==============================
-            PANIER
-  ===============================*/
-  function addToCart(id, qty = 1) {
-    qty = parseInt(qty, 10);
-    if (qty < 1) return;
-    const p = produits.find(pr => pr.id === id);
-    if (!p) return;
-
-    const exist = cart.find(i => i.id === id);
-    if (exist) exist.qty += qty;
-    else cart.push({
-      id: p.id,
-      nom: p.nom,
-      prix: p.prixSolustoc,
-      prixPublic: p.prixPublic,
-      qty
-    });
-
-    renderCart();
-  }
-
-  document.getElementById("btn-clear").onclick = () => {
-    cart = [];
-    renderCart();
-  };
-
-  document.getElementById("btn-whatsapp").onclick = () => {
-    if (!cart.length) return;
-    let msg = "🛍️ *Commande de bijoux Solustoc*\n\n";
-
-    cart.forEach(i => {
-      msg += `• ${i.nom} × ${i.qty} — ${formatPrix(i.prix)} (PV conseillé ${formatPrix(i.prixPublic)})\n`;
-    });
-
-    const total = cart.reduce((s, i) => s + i.prix * i.qty, 0);
-    msg += `\n📦 Total Solustoc : *${formatPrix(total)}*`;
-
-    window.open("https://wa.me/33756923323/?text=" + encodeURIComponent(msg), "_blank");
-  };
-
-  /* ==============================
-               FILTRES
-  ===============================*/
+  // FILTRAGE
   function applyFilters() {
     const cat = document.getElementById("filter-category").value;
-
     filteredProduits = produits.filter(p => {
       return cat ? p.categorie === cat : true;
     });
-
     renderProduits();
   }
   document.getElementById("filter-category").addEventListener("change", applyFilters);
 
-  /* ==============================
-           RENDU PRODUITS
-  ===============================*/
+  // RENDU HTML
   function renderProduits() {
     const container = document.getElementById("products");
-
     if (!filteredProduits.length) {
-      container.innerHTML =
-        `<p style="font-size:14px; color:#555;">Aucun bijou ne correspond à ce filtre pour le moment.</p>`;
+      container.innerHTML = `<p style="grid-column:1/-1; text-align:center;">Aucun produit trouvé.</p>`;
       return;
     }
 
     container.innerHTML = filteredProduits.map(p => {
-      const coef = p.prixSolustoc ? (p.prixPublic / p.prixSolustoc) : 0;
-      const coefTxt = p.prixSolustoc
-        ? `Marge revendeur ≈ x${coef.toFixed(1)}`
-        : "";
-
       const imgSrc = PHOTO_BASE + p.image;
-
       return `
         <div class="card">
-          <img src="${imgSrc}" alt="${p.nom}"
-               onerror="this.style.display='none';"
+          <img src="${imgSrc}" alt="${p.nom}" 
+               onerror="this.src='https://via.placeholder.com/300x300?text=Pas+d+image'"
                onclick="openLightbox('${imgSrc}')">
-          <div class="cat-label">${p.categorie || ""}</div>
+          <div class="cat-label">${p.categorie}</div>
           <h3>${p.nom}</h3>
-          <p class="price-line">
-            <span class="price-solustoc">Prix Solustoc : ${formatPrix(p.prixSolustoc)}</span>
-            <span class="price-public">Prix public constaté : ${formatPrix(p.prixPublic)}</span>
-            ${coefTxt ? `<span class="price-public">${coefTxt}</span>` : ""}
-          </p>
-          <p class="stock">Stock disponible : ${p.stock}</p>
-
+          <div class="price-line">
+             <span class="price-solustoc">Prix : ${formatPrix(p.prixSolustoc)}</span><br>
+             <span class="price-public">Public : ${formatPrix(p.prixPublic)}</span>
+          </div>
+          <p class="stock">En stock : ${p.stock}</p>
+          
           <div class="qty-row">
             <button class="qty-minus" onclick="changeQty(${p.id}, -1)">−</button>
             <span id="qty-${p.id}" class="qty-value">1</span>
             <button class="qty-plus" onclick="changeQty(${p.id}, 1)">+</button>
           </div>
-
-          <button class="btn-small"
-                  onclick="addToCart(${p.id}, document.getElementById('qty-${p.id}').textContent)">
-            Ajouter
-          </button>
+          <button class="btn-small" onclick="addToCart(${p.id})">Ajouter</button>
         </div>`;
     }).join("");
   }
 
-  /* ==============================
-            RENDU PANIER
-  ===============================*/
-  function renderCart() {
-    const cartBlock = document.getElementById("cart-content");
+  // GESTION QUANTITÉ & PANIER
+  window.changeQty = function(id, delta) {
+    const el = document.getElementById("qty-" + id);
+    if (!el) return;
+    let v = parseInt(el.textContent, 10) + delta;
+    if (v < 1) v = 1;
+    el.textContent = v;
+  };
 
+  window.addToCart = function(id) {
+    const qty = parseInt(document.getElementById("qty-" + id).textContent, 10);
+    const p = produits.find(x => x.id === id);
+    if (!p) return;
+
+    const exist = cart.find(x => x.id === id);
+    if (exist) exist.qty += qty;
+    else cart.push({ ...p, qty });
+    renderCart();
+  };
+
+  function renderCart() {
+    const box = document.getElementById("cart-content");
+    const btn = document.getElementById("btn-whatsapp");
+    
     if (!cart.length) {
-      cartBlock.innerHTML =
-        `<p style="text-align:center; font-size:13px; color:#555;">
-          Aucun bijou dans votre sélection pour le moment.
-        </p>`;
-      document.getElementById("btn-whatsapp").disabled = true;
+      box.innerHTML = `<p style="text-align:center; font-size:13px; color:#555;">Panier vide.</p>`;
+      btn.disabled = true;
       return;
     }
-
-    const total = cart.reduce((s, i) => s + i.prix * i.qty, 0);
-
-    cartBlock.innerHTML = `
+    
+    const total = cart.reduce((acc, i) => acc + (i.prixSolustoc * i.qty), 0);
+    
+    box.innerHTML = `
       <table class="cart-table">
-        <tr><th>Article</th><th>Qté</th><th>Prix</th><th>Total</th></tr>
+        <tr><th>Art.</th><th>Qté</th><th>Total</th></tr>
         ${cart.map(i => `
           <tr>
             <td>${i.nom}</td>
             <td>${i.qty}</td>
-            <td>${formatPrix(i.prix)}</td>
-            <td>${formatPrix(i.prix * i.qty)}</td>
-          </tr>
-        `).join("")}
+            <td>${formatPrix(i.prixSolustoc * i.qty)}</td>
+          </tr>`).join("")}
       </table>
-      <p class="cart-total">Total Solustoc : ${formatPrix(total)}</p>
+      <p class="cart-total">Total HT : ${formatPrix(total)}</p>
     `;
-
-    document.getElementById("btn-whatsapp").disabled = false;
+    btn.disabled = false;
   }
 
-  /* ==============================
-              LIGHTBOX
-  ===============================*/
-  function openLightbox(src) {
+  document.getElementById("btn-clear").onclick = () => { cart = []; renderCart(); };
+
+  document.getElementById("btn-whatsapp").onclick = () => {
+    if (!cart.length) return;
+    let msg = "🛍️ *Commande Solustoc*\n\n";
+    cart.forEach(i => msg += `• ${i.nom} (x${i.qty})\n`);
+    const total = cart.reduce((acc, i) => acc + (i.prixSolustoc * i.qty), 0);
+    msg += `\n💰 *Total : ${formatPrix(total)}*`;
+    window.open("https://wa.me/33756923323/?text=" + encodeURIComponent(msg), "_blank");
+  };
+
+  // LIGHTBOX
+  window.openLightbox = function(src) {
     document.getElementById("lightbox-img").src = src;
     document.getElementById("lightbox").style.display = "flex";
-  }
+  };
   document.getElementById("lightbox-close").onclick = () => {
     document.getElementById("lightbox").style.display = "none";
   };
 
-  // On rend accesible openLightbox / changeQty / addToCart depuis le HTML
-  window.openLightbox = openLightbox;
-  window.changeQty   = changeQty;
-  window.addToCart   = addToCart;
+  // INITIALISATION
+  loadProduitsFromSheet();
+  renderCart();
 
-  /* ==============================
-                 INIT
-  ===============================*/
-  renderCart();             // panier vide au départ
-  loadProduitsFromSheet();  // charge les produits depuis ton Google Sheet
 </script>
-
 </body>
 </html>
