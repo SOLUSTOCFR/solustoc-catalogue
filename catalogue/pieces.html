@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     /* STYLE SOLUSTOC */
-    body { font-family: Arial, sans-serif; margin: 0; background: #fff7ea; color: #222; }
+    body { font-family: Arial, sans-serif; margin: 0; background: #fff7ea; color: #222; padding-bottom: 80px; /* Espace pour la barre fixe */ }
     header { background: #fff7ea; text-align: center; padding: 22px 14px; }
     header img { max-width: 160px; height: auto; }
     .wrapper { width: 94%; max-width: 1100px; margin: 18px auto 40px; }
@@ -40,7 +40,7 @@
     .qty-minus, .qty-plus { width: 32px; height: 32px; border-radius: 8px; font-size: 18px; border: 1px solid #ccbda3; cursor: pointer; background: #faf3e3; }
     .btn-small { margin-top: 10px; padding: 9px 10px; font-size: 14px; border-radius: 999px; border: none; background: #25D366; color: #fff; font-weight: bold; cursor: pointer; }
     
-    /* PANIER */
+    /* PANIER COMPLET EN BAS */
     .cart-block { background: #ffffff; border-radius: 16px; padding: 18px 14px 16px; box-shadow: 0 0 12px rgba(0,0,0,0.06); border: 1px solid #ecdcc4; margin-top: 30px; }
     .cart-block h2 { margin-top:0; font-size:20px; text-align:center; color: #8d3b42; }
     .cart-info { font-size:13px; text-align:center; color:#555; margin-bottom:8px; }
@@ -52,6 +52,26 @@
     .btn-main[disabled] { opacity: 0.5; cursor: not-allowed; }
     .btn-secondary { padding: 8px 12px; border-radius: 999px; border: none; font-size: 13px; cursor: pointer; background: #f0f0f0; color: #333; }
     
+    /* NOUVEAU : BARRE FIXE EN BAS (STICKY CART) */
+    .sticky-cart {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: #ffffff;
+      border-top: 1px solid #e0cda8;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+      padding: 12px 20px;
+      display: none; /* Masqué si vide */
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+    .sticky-info { font-size: 15px; color: #8d3b42; font-weight: bold; }
+    .sticky-btn {
+      background: #25D366; color: #fff; padding: 8px 16px;
+      border-radius: 999px; text-decoration: none; font-weight: bold; font-size: 14px;
+      border:none; cursor: pointer;
+    }
+    .sticky-btn:hover { background: #1ebe5c; }
+
     footer { text-align: center; font-size: 12px; color: #777; padding: 24px 10px 28px; }
     
     /* LIGHTBOX */
@@ -106,6 +126,16 @@
   </section>
 </div>
 
+<div id="sticky-cart" class="sticky-cart">
+  <div class="sticky-info">
+    <span id="sticky-count">0 art.</span> • 
+    <span id="sticky-total">0,00 €</span>
+  </div>
+  <button class="sticky-btn" onclick="scrollToCart()">
+    Voir panier 🛒
+  </button>
+</div>
+
 <footer>Solustoc • Grossiste bijoux</footer>
 
 <div class="lightbox" id="lightbox">
@@ -123,7 +153,7 @@
   let filteredProduits = [];
   let cart = [];
 
-  // PARSER CSV ROBUSTE (Gère les guillemets et virgules dans les textes)
+  // PARSER CSV ROBUSTE
   function CSVToArray(strData, strDelimiter) {
     strDelimiter = (strDelimiter || ",");
     var objPattern = new RegExp(
@@ -155,7 +185,6 @@
   // PRIX
   function parsePrix(str) {
     if (!str) return 0;
-    // Accepte format 12,50 ou 12.50
     const clean = str.toString().replace(/[^0-9.,]/g, "").replace(",", ".");
     const val = parseFloat(clean);
     return isNaN(val) ? 0 : val;
@@ -173,22 +202,15 @@
       if (!res.ok) throw new Error("Erreur HTTP " + res.status);
       const csvText = await res.text();
 
-      // Détection automatique du séparateur (, ou ;)
       const firstLine = csvText.split('\n')[0];
       const separator = firstLine.includes(';') ? ';' : ',';
       
-      console.log("Séparateur détecté :", separator);
-
-      // Utilisation du parser robuste
       const data = CSVToArray(csvText, separator);
       
       if (!data || data.length < 2) throw new Error("Fichier vide ou illisible");
 
-      // Nettoyage des entêtes
       const headers = data[0].map(h => h.trim().toLowerCase());
-      console.log("Colonnes :", headers);
 
-      // Mapping
       const getIdx = (keywords) => headers.findIndex(h => keywords.some(k => h.includes(k)));
       const idxTitre      = getIdx(["nom", "titre"]);     
       const idxStock      = getIdx(["stock", "quantité"]);
@@ -203,10 +225,9 @@
       let idCounter = 1;
       produits.length = 0;
 
-      // Parcours des données
       for (let i = 1; i < data.length; i++) {
         const row = data[i];
-        if (row.length < headers.length) continue; // ligne incomplète
+        if (row.length < headers.length) continue; 
 
         const titre = (row[idxTitre] || "").trim();
         if (!titre) continue;
@@ -228,7 +249,6 @@
         });
       }
 
-      console.log(produits.length + " produits chargés.");
       generateFilters();
       filteredProduits = [...produits];
       errBox.style.display = "none";
@@ -241,7 +261,7 @@
     }
   }
 
-  // RESTE DU CODE (FILTRES, RENDU, PANIER...)
+  // LOGIQUE UI
   function generateFilters() {
     const cats = [...new Set(produits.map(p => p.categorie).filter(c => c))].sort();
     const select = document.getElementById("filter-category");
@@ -305,15 +325,32 @@
     renderCart();
   };
 
+  // MISE A JOUR DU PANIER (ET DE LA BARRE FLOTTANTE)
   function renderCart() {
     const box = document.getElementById("cart-content");
     const btn = document.getElementById("btn-whatsapp");
+    const sticky = document.getElementById("sticky-cart");
+    
+    // Calcul totaux
+    const totalItems = cart.reduce((acc, i) => acc + i.qty, 0);
+    const totalPrix = cart.reduce((acc, i) => acc + (i.prixSolustoc * i.qty), 0);
+
+    // GESTION BARRE FLOTTANTE
+    if (totalItems > 0) {
+      sticky.style.display = "flex";
+      document.getElementById("sticky-count").textContent = totalItems + (totalItems > 1 ? " arts." : " art.");
+      document.getElementById("sticky-total").textContent = formatPrix(totalPrix);
+    } else {
+      sticky.style.display = "none";
+    }
+
+    // GESTION PANIER BAS DE PAGE
     if (!cart.length) {
       box.innerHTML = `<p style="text-align:center; font-size:13px; color:#555;">Votre panier est vide.</p>`;
       btn.disabled = true;
       return;
     }
-    const total = cart.reduce((acc, i) => acc + (i.prixSolustoc * i.qty), 0);
+    
     box.innerHTML = `
       <table class="cart-table">
         <tr><th>Produit</th><th>Qté</th><th>Total</th></tr>
@@ -321,7 +358,7 @@
           <tr><td>${i.nom}</td><td>${i.qty}</td><td>${formatPrix(i.prixSolustoc * i.qty)}</td></tr>
         `).join("")}
       </table>
-      <p class="cart-total">Total HT : ${formatPrix(total)}</p>
+      <p class="cart-total">Total HT : ${formatPrix(totalPrix)}</p>
     `;
     btn.disabled = false;
   }
@@ -335,6 +372,11 @@
     const total = cart.reduce((acc, i) => acc + (i.prixSolustoc * i.qty), 0);
     msg += `\n💰 *Total Solustoc : ${formatPrix(total)}*`;
     window.open("https://wa.me/33756923323/?text=" + encodeURIComponent(msg), "_blank");
+  };
+
+  // FONCTION DE SCROLL VERS PANIER
+  window.scrollToCart = function() {
+    document.getElementById("cart-block").scrollIntoView({ behavior: 'smooth' });
   };
 
   window.openLightbox = function(src) {
