@@ -100,6 +100,39 @@
     footer a { color: #8d3b42; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
+    /* POP-UP PROMO */
+    .popup-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 10000;
+      display: none; /* Masqué par défaut */
+      justify-content: center; align-items: center;
+    }
+    .popup-content {
+      background: #fff;
+      padding: 30px 20px;
+      border-radius: 16px;
+      text-align: center;
+      max-width: 320px;
+      width: 90%;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      position: relative;
+      animation: popIn 0.4s ease-out;
+    }
+    @keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    .popup-close {
+      position: absolute; top: 10px; right: 15px;
+      font-size: 24px; color: #999; cursor: pointer; font-weight: bold;
+    }
+    .popup-title { font-size: 20px; color: #b32121; margin: 0 0 10px; font-weight: bold; }
+    .popup-text { font-size: 15px; color: #333; margin-bottom: 20px; line-height: 1.5; }
+    .btn-popup {
+      background: #25D366; color: #fff; border: none; padding: 12px 24px;
+      border-radius: 50px; font-weight: bold; font-size: 15px; cursor: pointer;
+      width: 100%; display: block; box-sizing: border-box;
+    }
+
     /* LIGHTBOX */
     .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 9999; }
     .lightbox img { max-width: 95%; max-height: 90vh; border-radius: 8px; }
@@ -110,6 +143,17 @@
 </head>
 
 <body>
+
+<div id="promo-popup" class="popup-overlay">
+  <div class="popup-content">
+    <span class="popup-close" onclick="closePopup()">×</span>
+    <div class="popup-title">🎁 Offre Spéciale</div>
+    <div class="popup-text">
+      Obtenez <strong>-10%</strong> sur votre commande dès <strong>300 € d'achat !</strong>
+    </div>
+    <button class="btn-popup" onclick="closePopup()">J'en profite !</button>
+  </div>
+</div>
 
 <header>
   <img src="../img/logosbijouxfrancais.webp" alt="Les Bijoux Français / Solustoc">
@@ -199,6 +243,9 @@
     <h2 class="section-title">Votre sélection</h2>
     <div id="cart-content"></div>
     <div class="cart-total-line" id="cart-total-display"></div>
+    <div id="discount-msg" style="color:#2e7d32; font-weight:bold; font-size:14px; margin-top:5px; display:none;">
+      🎉 Bravo ! -10% appliqué sur la commande !
+    </div>
     
     <button id="btn-whatsapp" class="btn-add" style="margin-top:15px; background:#25D366; font-size:16px;">
       📲 Valider ma commande sur WhatsApp
@@ -246,6 +293,16 @@
   const produits = [];
   let filteredProduits = [];
   let cart = [];
+
+  /* --- POPUP LOGIC --- */
+  // Affiche le popup après 3 secondes
+  setTimeout(() => {
+    document.getElementById("promo-popup").style.display = "flex";
+  }, 3000);
+
+  window.closePopup = () => {
+    document.getElementById("promo-popup").style.display = "none";
+  };
 
   /* --- PARSER CSV --- */
   function CSVToArray(strData, strDelimiter) {
@@ -419,6 +476,7 @@
     const content = document.getElementById("cart-content");
     const totalDisplay = document.getElementById("cart-total-display");
     const sticky = document.getElementById("sticky-cart");
+    const discountMsg = document.getElementById("discount-msg");
 
     if (!cart.length) {
       section.style.display = "none";
@@ -429,8 +487,17 @@
     section.style.display = "block";
     sticky.style.display = "flex";
 
-    const total = cart.reduce((acc, i) => acc + (i.prixSolus * i.qty), 0);
+    let total = cart.reduce((acc, i) => acc + (i.prixSolus * i.qty), 0);
     const count = cart.reduce((acc, i) => acc + i.qty, 0);
+    
+    // GESTION PROMO UI
+    let displayTotal = total;
+    if (total >= 300) {
+      // displayTotal = total * 0.9; (On n'applique pas la réduc visuelle ici pour ne pas embrouiller, on le fait sur WhatsApp ou on met un message)
+      discountMsg.style.display = "block";
+    } else {
+      discountMsg.style.display = "none";
+    }
 
     content.innerHTML = `
       <table class="cart-table">
@@ -454,8 +521,20 @@
     if (!cart.length) return;
     let msg = "👋 Bonjour Brice, voici ma commande Solustoc :\n\n";
     cart.forEach(i => msg += `- ${i.nom} (x${i.qty})\n`);
-    const total = cart.reduce((acc, i) => acc + (i.prixSolus * i.qty), 0);
-    msg += `\n💰 *Total Estimé TTC : ${formatPrix(total)}*`;
+    
+    let total = cart.reduce((acc, i) => acc + (i.prixSolus * i.qty), 0);
+    
+    // LOGIQUE DE REMISE DANS LE MESSAGE
+    if (total >= 300) {
+        let remise = total * 0.10;
+        let final = total - remise;
+        msg += `\n🎁 *PROMO -10% ACTIVÉE !*`;
+        msg += `\n💰 Sous-total : ${formatPrix(total)}`;
+        msg += `\n✅ *TOTAL FINAL TTC : ${formatPrix(final)}*`;
+    } else {
+        msg += `\n💰 *Total Estimé TTC : ${formatPrix(total)}*`;
+    }
+
     msg += `\n\nMerci de confirmer le stock et les frais de port.`;
     window.open("https://wa.me/33756923323/?text=" + encodeURIComponent(msg), "_blank");
   };
