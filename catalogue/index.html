@@ -79,9 +79,9 @@
     .section {
       background: #fffdf8;
       border-radius: 14px;
-      padding: 12px;
+      padding: 12px 12px 10px;
       border: 1px solid #f1e3c5;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       font-size: 12px;
     }
 
@@ -153,28 +153,21 @@
       color: #555;
     }
 
-    /* Galerie photos */
-    .gallery {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    .gallery img {
-      width: 100%;
-      border-radius: 12px;
-      display: block;
-    }
-
     table {
       width: 100%;
-      font-size: 12px;
       border-collapse: collapse;
-      margin-top: 8px;
+      font-size: 12px;
+      margin-top: 5px;
     }
-    table th, table td {
-      padding: 4px;
-      border-bottom: 1px solid #e6d8b7;
-      text-align: left;
+
+    th, td {
+      padding: 6px;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background: #fff4d2;
+      font-weight: 600;
     }
   </style>
 </head>
@@ -185,59 +178,60 @@
 
     <!-- LOGO -->
     <div class="logo-block">
-      <img src="../img/logosbijouxfrancais.webp" alt="Le Bijou Français">
+      <img src="../img/logosbijouxfrancais.webp"
+           alt="Le Bijoux Français – La qualité française à prix discount">
+
       <div class="badge-top">Bijoux en acier inoxydable doré à l’or fin</div>
+
       <h1>Solustoc – Grossiste Bijoux France</h1>
-      <p class="sub-title">Composez vos lots à la pièce, au meilleur prix revendeur.</p>
       <p class="tagline">Catalogue en ligne + commande rapide par WhatsApp.</p>
     </div>
 
-    <!-- ENTREPRISE -->
+    <!-- BLOC PRÉSENTATION FUSIONNÉ -->
     <section class="section">
-      <h2 class="section-title">Entreprise française</h2>
-      <ul>
-        <li>SIREN : 929 179 579</li>
-        <li>SAS Solustoc – France</li>
-        <li>Adresse : 69 bis rue du Bêle, 44200 Nantes</li>
-        <li>Paiement sécurisé par virement bancaire</li>
-        <li>Facture fournie – France métropolitaine</li>
-        <li>Expédition 24/48h partout en France</li>
-      </ul>
-    </section>
+      <h2 class="section-title">Solustoc – Grossiste bijoux en acier inoxydable doré à l’or fin</h2>
 
-    <!-- À PROPOS -->
-    <section class="section">
-      <h2 class="section-title">À propos</h2>
-      <p>
-        Solustoc est un grossiste spécialisé dans les bijoux en acier inoxydable doré à l’or fin.
-        Sélection adaptée boutiques, marchés & e-commerce. Stock réel, contrôlé et renouvelé.
+      <p style="font-size:12px; margin-bottom:10px;">
+        Entreprise française située au <strong>69 bis rue du Bêle, 44200 Nantes</strong><br>
+        SAS SOLUSTOC — SIREN : 929 179 579<br>
+        Livraison 24/48 h partout en France — Paiement sécurisé par virement — Facture fournie.
+      </p>
+
+      <p style="font-size:12px;">
+        Nous fournissons des boutiques, marchés, créateurs et e-commerces avec une sélection rentable,
+        durable et testée sur le terrain.
       </p>
     </section>
 
     <!-- ACHAT À LA PIÈCE -->
     <section class="section">
-      <h2 class="section-title">Pourquoi acheter à la pièce&nbsp;?</h2>
+      <h2 class="section-title">Pourquoi acheter à la pièce ?</h2>
+
       <ul>
         <li>Choix libre des modèles.</li>
         <li>Prix revendeur immédiat.</li>
         <li>Acier inoxydable doré 0,4 µm.</li>
         <li>Stock réel contrôlé.</li>
       </ul>
+
       <a class="btn-main" href="pieces.html">Accéder au catalogue à la pièce</a>
-      <a class="btn-link" href="photos.html" target="_blank">Découvrir les bijoux en photo</a>
+
+      <a class="btn-link" href="photos.html">Découvrir les bijoux en photo</a>
     </section>
 
     <!-- GALERIE PHOTOS -->
     <section class="section">
-      <h2 class="section-title">Ambiance & Ventes Réelles</h2>
-      <p style="font-size:12px; margin-bottom:10px;">Photos réelles de nos revendeurs, marchés, boutiques et expéditions.</p>
+      <h2 class="section-title">Ambiance & Ventes réelles</h2>
+      <div style="font-size:12px; margin-bottom:10px;">
+        Photos réelles de revendeurs, marchés, expéditions et ambiance.
+      </div>
 
-      <div class="gallery">
-        <img src="../img/ambiance-packshot.webp">
-        <img src="../img/marche-normandie.webp">
-        <img src="../img/marche-noel.webp">
-        <img src="../img/entrepot-la-poste.webp">
-        <img src="../img/ambiance-revendeurs.webp">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+        <img src="../img/ambiance-packshot.webp" style="width:100%; border-radius:10px;">
+        <img src="../img/marche-normandie.webp" style="width:100%; border-radius:10px;">
+        <img src="../img/marche-noel.webp" style="width:100%; border-radius:10px;">
+        <img src="../img/entrepot-la-poste.webp" style="width:100%; border-radius:10px;">
+        <img src="../img/ambiance-revendeurs.webp" style="width:100%; border-radius:10px;">
       </div>
     </section>
 
@@ -245,108 +239,110 @@
     <section class="section">
       <h2 class="section-title">Pourquoi ça se vend ?</h2>
       <ul>
-        <li>Acier inoxydable : zéro retour client sur 3 mois.</li>
+        <li>Acier inoxydable : 0% retour client sur 3 mois.</li>
         <li>Dorure 0,4 μm : qualité boutique durable.</li>
-        <li>Modèles testés sur marchés & boutiques.</li>
-        <li>Prix public : 19 € à 39 €.</li>
-        <li>Marge revendeur : x3 à x5.</li>
+        <li>Modèles testés sur marchés, boutiques & e-commerce.</li>
+        <li>Prix public moyen : 19 € – 39 €.</li>
+        <li>Marge réelle revendeur : x3 à x5.</li>
         <li>Livraison express 24/48 h.</li>
       </ul>
     </section>
 
-    <!-- RENTABILITÉ -->
+    <!-- RENTABILITÉ REVENDEURS -->
     <section class="section">
       <h2 class="section-title">Rentabilité revendeurs</h2>
 
       <table>
         <tr>
-          <th>Produit</th><th>Achat</th><th>Revente</th><th>Bénéfice</th>
+          <th>Article</th>
+          <th>Achat</th>
+          <th>Revente</th>
+          <th>Profit</th>
         </tr>
         <tr>
-          <td>Bracelet doré</td><td>2,00 €</td><td>12,90 €</td><td>+10,90 €</td>
+          <td>Bracelet doré</td>
+          <td>2,00 €</td>
+          <td>12,90 €</td>
+          <td>+10,90 €</td>
         </tr>
         <tr>
-          <td>Collier médaille</td><td>3,00 €</td><td>19,90 €</td><td>+16,90 €</td>
+          <td>Collier médaille</td>
+          <td>3,00 €</td>
+          <td>19,90 €</td>
+          <td>+16,90 €</td>
         </tr>
         <tr>
-          <td>Lot complet 150p</td><td>200 €</td><td>~1900 €</td><td>+1700 €</td>
+          <td>Lot complet 150p</td>
+          <td>200 €</td>
+          <td>~1900 €</td>
+          <td>+1700 €</td>
         </tr>
       </table>
     </section>
 
-    <!-- SOCIAL PROOF -->
-    <section class="section">
-      <h2 class="section-title">Ils nous font confiance</h2>
-      <ul>
-        <li>Revendeurs actifs dans 37 départements.</li>
-        <li>Taux de satisfaction : 4,9 / 5.</li>
-        <li>Accompagnement gratuit pour composer les lots.</li>
-      </ul>
-    </section>
-
-    <!-- LOTS -->
+    <!-- LOT 150 -->
     <h2 class="section-title" style="margin-top:10px;">Lots prêts à vendre</h2>
 
     <section class="lot-card">
       <div class="lot-title">Lot 150 bijoux</div>
       <div class="lot-price">200 € TTC — Livraison incluse</div>
       <div class="lot-note">Idéal pour une première gamme rentable.</div>
-      <a class="btn-whatsapp" href="https://wa.me/33756923323?text=Je%20veux%20le%20lot%20150%20bijoux%20%E2%82%AC200" target="_blank">Commander via WhatsApp</a>
-      <a class="btn-ghost" href="../pdf/Catalogue-150.pdf" target="_blank">Télécharger le PDF</a>
-      <a class="btn-link" href="photos.html#lot150" target="_blank">Voir les photos du lot</a>
+
+      <a class="btn-whatsapp"
+         href="https://wa.me/33756923323?text=Je%20veux%20le%20lot%20150%20bijoux%20%E2%82%AC200">
+        Commander via WhatsApp
+      </a>
+
+      <a class="btn-ghost" href="../pdf/Catalogue-150.pdf">Télécharger le PDF</a>
+
+      <a class="btn-link" href="photos.html#lot150">Voir les photos du lot</a>
     </section>
 
+    <!-- LOT 370 -->
     <section class="lot-card">
       <div class="lot-title">Lot 370 bijoux</div>
       <div class="lot-price">480 € TTC — Livraison incluse</div>
       <div class="lot-note">Best-seller revendeurs.</div>
-      <a class="btn-whatsapp" href="https://wa.me/33756923323?text=Je%20veux%20le%20lot%20370%20bijoux%20%E2%82%AC480" target="_blank">Commander via WhatsApp</a>
-      <a class="btn-ghost" href="../pdf/Catalogue-370.pdf" target="_blank">Télécharger le PDF</a>
-      <a class="btn-link" href="photos.html#lot370" target="_blank">Voir les photos du lot</a>
+
+      <a class="btn-whatsapp"
+         href="https://wa.me/33756923323?text=Je%20veux%20le%20lot%20370%20bijoux%20%E2%82%AC480">
+        Commander via WhatsApp
+      </a>
+
+      <a class="btn-ghost" href="../pdf/Catalogue-370.pdf">Télécharger le PDF</a>
+
+      <a class="btn-link" href="photos.html#lot370">Voir les photos du lot</a>
     </section>
 
-    <!-- FAQ -->
-    <section class="section">
-      <h2 class="section-title">Questions fréquentes</h2>
-      <details><summary>Les bijoux noircissent-ils ?</summary><p>Acier inoxydable doré 0,4 µm — usage normal sans noircir.</p></details>
-      <details><summary>Quels types de bijoux ?</summary><p>Colliers, bracelets, boucles d’oreilles, bagues, médailles.</p></details>
-      <details><summary>Délai de livraison ?</summary><p>Préparation 24 h — livraison 24/48 h.</p></details>
-      <details><summary>Paiement ?</summary><p>Virement bancaire — facture fournie.</p></details>
+    <!-- FOOTER -->
+    <section class="footer">
+      <div class="footer-title">Solustoc – Déstockage pour les pros</div>
+
+      <div>
+        Email :
+        <a href="mailto:contact@solustoc.fr">contact@solustoc.fr</a>
+      </div>
+
+      <div>
+        WhatsApp :
+        <a href="https://wa.me/33756923323">07 56 92 33 23</a>
+      </div>
+
+      <div class="footer-small">
+        SIRET : 943 702 126 00013<br>
+        Les Bijoux Français est une marque exploitée par la société SOLUSTOC SAS.<br>
+
+        <a href="https://lesbijouxfrancais.fr/mentions-legales">
+          Mentions légales
+        </a> ·
+        <a href="https://lesbijouxfrancais.fr/politique-de-confidentialite">
+          Politique de confidentialité
+        </a> ·
+        <a href="https://lesbijouxfrancais.fr/bijoux-de-mimi-bijoux-creation-francaise">
+          À propos des Bijoux de Mimi
+        </a>
+      </div>
     </section>
-
-<!-- FOOTER -->
-<section class="footer">
-  <div class="footer-title">Solustoc – Déstockage pour les pros</div>
-
-  <div>
-    Email :
-    <a href="mailto:contact@solustoc.fr">contact@solustoc.fr</a>
-  </div>
-
-  <div>
-    WhatsApp :
-    <a href="https://wa.me/33756923323">07 56 92 33 23</a>
-  </div>
-
-  <div class="footer-small">
-    SIRET : 943 702 126 00013<br>
-    Les Bijoux Français est une marque exploitée par la société SOLUSTOC SAS.<br>
-
-    <a href="https://lesbijouxfrancais.fr/mentions-legales">
-      Mentions légales
-    </a> ·
-
-    <a href="https://lesbijouxfrancais.fr/politique-de-confidentialite">
-      Politique de confidentialité
-    </a> ·
-
-    <a href="https://lesbijouxfrancais.fr/bijoux-de-mimi-bijoux-creation-francaise">
-      À propos des Bijoux de Mimi
-    </a>
-  </div>
-</section>
-
-
 
   </main>
 </div>
