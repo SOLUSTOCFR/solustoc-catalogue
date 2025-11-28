@@ -1,203 +1,223 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solustoc – Grossiste Bijoux Acier</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solustoc – Grossiste Bijoux France</title>
 
-    <style>
-        body { background:#f5f3ef; font-family: Arial, sans-serif; }
-        .card-section { background:#fff; border-radius:16px; padding:20px; margin-bottom:20px; }
-        .badge-custom { background:#e8d9b5; padding:6px 10px; border-radius:8px; font-size:14px; }
-        .btn-green { background:#28a745; color:#fff; font-weight:bold; border-radius:10px; padding:12px; width:100%; display:block; }
-        .btn-outline-gold { border:2px solid #c9a66b; color:#c9a66b; border-radius:10px; padding:12px; width:100%; display:block; }
-        .btn-space { margin-top:10px; margin-bottom:10px; }
-        .title-main { font-size:22px; font-weight:bold; }
-        .subtitle { font-size:15px; color:#333; margin-bottom:15px; }
-    </style>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        max-width: 480px;
+        margin: auto;
+        padding: 15px;
+    }
+
+    /* HEADER + LOGO */
+    .header-logo {
+        text-align: center;
+        padding-top: 15px;
+        padding-bottom: 10px;
+        background: white;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        box-shadow: 0 0 6px rgba(0,0,0,0.08);
+    }
+
+    .header-logo img {
+        max-width: 160px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        font-size: 20px;
+        text-align: center;
+        margin: 0;
+        color: #333;
+    }
+
+    /* BLOCS */
+    .bloc {
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.07);
+    }
+
+    .bloc h2 {
+        font-size: 18px;
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: #222;
+        text-align: center;
+    }
+
+    .bloc ul {
+        margin: 0;
+        padding-left: 18px;
+    }
+
+    /* CTA */
+    .btn-green {
+        display: block;
+        width: 100%;
+        background: #22aa22;
+        color: white;
+        padding: 12px;
+        border-radius: 8px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .btn-green:hover {
+        opacity: .9;
+    }
+
+    /* LOTS */
+    .lot {
+        background: #fff7e6;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #f0e2c2;
+    }
+
+    .lot h3 {
+        margin: 0 0 6px 0;
+        font-size: 17px;
+    }
+
+    /* FAQ */
+    .faq-item {
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+    }
+
+    details summary {
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    /* FOOTER */
+    .footer {
+        text-align: center;
+        color: #666;
+        font-size: 14px;
+        padding: 20px;
+    }
+
+    .footer a {
+        color: #444;
+        text-decoration: underline;
+    }
+</style>
 </head>
 
 <body>
 
-<div class="container p-3" style="max-width:480px;">
+<div class="container">
 
-    <!-- SECTION PRINCIPALE : CATALOGUE À LA PIÈCE -->
-    <div class="card-section text-center">
-        <h1 class="title-main">Solustoc – Grossiste Bijoux Acier</h1>
-        <p class="subtitle">Choisissez vos bijoux à la pièce — Prix revendeurs</p>
-
-        <span class="badge-custom d-block mb-2">Marge moyenne x5 à x7</span>
-        <span class="badge-custom d-block mb-2">Livraison France 24/48h</span>
-        <span class="badge-custom d-block mb-3">Société française – Facture fournie</span>
-
-        <!-- catalogue à la pièce (page dans le même dossier "catalogue") -->
-        <a href="pieces.html" class="btn-green mb-2">Accéder au Catalogue à la pièce</a>
-
-        <!-- photos réelles (page à la racine du dépôt : ../photos.html) -->
-        <a href="../photos.html" class="btn-outline-gold mb-2">Voir les photos réelles</a>
+    <!-- LOGO + HEADER -->
+    <div class="header-logo">
+        <img src="img/logosbijouxfrancais.webp" alt="Logo Les Bijoux Français">
+        <h1>Solustoc – Grossiste Bijoux France</h1>
     </div>
 
-    <!-- AVANTAGES -->
-    <div class="card-section">
-        <h5><strong>Pourquoi acheter à la pièce ?</strong></h5>
+    <!-- CREDIBILITÉ -->
+    <div class="bloc">
+        <h2>Entreprise française</h2>
         <ul>
-            <li>Vous choisissez exactement les modèles que vous voulez.</li>
-            <li>Vous payez uniquement ce qui vous intéresse.</li>
-            <li>Idéal boutiques, marchés, créateurs & e-commerce.</li>
+            <li>SIREN : 929 197 379</li>
+            <li>SAS Solustoc – France</li>
+            <li>Facture fournie – Paiement sécurisé bancaire</li>
+            <li>Expédition 24/48h depuis la France</li>
+        </ul>
+    </div>
+
+    <!-- STORYTELLING -->
+    <div class="bloc">
+        <h2>À propos</h2>
+        <p>
+            Solustoc est un grossiste spécialisé dans les bijoux en acier inoxydable dorés à l’or fin.  
+            Nous sélectionnons des modèles tendance adaptés aux boutiques, créateurs, marchés et e-commerce.  
+            Notre priorité : un stock réel, contrôlé, avec des marges fortes pour les revendeurs.
+        </p>
+    </div>
+
+    <!-- POURQUOI NOUS CHOISIR -->
+    <div class="bloc">
+        <h2>Pourquoi nous choisir ?</h2>
+        <ul>
+            <li>Choisissez vos bijoux à la pièce</li>
+            <li>Prix revendeur immédiat</li>
+            <li>Qualité boutique – bijoux dorés 0.4µ</li>
+            <li>Stock réel – contrôle qualité</li>
+            <li>Livraison rapide 24/48h</li>
         </ul>
 
-        <a href="pieces.html" class="btn-outline-gold mt-3">Voir les bijoux à la pièce</a>
+        <a href="pieces.html" class="btn-green">Accéder au catalogue à la pièce</a>
     </div>
 
-    <!-- SECTION LOTS (SECOND PLAN, MAIS TOUJOURS ACCESSIBLE) -->
-    <div class="card-section">
-        <h4><strong>Lots prêts à vendre</strong></h4>
-        <p>Pour ceux qui veulent aller vite : livraison immédiate, bijoux triés & contrôlés.</p>
+    <!-- LOTS -->
+    <div class="bloc">
+        <h2>Lots prêts à vendre</h2>
 
-        <!-- LOT 150 -->
-        <div class="card-section" style="background:#fff7e6;">
-            <h5><strong>Lot 150 bijoux</strong></h5>
-            <p><strong>200 € TTC — Livraison incluse</strong></p>
-            <p>Idéal pour tester une première gamme rentable.</p>
-
-            <!-- WhatsApp -->
-            <a class="btn-green btn-space"
-               href="https://wa.me/33756923323?text=Bonjour,%20je%20suis%20intéressé%20par%20le%20lot%20150%20bijoux%20à%20200€">
-               Commander le lot 150 via WhatsApp
-            </a>
-
-            <!-- PDF : remonte d’un dossier vers /pdf/ -->
-            <a class="btn-outline-gold btn-space"
-               href="../pdf/Catalogue-150.pdf">
-               Télécharger le PDF (150 bijoux)
-            </a>
-
-            <!-- Photos lot : remonte d’un dossier vers /photos.html -->
-            <a class="btn-outline-gold btn-space"
-               href="../photos.html">
-               Voir les photos du lot
-            </a>
+        <div class="lot">
+            <h3>Lot 150 bijoux</h3>
+            <p>200 € TTC — Livraison incluse</p>
+            <a class="btn-green" href="https://wa.me/33756923323?text=Je%20veux%20le%20lot%20150">Commander via WhatsApp</a>
+            <a href="pdf/Catalogue-150.pdf">Télécharger le PDF</a>
         </div>
 
-        <!-- LOT 370 -->
-        <div class="card-section" style="background:#fff7e6;">
-            <h5><strong>Lot 370 bijoux</strong></h5>
-            <p><strong>480 € TTC — Livraison incluse</strong></p>
-            <p>Best-seller revendeurs — marge maximale.</p>
-
-            <!-- WhatsApp -->
-            <a class="btn-green btn-space"
-               href="https://wa.me/33756923323?text=Bonjour,%20je%20souhaite%20le%20lot%20370%20bijoux%20à%20480€">
-               Commander le lot 370 via WhatsApp
-            </a>
-
-            <!-- PDF : remonte vers /pdf/ -->
-            <a class="btn-outline-gold btn-space"
-               href="../pdf/Catalogue-370.pdf">
-               Télécharger le PDF (370 bijoux)
-            </a>
-
-            <!-- Photos lot : même page photos globale -->
-            <a class="btn-outline-gold btn-space"
-               href="../photos.html">
-               Voir les photos du lot
-            </a>
+        <div class="lot">
+            <h3>Lot 370 bijoux</h3>
+            <p>480 € TTC — Livraison incluse</p>
+            <a class="btn-green" href="https://wa.me/33756923323?text=Je%20veux%20le%20lot%20370">Commander via WhatsApp</a>
+            <a href="pdf/Catalogue-370.pdf">Télécharger le PDF</a>
         </div>
     </div>
 
     <!-- FAQ -->
-    <div class="card-section">
-        <h4><strong>Questions fréquentes</strong></h4>
-        <p>Vous pouvez commander à la pièce ou en lots selon vos besoins. Nous livrons partout en France en 24/48h.</p>
+    <div class="bloc">
+        <h2>Questions fréquentes</h2>
+
+        <div class="faq-item"><details>
+            <summary>Les bijoux noircissent-ils ?</summary>
+            <p>Non, acier inoxydable 316L doré à l’or fin 0.4µ.</p>
+        </details></div>
+
+        <div class="faq-item"><details>
+            <summary>Avez-vous des colliers / bagues / bracelets ?</summary>
+            <p>Oui, tout est dans le catalogue à la pièce.</p>
+        </details></div>
+
+        <div class="faq-item"><details>
+            <summary>Comment se passe le paiement ?</summary>
+            <p>Paiement sécurisé par virement bancaire. Facture fournie.</p>
+        </details></div>
+
     </div>
-<!-- FAQ REVENDEURS -->
-<section class="card-section" style="margin-top:20px;">
-
-  <h4 style="text-align:center; font-size:19px; margin-top:0; color:#222; font-weight:bold;">
-    Questions fréquentes des revendeurs
-  </h4>
-
-  <details style="margin-top:12px; font-size:15px;">
-    <summary style="cursor:pointer; font-weight:bold; padding:6px 0;">
-      Les bijoux noircissent-ils ?
-    </summary>
-    <div style="padding:6px 0 2px;">
-      Non. Acier inoxydable doré à l’or fin, tenue dans le temps — testé en boutique.
-    </div>
-  </details>
-
-  <details style="margin-top:12px; font-size:15px;">
-    <summary style="cursor:pointer; font-weight:bold; padding:6px 0;">
-      Y a-t-il des colliers / bagues / bracelets ?
-    </summary>
-    <div style="padding:6px 0 2px;">
-      Oui : mélange équilibré de colliers, bracelets, bagues, boucles d’oreilles et médailles.
-    </div>
-  </details>
-
-  <details style="margin-top:12px; font-size:15px;">
-    <summary style="cursor:pointer; font-weight:bold; padding:6px 0;">
-      Quel est le délai de livraison ?
-    </summary>
-    <div style="padding:6px 0 2px;">
-      Colis expédié le jour même ou le lendemain après paiement — livraison 24/48h.
-    </div>
-  </details>
-
-  <details style="margin-top:12px; font-size:15px;">
-    <summary style="cursor:pointer; font-weight:bold; padding:6px 0;">
-      Comment se passe le paiement ?
-    </summary>
-    <div style="padding:6px 0 2px;">
-      Paiement sécurisé par virement bancaire — facture fournie — entreprise française déclarée.
-    </div>
-  </details>
-
-  <details style="margin-top:12px; font-size:15px;">
-    <summary style="cursor:pointer; font-weight:bold; padding:6px 0;">
-      Peut-on choisir les modèles ?
-    </summary>
-    <div style="padding:6px 0 2px;">
-      Les lots sont optimisés pour la vente — sélection des meilleures ventes/variétés — c’est ce qui garantit la rentabilité. vous puvez acheter à la reference dans le catalogue 
-    </div>
-  </details>
-
-</section>
 
     <!-- FOOTER -->
-    <div class="text-center mt-3 mb-5">
-        <a class="btn-green"
-<!-- FOOTER SOLUSTOC -->
-<div class="card-section text-center" style="margin-top:20px; margin-bottom:40px;">
-
-    <h5><strong>Solustoc – Déstockage pour les pros</strong></h5>
-
-    <p style="margin-bottom:8px;">
-        📍 Société française – SIREN disponible sur demande<br>
-        📦 Livraison France 24/48h<br>
-        📧 contact@solustoc.fr<br>
-        📞 07 56 92 33 23
-    </p>
-
-    <hr>
-
-    <p style="font-size:14px; margin-bottom:6px;">
-        <a href="https://lesbijouxfrancais.fr/mentions-legales" style="color:#333;">
-            Mentions légales
-        </a>
-    </p>
-
-    <p style="font-size:14px; margin-bottom:6px;">
-        <a href="https://lesbijouxfrancais.fr/politique-de-confidentialite" style="color:#333;">
+    <div class="footer">
+        © Solustoc — Société française<br>
+        <a href="https://lesbijouxfrancais.fr/mentions-legales">Mentions légales</a> —
+        <a href="https://lesbijouxfrancais.fr/politique-de-confidentialite">
             Politique de confidentialité
         </a>
-    </p>
-
-    <p style="font-size:14px; margin-bottom:6px;">
-        <a href="https://lesbijouxfrancais.fr/politique-de-confidentialiteconditions-generales-de-vente-" style="color:#333;">
-            Conditions générales de vente (CGV)
-        </a>
-    </p>
+    </div>
 
 </div>
+</body>
+</html>
