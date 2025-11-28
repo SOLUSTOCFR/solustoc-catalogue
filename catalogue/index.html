@@ -76,13 +76,6 @@
       margin-bottom: 16px;
     }
 
-    h2.section-title {
-      font-size: 14px;
-      margin: 0 0 6px;
-      font-weight: 700;
-      color: #333;
-    }
-
     .section {
       background: #fffdf8;
       border-radius: 14px;
@@ -97,10 +90,6 @@
       margin: 4px 0 0;
     }
 
-    .section li {
-      margin-bottom: 2px;
-    }
-
     .btn-main,
     .btn-ghost,
     .btn-whatsapp,
@@ -113,41 +102,22 @@
       text-decoration: none;
       padding: 8px 10px;
       border-radius: 999px;
-      border: none;
       cursor: pointer;
       box-sizing: border-box;
     }
 
-    .btn-main {
-      background: #1ba64a;
-      color: #fff;
-      margin-top: 8px;
-    }
-
-    .btn-main:hover {
-      background: #15903f;
-    }
-
+    .btn-main,
     .btn-whatsapp {
       background: #1ba64a;
       color: #fff;
       margin-top: 8px;
     }
 
-    .btn-whatsapp:hover {
-      background: #15903f;
-    }
-
     .btn-ghost {
       background: #fff;
-      color: #444;
       border: 1px solid #e0d5bb;
-      font-weight: 500;
+      color: #444;
       margin-top: 6px;
-    }
-
-    .btn-ghost:hover {
-      background: #faf3e3;
     }
 
     .btn-link {
@@ -157,68 +127,15 @@
       font-size: 11px;
       color: #8d3b42;
       text-decoration: underline;
-      text-underline-offset: 2px;
     }
 
     .lot-card {
       background: #fffdf8;
       border-radius: 14px;
       border: 1px solid #f1e3c5;
-      padding: 10px 12px 10px;
-      margin-bottom: 10px;
-      font-size: 12px;
-    }
-
-    .lot-title {
-      font-weight: 700;
-      font-size: 13px;
-      margin-bottom: 2px;
-    }
-
-    .lot-price {
-      font-size: 12px;
-      color: #333;
-      margin-bottom: 4px;
-    }
-
-    .lot-note {
-      font-size: 11px;
-      color: #666;
-      margin-bottom: 4px;
-    }
-
-    .faq-section {
-      background: #fff;
-      border-radius: 14px;
-      border: 1px solid #f1e3c5;
       padding: 10px 12px;
-      font-size: 12px;
       margin-bottom: 10px;
-    }
-
-    details {
-      border-radius: 10px;
-      padding: 4px 6px;
-      margin-top: 4px;
-      background: #fffdf8;
-      border: 1px solid #f3e5c8;
-    }
-
-    summary {
-      cursor: pointer;
-      list-style: none;
-      font-weight: 600;
       font-size: 12px;
-    }
-
-    summary::-webkit-details-marker {
-      display: none;
-    }
-
-    details p {
-      margin: 4px 0 2px;
-      font-size: 11px;
-      color: #555;
     }
 
     .footer {
@@ -230,30 +147,10 @@
       margin-top: 4px;
     }
 
-    .footer-title {
-      font-weight: 700;
-      font-size: 12px;
-      margin-bottom: 2px;
-    }
-
-    .footer a {
-      color: #0c6c2d;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-
     .footer-small {
       margin-top: 4px;
       font-size: 10px;
       color: #555;
-    }
-
-    @media (max-width: 480px) {
-      .card {
-        border-radius: 0;
-        max-width: 100%;
-        box-shadow: none;
-      }
     }
   </style>
 </head>
@@ -289,28 +186,27 @@
     <!-- A PROPOS -->
     <section class="section">
       <h2 class="section-title">À propos</h2>
-      <p style="margin:4px 0 0;font-size:12px;">
-        Solustoc est un grossiste spécialisé dans les bijoux en acier inoxydable
-        doré à l’or fin. Nous sélectionnons des modèles adaptés aux boutiques,
-        marchés et e-commerce. Notre priorité : un stock réel, contrôlé, avec
-        des marges fortes pour les revendeurs.
+      <p>
+        Solustoc est un grossiste spécialisé dans les bijoux en acier inoxydable doré à l’or fin.
+        Sélection adaptée boutiques, marchés & e-commerce.
       </p>
     </section>
 
-    <!-- POURQUOI A LA PIECE -->
+    <!-- ACHAT À LA PIÈCE -->
     <section class="section">
       <h2 class="section-title">Pourquoi acheter à la pièce&nbsp;?</h2>
+
       <ul>
-        <li>Vous choisissez exactement les modèles qui vous plaisent.</li>
-        <li>Prix revendeur immédiat, dès la première commande.</li>
-        <li>Qualité boutique – acier inoxydable doré 0,4&nbsp;µm.</li>
-        <li>Stock réel contrôlé, suivi mis à jour.</li>
-        <li>Idéal boutiques, créateurs, marchés & e-commerce.</li>
+        <li>Choix libre des modèles.</li>
+        <li>Prix revendeur immédiat.</li>
+        <li>Acier inoxydable doré 0,4 µm.</li>
+        <li>Stock réel contrôlé.</li>
       </ul>
+
       <a class="btn-main" href="pieces.html">Accéder au catalogue à la pièce</a>
 
-      <!-- PHOTOS GLOBALES -->
-      <a class="btn-link" href="../photos.html" target="_blank">
+      <!-- Photos globales -->
+      <a class="btn-link" href="../photos/" target="_blank">
         Découvrir les bijoux en photo
       </a>
     </section>
@@ -321,72 +217,58 @@
     <!-- LOT 150 -->
     <section class="lot-card">
       <div class="lot-title">Lot 150 bijoux</div>
-      <div class="lot-price">200&nbsp;€ TTC — Livraison incluse</div>
-      <div class="lot-note">Idéal pour tester une première gamme rentable.</div>
+      <div class="lot-price">200 € TTC — Livraison incluse</div>
+      <div class="lot-note">Idéal pour une première gamme rentable.</div>
 
       <a class="btn-whatsapp"
-         href="https://wa.me/33756923323?text=Bonjour%2C%20je%20su
-is%20int%C3%A9ress%C3%A9%20par%20le%20lot%20150%20bijoux%20%C3%A0%20200%E2%82%AC%20TTC%20livr%C3%A9s"
+         href="https://wa.me/33756923323?text=Je%20veux%20le%20lot%20150%20bijoux%20%E2%82%AC200"
          target="_blank">
-        Commander le lot 150 via WhatsApp
+        Commander via WhatsApp
       </a>
 
-      <a class="btn-ghost"
-         href="../pdf/Catalogue-150.pdf"
-         target="_blank">
-        Télécharger le PDF (150 bijoux)
-      </a>
+      <a class="btn-ghost" href="../pdf/Catalogue-150.pdf" target="_blank">Télécharger le PDF</a>
 
-      <a class="btn-link" href="../photos.html#lot150" target="_blank">
-        Voir les photos du lot
-      </a>
+      <a class="btn-link" href="../photos/" target="_blank">Voir les photos du lot</a>
     </section>
 
     <!-- LOT 370 -->
     <section class="lot-card">
       <div class="lot-title">Lot 370 bijoux</div>
-      <div class="lot-price">480&nbsp;€ TTC — Livraison incluse</div>
-      <div class="lot-note">Best-seller revendeurs : marge maximale.</div>
+      <div class="lot-price">480 € TTC — Livraison incluse</div>
+      <div class="lot-note">Best-seller revendeurs.</div>
 
       <a class="btn-whatsapp"
-         href="https://wa.me/33756923323?text=Bonjour%2C%20je%20su
-is%20int%C3%A9ress%C3%A9%20par%20le%20lot%20370%20bijoux%20%C3%A0%20480%E2%82%AC%20TTC"
+         href="https://wa.me/33756923323?text=Je%20veux%20le%20lot%20370%20bijoux%20%E2%82%AC480"
          target="_blank">
-        Commander le lot 370 via WhatsApp
+        Commander via WhatsApp
       </a>
 
-      <a class="btn-ghost"
-         href="../pdf/Catalogue-370.pdf"
-         target="_blank">
-        Télécharger le PDF (370 bijoux)
-      </a>
+      <a class="btn-ghost" href="../pdf/Catalogue-370.pdf" target="_blank">Télécharger le PDF</a>
 
-      <a class="btn-link" href="../photos.html#lot370" target="_blank">
-        Voir les photos du lot
-      </a>
+      <a class="btn-link" href="../photos/" target="_blank">Voir les photos du lot</a>
     </section>
 
     <!-- FAQ -->
-    <section class="faq-section">
+    <section class="section">
       <h2 class="section-title">Questions fréquentes</h2>
 
       <details>
-        <summary>Les bijoux noircissent-ils&nbsp;?</summary>
-        <p>Acier inoxydable doré 0,4µm — usage normal sans noircir.</p>
+        <summary>Les bijoux noircissent-ils ?</summary>
+        <p>Acier inoxydable doré 0,4 µm — usage normal sans noircir.</p>
       </details>
 
       <details>
-        <summary>Quels types de bijoux&nbsp;?</summary>
+        <summary>Quels types de bijoux ?</summary>
         <p>Colliers, bracelets, boucles, bagues, médailles.</p>
       </details>
 
       <details>
-        <summary>Délai de livraison&nbsp;?</summary>
-        <p>Préparation 24h, livraison 24/48h.</p>
+        <summary>Délai de livraison ?</summary>
+        <p>Préparation 24h — livraison 24/48h.</p>
       </details>
 
       <details>
-        <summary>Paiement&nbsp;?</summary>
+        <summary>Paiement ?</summary>
         <p>Virement bancaire — facture fournie.</p>
       </details>
     </section>
@@ -395,17 +277,12 @@ is%20int%C3%A9ress%C3%A9%20par%20le%20lot%20370%20bijoux%20%C3%A0%20480%E2%82%AC
     <section class="footer">
       <div class="footer-title">Solustoc – Déstockage pour les pros</div>
       <div>Email : <a href="mailto:contact@solustoc.fr">contact@solustoc.fr</a></div>
-      <div>WhatsApp : <a href="https://wa.me/33756923323" target="_blank">+33 7 56 92 33 23</a></div>
+      <div>WhatsApp : <a href="https://wa.me/33756923323" target="_blank">07 56 92 33 23</a></div>
 
       <div class="footer-small">
-        Société française – SIRET : 943 702 126 00013.
-        <br>
-        <a href="https://lesbijouxfrancais.fr/mentions-legales" target="_blank">
-          Mentions légales
-        </a> ·
-        <a href="https://lesbijouxfrancais.fr/politique-de-confidentialite" target="_blank">
-          Politique de confidentialité
-        </a>
+        SIRET : 943 702 126 00013<br>
+        <a href="https://lesbijouxfrancais.fr/mentions-legales" target="_blank">Mentions légales</a> ·
+        <a href="https://lesbijouxfrancais.fr/politique-de-confidentialite" target="_blank">Politique de confidentialité</a>
       </div>
     </section>
 
