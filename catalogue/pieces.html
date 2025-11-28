@@ -6,138 +6,314 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #f5f5f5; color: #222; }
-    header { background: #111; color: #fff; padding: 18px 10px; text-align: center; }
-    header h1 { margin: 0; font-size: 22px; }
-    header p { margin: 4px 0 0; font-size: 14px; color: #ddd; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #fff7ea;
+      color: #222;
+    }
 
-    .wrapper { width: 94%; max-width: 1100px; margin: 18px auto 40px; }
+    header {
+      background: #8d3b42;
+      color: #fff;
+      padding: 22px 14px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    header p {
+      margin: 4px 0 0;
+      font-size: 14px;
+      opacity: 0.9;
+    }
 
-    .hero { background: #ffffff; border-radius: 12px; padding: 18px 16px; box-shadow: 0 0 10px rgba(0,0,0,0.06); margin-bottom: 18px; text-align: center; }
-    .hero h2 { margin-top: 0; font-size: 20px; }
-    .hero p { margin: 6px 0; font-size: 14px; }
+    .wrapper {
+      width: 94%;
+      max-width: 1100px;
+      margin: 18px auto 40px;
+    }
 
-    .badge-row { margin-top: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; font-size: 13px; }
-    .badge { background: #f0e6d5; border-radius: 999px; padding: 4px 10px; display: inline-flex; align-items: center; }
+    /* HERO */
+    .hero {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 22px 18px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.08);
+      margin-bottom: 22px;
+      text-align: center;
+      border: 1px solid #f2dfc8;
+    }
+    .hero h2 {
+      margin-top: 0;
+      font-size: 20px;
+      font-weight: bold;
+      color: #8d3b42;
+    }
+    .hero p {
+      margin: 6px 0;
+      font-size: 14px;
+    }
 
-    .section-title { margin: 24px 0 10px; font-size: 18px; font-weight: bold; }
+    .badge-row {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+    .badge {
+      background: #f6e5c1;
+      border-radius: 999px;
+      padding: 5px 12px;
+      border: 1px solid #e4d5b1;
+    }
+
+    /* SECTION TITLES */
+    .section-title {
+      margin: 24px 0 10px;
+      font-size: 19px;
+      font-weight: bold;
+      color: #8d3b42;
+    }
 
     /* BARRE DE FILTRE */
     .filter-bar {
-      margin: 6px 0 14px;
+      margin: 10px 0 16px;
+      background: #fff;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid #eedfcb;
+      box-shadow: 0 0 8px rgba(0,0,0,0.04);
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       align-items: center;
-      font-size: 13px;
+      font-size: 14px;
     }
     .filter-bar label {
       font-weight: bold;
       margin-right: 4px;
+      color: #8d3b42;
     }
     .filter-bar select {
-      padding: 6px 8px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 13px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #c9a66b;
+      background: #fffdf8;
+      font-size: 14px;
+      color: #333;
     }
 
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
-
-    .card { background: #ffffff; border-radius: 10px; box-shadow: 0 0 8px rgba(0,0,0,0.05); padding: 10px 10px 12px; display: flex; flex-direction: column; height: 100%; }
-
-    /* images carrées */
-    .card img { 
-      width: 100%; 
-      aspect-ratio: 1 / 1; 
-      object-fit: cover; 
-      border-radius: 8px; 
-      margin-bottom: 8px; 
-      background: #ddd; 
-      cursor: pointer; 
+    /* GRID PRODUITS */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px;
     }
 
-    .card h3 { font-size: 15px; margin: 4px 0 4px; min-height: 40px; }
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.07);
+      border: 1px solid #f3e5d2;
+      padding: 12px 12px 14px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      background: #ddd;
+      cursor: pointer;
+    }
+
+    .card h3 {
+      font-size: 15px;
+      margin: 4px 0 4px;
+      font-weight: bold;
+      min-height: 40px;
+      color: #333;
+    }
 
     .cat-label {
       font-size: 12px;
-      color: #666;
+      color: #8d3b42;
       margin-bottom: 3px;
+      font-weight: bold;
     }
 
-    .price-line { font-size: 14px; margin: 2px 0; }
+    .price-line {
+      font-size: 14px;
+      margin: 2px 0;
+      line-height: 1.3;
+    }
+
     .price-solustoc { font-weight: bold; color: #b32121; }
     .price-public { font-size: 13px; color: #444; display:block; }
+
     .stock { font-size: 13px; color: #555; margin-top: 2px; }
 
-    .btn-small { margin-top: 8px; padding: 8px 10px; font-size: 14px; border-radius: 8px; border: none; cursor: pointer; font-weight: bold; background: #25D366; color: #fff; width: 100%; }
+    /* QUANTITÉ */
+    .qty-row {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:8px;
+      margin-top:6px;
+    }
+    .qty-minus, .qty-plus {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      font-size: 18px;
+      border: 1px solid #ccbda3;
+      cursor: pointer;
+      background: #faf3e3;
+    }
+    .qty-minus:hover, .qty-plus:hover { background: #f1e3c8; }
+    .qty-value { font-size: 16px; font-weight: bold; color: #333; }
+
+    .btn-small {
+      margin-top: 10px;
+      padding: 9px 10px;
+      font-size: 14px;
+      border-radius: 999px;
+      border: none;
+      background: #25D366;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
     .btn-small:hover { background: #1ebe5c; }
 
-    /* Quantité */
-    .qty-row { display:flex; justify-content:center; align-items:center; gap:8px; margin-top:6px; }
-    .qty-minus, .qty-plus {
-      width: 30px;
-      height: 30px;
-      border-radius: 6px;
-      font-size: 18px;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      background: #e6e6e6;
-    }
-    .qty-minus:hover, .qty-plus:hover { background: #d3d3d3; }
-    .qty-value { font-size: 16px; font-weight: bold; }
-
-    /* Panier */
+    /* PANIER */
     .cart-block {
       background: #ffffff;
-      border-radius: 12px;
+      border-radius: 16px;
       padding: 18px 14px 16px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.06);
-      margin-top: 26px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.06);
+      border: 1px solid #ecdcc4;
+      margin-top: 30px;
     }
-    .cart-block h2 { margin-top:0; font-size:18px; text-align:center; }
-    .cart-info { font-size:13px; margin-bottom:8px; text-align:center; color:#444; }
+    .cart-block h2 {
+      margin-top:0;
+      font-size:20px;
+      text-align:center;
+      color: #8d3b42;
+    }
+    .cart-info {
+      font-size:13px;
+      text-align:center;
+      color:#555;
+      margin-bottom:8px;
+    }
 
-    table.cart-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
-    table.cart-table th, table.cart-table td {
+    table.cart-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+    table.cart-table th,
+    table.cart-table td {
       padding: 4px 6px;
       border-bottom: 1px solid #eee;
       text-align: left;
     }
-    .cart-total { margin-top: 10px; font-weight: bold; text-align: right; font-size: 14px; }
 
-    .cart-actions { margin-top: 14px; text-align: center; display:flex; flex-direction:column; gap:8px; }
-    .btn-main { padding: 11px 14px; border-radius: 999px; border: none; font-size: 15px; font-weight: bold; cursor: pointer; color: #fff; background: #25D366; }
+    .cart-total {
+      margin-top: 10px;
+      font-weight: bold;
+      text-align: right;
+      font-size: 15px;
+      color: #333;
+    }
+
+    .cart-actions {
+      margin-top: 14px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .btn-main {
+      padding: 12px 14px;
+      border-radius: 999px;
+      border: none;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #fff;
+      background: #25D366;
+    }
     .btn-main[disabled] { opacity: 0.5; cursor: not-allowed; }
-    .btn-secondary { padding: 8px 12px; border-radius: 999px; border: none; font-size: 13px; cursor: pointer; background: #f0f0f0; color: #333; }
+    .btn-secondary {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: none;
+      font-size: 13px;
+      cursor: pointer;
+      background: #f0f0f0;
+      color: #333;
+    }
 
-    footer { text-align: center; font-size: 12px; color: #777; padding: 24px 10px 28px; }
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+      padding: 24px 10px 28px;
+    }
 
-    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 9999; }
-    .lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; }
-    .lightbox-close { position: fixed; top: 14px; right: 20px; font-size: 26px; color: #fff; cursor: pointer; font-weight: bold; }
-
-    @media (max-width: 600px) { 
-      .card img { aspect-ratio: 1 / 1; } 
-      .filter-bar { flex-direction: column; align-items: stretch; }
-      .filter-bar label { margin-bottom: 2px; }
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 14px;
+      right: 20px;
+      font-size: 28px;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
     }
   </style>
 </head>
 
 <body>
+
 <header>
   <h1>Solustoc – Bijoux à la pièce pour revendeurs</h1>
-  <p>Composez votre propre sélection de bijoux en acier inoxydable doré à l’or fin</p>
+  <p>Composez votre sélection en acier inoxydable doré à l’or fin</p>
 </header>
 
 <div class="wrapper">
 
   <section class="hero">
     <h2>Choisissez vos bijoux à l’unité</h2>
-    <p>Sélectionnez les références, ajoutez-les au panier puis envoyez le récapitulatif via WhatsApp.</p>
+    <p>Sélectionnez les références, ajoutez-les au panier puis envoyez la commande via WhatsApp.</p>
     <p><strong>Livraison gratuite dès 200 € TTC.</strong></p>
+
     <div class="badge-row">
       <span class="badge">💎 Acier inoxydable doré à l’or fin</span>
       <span class="badge">📦 Stock réel contrôlé</span>
@@ -148,296 +324,49 @@
 
   <h2 class="section-title">Bijoux disponibles à la pièce</h2>
 
-  <!-- BARRE DE FILTRE -->
+  <!-- FILTRES -->
   <div class="filter-bar">
-    <label for="filter-category">Filtrer :</label>
+    <label for="filter-category">Catégorie :</label>
     <select id="filter-category">
       <option value="">Toutes les catégories</option>
-      <option value="Bague anneau">Bagues anneau</option>
-      <option value="Boucles d'oreilles & Créoles">Boucles d'oreilles & Créoles</option>
-      <option value="Bracelet chaîne">Bracelets chaîne</option>
-      <option value="Collier chaîne">Colliers chaîne</option>
-      <option value="Collier grande">Collier grande maille</option>
-      <option value="Cordon doré">Cordons dorés</option>
-      <option value="Médaille initiale">Médailles initiales</option>
+      <option value="Bague anneau">Bagues</option>
+      <option value="Boucles d'oreilles & Créoles">Boucles & Créoles</option>
+      <option value="Bracelet chaîne">Bracelets</option>
+      <option value="Collier chaîne">Colliers</option>
+      <option value="Collier grande">Grande maille</option>
+      <option value="Cordon doré">Cordons</option>
+      <option value="Médaille initiale">Initiales</option>
       <option value="Médaille pampille">Médailles pampille</option>
       <option value="Médaille pompon">Médailles pompon</option>
       <option value="Médaille précieuse">Médailles précieuses</option>
-      <option value="Médaille symbole">Médailles symbole / bijou</option>
+      <option value="Médaille symbole">Médailles symbole</option>
     </select>
   </div>
 
   <section id="products" class="grid"></section>
 
   <section class="cart-block" id="cart-block">
-    <h2>Votre sélection de bijoux</h2>
+    <h2>Votre sélection</h2>
     <div class="cart-info">
-      Ajoutez les bijoux puis envoyez la commande via WhatsApp.
+      Ajoutez vos bijoux puis envoyez votre commande via WhatsApp.  
       Livraison offerte dès 200 € TTC.
     </div>
     <div id="cart-content">
-      <p style="text-align:center; font-size:13px; color:#555;">Aucun bijou dans votre sélection pour le moment.</p>
+      <p style="text-align:center; font-size:13px; color:#555;">
+        Aucun bijou dans votre sélection pour l’instant.
+      </p>
     </div>
     <div class="cart-actions">
-      <button id="btn-whatsapp" class="btn-main" disabled>📲 Envoyer la commande via WhatsApp</button>
+      <button id="btn-whatsapp" class="btn-main" disabled>📲 Envoyer via WhatsApp</button>
       <button id="btn-clear" class="btn-secondary">🗑️ Vider la sélection</button>
     </div>
   </section>
 
 </div>
 
-<footer>Solustoc • Déstockage pour les pros • Bijoux en acier inoxydable doré à l’or fin</footer>
+<footer>Solustoc • Grossiste bijoux • Acier inoxydable doré à l’or fin</footer>
 
 <div class="lightbox" id="lightbox">
   <span class="lightbox-close" id="lightbox-close">×</span>
   <img id="lightbox-img" src="" alt="">
 </div>
-
-<script>
-const PHOTO_BASE = "../photo/";
-
-/* ====== CATALOGUE COMPLET AVEC CATÉGORIE ======
-   id = identifiant stable pour gérer le panier même avec les filtres
-*/
-const produits = [
-  // Bagues anneau
-  { id: 1,  nom: "Bague Anneau Perles Métals Doré", stock: 11, prixPublic: 12.00, prixSolustoc: 1.80, image: "bague-anneau-perles-metals-dore.webp", categorie: "Bague anneau" },
-  { id: 2,  nom: "Bague Anneau Perles Colorées Doré Safran", stock: 38, prixPublic: 12.00, prixSolustoc: 1.80, image: "bague-anneau-perles-colorees-dore-safran.webp", categorie: "Bague anneau" },
-  { id: 3,  nom: "Bague Anneau Perles Colorées Doré Bleu Canard", stock: 25, prixPublic: 12.00, prixSolustoc: 1.80, image: "bague-anneau-perles-colorees-dore-bleu-canard.webp", categorie: "Bague anneau" },
-  { id: 4,  nom: "Bague Anneau Large Lbdm Doré", stock: 5, prixPublic: 15.00, prixSolustoc: 2.25, image: "bague-anneau-large-lbdm-dore.webp", categorie: "Bague anneau" },
-
-  // Boucles d'oreilles & Créoles
-  { id: 5,  nom: "Boucles D'oreilles Studs Doré", stock: 21, prixPublic: 9.00, prixSolustoc: 1.35, image: "boucles-d-oreilles-studs-dore.webp", categorie: "Boucles d'oreilles & Créoles" },
-  { id: 6,  nom: "Boucles D'oreilles Créole Doré Bleu Canard", stock: 5, prixPublic: 15.00, prixSolustoc: 2.25, image: "boucles-d-oreilles-creole-dore-bleu-canard.webp", categorie: "Boucles d'oreilles & Créoles" },
-  { id: 7,  nom: "Boucles D'oreilles Créole 40mm Doré Safran", stock: 81, prixPublic: 12.00, prixSolustoc: 1.80, image: "boucles-d-oreilles-creole-40mm-dore-safran.webp", categorie: "Boucles d'oreilles & Créoles" },
-  { id: 8,  nom: "Boucles D'oreilles Créole 40mm Doré", stock: 17, prixPublic: 9.00, prixSolustoc: 1.35, image: "boucles-d-oreilles-creole-40mm-dore.webp", categorie: "Boucles d'oreilles & Créoles" },
-  { id: 9,  nom: "Boucles D'oreilles Créole 20 Mm Doré Safran", stock: 36, prixPublic: 9.00, prixSolustoc: 1.35, image: "boucles-d-oreilles-creole-20-mm-dore-safran.webp", categorie: "Boucles d'oreilles & Créoles" },
-
-  // Bracelets chaîne
-  { id: 10, nom: "Bracelet Chaîne Bijou De Mimi Doré Poinsettia – Porte-bonheur", stock: 18, prixPublic: 12.00, prixSolustoc: 1.80, image: "bracelet-chaine-bijou-de-mimi-dore-poinsettia-porte-bonheur.webp", categorie: "Bracelet chaîne" },
-  { id: 11, nom: "Bracelet Chaîne Bijou De Mimi Doré Fluo Pink – Porte-bonheur", stock: 2, prixPublic: 15.00, prixSolustoc: 2.25, image: "bracelet-chaine-bijou-de-mimi-dore-fluo-pink-porte-bonheur.webp", categorie: "Bracelet chaîne" },
-  { id: 12, nom: "Bracelet Chaîne Bijou De Mimi Doré Black – Porte-bonheur", stock: 13, prixPublic: 12.00, prixSolustoc: 1.80, image: "bracelet-chaine-bijou-de-mimi-dore-black-porte-bonheur.webp", categorie: "Bracelet chaîne" },
-  { id: 13, nom: "Bracelet Chaîne Bijou De Mimi Doré – Porte-bonheur", stock: 51, prixPublic: 12.00, prixSolustoc: 1.80, image: "bracelet-chaine-bijou-de-mimi-dore-porte-bonheur.webp", categorie: "Bracelet chaîne" },
-
-  // Colliers chaîne
-  { id: 14, nom: "Collier Chaîne Perles Colorées Doré Safran – Élégance Colorée", stock: 10, prixPublic: 19.00, prixSolustoc: 2.85, image: "collier-chaine-perles-colorees-dore-safran-elegance-coloree.webp", categorie: "Collier chaîne" },
-  { id: 15, nom: "Collier Chaîne Doré – Minimaliste & Chic", stock: 100, prixPublic: 15.00, prixSolustoc: 2.25, image: "collier-chaine-dore-minimaliste-chic.webp", categorie: "Collier chaîne" },
-
-  // Collier grande
-  { id: 16, nom: "Collier Grande Maille Doré – Style Intemporel", stock: 5, prixPublic: 19.00, prixSolustoc: 2.85, image: "collier-grande-maille-dore-style-intemporel.webp", categorie: "Collier grande" },
-
-  // Cordons dorés
-  { id: 17, nom: "Cordon Doré Safran", stock: 231, prixPublic: 9.00, prixSolustoc: 1.35, image: "cordon-dore-safran.webp", categorie: "Cordon doré" },
-  { id: 18, nom: "Cordon Doré Lurex Jaune", stock: 31, prixPublic: 9.00, prixSolustoc: 1.35, image: "cordon-dore-lurex-jaune.webp", categorie: "Cordon doré" },
-  { id: 19, nom: "Cordon Doré Fluo Yellow", stock: 38, prixPublic: 9.00, prixSolustoc: 1.35, image: "cordon-dore-fluo-yellow.webp", categorie: "Cordon doré" },
-  { id: 20, nom: "Cordon Doré Flame Orange", stock: 26, prixPublic: 9.00, prixSolustoc: 1.35, image: "cordon-dore-flame-orange.webp", categorie: "Cordon doré" },
-  { id: 21, nom: "Cordon Doré Bouton D Or", stock: 17, prixPublic: 9.00, prixSolustoc: 1.35, image: "cordon-dore-bouton-d-or.webp", categorie: "Cordon doré" },
-  { id: 22, nom: "Cordon Doré Bleu Jean", stock: 37, prixPublic: 9.00, prixSolustoc: 1.35, image: "cordon-dore-bleu-jean.webp", categorie: "Cordon doré" },
-
-  // Médailles initiales
-  { id: 23, nom: "Médaille Initiale Doré Z", stock: 59, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-z.webp", categorie: "Médaille initiale" },
-  { id: 24, nom: "Médaille Initiale Doré Y", stock: 47, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-y.webp", categorie: "Médaille initiale" },
-  { id: 25, nom: "Médaille Initiale Doré X", stock: 67, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-x.webp", categorie: "Médaille initiale" },
-  { id: 26, nom: "Médaille Initiale Doré W", stock: 28, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-w.webp", categorie: "Médaille initiale" },
-  { id: 27, nom: "Médaille Initiale Doré V", stock: 54, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-v.webp", categorie: "Médaille initiale" },
-  { id: 28, nom: "Médaille Initiale Doré U", stock: 68, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-u.webp", categorie: "Médaille initiale" },
-  { id: 29, nom: "Médaille Initiale Doré T", stock: 102, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-t.webp", categorie: "Médaille initiale" },
-  { id: 30, nom: "Médaille Initiale Doré S", stock: 77, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-s.webp", categorie: "Médaille initiale" },
-  { id: 31, nom: "Médaille Initiale Doré R", stock: 62, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-r.webp", categorie: "Médaille initiale" },
-  { id: 32, nom: "Médaille Initiale Doré Q", stock: 80, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-q.webp", categorie: "Médaille initiale" },
-  { id: 33, nom: "Médaille Initiale Doré P", stock: 82, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-p.webp", categorie: "Médaille initiale" },
-  { id: 34, nom: "Médaille Initiale Doré O", stock: 65, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-o.webp", categorie: "Médaille initiale" },
-  { id: 35, nom: "Médaille Initiale Doré N", stock: 98, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-n.webp", categorie: "Médaille initiale" },
-  { id: 36, nom: "Médaille Initiale Doré K", stock: 63, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-k.webp", categorie: "Médaille initiale" },
-  { id: 37, nom: "Médaille Initiale Doré J", stock: 76, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-j.webp", categorie: "Médaille initiale" },
-  { id: 38, nom: "Médaille Initiale Doré I", stock: 70, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-i.webp", categorie: "Médaille initiale" },
-  { id: 39, nom: "Médaille Initiale Doré H", stock: 33, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-h.webp", categorie: "Médaille initiale" },
-  { id: 40, nom: "Médaille Initiale Doré G", stock: 57, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-g.webp", categorie: "Médaille initiale" },
-  { id: 41, nom: "Médaille Initiale Doré F", stock: 31, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-f.webp", categorie: "Médaille initiale" },
-  { id: 42, nom: "Médaille Initiale Doré E", stock: 33, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-e.webp", categorie: "Médaille initiale" },
-  { id: 43, nom: "Médaille Initiale Doré D", stock: 41, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-d.webp", categorie: "Médaille initiale" },
-  { id: 44, nom: "Médaille Initiale Doré C", stock: 41, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-c.webp", categorie: "Médaille initiale" },
-  { id: 45, nom: "Médaille Initiale Doré B", stock: 60, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-initiale-dore-b.webp", categorie: "Médaille initiale" },
-
-  // Médailles pampille
-  { id: 46, nom: "Médaille Pampille Doré Papillon", stock: 15, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-pampille-dore-papillon.webp", categorie: "Médaille pampille" },
-  { id: 47, nom: "Médaille Pampille Doré Je t'aime Maman – Cadeau Parfait", stock: 145, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-pampille-dore-je-t-aime-maman-cadeau-parfait.webp", categorie: "Médaille pampille" },
-  { id: 48, nom: "Médaille Pampille Doré Crown", stock: 25, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-pampille-dore-crown.webp", categorie: "Médaille pampille" },
-  { id: 49, nom: "Médaille Pampille Doré Colombe – Paix & Sérénité", stock: 61, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-pampille-dore-colombe-paix-serenite.webp", categorie: "Médaille pampille" },
-  { id: 50, nom: "Médaille Pampille Doré Angel – Protection & Élégance", stock: 72, prixPublic: 12.00, prixSolustoc: 1.80, image: "medaille-pampille-dore-angel-protection-elegance.webp", categorie: "Médaille pampille" },
-
-  // Médailles pompon
-  { id: 51, nom: "Médaille Pompon Doré Safran – Charme & Fantaisie", stock: 39, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-pompon-dore-safran-charme-fantaisie.webp", categorie: "Médaille pompon" },
-  { id: 52, nom: "Médaille Pompon Doré Perfect Pink – Charme & Fantaisie", stock: 11, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-pompon-dore-perfect-pink-charme-fantaisie.webp", categorie: "Médaille pompon" },
-  { id: 53, nom: "Médaille Pompon Doré Fluo Pink – Charme & Fantaisie", stock: 33, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-pompon-dore-fluo-pink-charme-fantaisie.webp", categorie: "Médaille pompon" },
-  { id: 54, nom: "Médaille Pompon Doré Corail – Charme & Fantaisie", stock: 40, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-pompon-dore-corail-charme-fantaisie.webp", categorie: "Médaille pompon" },
-  { id: 55, nom: "Médaille Pompon Doré Bleu Canard – Charme & Fantaisie", stock: 45, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-pompon-dore-bleu-canard-charme-fantaisie.webp", categorie: "Médaille pompon" },
-
-  // Médailles précieuses
-  { id: 56, nom: "Médaille Précieuse Doré Rose", stock: 23, prixPublic: 12.00, prixSolustoc: 1.80, image: "medaille-precieuse-dore-rose.webp", categorie: "Médaille précieuse" },
-  { id: 57, nom: "Médaille Précieuse Doré Duo Coccinelle", stock: 20, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-precieuse-dore-duo-coccinelle.webp", categorie: "Médaille précieuse" },
-  { id: 58, nom: "Médaille Précieuse Doré Clé – Symbole de Réussite", stock: 17, prixPublic: 19.00, prixSolustoc: 2.85, image: "medaille-precieuse-dore-cle-symbole-de-reussite.webp", categorie: "Médaille précieuse" },
-
-  // Médailles symbole / bijou
-  { id: 59, nom: "Médaille Symbole Doré Pieds", stock: 79, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-symbole-dore-pieds.webp", categorie: "Médaille symbole" },
-  { id: 60, nom: "Médaille Symbole Doré Motlove", stock: 93, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-symbole-dore-motlove.webp", categorie: "Médaille symbole" },
-  { id: 61, nom: "Médaille Symbole Doré Merci", stock: 100, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-symbole-dore-merci.webp", categorie: "Médaille symbole" },
-  { id: 62, nom: "Médaille Symbole Doré Mains", stock: 24, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-symbole-dore-mains.webp", categorie: "Médaille symbole" },
-  { id: 63, nom: "Médaille Symbole Doré Lucky", stock: 49, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-symbole-dore-lucky.webp", categorie: "Médaille symbole" },
-  { id: 64, nom: "Médaille Symbole Doré Loveyou", stock: 61, prixPublic: 12.00, prixSolustoc: 1.80, image: "medaille-symbole-dore-loveyou.webp", categorie: "Médaille symbole" },
-  { id: 65, nom: "Médaille Symbole Doré Je T Aime", stock: 79, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-symbole-dore-je-t-aime.webp", categorie: "Médaille symbole" },
-  { id: 66, nom: "Médaille Symbole Doré Eye", stock: 25, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-symbole-dore-eye.webp", categorie: "Médaille symbole" },
-  { id: 67, nom: "Médaille Symbole Doré Dune", stock: 23, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-symbole-dore-dune.webp", categorie: "Médaille symbole" },
-  { id: 68, nom: "Médaille Symbole Doré Cactus", stock: 10, prixPublic: 12.00, prixSolustoc: 1.80, image: "medaille-symbole-dore-cactus.webp", categorie: "Médaille symbole" },
-  { id: 69, nom: "Médaille Symbole Doré Bebe", stock: 38, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-symbole-dore-bebe.webp", categorie: "Médaille symbole" },
-  { id: 70, nom: "Médaille Symbole Doré Arccachon", stock: 33, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-symbole-dore-arccachon.webp", categorie: "Médaille symbole" },
-  { id: 71, nom: "Médaille Symbole Doré Ange – Protection & Élégance", stock: 104, prixPublic: 12.00, prixSolustoc: 1.80, image: "medaille-symbole-dore-ange-protection-elegance.webp", categorie: "Médaille symbole" },
-  { id: 72, nom: "Médaille Symbole Doré Anchor", stock: 4, prixPublic: 12.00, prixSolustoc: 1.80, image: "medaille-symbole-dore-anchor.webp", categorie: "Médaille symbole" },
-  { id: 73, nom: "Médaille Symbole Doré Amour", stock: 51, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-symbole-dore-amour.webp", categorie: "Médaille symbole" },
-  { id: 74, nom: "Médaille Symbole Doré Alveole 15", stock: 80, prixPublic: 12.00, prixSolustoc: 1.80, image: "medaille-symbole-dore-alveole-15.webp", categorie: "Médaille symbole" },
-  { id: 75, nom: "Médaille Symbole Doré Alveole 10", stock: 41, prixPublic: 12.00, prixSolustoc: 1.80, image: "medaille-symbole-dore-alveole-10.webp", categorie: "Médaille symbole" },
-
-  // Médailles bijou (rattachées à symbole pour le tri)
-  { id: 76, nom: "Médaille Bijou Doré Petit Ange – Protection & Élégance", stock: 87, prixPublic: 12.00, prixSolustoc: 1.80, image: "medaille-bijou-dore-petit-ange-protection-elegance.webp", categorie: "Médaille symbole" },
-  { id: 77, nom: "Médaille Bijou Doré Love", stock: 78, prixPublic: 10.00, prixSolustoc: 1.50, image: "medaille-bijou-dore-love.webp", categorie: "Médaille symbole" },
-  { id: 78, nom: "Médaille Bijou Doré Dreams – Rêves & Aspirations", stock: 50, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-bijou-dore-dreams-reves-aspirations.webp", categorie: "Médaille symbole" },
-  { id: 79, nom: "Médaille Bijou Doré Chance", stock: 38, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-bijou-dore-chance.webp", categorie: "Médaille symbole" },
-  { id: 80, nom: "Médaille Bijou Doré Astre", stock: 24, prixPublic: 15.00, prixSolustoc: 2.25, image: "medaille-bijou-dore-astre.webp", categorie: "Médaille symbole" },
-
-  // + 2 lignes déjà présentes dans ton ancien code (Love You & Lettre W)
-  { id: 81, nom: "Bracelet Love You", stock: 6, prixPublic: 12.00, prixSolustoc: 6.90, image: "Bracelet Love you -1-portrait-748w.webp", categorie: "Bracelet chaîne" },
-  { id: 82, nom: "Collier Lettre W", stock: 7, prixPublic: 10.00, prixSolustoc: 5.90, image: "LETTRE W-portrait-320w.webp", categorie: "Médaille initiale" }
-];
-
-/* ====== LOGIQUE PANIER & AFFICHAGE ====== */
-
-let cart = [];
-let filteredProduits = [...produits];
-
-/* changer quantité sur la carte produit */
-function changeQty(id, delta) {
-  const el = document.getElementById("qty-" + id);
-  if (!el) return;
-  let value = parseInt(el.textContent || "1", 10);
-  value = value + delta;
-  if (value < 1) value = 1;
-  el.textContent = value;
-}
-
-/* ajouter au panier */
-function addToCart(id, qty = 1) {
-  qty = parseInt(qty, 10);
-  if (qty < 1) return;
-  const p = produits.find(pr => pr.id === id);
-  if (!p) return;
-  const exist = cart.find(i => i.id === id);
-  if (exist) exist.qty += qty;
-  else cart.push({ id: p.id, nom: p.nom, prix: p.prixSolustoc, prixPublic: p.prixPublic, qty });
-  renderCart();
-}
-
-/* vider panier */
-document.getElementById("btn-clear").onclick = () => { cart = []; renderCart(); };
-
-/* envoyer sur WhatsApp */
-document.getElementById("btn-whatsapp").onclick = () => {
-  if (!cart.length) return;
-  let msg = "🛍️ *Commande de bijoux Solustoc*\n\n";
-  cart.forEach(i => {
-    msg += `• ${i.nom} × ${i.qty} — ${i.prix.toFixed(2)}€ TTC (PV conseillé ${i.prixPublic.toFixed(2)}€)\n`;
-  });
-  const total = cart.reduce((s, i) => s + i.prix * i.qty, 0);
-  msg += `\n📦 Total Solustoc : *${total.toFixed(2)} € TTC*`;
-  window.open("https://wa.me/33756923323/?text=" + encodeURIComponent(msg), "_blank");
-};
-
-/* filtrage par catégorie SEULEMENT */
-function applyFilters() {
-  const cat = document.getElementById("filter-category").value;
-
-  filteredProduits = produits.filter(p => {
-    return cat ? p.categorie === cat : true;
-  });
-
-  renderProduits();
-}
-
-/* listeners filtre */
-document.getElementById("filter-category").addEventListener("change", applyFilters);
-
-/* affichage catalogue */
-function renderProduits() {
-  const container = document.getElementById("products");
-  if (!filteredProduits.length) {
-    container.innerHTML = `<p style="font-size:14px; color:#555;">Aucun bijou ne correspond à ce filtre pour le moment.</p>`;
-    return;
-  }
-
-  container.innerHTML = filteredProduits.map(p => {
-    const coef = p.prixPublic && p.prixSolustoc ? (p.prixPublic / p.prixSolustoc) : null;
-    const coefTxt = coef ? `Marge revendeur ≈ x${coef.toFixed(1)}` : "";
-    return `
-    <div class="card">
-      <img src="${PHOTO_BASE + p.image}" alt="${p.nom}" onclick="openLightbox('${PHOTO_BASE + p.image}')">
-      <div class="cat-label">${p.categorie}</div>
-      <h3>${p.nom}</h3>
-      <p class="price-line">
-        <span class="price-solustoc">Prix Solustoc : ${p.prixSolustoc.toFixed(2)} € TTC</span>
-        <span class="price-public">Prix public constaté : ${p.prixPublic.toFixed(2)} € TTC</span>
-        <span class="price-public">${coefTxt}</span>
-      </p>
-      <p class="stock">Stock disponible : ${p.stock}</p>
-      <div class="qty-row">
-        <button class="qty-minus" onclick="changeQty(${p.id}, -1)">−</button>
-        <span id="qty-${p.id}" class="qty-value">1</span>
-        <button class="qty-plus" onclick="changeQty(${p.id}, 1)">+</button>
-      </div>
-      <button class="btn-small" onclick="addToCart(${p.id}, document.getElementById('qty-${p.id}').textContent)">Ajouter</button>
-    </div>`;
-  }).join("");
-}
-
-/* affichage panier */
-function renderCart() {
-  const cartBlock = document.getElementById("cart-content");
-  if (!cart.length) {
-    cartBlock.innerHTML = `<p style="text-align:center; font-size:13px; color:#555;">Aucun bijou dans votre sélection pour le moment.</p>`;
-    document.getElementById("btn-whatsapp").disabled = true;
-    return;
-  }
-  const total = cart.reduce((s, i) => s + i.prix * i.qty, 0);
-  cartBlock.innerHTML = `
-    <table class="cart-table">
-      <tr><th>Article</th><th>Qté</th><th>PU Solustoc</th><th>Total</th></tr>
-      ${
-        cart.map(i =>
-          `<tr>
-             <td>${i.nom}</td>
-             <td>${i.qty}</td>
-             <td>${i.prix.toFixed(2)} €</td>
-             <td>${(i.qty * i.prix).toFixed(2)} €</td>
-           </tr>`
-        ).join("")
-      }
-    </table>
-    <p class="cart-total">Total Solustoc : ${total.toFixed(2)} € TTC</p>
-  `;
-  document.getElementById("btn-whatsapp").disabled = false;
-}
-
-/* lightbox */
-function openLightbox(src) {
-  document.getElementById("lightbox-img").src = src;
-  document.getElementById("lightbox").style.display = "flex";
-}
-document.getElementById("lightbox-close").onclick = () => {
-  document.getElementById("lightbox").style.display = "none";
-};
-
-/* GO */
-renderProduits();
-renderCart();
-</script>
-
-</body>
-</html>
