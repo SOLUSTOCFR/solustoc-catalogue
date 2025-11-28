@@ -339,7 +339,7 @@
           <h3>${p.nom}</h3>
           
           <div class="price-block">
-            <span class="price-solustoc">${formatPrix(p.prixSolus)} HT</span>
+            <span class="price-solustoc">${formatPrix(p.prixSolus)} TTC</span>
             <span class="price-public">PV conseillé: ${formatPrix(p.prixPublic)}</span>
           </div>
           
@@ -414,7 +414,7 @@
         `).join("")}
       </table>
     `;
-    totalDisplay.innerText = "Total HT : " + formatPrix(total);
+    totalDisplay.innerText = "Total TTC : " + formatPrix(total);
 
     // Sticky Bar
     document.getElementById("sticky-count").innerText = count;
@@ -428,8 +428,8 @@
     let msg = "👋 Bonjour Brice, je souhaite commander :\n\n";
     cart.forEach(i => msg += `- ${i.nom} (x${i.qty})\n`);
     const total = cart.reduce((acc, i) => acc + (i.prixSolus * i.qty), 0);
-    msg += `\n💰 *Total HT : ${formatPrix(total)}*`;
-    msg += `\n\nMerci de me confirmer le stock et le montant TTC avec livraison.`;
+    msg += `\n💰 *Total TTC : ${formatPrix(total)}*`;
+    msg += `\n\nMerci de me confirmer le stock et le montant final avec livraison.`;
     
     window.open("https://wa.me/33756923323/?text=" + encodeURIComponent(msg), "_blank");
   };
