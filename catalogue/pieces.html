@@ -508,11 +508,12 @@
 
   document.getElementById("btn-clear").onclick = () => { cart = []; updateCartUI(); };
 
-  document.getElementById("btn-whatsapp").onclick = () => {
+document.getElementById("btn-whatsapp").onclick = () => {
     if (!cart.length) return;
     
     let total = cart.reduce((acc, i) => acc + (i.prixSolus * i.qty), 0);
 
+    // TRACKING PIXEL
     if(typeof fbq !== 'undefined') {
         fbq('track', 'InitiateCheckout', {
             value: total,
@@ -524,17 +525,22 @@
     let msg = "👋 Bonjour Brice, voici ma commande Solustoc :\n\n";
     cart.forEach(i => msg += `- ${i.nom} (x${i.qty})\n`);
     
+    // LOGIQUE REMISE
+    let finalTotal = total;
     if (total >= 300) {
         let remise = total * 0.10;
-        let final = total - remise;
+        finalTotal = total - remise;
         msg += `\n🎁 *PROMO -10% ACTIVÉE !*`;
         msg += `\n💰 Sous-total : ${formatPrix(total)}`;
-        msg += `\n✅ *TOTAL FINAL TTC : ${formatPrix(final)}*`;
+        msg += `\n✅ *TOTAL MARCHANDISE TTC : ${formatPrix(finalTotal)}*`;
     } else {
-        msg += `\n💰 *Total Estimé TTC : ${formatPrix(total)}*`;
+        msg += `\n💰 *Total Marchandise TTC : ${formatPrix(total)}*`;
     }
 
-    msg += `\n\nMerci de confirmer le stock et les frais de port.`;
+    // AJOUT DE L'OPTION DE PAIEMENT
+    msg += `\n\n🚚 Merci de confirmer le stock et les frais de port.`;
+    msg += `\n💳 *Je souhaite régler par CB (Lien Stripe) dès validation.*`;
+
     window.open("https://wa.me/33756923323/?text=" + encodeURIComponent(msg), "_blank");
   };
 
