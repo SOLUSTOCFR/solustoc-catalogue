@@ -178,7 +178,6 @@
     
     .btn-add { width: 100%; margin-top: 8px; padding: 10px; border-radius: 8px; border: none; background: #25D366; color: #fff; font-weight: bold; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; }
     
-    /* PANIER FIXE (STICKY) */
     .sticky-cart { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; border-top: 1px solid #e0cda8; box-shadow: 0 -4px 15px rgba(0,0,0,0.1); padding: 12px 20px; display: none; justify-content: space-between; align-items: center; z-index: 900; }
     .sticky-info { font-weight: bold; color: #333; font-size: 15px; }
     .sticky-btn { background: #25D366; color: #fff; padding: 10px 20px; border-radius: 50px; font-weight: bold; text-decoration: none; border: none; cursor: pointer; font-size: 14px; }
@@ -388,16 +387,31 @@
 
   <div class="section-card">
     <h2 class="section-title text-center" style="font-size:16px;">Questions Fréquentes</h2>
-    <div class="faq-item"><div class="faq-q">💎 Qualité ?</div><div class="faq-a">Acier Inoxydable doré à l'or fin (0,4 µm), ne ternit pas et résistant à l'eau.</div></div>
-    <div class="faq-item"><div class="faq-q">📦 Stock ?</div><div class="faq-a">Stock physique à Nantes. Expédition immédiate.</div></div>
-    <div class="faq-item"><div class="faq-q">💳 Paiement ?</div><div class="faq-a">Virement ou CB (Stripe) après validation WhatsApp.</div></div>
-    
+    <div class="faq-item">
+      <div class="faq-q">💎 Quelle est la qualité des bijoux ?</div>
+      <div class="faq-a">Ce sont des créations françaises "Bijoux de Mimi". Acier Inoxydable doré à l'or fin (0,4 µm), ne ternit pas et résistant à l'eau.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">📦 Le stock est-il en France ?</div>
+      <div class="faq-a">Oui, tout notre stock est physique et situé dans nos locaux à Nantes. Expédition immédiate, pas de dropshipping.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">💳 Comment payer ma commande ?</div>
+      <div class="faq-a">Après validation du stock ensemble sur WhatsApp, vous pourrez régler par Virement Bancaire ou par Carte Bancaire (via un lien sécurisé Stripe).</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">🚚 Quels sont les délais ?</div>
+      <div class="faq-a">Toute commande validée avant 12h est expédiée le jour même. Livraison Colissimo ou Mondial Relay en 24/48h.</div>
+    </div>
+
     <hr style="margin: 20px 0; border:0; border-top:1px dashed #ccc;">
+
     <h2 class="section-title text-center" style="font-size:16px;">Pas de WhatsApp ?</h2>
+    <p style="font-size:13px; text-align:center; color:#555;">Contactez-nous directement par email :</p>
     <form action="https://formspree.io/f/mrbyzegw" method="POST" class="contact-form">
         <input type="email" name="email" placeholder="Votre Email" required>
         <textarea name="message" rows="3" placeholder="Votre demande..." required></textarea>
-        <button type="submit">Envoyer</button>
+        <button type="submit">Envoyer le message</button>
     </form>
   </div>
 
