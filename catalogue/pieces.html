@@ -22,52 +22,93 @@
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1190323416269528&ev=PageView&noscript=1"
   /></noscript>
-
   <style>
-    /* CHARTE GRAPHIQUE */
+    /* --- CHARTE GRAPHIQUE SOLUSTOC --- */
     body { font-family: system-ui, -apple-system, sans-serif; margin: 0; background: #fff7ea; color: #222; padding-bottom: 90px; }
+    
     header { background: #fff7ea; text-align: center; padding: 20px 14px 10px; }
     header img { max-width: 180px; height: auto; }
     .header-subtitle { font-size: 13px; color: #666; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 5px; }
+
     .wrapper { width: 94%; max-width: 1100px; margin: 10px auto 40px; }
 
-    /* SECTIONS */
-    .section-card { background: #ffffff; border-radius: 16px; padding: 20px 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #f2dfc8; margin-bottom: 20px; }
+    .section-card {
+      background: #ffffff; border-radius: 16px; padding: 20px 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #f2dfc8;
+      margin-bottom: 20px; 
+    }
     .text-center { text-align: center; }
     .section-title { margin: 0 0 12px; font-size: 18px; font-weight: bold; color: #8d3b42; }
     
-    /* BOUTON D'ACCÈS */
-    .btn-anchor { display: block; width: 100%; max-width: 280px; margin: 15px auto 0; background: #8d3b42; color: #fff; text-decoration: none; padding: 14px 20px; border-radius: 50px; font-weight: bold; font-size: 16px; box-shadow: 0 4px 10px rgba(141, 59, 66, 0.3); transition: transform 0.2s; }
+    /* BOUTON D'ANCRE (ACCÈS RAPIDE) */
+    .btn-anchor {
+      display: block; width: 100%; max-width: 280px; margin: 15px auto 0;
+      background: #8d3b42; color: #fff; text-decoration: none;
+      padding: 14px 20px; border-radius: 50px; font-weight: bold; font-size: 16px;
+      box-shadow: 0 4px 10px rgba(141, 59, 66, 0.3); transition: transform 0.2s;
+    }
     .btn-anchor:active { transform: scale(0.98); }
 
-    /* HOW TO */
-    .how-it-works { background: #fffdf8; border: 1px dashed #c9a66b; border-radius: 12px; padding: 15px; margin: 15px 0; text-align: left; }
+    /* BLOC COMMENT ÇA MARCHE */
+    .how-it-works {
+      background: #fffdf8;
+      border: 1px dashed #c9a66b;
+      border-radius: 12px;
+      padding: 15px;
+      margin: 15px 0;
+      text-align: left;
+    }
     .step-row { display: flex; gap: 10px; margin-bottom: 8px; align-items: flex-start; }
-    .step-num { background: #8d3b42; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 12px; font-weight: bold; flex-shrink: 0; margin-top: 2px; }
+    .step-num { 
+      background: #8d3b42; color: #fff; width: 20px; height: 20px; 
+      border-radius: 50%; display: flex; justify-content: center; align-items: center; 
+      font-size: 12px; font-weight: bold; flex-shrink: 0; margin-top: 2px;
+    }
     .step-text { font-size: 13px; color: #444; line-height: 1.4; }
     .step-text strong { color: #222; }
-    .no-payment-badge { display: inline-block; background: #e8f5e9; color: #2e7d32; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; margin-top: 5px; border: 1px solid #c8e6c9; }
+    .no-payment-badge {
+      display: inline-block; background: #e8f5e9; color: #2e7d32; 
+      padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; 
+      margin-top: 5px; border: 1px solid #c8e6c9;
+    }
 
-    /* MARKETING */
     ul.sales-points { list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 1.6; }
     ul.sales-points li { margin-bottom: 6px; padding-left: 20px; position: relative; }
     ul.sales-points li::before { content: "✅"; position: absolute; left: 0; top: 0; font-size: 12px; }
+
     .profit-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
     .profit-table th { background: #f6e5c1; padding: 8px; text-align: left; font-weight: bold; color: #8d3b42; }
     .profit-table td { padding: 8px; border-bottom: 1px solid #eee; }
     .profit-highlight { color: #2e7d32; font-weight: bold; }
+
     .ambiance-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
     .ambiance-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; border: 1px solid #eee; }
 
-    /* NAVIGATION */
-    .cat-nav-container { position: sticky; top: 0; z-index: 100; background: #fff7ea; padding: 10px 0; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-left: -3%; margin-right: -3%; }
-    .cat-scroller { display: flex; gap: 10px; overflow-x: auto; padding: 0 15px; scrollbar-width: none; -ms-overflow-style: none; }
+    /* NAVIGATION VISUELLE */
+    .cat-nav-container {
+      position: sticky; top: 0; z-index: 100;
+      background: #fff7ea; padding: 10px 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      margin-left: -3%; margin-right: -3%;
+    }
+    .cat-scroller {
+      display: flex; gap: 10px; overflow-x: auto; padding: 0 15px;
+      scrollbar-width: none; -ms-overflow-style: none;
+    }
     .cat-scroller::-webkit-scrollbar { display: none; }
-    .cat-btn { flex: 0 0 auto; background: #fff; border: 1px solid #e0cdb0; border-radius: 50px; padding: 8px 16px; font-size: 13px; font-weight: 600; color: #555; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
-    .cat-btn.active { background: #8d3b42; color: #fff; border-color: #8d3b42; box-shadow: 0 2px 8px rgba(141, 59, 66, 0.3); }
+    
+    .cat-btn {
+      flex: 0 0 auto; background: #fff; border: 1px solid #e0cdb0;
+      border-radius: 50px; padding: 8px 16px; font-size: 13px;
+      font-weight: 600; color: #555; cursor: pointer; transition: all 0.2s;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .cat-btn.active {
+      background: #8d3b42; color: #fff; border-color: #8d3b42;
+      box-shadow: 0 2px 8px rgba(141, 59, 66, 0.3);
+    }
     .cat-icon { font-size: 16px; }
 
-    /* PRODUITS */
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-top: 20px; }
     @media (min-width: 600px) { .grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; } }
 
@@ -75,13 +116,12 @@
     .card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 10px; margin-bottom: 8px; background: #f0f0f0; cursor: pointer; }
     .card h3 { font-size: 14px; margin: 4px 0 2px; font-weight: bold; color: #333; line-height: 1.3; min-height: 36px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .cat-label { font-size: 11px; color: #8d3b42; font-weight: bold; text-transform: uppercase; margin-bottom: 2px; }
-    
-    /* NOUVEAU : DESCRIPTION PRODUIT */
     .prod-desc { font-size: 12px; color: #777; margin-bottom: 6px; font-style: italic; min-height: 16px; }
 
     .price-block { background: #fffdf5; padding: 6px; border-radius: 8px; border: 1px solid #f1e6d0; margin: 6px 0; }
     .price-solustoc { font-weight: bold; color: #b32121; font-size: 15px; display: block; }
     .price-public { font-size: 12px; color: #666; }
+
     .stock { font-size: 12px; color: #2e7d32; margin-top: 4px; font-weight: 500; }
     .stock-low { color: #d32f2f; font-weight: bold; animation: pulse 2s infinite; }
     @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
@@ -89,22 +129,23 @@
     .qty-row { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: auto; padding-top: 10px; }
     .qty-btn { width: 28px; height: 28px; border-radius: 6px; border: 1px solid #ccc; background: #fff; cursor: pointer; font-weight: bold; color: #555; }
     .qty-val { font-size: 15px; font-weight: bold; width: 24px; text-align: center; }
+    
     .btn-add { width: 100%; margin-top: 8px; padding: 10px; border-radius: 8px; border: none; background: #25D366; color: #fff; font-weight: bold; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; }
     
-    /* FOOTER & UI */
     .sticky-cart { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; border-top: 1px solid #e0cda8; box-shadow: 0 -4px 15px rgba(0,0,0,0.1); padding: 12px 20px; display: none; justify-content: space-between; align-items: center; z-index: 900; }
     .sticky-info { font-weight: bold; color: #333; font-size: 15px; }
     .sticky-btn { background: #25D366; color: #fff; padding: 10px 20px; border-radius: 50px; font-weight: bold; text-decoration: none; border: none; cursor: pointer; font-size: 14px; }
+
     .cart-section { display: none; text-align: center; border-color:#25D366; } 
     .cart-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
     .cart-table td { padding: 6px; border-bottom: 1px solid #eee; text-align: left; }
     .cart-total-line { text-align: right; font-weight: bold; font-size: 16px; margin-top: 10px; color: #b32121; }
+
     footer { background: #e8f9ec; padding: 24px 14px; font-size: 12px; text-align: center; color: #555; border-top: 1px solid #cdecd6; margin-top: 40px; line-height: 1.6; }
     footer strong { color: #333; font-size: 13px; }
     footer a { color: #8d3b42; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
-    /* POPUP */
     .popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 10000; display: none; justify-content: center; align-items: center; }
     .popup-content { background: #fff; padding: 30px 20px; border-radius: 16px; text-align: center; max-width: 320px; width: 90%; box-shadow: 0 10px 25px rgba(0,0,0,0.2); position: relative; animation: popIn 0.4s ease-out; }
     @keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
@@ -113,10 +154,10 @@
     .popup-text { font-size: 15px; color: #333; margin-bottom: 20px; line-height: 1.5; }
     .btn-popup { background: #25D366; color: #fff; border: none; padding: 12px 24px; border-radius: 50px; font-weight: bold; font-size: 15px; cursor: pointer; width: 100%; display: block; box-sizing: border-box; }
 
-    /* LIGHTBOX */
     .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 9999; }
     .lightbox img { max-width: 95%; max-height: 90vh; border-radius: 8px; }
     .lightbox-close { position: fixed; top: 15px; right: 20px; font-size: 30px; color: #fff; cursor: pointer; }
+    
     .error-msg { background: #ffebee; color: #c62828; padding: 10px; border-radius: 8px; margin: 10px 0; display: none; text-align: center; font-size: 13px; }
   </style>
 </head>
@@ -141,10 +182,12 @@
 
   <div class="section-card text-center">
     <h1 class="section-title">Achat à la pièce – Qualité Boutique</h1>
+    
     <div style="margin-bottom:15px;">
       <p style="font-size:14px; margin:5px 0;"><strong>Solustoc SAS</strong><br>69 bis rue du Bêle, 44200 Nantes</p>
       <div style="font-size:12px; color:#555; margin-top:6px;">SIREN : 929 179 579<br>Expédition depuis la France 🇫🇷</div>
     </div>
+
     <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-bottom:10px;">
       <span style="background:#f6e5c1; padding:5px 10px; border-radius:20px; font-size:12px; font-weight:bold;">Livraison offerte dès 200€</span>
       <span style="background:#f6e5c1; padding:5px 10px; border-radius:20px; font-size:12px; font-weight:bold;">Stock Réel 24/48h</span>
@@ -152,6 +195,7 @@
 
     <div class="how-it-works">
       <div style="font-weight:bold; color:#8d3b42; margin-bottom:10px; text-align:center;">Comment commander ?</div>
+      
       <div class="step-row">
         <div class="step-num">1</div>
         <div class="step-text"><strong>Remplissez votre panier</strong><br>Choisissez vos modèles et quantités.</div>
@@ -164,6 +208,7 @@
         <div class="step-num">3</div>
         <div class="step-text"><strong>Paiement & Envoi</strong><br>Nous confirmons le stock et la facture ensemble.</div>
       </div>
+
       <div style="text-align:center; margin-top:5px;">
         <span class="no-payment-badge">🔒 Aucun paiement en ligne immédiat</span>
       </div>
@@ -172,14 +217,12 @@
     <a href="#catalogue-start" class="btn-anchor">Voir les bijoux disponibles ⬇</a>
   </div>
 
-<div class="section-card" style="padding:15px;">
+  <div class="section-card" style="padding:15px;">
     <h2 class="section-title text-center" style="font-size:16px;">Ventes réelles & Ambiance</h2>
     <div class="ambiance-grid">
-      <img src="../img/ambiance-packshot.webp" alt="Stock disponible">
-      
+      <img src="../img/ambiance-packshot.webp" alt="Stock">
       <img src="../img/marche-noel.webp" alt="Idéal Marché de Noël">
-      
-      <img src="../img/packaging.webp" alt="Emballage Individuel - Prêt à vendre">
+      <img src="../img/packaging.webp" alt="Emballage Individuel">
     </div>
   </div>
 
@@ -202,6 +245,7 @@
         <ul class="sales-points">
           <li><strong>Acier inoxydable :</strong> fiable, durable.</li>
           <li><strong>Dorure 0,4 μm :</strong> qualité boutique.</li>
+          <li><strong>Emballage Individuel :</strong> Reçu propre, prêt à vendre.</li>
           <li><strong>Prix public réel :</strong> 5 € à 15 €.</li>
           <li><strong>Marge revendeur :</strong> x3 à x4.</li>
         </ul>
@@ -259,7 +303,9 @@
   let cart = [];
   let currentCategory = "";
 
-  setTimeout(() => { document.getElementById("promo-popup").style.display = "flex"; }, 3000);
+  /* POPUP INTELLIGENT (Supprimé au chargement, activé au panier) */
+  // On ne lance plus rien au chargement.
+  
   window.closePopup = () => { document.getElementById("promo-popup").style.display = "none"; };
 
   function CSVToArray(strData, strDelimiter) {
@@ -307,7 +353,7 @@
       const idxPublic = getIdx(["public"]);
       const idxImg = getIdx(["image", "photo"]);
       const idxCat = getIdx(["cat", "égorie"]);
-      const idxDesc = getIdx(["description", "desc"]); // Nouvelle colonne Description
+      const idxDesc = getIdx(["description", "desc"]);
 
       if (idxTitre < 0 || idxImg < 0) throw new Error("Données incomplètes dans le CSV.");
 
@@ -329,7 +375,7 @@
           prixPublic: parsePrix(row[idxPublic]),
           image: (row[idxImg] || "").trim(),
           cat: (row[idxCat] || "Autre").trim(),
-          desc: idxDesc > -1 ? (row[idxDesc] || "").trim() : "" // Récupère la description
+          desc: idxDesc > -1 ? (row[idxDesc] || "").trim() : ""
         });
       }
 
@@ -372,7 +418,6 @@
     const cats = [...new Set(produits.map(p => p.cat).filter(Boolean))].sort();
     
     // Ordre forcé comme demandé
-    const forcedOrder = ["Boucles d'oreilles & Créoles", "Bracelet chaîne", "Bague anneau"];
     cats.sort((a, b) => {
       const getPriority = (str) => {
         if (str.includes("Boucles")) return 1;
@@ -424,7 +469,6 @@
           <div class="cat-label">${p.cat}</div>
           <h3>${p.nom}</h3>
           <div class="prod-desc">${p.desc}</div>
-
           <div class="price-block">
             <span class="price-solustoc">${formatPrix(p.prixSolus)} TTC</span>
             <span class="price-public">PV conseillé: ${formatPrix(p.prixPublic)}</span>
@@ -457,6 +501,7 @@
     if (exist) exist.qty += qty;
     else cart.push({...p, qty});
     
+    // TRACKING PIXEL
     if(typeof fbq !== 'undefined') {
         fbq('track', 'AddToCart', {
             content_name: p.nom, 
@@ -466,7 +511,18 @@
         });
     }
 
-    updateCartUI();
+    updateCartUI(); // Sauvegarde et met à jour l'UI
+
+    // STRATÉGIE POPUP : On déclenche SI c'est le 1er ajout OU si < 300€ et pas encore vu
+    let currentTotal = cart.reduce((acc, i) => acc + (i.prixSolus * i.qty), 0);
+    const hasSeenPopup = sessionStorage.getItem('promoPopupShown');
+
+    if (currentTotal > 0 && currentTotal < 300 && !hasSeenPopup) {
+       document.getElementById("promo-popup").style.display = "flex";
+       sessionStorage.setItem('promoPopupShown', 'true'); // On ne le montre qu'une fois par session
+    }
+
+    // Feedback visuel bouton
     const btn = event.target;
     const old = btn.innerText;
     btn.innerText = "✅ Ajouté !";
@@ -510,12 +566,11 @@
 
   document.getElementById("btn-clear").onclick = () => { cart = []; updateCartUI(); };
 
-document.getElementById("btn-whatsapp").onclick = () => {
+  document.getElementById("btn-whatsapp").onclick = () => {
     if (!cart.length) return;
     
     let total = cart.reduce((acc, i) => acc + (i.prixSolus * i.qty), 0);
 
-    // TRACKING PIXEL
     if(typeof fbq !== 'undefined') {
         fbq('track', 'InitiateCheckout', {
             value: total,
@@ -527,7 +582,6 @@ document.getElementById("btn-whatsapp").onclick = () => {
     let msg = "👋 Bonjour Brice, voici ma commande Solustoc :\n\n";
     cart.forEach(i => msg += `- ${i.nom} (x${i.qty})\n`);
     
-    // LOGIQUE REMISE
     let finalTotal = total;
     if (total >= 300) {
         let remise = total * 0.10;
@@ -539,7 +593,6 @@ document.getElementById("btn-whatsapp").onclick = () => {
         msg += `\n💰 *Total Marchandise TTC : ${formatPrix(total)}*`;
     }
 
-    // AJOUT DE L'OPTION DE PAIEMENT
     msg += `\n\n🚚 Merci de confirmer le stock et les frais de port.`;
     msg += `\n💳 *Je souhaite régler par CB (Lien Stripe) dès validation.*`;
 
