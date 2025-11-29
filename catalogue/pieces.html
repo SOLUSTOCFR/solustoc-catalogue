@@ -22,8 +22,9 @@
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1190323416269528&ev=PageView&noscript=1"
   /></noscript>
+
   <style>
-    /* --- CHARTE GRAPHIQUE SOLUSTOC --- */
+    /* CHARTE GRAPHIQUE */
     body { font-family: system-ui, -apple-system, sans-serif; margin: 0; background: #fff7ea; color: #222; padding-bottom: 90px; }
     
     header { background: #fff7ea; text-align: center; padding: 20px 14px 10px; }
@@ -33,114 +34,65 @@
 
     .wrapper { width: 94%; max-width: 1100px; margin: 10px auto 40px; }
 
-    .section-card {
-      background: #ffffff; border-radius: 16px; padding: 20px 18px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #f2dfc8;
-      margin-bottom: 20px; 
-    }
+    /* SECTIONS */
+    .section-card { background: #ffffff; border-radius: 16px; padding: 20px 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #f2dfc8; margin-bottom: 20px; }
     .text-center { text-align: center; }
     .section-title { margin: 0 0 12px; font-size: 18px; font-weight: bold; color: #8d3b42; text-transform: uppercase; letter-spacing: 0.5px; }
     
-    /* BADGES RASSURANCE */
-    .trust-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 10px 0; }
-    .badge { background: #f6e5c1; padding: 5px 12px; border-radius: 4px; font-size: 12px; font-weight: bold; color: #333; border: 1px solid #e0cdb0; }
-
     /* BOUTON ANCRE */
-    .btn-anchor {
-      display: block; width: 100%; max-width: 280px; margin: 15px auto 0;
-      background: #8d3b42; color: #fff; text-decoration: none;
-      padding: 14px 20px; border-radius: 6px; font-weight: bold; font-size: 16px;
-      text-transform: uppercase; box-shadow: 0 4px 10px rgba(141, 59, 66, 0.3); transition: transform 0.2s; cursor: pointer; border: none;
-    }
+    .btn-anchor { display: block; width: 100%; max-width: 280px; margin: 15px auto 0; background: #8d3b42; color: #fff; text-decoration: none; padding: 14px 20px; border-radius: 6px; font-weight: bold; font-size: 16px; text-transform: uppercase; box-shadow: 0 4px 10px rgba(141, 59, 66, 0.3); transition: transform 0.2s; cursor: pointer; border: none; }
     .btn-anchor:active { transform: scale(0.98); }
-    .btn-secondary { background: #fff; color: #8d3b42; border: 1px solid #8d3b42; margin-top: 10px; font-size: 13px; padding: 10px 20px; border-radius: 6px; cursor: pointer; width: 100%; max-width: 280px; }
 
-    /* BLOC COMMENT ÇA MARCHE */
-    .how-it-works {
-      background: #fffdf8;
-      border: 1px dashed #c9a66b;
+    /* CATEGORIES HUB (PAGE D'ACCUEIL) */
+    .cat-hub-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 colonnes mobile */
+      gap: 15px;
+      margin-top: 20px;
+    }
+    @media (min-width: 600px) { .cat-hub-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .cat-hub-card {
+      background: #fff;
       border-radius: 12px;
-      padding: 15px;
-      margin: 15px 0 5px;
-      text-align: left;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: transform 0.2s;
+      border: 1px solid #eee;
+      text-align: center;
     }
-    .step-row { display: flex; gap: 10px; margin-bottom: 8px; align-items: flex-start; }
-    .step-num { 
-      background: #8d3b42; color: #fff; width: 20px; height: 20px; 
-      border-radius: 50%; display: flex; justify-content: center; align-items: center; 
-      font-size: 12px; font-weight: bold; flex-shrink: 0; margin-top: 2px;
-    }
-    .step-text { font-size: 13px; color: #444; line-height: 1.4; }
-    .step-text strong { color: #222; }
-    .no-payment-badge {
-      display: inline-block; background: #e8f5e9; color: #2e7d32; 
-      padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; 
-      margin-top: 5px; border: 1px solid #c8e6c9;
-    }
-
-    /* POURQUOI NOUS CHOISIR */
-    .why-us-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 15px; }
-    .why-item { background: #fffdf8; border: 1px solid #eaddc5; padding: 10px; border-radius: 8px; font-size: 12px; text-align: center; }
-    .why-icon { font-size: 20px; display: block; margin-bottom: 4px; }
-
-    ul.sales-points { list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 1.6; }
-    ul.sales-points li { margin-bottom: 6px; padding-left: 20px; position: relative; }
-    ul.sales-points li::before { content: "✅"; position: absolute; left: 0; top: 0; font-size: 12px; }
-
-    .profit-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
-    .profit-table th { background: #f6e5c1; padding: 8px; text-align: left; font-weight: bold; color: #8d3b42; }
-    .profit-table td { padding: 8px; border-bottom: 1px solid #eee; }
-    .profit-highlight { color: #2e7d32; font-weight: bold; }
-
-    .ambiance-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
-    .ambiance-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; border: 1px solid #eee; }
-
-    /* NOUVEAU : TÉMOIGNAGES */
-    .reviews-container { margin-top: 15px; }
-    .review-card { background: #fffdf8; border-left: 3px solid #8d3b42; padding: 10px 12px; margin-bottom: 10px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-    .review-text { font-size: 13px; font-style: italic; color: #444; margin-bottom: 6px; line-height: 1.4; }
-    .review-author { font-size: 12px; font-weight: bold; color: #222; }
-    .stars { color: #f1c40f; font-size: 12px; margin-right: 5px; }
-
-    /* NOUVEAU : SALES NOTIFICATION (TOAST) */
-    .sales-toast {
-        position: fixed; bottom: 90px; left: 20px; 
-        background: #fff; padding: 12px 15px; border-radius: 8px; 
-        box-shadow: 0 4px 15px rgba(0,0,0,0.15); border-left: 4px solid #25D366;
-        display: flex; align-items: center; gap: 10px;
-        font-size: 13px; color: #333; z-index: 990;
-        opacity: 0; transform: translateY(20px); transition: all 0.5s ease-in-out;
-        pointer-events: none; max-width: 80%;
-    }
-    .sales-toast.show { opacity: 1; transform: translateY(0); }
-    .toast-icon { font-size: 18px; }
-
-    /* NAVIGATION VISUELLE */
-    .cat-nav-container {
-      position: sticky; top: 0; z-index: 100;
-      background: #fff7ea; padding: 10px 0;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      margin-left: -3%; margin-right: -3%;
-    }
-    .cat-scroller {
-      display: flex; gap: 10px; overflow-x: auto; padding: 0 15px;
-      scrollbar-width: none; -ms-overflow-style: none;
-    }
-    .cat-scroller::-webkit-scrollbar { display: none; }
+    .cat-hub-card:hover { transform: translateY(-3px); border-color: #c9a66b; }
     
-    .cat-btn {
-      flex: 0 0 auto; background: #fff; border: 1px solid #e0cdb0;
-      border-radius: 50px; padding: 8px 16px; font-size: 13px;
-      font-weight: 600; color: #555; cursor: pointer; transition: all 0.2s;
-      display: flex; align-items: center; gap: 6px;
+    .cat-hub-img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      background: #f0f0f0;
     }
-    .cat-btn.active {
-      background: #8d3b42; color: #fff; border-color: #8d3b42;
-      box-shadow: 0 2px 8px rgba(141, 59, 66, 0.3);
+    .cat-hub-title {
+      padding: 12px 5px;
+      font-weight: bold;
+      font-size: 14px;
+      color: #333;
+      text-transform: uppercase;
     }
-    .cat-icon { font-size: 16px; }
 
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-top: 20px; }
+    /* BARRE NAVIGATION (Quand on est dans les produits) */
+    .cat-nav-sticky {
+      position: sticky; top: 0; z-index: 100;
+      background: #fff; padding: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin-left: -3%; margin-right: -3%;
+      display: none; /* Masqué sur l'accueil */
+      justify-content: space-between; align-items: center;
+    }
+    .btn-back {
+      background: #f0f0f0; border: none; padding: 8px 12px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 13px; color: #333;
+    }
+
+    /* PRODUITS */
+    .grid { display: none; /* Masqué au départ */ grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-top: 20px; }
     @media (min-width: 600px) { .grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; } }
 
     .card { background: #ffffff; border-radius: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid #f3e5d2; padding: 10px; display: flex; flex-direction: column; height: 100%; transition: transform 0.2s; }
@@ -148,11 +100,9 @@
     .card h3 { font-size: 14px; margin: 4px 0 2px; font-weight: bold; color: #333; line-height: 1.3; min-height: 36px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .cat-label { font-size: 11px; color: #8d3b42; font-weight: bold; text-transform: uppercase; margin-bottom: 2px; }
     .prod-desc { font-size: 12px; color: #777; margin-bottom: 6px; font-style: italic; min-height: 16px; }
-
     .price-block { background: #fffdf5; padding: 6px; border-radius: 8px; border: 1px solid #f1e6d0; margin: 6px 0; }
     .price-solustoc { font-weight: bold; color: #b32121; font-size: 15px; display: block; }
     .price-public { font-size: 12px; color: #666; }
-
     .stock { font-size: 12px; color: #2e7d32; margin-top: 4px; font-weight: 500; }
     .stock-low { color: #d32f2f; font-weight: bold; animation: pulse 2s infinite; }
     @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
@@ -160,27 +110,36 @@
     .qty-row { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: auto; padding-top: 10px; }
     .qty-btn { width: 28px; height: 28px; border-radius: 6px; border: 1px solid #ccc; background: #fff; cursor: pointer; font-weight: bold; color: #555; }
     .qty-val { font-size: 15px; font-weight: bold; width: 24px; text-align: center; }
-    
     .btn-add { width: 100%; margin-top: 8px; padding: 10px; border-radius: 8px; border: none; background: #25D366; color: #fff; font-weight: bold; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; }
+    
+    /* Autres styles conservés */
+    .how-it-works { background: #fffdf8; border: 1px dashed #c9a66b; border-radius: 12px; padding: 15px; margin: 15px 0 5px; text-align: left; }
+    .step-row { display: flex; gap: 10px; margin-bottom: 8px; align-items: flex-start; }
+    .step-num { background: #8d3b42; color: #fff; width: 20px; height: 20px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 12px; font-weight: bold; flex-shrink: 0; margin-top: 2px; }
+    .step-text { font-size: 13px; color: #444; line-height: 1.4; }
+    .step-text strong { color: #222; }
+    .no-payment-badge { display: inline-block; background: #e8f5e9; color: #2e7d32; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; margin-top: 5px; border: 1px solid #c8e6c9; }
+    .why-us-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 15px; }
+    .why-item { background: #fffdf8; border: 1px solid #eaddc5; padding: 10px; border-radius: 8px; font-size: 12px; text-align: center; }
+    .why-icon { font-size: 20px; display: block; margin-bottom: 4px; }
+    .ambiance-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+    .ambiance-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; border: 1px solid #eee; }
     
     .sticky-cart { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; border-top: 1px solid #e0cda8; box-shadow: 0 -4px 15px rgba(0,0,0,0.1); padding: 12px 20px; display: none; justify-content: space-between; align-items: center; z-index: 900; }
     .sticky-info { font-weight: bold; color: #333; font-size: 15px; }
     .sticky-btn { background: #25D366; color: #fff; padding: 10px 20px; border-radius: 50px; font-weight: bold; text-decoration: none; border: none; cursor: pointer; font-size: 14px; }
-
     .cart-section { display: none; text-align: center; border-color:#25D366; } 
     .cart-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
     .cart-table td { padding: 6px; border-bottom: 1px solid #eee; text-align: left; }
     .cart-total-line { text-align: right; font-weight: bold; font-size: 16px; margin-top: 10px; color: #b32121; }
-
-    /* FAQ & FORM */
+    
     .faq-item { border-bottom: 1px solid #eee; padding: 10px 0; text-align: left; }
     .faq-q { font-weight: bold; font-size: 14px; color: #333; margin-bottom: 4px; }
     .faq-a { font-size: 13px; color: #555; line-height: 1.4; }
-
     .contact-form { margin-top: 10px; }
     .contact-form input, .contact-form textarea { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; box-sizing: border-box; }
     .contact-form button { background: #444; color: #fff; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%; }
-
+    
     footer { background: #e8f9ec; padding: 30px 14px; font-size: 12px; text-align: center; color: #555; border-top: 1px solid #cdecd6; margin-top: 40px; line-height: 1.6; }
     footer strong { color: #333; font-size: 13px; }
     footer a { color: #8d3b42; text-decoration: none; }
@@ -196,12 +155,22 @@
     .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 9999; }
     .lightbox img { max-width: 95%; max-height: 90vh; border-radius: 8px; }
     .lightbox-close { position: fixed; top: 15px; right: 20px; font-size: 30px; color: #fff; cursor: pointer; }
-    
     .error-msg { background: #ffebee; color: #c62828; padding: 10px; border-radius: 8px; margin: 10px 0; display: none; text-align: center; font-size: 13px; }
+    
+    .sales-toast {
+        position: fixed; bottom: 90px; left: 20px; 
+        background: #fff; padding: 12px 15px; border-radius: 8px; 
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15); border-left: 4px solid #25D366;
+        display: flex; align-items: center; gap: 10px;
+        font-size: 13px; color: #333; z-index: 990;
+        opacity: 0; transform: translateY(20px); transition: all 0.5s ease-in-out;
+        pointer-events: none; max-width: 80%;
+    }
+    .sales-toast.show { opacity: 1; transform: translateY(0); }
+    .toast-icon { font-size: 18px; }
 
-    /* STYLE IMPRESSION (PDF) */
     @media print {
-        header, .how-it-works, .section-card, .cat-nav-container, .sticky-cart, footer, .popup-overlay, .btn-add, .qty-row, .btn-anchor, .filter-bar, .sales-toast { display: none !important; }
+        header, .how-it-works, .section-card, .cat-nav-container, .sticky-cart, footer, .popup-overlay, .btn-add, .qty-row, .btn-anchor, .sales-toast, .cat-nav-sticky { display: none !important; }
         .wrapper { margin: 0; width: 100%; max-width: 100%; }
         .grid { display: block; }
         .card { border: 1px solid #ccc; break-inside: avoid; margin-bottom: 10px; page-break-inside: avoid; box-shadow: none; }
@@ -229,6 +198,8 @@
   <div id="toast-text">Nouvelle commande</div>
 </div>
 
+<div class="top-bar" style="background:#8d3b42; color:#fff; text-align:center; padding:6px; font-size:12px; font-weight:bold;">🚚 Livraison offerte dès 200€ • Expédition 24/48h</div>
+
 <header>
   <img src="../img/logosbijouxfrancais.webp" alt="SOLUSTOC Grossiste Bijoux">
   <div class="header-contact">
@@ -238,7 +209,7 @@
 
 <div class="wrapper">
 
-  <div class="section-card text-center">
+  <div class="section-card text-center" id="home-section">
     <h1 class="section-title">SOLUSTOC - Grossiste Bijoux & Créations</h1>
     <p style="font-size:14px; margin-bottom:12px; color:#444;">
       Fournisseur pour boutiques, marchés et e-commerces.<br>
@@ -253,63 +224,13 @@
 
     <div class="how-it-works">
       <div style="font-weight:bold; color:#8d3b42; margin-bottom:10px; text-align:center;">Comment commander ?</div>
-      <div class="step-row">
-        <div class="step-num">1</div>
-        <div class="step-text"><strong>Remplissez votre panier</strong><br>Choisissez vos modèles et quantités.</div>
-      </div>
-      <div class="step-row">
-        <div class="step-num">2</div>
-        <div class="step-text"><strong>Validez sur WhatsApp</strong><br>Cliquez sur le bouton vert pour envoyer la liste.</div>
-      </div>
-      <div class="step-row">
-        <div class="step-num">3</div>
-        <div class="step-text"><strong>Paiement & Envoi</strong><br>Nous confirmons le stock et la facture ensemble.</div>
-      </div>
-      <div style="text-align:center; margin-top:5px;">
-        <span class="no-payment-badge">🔒 Aucun paiement en ligne immédiat</span>
-      </div>
+      <div class="step-row"><div class="step-num">1</div><div class="step-text"><strong>Remplissez votre panier</strong><br>Choisissez vos modèles et quantités.</div></div>
+      <div class="step-row"><div class="step-num">2</div><div class="step-text"><strong>Validez sur WhatsApp</strong><br>Cliquez sur le bouton vert pour envoyer la liste.</div></div>
+      <div class="step-row"><div class="step-num">3</div><div class="step-text"><strong>Paiement & Envoi</strong><br>Nous confirmons le stock et la facture ensemble.</div></div>
+      <div style="text-align:center; margin-top:5px;"><span class="no-payment-badge">🔒 Aucun paiement en ligne immédiat</span></div>
     </div>
 
-    <a href="#catalogue-start" class="btn-anchor">VOIR LE CATALOGUE ⬇</a>
-    <div style="text-align:center;">
-        <button class="btn-secondary" onclick="window.print()">🖨️ Télécharger le Catalogue (PDF)</button>
-    </div>
-  </div>
-
-  <div class="section-card">
-    <h2 class="section-title text-center" style="font-size:16px;">Pourquoi les pros nous choisissent ?</h2>
-    <div class="why-us-grid">
-      <div class="why-item">
-        <span class="why-icon">🔓</span>
-        <strong>Achat Unitaire</strong><br>Sans minimum imposé
-      </div>
-      <div class="why-item">
-        <span class="why-icon">📦</span>
-        <strong>Stock Réel</strong><br>Expédition Immédiate
-      </div>
-      <div class="why-item">
-        <span class="why-icon">🚀</span>
-        <strong>Rapidité</strong><br>Départ 24h de Nantes
-      </div>
-      <div class="why-item">
-        <span class="why-icon">💰</span>
-        <strong>Marge x4</strong><br>Prix nets grossiste
-      </div>
-    </div>
-  </div>
-
-  <div class="section-card">
-    <h2 class="section-title text-center" style="font-size:16px;">Ils revendent nos bijoux</h2>
-    <div class="reviews-container">
-        <div class="review-card">
-            <div class="review-text">"<span class="stars">★★★★★</span> Stock écoulé en 3 marchés. Excellent investissement."</div>
-            <div class="review-author">— Sophie M., Gérante de Pop-up Store, Rennes</div>
-        </div>
-        <div class="review-card">
-            <div class="review-text">"<span class="stars">★★★★★</span> Qualité premium. Mes clients redemandent. Parfait pour la revente."</div>
-            <div class="review-author">— Marc D., Propriétaire de Boutique, Lyon</div>
-        </div>
-    </div>
+    <button class="btn-anchor" onclick="scrollToCategories()">VOIR LES CATÉGORIES ⬇</button>
   </div>
 
   <div class="section-card" style="padding:15px;">
@@ -321,57 +242,63 @@
     </div>
   </div>
 
-  <div id="catalogue-start" style="height:10px;"></div>
+  <h2 id="cat-anchor" class="section-title text-center" style="margin-top:30px;">Nos Collections</h2>
+  <div id="category-home" class="cat-hub-grid">
+    <p style="text-align:center; width:100%;">Chargement des catégories...</p>
+  </div>
 
-  <div class="cat-nav-container">
-    <div id="category-scroller" class="cat-scroller"></div>
+  <div id="product-view" style="display:none;">
+    <div class="cat-nav-sticky" style="display:flex;">
+      <button class="btn-back" onclick="showHome()">⬅️ Retour Catégories</button>
+      <div id="current-cat-name" style="font-weight:bold; color:#8d3b42; text-transform:uppercase; font-size:14px;"></div>
+    </div>
+
+    <div id="products" class="grid" style="display:grid;"></div>
   </div>
 
   <div id="sheet-error" class="error-msg"></div>
 
-  <div id="products" class="grid">
-    <p style="text-align:center; grid-column:1/-1;">Chargement du catalogue...</p>
+  <div class="section-card" style="margin-top:40px;">
+    <h2 class="section-title text-center">Pourquoi ça se vend ?</h2>
+    <div class="why-us-grid">
+      <div class="why-item"><span class="why-icon">🔓</span><strong>Achat Unitaire</strong><br>Sans minimum imposé</div>
+      <div class="why-item"><span class="why-icon">📦</span><strong>Stock Réel</strong><br>Expédition Immédiate</div>
+      <div class="why-item"><span class="why-icon">🚀</span><strong>Rapidité</strong><br>Départ 24h de Nantes</div>
+      <div class="why-item"><span class="why-icon">💰</span><strong>Marge x4</strong><br>Prix nets grossiste</div>
+    </div>
+    
+    <div style="margin-top:20px;">
+        <ul class="sales-points">
+          <li><strong>Acier inoxydable :</strong> fiable, durable.</li>
+          <li><strong>Dorure 0,4 μm :</strong> qualité boutique.</li>
+          <li><strong>Emballage Individuel :</strong> Reçu propre, prêt à vendre.</li>
+          <li><strong>Prix public réel :</strong> 5 € à 15 €.</li>
+          <li><strong>Marge revendeur :</strong> x3 à x4.</li>
+        </ul>
+    </div>
   </div>
 
   <div id="cart-block" class="section-card cart-section" style="margin-top:20px;">
     <h2 class="section-title">Votre Bon de Commande</h2>
-    <div style="font-size:12px; color:#555; margin-bottom:10px;">Récapitulatif avant validation WhatsApp</div>
     <div id="cart-content"></div>
     <div class="cart-total-line" id="cart-total-display"></div>
     <div id="discount-msg" style="color:#2e7d32; font-weight:bold; font-size:14px; margin-top:5px; display:none;">🎉 Remise Pro -10% appliquée !</div>
-    
     <button id="btn-whatsapp" class="btn-add" style="margin-top:15px; background:#25D366; font-size:16px;">📲 VALIDER SUR WHATSAPP BUSINESS</button>
-    <p style="font-size:11px; color:#777; margin-top:8px;">Confirmation de stock & Facture pro immédiate.</p>
     <button id="btn-clear" style="margin-top:5px; background:none; border:none; text-decoration:underline; cursor:pointer; font-size:12px; color:#666;">Vider le panier</button>
   </div>
 
   <div class="section-card">
     <h2 class="section-title text-center" style="font-size:16px;">Questions Fréquentes</h2>
-    <div class="faq-item">
-      <div class="faq-q">💎 Quelle est la qualité des bijoux ?</div>
-      <div class="faq-a">Ce sont des créations françaises "Bijoux de Mimi". Acier Inoxydable doré à l'or fin (0,4 µm), ne ternit pas et résistant à l'eau.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">📦 Le stock est-il en France ?</div>
-      <div class="faq-a">Oui, tout notre stock est physique et situé dans nos locaux à Nantes. Expédition immédiate, pas de dropshipping.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">💳 Comment payer ma commande ?</div>
-      <div class="faq-a">Après validation du stock ensemble sur WhatsApp, vous pourrez régler par Virement Bancaire ou par Carte Bancaire (via un lien sécurisé Stripe).</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">🚚 Quels sont les délais ?</div>
-      <div class="faq-a">Toute commande validée avant 12h est expédiée le jour même. Livraison Colissimo ou Mondial Relay en 24/48h.</div>
-    </div>
-
+    <div class="faq-item"><div class="faq-q">💎 Qualité ?</div><div class="faq-a">Acier Inoxydable doré à l'or fin (0,4 µm), résistant à l'eau.</div></div>
+    <div class="faq-item"><div class="faq-q">📦 Stock ?</div><div class="faq-a">Stock physique à Nantes. Expédition immédiate.</div></div>
+    <div class="faq-item"><div class="faq-q">💳 Paiement ?</div><div class="faq-a">Virement ou CB (Stripe) après validation WhatsApp.</div></div>
+    
     <hr style="margin: 20px 0; border:0; border-top:1px dashed #ccc;">
-
     <h2 class="section-title text-center" style="font-size:16px;">Pas de WhatsApp ?</h2>
-    <p style="font-size:13px; text-align:center; color:#555;">Contactez-nous directement par email :</p>
     <form action="https://formspree.io/f/mrbyzegw" method="POST" class="contact-form">
         <input type="email" name="email" placeholder="Votre Email" required>
-        <textarea name="message" rows="3" placeholder="Votre message ou demande..." required></textarea>
-        <button type="submit">Envoyer le message</button>
+        <textarea name="message" rows="3" placeholder="Votre demande..." required></textarea>
+        <button type="submit">Envoyer</button>
     </form>
   </div>
 
@@ -385,15 +312,10 @@
 </div>
 
 <footer>
-  <strong>SOLUSTOC - Grossiste Bijoux & Créations</strong><br>
-  69 bis rue du Bêle, 44200 Nantes<br>
-  SIREN : 929 179 579<br><br>
+  <strong>SOLUSTOC</strong><br>69 bis rue du Bêle, 44200 Nantes<br>SIREN : 929 179 579<br><br>
   <a href="mailto:contact@solustoc.fr">contact@solustoc.fr</a> • 07 56 92 33 23<br><br>
-  
   <div style="font-size:11px; color:#666;">
-    <a href="https://lesbijouxfrancais.fr/mentions-legales" target="_blank">Mentions Légales</a> | 
-    <a href="#" target="_blank">CGV Professionnels</a> | 
-    <a href="https://lesbijouxfrancais.fr/politique-de-confidentialite" target="_blank">Confidentialité</a>
+    <a href="https://lesbijouxfrancais.fr/mentions-legales" target="_blank">Mentions Légales</a> | <a href="#" onclick="window.print(); return false;">Télécharger Catalogue PDF</a>
   </div>
 </footer>
 
@@ -407,16 +329,15 @@
   const PHOTO_BASE = "../photo/"; 
   const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTeb1HY3fqUcP26tcQ_crdY2PIIyjT_73TakK1neuc0cxwq-QMyChF2w5Q5kYSkmd14GRSGwYeZCION/pub?output=csv";
 
-  /* ETAT */
   const produits = [];
   let filteredProduits = [];
   let cart = [];
-  let currentCategory = "";
+  let categories = []; // Stockage des catégories
 
   /* POPUP LOGIC */
   window.closePopup = () => { document.getElementById("promo-popup").style.display = "none"; };
 
-  /* --- NOTIFICATIONS VENTE (TOAST RANDOM) --- */
+  /* NOTIFICATION VENTE */
   const fomoData = [
     { name: "Isabelle", city: "Strasbourg", amount: "350€" },
     { name: "Sophie", city: "Rennes", amount: "210€" },
@@ -425,27 +346,15 @@
     { name: "Julie", city: "Lille", amount: "290€" },
     { name: "Nathalie", city: "Marseille", amount: "550€" }
   ];
-
   function showRandomFomo() {
     const random = fomoData[Math.floor(Math.random() * fomoData.length)];
     const toast = document.getElementById("sales-toast");
     const text = document.getElementById("toast-text");
-    
     text.innerHTML = `<strong>${random.name}</strong> de ${random.city}<br>vient de commander pour ${random.amount}`;
     toast.classList.add("show");
-
-    // Cache après 5 secondes
-    setTimeout(() => {
-        toast.classList.remove("show");
-    }, 5000);
+    setTimeout(() => { toast.classList.remove("show"); }, 5000);
   }
-
-  // Lance le premier après 10s, puis toutes les 40s
-  setTimeout(() => {
-    setInterval(showRandomFomo, 40000);
-    showRandomFomo();
-  }, 10000);
-
+  setTimeout(() => { setInterval(showRandomFomo, 40000); showRandomFomo(); }, 10000);
 
   /* CSV PARSER */
   function CSVToArray(strData, strDelimiter) {
@@ -477,11 +386,9 @@
       const res = await fetch(SHEET_CSV_URL);
       if (!res.ok) throw new Error("Erreur serveur");
       const text = await res.text();
-      
       const firstLine = text.split('\n')[0];
       const sep = firstLine.includes(';') ? ';' : ',';
       const data = CSVToArray(text, sep);
-      
       if (data.length < 2) throw new Error("Catalogue vide");
       
       const headers = data[0].map(h => h.trim().toLowerCase());
@@ -503,7 +410,6 @@
       for (let i = 1; i < data.length; i++) {
         const row = data[i];
         if (row.length < headers.length) continue;
-        
         const titre = (row[idxTitre] || "").trim();
         if (!titre) continue;
         
@@ -519,9 +425,7 @@
         });
       }
 
-      generateNav();
-      filteredProduits = [...produits];
-      renderProduits();
+      renderCategoriesHome();
       loadStoredCart();
       document.getElementById("sheet-error").style.display = "none";
 
@@ -543,49 +447,85 @@
   }
   function saveCart() { localStorage.setItem('solustoc_cart', JSON.stringify(cart)); }
 
-  function getCategoryIcon(name) {
-    const n = name.toLowerCase();
-    if (n.includes("bague") || n.includes("anneau")) return "💍";
-    if (n.includes("collier") || n.includes("chaîne")) return "📿";
-    if (n.includes("bracelet")) return "⛓️";
-    if (n.includes("boucle") || n.includes("créole")) return "👂";
-    if (n.includes("médaille")) return "🏅";
-    if (n.includes("cordon")) return "🧶";
-    return "💎";
-  }
-
-  function generateNav() {
+  /* --- LOGIQUE CATÉGORIES VISUELLES --- */
+  function renderCategoriesHome() {
+    // Extrait les catégories uniques
     const cats = [...new Set(produits.map(p => p.cat).filter(Boolean))].sort();
     
+    // Ordre Forcé
+    const forcedOrder = ["Boucles d'oreilles & Créoles", "Bracelet chaîne", "Bague anneau", "Collier chaîne", "Médaille"];
     cats.sort((a, b) => {
-      const getPriority = (str) => {
-        if (str.includes("Boucles")) return 1;
-        if (str.includes("Bracelet")) return 2;
-        if (str.includes("Bague")) return 3;
-        return 99;
-      };
-      const pA = getPriority(a);
-      const pB = getPriority(b);
-      if (pA !== pB) return pA - pB;
+      const pA = forcedOrder.findIndex(key => a.includes(key.split(' ')[0])); 
+      const pB = forcedOrder.findIndex(key => b.includes(key.split(' ')[0]));
+      // Si trouvé dans l'ordre forcé, on utilise cet index, sinon on met à la fin (99)
+      const valA = pA !== -1 ? pA : 99;
+      const valB = pB !== -1 ? pB : 99;
+      if (valA !== valB) return valA - valB;
       return a.localeCompare(b);
     });
 
-    const container = document.getElementById("category-scroller");
-    let html = `<div class="cat-btn active" onclick="filterByCat('', this)"><span class="cat-icon">∞</span> Tout</div>`;
+    const container = document.getElementById("category-home");
+    let html = ``;
+
     cats.forEach(c => {
-      const safeCat = c.replace(/'/g, "\\'");
-      html += `<div class="cat-btn" onclick="filterByCat('${safeCat}', this)"><span class="cat-icon">${getCategoryIcon(c)}</span> ${c}</div>`;
+        // Trouve la 1ère image dispo pour cette catégorie
+        const firstProd = produits.find(p => p.cat === c);
+        const imgSrc = firstProd ? PHOTO_BASE + firstProd.image : "https://via.placeholder.com/150";
+        
+        // Sécurise l'apostrophe pour le onClick
+        const safeCat = c.replace(/'/g, "\\'");
+
+        html += `
+        <div class="cat-hub-card" onclick="openCategory('${safeCat}')">
+            <img src="${imgSrc}" class="cat-hub-img" alt="${c}">
+            <div class="cat-hub-title">${c}</div>
+        </div>
+        `;
     });
+
+    // Ajout bouton TOUT VOIR
+    html += `
+    <div class="cat-hub-card" onclick="openCategory('')">
+        <div class="cat-hub-img" style="display:flex;align-items:center;justify-content:center;font-size:30px;background:#8d3b42;color:#fff;">∞</div>
+        <div class="cat-hub-title">TOUT VOIR</div>
+    </div>
+    `;
+
     container.innerHTML = html;
   }
 
-  window.filterByCat = (cat, btnElement) => {
-    currentCategory = cat;
-    const btns = document.querySelectorAll('.cat-btn');
-    btns.forEach(b => b.classList.remove('active'));
-    btnElement.classList.add('active');
-    filteredProduits = cat ? produits.filter(p => p.cat === cat) : produits;
+  window.scrollToCategories = () => {
+    document.getElementById("cat-anchor").scrollIntoView({behavior:"smooth"});
+  };
+
+  /* --- BASCULE VUE CATÉGORIE / PRODUITS --- */
+  window.openCategory = (catName) => {
+    // 1. Masquer les catégories
+    document.getElementById("category-home").style.display = "none";
+    document.getElementById("cat-anchor").style.display = "none";
+    
+    // 2. Afficher la grille produit
+    const prodView = document.getElementById("product-view");
+    prodView.style.display = "block";
+    
+    // 3. Mettre le titre
+    document.getElementById("current-cat-name").textContent = catName || "Tout le catalogue";
+
+    // 4. Filtrer
+    filteredProduits = catName ? produits.filter(p => p.cat === catName) : produits;
     renderProduits();
+
+    // 5. Scroll en haut de la liste
+    prodView.scrollIntoView({behavior:"smooth"});
+  };
+
+  window.showHome = () => {
+    document.getElementById("product-view").style.display = "none";
+    document.getElementById("category-home").style.display = "grid";
+    document.getElementById("cat-anchor").style.display = "block";
+    
+    // Scroll au menu
+    document.getElementById("cat-anchor").scrollIntoView({behavior:"smooth"});
   };
 
   function renderProduits() {
