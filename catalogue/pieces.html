@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Catalogue Solustoc – Grossiste Bijoux Créateur France</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Grossiste bijoux acier inoxydable et créateur. Rentabilité x4. Stock France. Commande WhatsApp.">
+  <meta name="description" content="Grossiste bijoux acier inoxydable et créateur. Rentabilité x4. Stock France. Commande WhatsApp ou Email.">
 
   <script>
   !function(f,b,e,v,n,t,s)
@@ -26,7 +26,14 @@
     /* --- CHARTE GRAPHIQUE SOLUSTOC --- */
     body { font-family: system-ui, -apple-system, sans-serif; margin: 0; background: #fff7ea; color: #222; padding-bottom: 90px; }
     
-    header { background: #fff7ea; text-align: center; padding: 20px 14px 10px; }
+    /* TOP BAR PERCUTANTE */
+    .top-bar { 
+        background: #8d3b42; color: #fff; text-align: center; padding: 8px; 
+        font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; 
+        line-height: 1.4;
+    }
+
+    header { background: #fff7ea; text-align: center; padding: 15px 14px 5px; }
     header img { max-width: 180px; height: auto; }
     .header-contact { font-size: 13px; color: #555; margin-top: 5px; font-weight: 500; }
     .header-contact a { color: #555; text-decoration: none; border-bottom: 1px dotted #555; }
@@ -74,18 +81,15 @@
       margin-top: 5px; border: 1px solid #c8e6c9;
     }
 
-    /* BADGES RASSURANCE */
-    .trust-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 10px 0; }
-    .badge { background: #f6e5c1; padding: 5px 12px; border-radius: 4px; font-size: 12px; font-weight: bold; color: #333; border: 1px solid #e0cdb0; }
-
     /* POURQUOI NOUS CHOISIR */
     .why-us-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 15px; }
     .why-item { background: #fffdf8; border: 1px solid #eaddc5; padding: 10px; border-radius: 8px; font-size: 12px; text-align: center; }
     .why-icon { font-size: 20px; display: block; margin-bottom: 4px; }
 
     ul.sales-points { list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 1.6; }
-    ul.sales-points li { margin-bottom: 6px; padding-left: 20px; position: relative; }
+    ul.sales-points li { margin-bottom: 8px; padding-left: 20px; position: relative; }
     ul.sales-points li::before { content: "✅"; position: absolute; left: 0; top: 0; font-size: 12px; }
+    ul.sales-points strong { color: #8d3b42; }
 
     .profit-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
     .profit-table th { background: #f6e5c1; padding: 8px; text-align: left; font-weight: bold; color: #8d3b42; }
@@ -187,6 +191,11 @@
     .cart-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
     .cart-table td { padding: 6px; border-bottom: 1px solid #eee; text-align: left; }
     .cart-total-line { text-align: right; font-weight: bold; font-size: 16px; margin-top: 10px; color: #b32121; }
+    
+    /* BOUTONS ACTIONS PANIER */
+    .cart-actions-row { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+    .btn-whatsapp { background: #25D366; color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; width: 100%; }
+    .btn-email-order { background: #34495e; color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; width: 100%; }
 
     /* FAQ & FORM */
     .faq-item { border-bottom: 1px solid #eee; padding: 10px 0; text-align: left; }
@@ -240,7 +249,7 @@
 
     /* STYLE IMPRESSION (PDF) */
     @media print {
-        header, .how-it-works, .section-card, .cat-nav-container, .cat-hub-grid, .sticky-cart, footer, .popup-overlay, .btn-add, .qty-row, .btn-anchor, .filter-bar, .sales-toast, .cat-nav-sticky { display: none !important; }
+        header, .how-it-works, .section-card, .cat-nav-container, .cat-hub-grid, .sticky-cart, footer, .popup-overlay, .btn-add, .qty-row, .btn-anchor, .sales-toast, .cat-nav-sticky { display: none !important; }
         .wrapper { margin: 0; width: 100%; max-width: 100%; }
         .grid { display: block !important; }
         .card { border: 1px solid #ccc; break-inside: avoid; margin-bottom: 10px; page-break-inside: avoid; box-shadow: none; }
@@ -268,7 +277,7 @@
   <div id="toast-text">Nouvelle commande</div>
 </div>
 
-<div class="top-bar" style="background:#8d3b42; color:#fff; text-align:center; padding:6px; font-size:12px; font-weight:bold;">🚚 Livraison offerte dès 200€ • Expédition 24/48h</div>
+<div class="top-bar">🇫🇷 STOCK FRANCE | 📦 LIVRAISON 48H | ✅ AUCUN MINIMUM | 💰 PORT OFFERT > 200€</div>
 
 <header>
   <img src="../img/logosbijouxfrancais.webp" alt="SOLUSTOC Grossiste Bijoux">
@@ -280,7 +289,7 @@
 <div class="wrapper">
 
   <div class="section-card text-center" id="home-section">
-    <h1 class="section-title">SOLUSTOC - Grossiste Bijoux & Créations</h1>
+    <h1 class="section-title">SOLUSTOC - Grossiste Bijoux Fantaisie</h1>
     <p style="font-size:14px; margin-bottom:12px; color:#444;">
       Fournisseur pour boutiques, marchés et e-commerces.<br>
       <strong>Stock permanent • Achat à l'unité • Sans minimum</strong>
@@ -300,7 +309,7 @@
       </div>
       <div class="step-row">
         <div class="step-num">2</div>
-        <div class="step-text"><strong>Validez sur WhatsApp</strong><br>Cliquez sur le bouton vert pour envoyer la liste.</div>
+        <div class="step-text"><strong>Validez votre commande</strong><br>Via WhatsApp (Rapide) ou Email (Pro).</div>
       </div>
       <div class="step-row">
         <div class="step-num">3</div>
@@ -343,35 +352,39 @@
   <div id="sheet-error" class="error-msg"></div>
 
   <div class="section-card" style="margin-top:40px;">
-    <h2 class="section-title text-center">Pourquoi ça se vend ?</h2>
-    <div class="why-us-grid">
-      <div class="why-item"><span class="why-icon">🔓</span><strong>Achat Unitaire</strong><br>Sans minimum imposé</div>
-      <div class="why-item"><span class="why-icon">📦</span><strong>Stock Réel</strong><br>Expédition Immédiate</div>
-      <div class="why-item"><span class="why-icon">🚀</span><strong>Rapidité</strong><br>Départ 24h de Nantes</div>
-      <div class="why-item"><span class="why-icon">💰</span><strong>Marge x4</strong><br>Prix nets grossiste</div>
-    </div>
+    <h2 class="section-title text-center">🔥 Pourquoi ces bijoux se vendent ?</h2>
     
-    <div style="margin-top:20px;">
+    <div style="margin-bottom:20px;">
         <ul class="sales-points">
-          <li><strong>Acier inoxydable :</strong> fiable, durable.</li>
-          <li><strong>Dorure 0,4 μm :</strong> qualité boutique.</li>
-          <li><strong>Emballage Individuel :</strong> Reçu propre, prêt à vendre.</li>
-          <li><strong>Prix public réel :</strong> 5 € à 15 €.</li>
-          <li><strong>Marge revendeur :</strong> x3 à x4.</li>
+          <li><strong>INTEMPOREL & TENDANCE :</strong> Des classiques qui traversent les saisons.</li>
+          <li><strong>EXCELLENT RAPPORT QUALITÉ/PRIX :</strong> Marge x4 pour vous, prix doux pour vos clients.</li>
+          <li><strong>FAIBLE TAUX DE RETOUR :</strong> Qualité contrôlée, moins de SAV.</li>
+          <li><strong>VERSATILE :</strong> Du quotidien aux fêtes et mariages.</li>
         </ul>
     </div>
+
+    <h3 style="font-size:14px; margin:0 0 8px; font-weight:bold; text-align:center; color:#8d3b42;">VOTRE MARGE COMMERCIALE</h3>
+    <table class="profit-table">
+        <tr><th>Article</th><th>Achat</th><th>Revente</th><th>Profit</th></tr>
+        <tr><td>Bracelet</td><td>2,00 €</td><td>8,00 €</td><td class="profit-highlight">+6 €</td></tr>
+        <tr><td>Collier</td><td>3,00 €</td><td>12,00 €</td><td class="profit-highlight">+9 €</td></tr>
+    </table>
   </div>
 
   <div class="section-card">
-    <h2 class="section-title text-center" style="font-size:16px;">Ils revendent nos bijoux</h2>
+    <h2 class="section-title text-center" style="font-size:16px;">💬 Ils nous font confiance</h2>
     <div class="reviews-container">
         <div class="review-card">
-            <div class="review-text">"<span class="stars">★★★★★</span> Stock quasiment écoulé en 3 marchés. Excellent investissement."</div>
-            <div class="review-author">— Sophie M., Gérante de Pop-up Store, Rennes</div>
+            <div class="review-text">"<span class="stars">★★★★★</span> Stock fiable, livraison rapide. Mes clients adorent les médailles initiales !"</div>
+            <div class="review-author">— Sophie, Boutique Bijoux, Lyon</div>
         </div>
         <div class="review-card">
-            <div class="review-text">"<span class="stars">★★★★★</span> Qualité premium. Mes clients redemandent. Parfait pour la revente."</div>
-            <div class="review-author">— Marc D., Propriétaire de Boutique, Lyon</div>
+            <div class="review-text">"<span class="stars">★★★★★</span> Enfin un grossiste sans minimum ! Parfait pour tester de nouveaux modèles."</div>
+            <div class="review-author">— Marc, E-commerce, Paris</div>
+        </div>
+        <div class="review-card">
+            <div class="review-text">"<span class="stars">★★★★★</span> Réactivité au top sur WhatsApp, je recommande."</div>
+            <div class="review-author">— Laetitia, Concept Store, Bordeaux</div>
         </div>
     </div>
   </div>
@@ -382,36 +395,41 @@
     <div class="cart-total-line" id="cart-total-display"></div>
     <div id="discount-msg" style="color:#2e7d32; font-weight:bold; font-size:14px; margin-top:5px; display:none;">🎉 Remise Pro -10% appliquée !</div>
     
-    <button id="btn-whatsapp" class="btn-add" style="margin-top:15px; background:#25D366; font-size:16px;">📲 VALIDER SUR WHATSAPP BUSINESS</button>
+    <div class="cart-actions-row">
+        <button id="btn-whatsapp" class="btn-whatsapp">📲 Valider via WhatsApp (Rapide)</button>
+        <button id="btn-email-order" class="btn-email-order">✉️ Valider par Email (Facture Pro)</button>
+    </div>
+
+    <p style="font-size:11px; color:#777; margin-top:8px;">Confirmation de stock & Facture pro immédiate.</p>
     <button id="btn-clear" style="margin-top:5px; background:none; border:none; text-decoration:underline; cursor:pointer; font-size:12px; color:#666;">Vider le panier</button>
   </div>
 
   <div class="section-card">
     <h2 class="section-title text-center" style="font-size:16px;">Questions Fréquentes</h2>
     <div class="faq-item">
-      <div class="faq-q">💎 Quelle est la qualité des bijoux ?</div>
-      <div class="faq-a">Ce sont des créations françaises "Bijoux de Mimi". Acier Inoxydable doré à l'or fin (0,4 µm), ne ternit pas et résistant à l'eau.</div>
+      <div class="faq-q">💰 Y a-t-il un minimum de commande ?</div>
+      <div class="faq-a">Non ! Vous pouvez commander à l'unité. Idéal pour tester sans risque. Livraison offerte dès 200€.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">📦 Le stock est-il en France ?</div>
-      <div class="faq-a">Oui, tout notre stock est physique et situé dans nos locaux à Nantes. Expédition immédiate, pas de dropshipping.</div>
+      <div class="faq-q">📉 Proposez-vous des tarifs dégressifs ?</div>
+      <div class="faq-a">Oui, -10% automatiquement dès 300€ d'achat. Pour les gros volumes (>1000€), contactez-nous.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">💳 Comment payer ma commande ?</div>
-      <div class="faq-a">Après validation du stock ensemble sur WhatsApp, vous pourrez régler par Virement Bancaire ou par Carte Bancaire (via un lien sécurisé Stripe).</div>
+      <div class="faq-q">💎 Quelle est la qualité ?</div>
+      <div class="faq-a">Acier Inoxydable doré à l'or fin (0,4 µm). Ne ternit pas, résistant à l'eau. Qualité boutique.</div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">🚚 Quels sont les délais ?</div>
-      <div class="faq-a">Toute commande validée avant 12h est expédiée le jour même. Livraison Colissimo ou Mondial Relay en 24/48h.</div>
+      <div class="faq-q">📦 Délais de livraison ?</div>
+      <div class="faq-a">Expédition 24h depuis Nantes. Réception sous 48h en France Métropolitaine.</div>
     </div>
 
     <hr style="margin: 20px 0; border:0; border-top:1px dashed #ccc;">
 
-    <h2 class="section-title text-center" style="font-size:16px;">Pas de WhatsApp ?</h2>
-    <p style="font-size:13px; text-align:center; color:#555;">Contactez-nous directement par email :</p>
+    <h2 class="section-title text-center" style="font-size:16px;">📧 PRÉFÉREZ COMMANDER PAR EMAIL ?</h2>
+    <p style="font-size:13px; text-align:center; color:#555;">Remplissez le formulaire, réponse sous 2h ouvrées :</p>
     <form action="https://formspree.io/f/mrbyzegw" method="POST" class="contact-form">
-        <input type="email" name="email" placeholder="Votre Email" required>
-        <textarea name="message" rows="3" placeholder="Votre demande..." required></textarea>
+        <input type="email" name="email" placeholder="Votre Email Pro" required>
+        <textarea name="message" rows="3" placeholder="Votre demande ou liste de références..." required></textarea>
         <button type="submit">Envoyer le message</button>
     </form>
   </div>
@@ -453,11 +471,11 @@
   /* IMAGE MAPPING (Configuration Manuelle) */
   const categoryImages = {
     "Bague anneau": "bague-anneau-perles-colorees-dore-safran.webp",
-    "Boucles d'oreilles & Créoles": "boucles-d-oreilles-creole-dore-bleu-canard.webp", // CORRIGÉ
+    "Boucles d'oreilles & Créoles": "boucles-d-oreilles-creole-dore-bleu-canard.webp",
     "Bracelet chaîne": "bracelet-chaine-bijou-de-mimi-dore-poinsettia-porte-bonheur.webp",
     "Collier chaîne": "collier-chaine-perles-colorees-dore-safran-elegance-coloree.webp",
     "Collier grande": "collier-grande-maille-dore-style-intemporel.webp", 
-    "Cordon doré": "cordon-dore-bleu-jean.webp", // CORRIGÉ
+    "Cordon doré": "cordon-dore-bleu-jean.webp",
     "Médaille initiale": "medaille-initiale-dore-f.webp",
     "Médaille pampille": "medaille-pampille-dore-colombe-paix-serenite.webp",
     "Médaille pompon": "medaille-pompon-dore-fluo-pink-charme-fantaisie.webp",
@@ -611,7 +629,6 @@
     `;
 
     cats.forEach(c => {
-        // IMAGE MANUELLE OU AUTOMATIQUE
         let imgSrc;
         const mappedKey = Object.keys(categoryImages).find(key => c.includes(key) || key.includes(c));
         
@@ -782,6 +799,32 @@
 
   document.getElementById("btn-clear").onclick = () => { cart = []; updateCartUI(); };
 
+  /* -------------------------------
+     COMMANDE PAR EMAIL
+  --------------------------------*/
+  document.getElementById("btn-email-order").onclick = () => {
+    if (!cart.length) return;
+    
+    let total = cart.reduce((acc, i) => acc + (i.prixSolus * i.qty), 0);
+    let msg = "Bonjour Solustoc, je souhaite valider cette commande Pro :\n\n";
+    cart.forEach(i => msg += `- ${i.nom} (x${i.qty})\n`);
+    
+    if (total >= 300) {
+        let remise = total * 0.10;
+        let final = total - remise;
+        msg += `\n🎁 REMISE PRO -10% APPLIQUÉE`;
+        msg += `\n💰 Total Final : ${formatPrix(final)}`;
+    } else {
+        msg += `\n💰 Total Estimé : ${formatPrix(total)}`;
+    }
+    
+    msg += `\n\nMerci de m'envoyer la facture pour paiement.`;
+    window.location.href = "mailto:contact@solustoc.fr?subject=Nouvelle Commande Pro&body=" + encodeURIComponent(msg);
+  };
+
+  /* -------------------------------
+     COMMANDE PAR WHATSAPP
+  --------------------------------*/
   document.getElementById("btn-whatsapp").onclick = () => {
     if (!cart.length) return;
     
