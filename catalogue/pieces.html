@@ -74,6 +74,10 @@
       margin-top: 5px; border: 1px solid #c8e6c9;
     }
 
+    /* BADGES RASSURANCE */
+    .trust-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 10px 0; }
+    .badge { background: #f6e5c1; padding: 5px 12px; border-radius: 4px; font-size: 12px; font-weight: bold; color: #333; border: 1px solid #e0cdb0; }
+
     /* POURQUOI NOUS CHOISIR */
     .why-us-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 15px; }
     .why-item { background: #fffdf8; border: 1px solid #eaddc5; padding: 10px; border-radius: 8px; font-size: 12px; text-align: center; }
@@ -136,7 +140,6 @@
       justify-content: space-between; align-items: center;
       border-bottom: 2px solid #8d3b42;
     }
-    /* BOUTON RETOUR SUPER VISIBLE */
     .btn-back {
       background: #8d3b42; 
       border: none; 
@@ -194,9 +197,12 @@
     .contact-form input, .contact-form textarea { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; box-sizing: border-box; }
     .contact-form button { background: #444; color: #fff; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%; }
 
-    footer { background: #e8f9ec; padding: 30px 14px; font-size: 12px; text-align: center; color: #555; border-top: 1px solid #cdecd6; margin-top: 40px; line-height: 1.6; }
-    footer strong { color: #333; font-size: 13px; }
-    footer a { color: #8d3b42; text-decoration: none; }
+    /* FOOTER PRO */
+    footer { background: #e8f9ec; padding: 40px 14px; font-size: 12px; text-align: center; color: #555; border-top: 1px solid #cdecd6; margin-top: 40px; line-height: 1.6; }
+    .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 20px; }
+    .footer-links a { color: #8d3b42; text-decoration: none; font-weight: bold; font-size: 13px; }
+    .footer-links a:hover { text-decoration: underline; }
+    .footer-legal { color: #777; font-size: 11px; margin-top: 15px; border-top: 1px solid #dcdcdc; padding-top: 15px; }
 
     .popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 10000; display: none; justify-content: center; align-items: center; }
     .popup-content { background: #fff; padding: 30px 20px; border-radius: 16px; text-align: center; max-width: 320px; width: 90%; box-shadow: 0 10px 25px rgba(0,0,0,0.2); position: relative; animation: popIn 0.4s ease-out; }
@@ -360,7 +366,7 @@
     <h2 class="section-title text-center" style="font-size:16px;">Ils revendent nos bijoux</h2>
     <div class="reviews-container">
         <div class="review-card">
-            <div class="review-text">"<span class="stars">★★★★★</span> Stock écoulé en 3 marchés. Excellent investissement."</div>
+            <div class="review-text">"<span class="stars">★★★★★</span> Stock quasiment écoulé en 3 marchés. Excellent investissement."</div>
             <div class="review-author">— Sophie M., Gérante de Pop-up Store, Rennes</div>
         </div>
         <div class="review-card">
@@ -405,12 +411,17 @@
 </div>
 
 <footer>
-  <strong>SOLUSTOC - Grossiste Bijoux & Créations</strong><br>
-  69 bis rue du Bêle, 44200 Nantes<br>
-  SIREN : 929 179 579<br><br>
-  <a href="mailto:contact@solustoc.fr">contact@solustoc.fr</a> • 07 56 92 33 23<br><br>
-  <div style="font-size:11px; color:#666;">
-    <a href="https://lesbijouxfrancais.fr/mentions-legales" target="_blank">Mentions Légales</a> | <a href="#" onclick="window.print(); return false;">Télécharger Catalogue PDF</a>
+  <div class="footer-links">
+    <a href="https://lesbijouxfrancais.fr/politique-de-confidentialiteconditions-generales-de-vente-" target="_blank">CGV</a>
+    <a href="https://lesbijouxfrancais.fr/politique-de-confidentialiteconditions-generales-de-vente-" target="_blank">Mentions Légales</a>
+    <a href="https://lesbijouxfrancais.fr/bijoux-de-mimi-bijoux-creation-francaise" target="_blank">Nos Créateurs</a>
+    <a href="https://lesbijouxfrancais.fr/a-propos-des-bijoux-francais-notre-philosophie" target="_blank">À Propos de Nous</a>
+  </div>
+
+  <div class="footer-legal">
+    © 2025 Les Bijoux Français – Marque exploitée par la société SOLUSTOC SAS<br>
+    SIRET : 943 702 126 00013 – TVA : FR79943702126<br>
+    Siège social : 69 bis rue du Bêle 44200 Nantes
   </div>
 </footer>
 
@@ -424,13 +435,14 @@
   const PHOTO_BASE = "../photo/"; 
   const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTeb1HY3fqUcP26tcQ_crdY2PIIyjT_73TakK1neuc0cxwq-QMyChF2w5Q5kYSkmd14GRSGwYeZCION/pub?output=csv";
 
-  /* IMAGE MAPPING (Configuration Manuelle des images de catégories) */
+  /* IMAGE MAPPING (Configuration Manuelle) */
   const categoryImages = {
     "Bague anneau": "bague-anneau-perles-colorees-dore-safran.webp",
     "Boucles d'oreilles & Créoles": "boucles-d-oreilles-creole-dore-bleu-canard.webp",
     "Bracelet chaîne": "bracelet-chaine-bijou-de-mimi-dore-poinsettia-porte-bonheur.webp",
     "Collier chaîne": "collier-chaine-perles-colorees-dore-safran-elegance-coloree.webp",
     "Collier grande": "collier-grande-maille-dore-style-intemporel.webp", 
+    "Cordon doré": "cordon-dore-bleu-jean.webp",
     "Médaille initiale": "medaille-initiale-dore-f.webp",
     "Médaille pampille": "medaille-pampille-dore-colombe-paix-serenite.webp",
     "Médaille pompon": "medaille-pompon-dore-fluo-pink-charme-fantaisie.webp",
@@ -586,13 +598,11 @@
     cats.forEach(c => {
         // IMAGE MANUELLE OU AUTOMATIQUE
         let imgSrc;
-        // On cherche une correspondance partielle dans le mapping manuel
         const mappedKey = Object.keys(categoryImages).find(key => c.includes(key) || key.includes(c));
         
         if (mappedKey) {
             imgSrc = PHOTO_BASE + categoryImages[mappedKey];
         } else {
-            // Fallback : première image du produit de cette catégorie
             const firstProd = produits.find(p => p.cat === c);
             imgSrc = firstProd ? PHOTO_BASE + firstProd.image : "https://via.placeholder.com/150";
         }
@@ -627,7 +637,6 @@
     filteredProduits = catName ? produits.filter(p => p.cat === catName) : produits;
     renderProduits();
 
-    // Scroll un peu au dessus pour voir le bouton retour
     const offset = 100; 
     const bodyRect = document.body.getBoundingClientRect().top;
     const elementRect = prodView.getBoundingClientRect().top;
