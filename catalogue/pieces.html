@@ -22,11 +22,12 @@
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1190323416269528&ev=PageView&noscript=1"
   /></noscript>
+
   <style>
     /* --- CHARTE GRAPHIQUE SOLUSTOC --- */
-    body { font-family: system-ui, -apple-system, sans-serif; margin: 0; background: #fff7ea; color: #222; padding-bottom: 90px; }
+    body { font-family: system-ui, -apple-system, sans-serif; margin: 0; background: #fff7ea; color: #222; padding-bottom: 110px; /* Espace pour le sticky cart */ }
     
-    /* TOP BAR PERCUTANTE */
+    /* TOP BAR */
     .top-bar { 
         background: #8d3b42; color: #fff; text-align: center; padding: 8px; 
         font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; 
@@ -81,11 +82,7 @@
       margin-top: 5px; border: 1px solid #c8e6c9;
     }
 
-    /* POURQUOI NOUS CHOISIR */
-    .why-us-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 15px; }
-    .why-item { background: #fffdf8; border: 1px solid #eaddc5; padding: 10px; border-radius: 8px; font-size: 12px; text-align: center; }
-    .why-icon { font-size: 20px; display: block; margin-bottom: 4px; }
-
+    /* POINTS DE VENTE */
     ul.sales-points { list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 1.6; }
     ul.sales-points li { margin-bottom: 8px; padding-left: 20px; position: relative; }
     ul.sales-points li::before { content: "✅"; position: absolute; left: 0; top: 0; font-size: 12px; }
@@ -156,7 +153,6 @@
       display: flex; align-items: center; gap: 6px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
-    .btn-back:hover { background: #7a2e35; }
 
     /* PRODUITS */
     .grid { display: none; /* Masqué au départ */ grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-top: 20px; }
@@ -183,58 +179,37 @@
     .btn-add { width: 100%; margin-top: 8px; padding: 10px; border-radius: 8px; border: none; background: #25D366; color: #fff; font-weight: bold; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; }
     
     /* PANIER FIXE (STICKY) */
-    .sticky-cart { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; border-top: 1px solid #e0cda8; box-shadow: 0 -4px 15px rgba(0,0,0,0.1); padding: 12px 20px; display: none; justify-content: space-between; align-items: center; z-index: 900; }
-    .sticky-info { font-weight: bold; color: #333; font-size: 15px; }
-    .sticky-btn { background: #25D366; color: #fff; padding: 10px 20px; border-radius: 50px; font-weight: bold; text-decoration: none; border: none; cursor: pointer; font-size: 14px; }
+    .sticky-cart { 
+        position: fixed; bottom: 0; left: 0; right: 0; 
+        background: #fff; border-top: 2px solid #25D366; 
+        box-shadow: 0 -4px 20px rgba(0,0,0,0.15); 
+        padding: 15px 20px; 
+        display: none; /* Apparaît via JS */
+        justify-content: space-between; align-items: center; 
+        z-index: 1000; /* Toujours au dessus */
+    }
+    .sticky-info { font-weight: bold; color: #333; font-size: 16px; }
+    .sticky-btn { background: #25D366; color: #fff; padding: 12px 24px; border-radius: 50px; font-weight: bold; text-decoration: none; border: none; cursor: pointer; font-size: 15px; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); }
 
     .cart-section { display: none; text-align: center; border-color:#25D366; } 
     .cart-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
     .cart-table td { padding: 6px; border-bottom: 1px solid #eee; text-align: left; }
     .cart-total-line { text-align: right; font-weight: bold; font-size: 16px; margin-top: 10px; color: #b32121; }
     
-    /* BOUTONS ACTIONS PANIER */
     .cart-actions-row { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
     .btn-whatsapp { background: #25D366; color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; width: 100%; }
     .btn-email-order { background: #34495e; color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer; width: 100%; }
 
-    /* FAQ & FORM */
-    .faq-item { border-bottom: 1px solid #eee; padding: 10px 0; text-align: left; }
-    .faq-q { font-weight: bold; font-size: 14px; color: #333; margin-bottom: 4px; }
-    .faq-a { font-size: 13px; color: #555; line-height: 1.4; }
-
-    .contact-form { margin-top: 10px; }
-    .contact-form input, .contact-form textarea { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; box-sizing: border-box; }
-    .contact-form button { background: #444; color: #fff; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%; }
-
-    /* FOOTER PRO */
-    footer { background: #e8f9ec; padding: 40px 14px; font-size: 12px; text-align: center; color: #555; border-top: 1px solid #cdecd6; margin-top: 40px; line-height: 1.6; }
-    .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 20px; }
-    .footer-links a { color: #8d3b42; text-decoration: none; font-weight: bold; font-size: 13px; }
-    .footer-links a:hover { text-decoration: underline; }
-    .footer-legal { color: #777; font-size: 11px; margin-top: 15px; border-top: 1px solid #dcdcdc; padding-top: 15px; }
-
-    .popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 10000; display: none; justify-content: center; align-items: center; }
-    .popup-content { background: #fff; padding: 30px 20px; border-radius: 16px; text-align: center; max-width: 320px; width: 90%; box-shadow: 0 10px 25px rgba(0,0,0,0.2); position: relative; animation: popIn 0.4s ease-out; }
+    /* POPUP & TOAST */
+    .popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 10000; display: none; justify-content: center; align-items: center; }
+    .popup-content { background: #fff; padding: 30px 20px; border-radius: 16px; text-align: center; max-width: 340px; width: 90%; box-shadow: 0 10px 25px rgba(0,0,0,0.3); position: relative; animation: popIn 0.4s ease-out; }
     @keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     .popup-close { position: absolute; top: 10px; right: 15px; font-size: 24px; color: #999; cursor: pointer; font-weight: bold; }
-    .popup-title { font-size: 20px; color: #b32121; margin: 0 0 10px; font-weight: bold; }
-    .popup-text { font-size: 15px; color: #333; margin-bottom: 20px; line-height: 1.5; }
-    .btn-popup { background: #25D366; color: #fff; border: none; padding: 12px 24px; border-radius: 50px; font-weight: bold; font-size: 15px; cursor: pointer; width: 100%; display: block; box-sizing: border-box; }
-
-    /* TÉMOIGNAGES */
-    .reviews-container { margin-top: 15px; }
-    .review-card { background: #fffdf8; border-left: 3px solid #8d3b42; padding: 10px 12px; margin-bottom: 10px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-    .review-text { font-size: 13px; font-style: italic; color: #444; margin-bottom: 6px; line-height: 1.4; }
-    .review-author { font-size: 12px; font-weight: bold; color: #222; }
-    .stars { color: #f1c40f; font-size: 12px; margin-right: 5px; }
-
-    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 9999; }
-    .lightbox img { max-width: 95%; max-height: 90vh; border-radius: 8px; }
-    .lightbox-close { position: fixed; top: 15px; right: 20px; font-size: 30px; color: #fff; cursor: pointer; }
     
-    .error-msg { background: #ffebee; color: #c62828; padding: 10px; border-radius: 8px; margin: 10px 0; display: none; text-align: center; font-size: 13px; }
+    .popup-highlight-green { background:#e8f5e9; color:#2e7d32; padding:10px; border-radius:8px; margin-top:10px; font-size:14px; font-weight:bold; border:1px solid #c8e6c9; }
+    
+    .btn-popup { background: #222; color: #fff; border: none; padding: 12px 24px; border-radius: 50px; font-weight: bold; font-size: 15px; cursor: pointer; width: 100%; display: block; box-sizing: border-box; margin-top:15px;}
 
-    /* TOAST */
     .sales-toast {
         position: fixed; bottom: 90px; left: 20px; 
         background: #fff; padding: 12px 15px; border-radius: 8px; 
@@ -247,7 +222,27 @@
     .sales-toast.show { opacity: 1; transform: translateY(0); }
     .toast-icon { font-size: 18px; }
 
-    /* STYLE IMPRESSION (PDF) */
+    /* LIGHTBOX */
+    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 9999; }
+    .lightbox img { max-width: 95%; max-height: 90vh; border-radius: 8px; }
+    .lightbox-close { position: fixed; top: 15px; right: 20px; font-size: 30px; color: #fff; cursor: pointer; }
+    
+    .error-msg { background: #ffebee; color: #c62828; padding: 10px; border-radius: 8px; margin: 10px 0; display: none; text-align: center; font-size: 13px; }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid #eee; padding: 10px 0; text-align: left; }
+    .faq-q { font-weight: bold; font-size: 14px; color: #333; margin-bottom: 4px; }
+    .faq-a { font-size: 13px; color: #555; line-height: 1.4; }
+
+    .contact-form { margin-top: 10px; }
+    .contact-form input, .contact-form textarea { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; box-sizing: border-box; }
+    .contact-form button { background: #444; color: #fff; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%; }
+
+    footer { background: #e8f9ec; padding: 40px 14px; font-size: 12px; text-align: center; color: #555; border-top: 1px solid #cdecd6; margin-top: 40px; line-height: 1.6; }
+    .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 20px; }
+    .footer-links a { color: #8d3b42; text-decoration: none; font-weight: bold; font-size: 13px; }
+
+    /* PRINT */
     @media print {
         header, .how-it-works, .section-card, .cat-nav-container, .cat-hub-grid, .sticky-cart, footer, .popup-overlay, .btn-add, .qty-row, .btn-anchor, .sales-toast, .cat-nav-sticky { display: none !important; }
         .wrapper { margin: 0; width: 100%; max-width: 100%; }
@@ -256,7 +251,6 @@
         .card img { max-width: 100px; float: left; margin-right: 15px; }
         .card h3 { font-size: 16px; margin-top: 0; }
         body { background: #fff; color: #000; padding: 0; }
-        #products::before { content: "Catalogue SOLUSTOC - Bijoux de Mimi - Stock France"; display: block; font-size: 20px; font-weight: bold; margin-bottom: 20px; text-align: center; }
     }
   </style>
 </head>
@@ -266,9 +260,17 @@
 <div id="promo-popup" class="popup-overlay">
   <div class="popup-content">
     <span class="popup-close" onclick="closePopup()">×</span>
-    <div class="popup-title">🎁 Offre Pro</div>
-    <div class="popup-text">Profitez de <strong>-10%</strong> sur votre commande dès <strong>300 € d'achat</strong>.</div>
-    <button class="btn-popup" onclick="closePopup()">J'en profite !</button>
+    <div style="font-size:20px; margin-bottom:10px;">🎁</div>
+    <div class="popup-title" style="color:#b32121; font-weight:bold; font-size:18px;">OFFRE PRO</div>
+    <div class="popup-text" style="color:#444; margin-bottom:15px;">
+      <p style="margin:0 0 10px;">Profitez de <strong>-10%</strong> sur toute commande au dessus de <strong>300 €</strong>.</p>
+      
+      <div class="popup-highlight-green">
+         ✅ Vous pouvez aussi faire une commande de <strong>moins de 300 €</strong> !
+         <div style="font-weight:normal; font-size:12px; margin-top:4px;">(Aucun minimum imposé)</div>
+      </div>
+    </div>
+    <button class="btn-popup" onclick="closePopup()">OK, je continue !</button>
   </div>
 </div>
 
@@ -295,12 +297,6 @@
       <strong>Stock permanent • Achat à l'unité • Sans minimum</strong>
     </p>
     
-    <div class="trust-badges">
-      <span class="badge">🇫🇷 Stock Physique France</span>
-      <span class="badge">📦 Expédition sous 24h</span>
-      <span class="badge">💎 Qualité Créateur</span>
-    </div>
-
     <div class="how-it-works">
       <div style="font-weight:bold; color:#8d3b42; margin-bottom:10px; text-align:center;">Comment commander ?</div>
       <div class="step-row">
@@ -353,7 +349,6 @@
 
   <div class="section-card" style="margin-top:40px;">
     <h2 class="section-title text-center">🔥 Pourquoi ces bijoux se vendent ?</h2>
-    
     <div style="margin-bottom:20px;">
         <ul class="sales-points">
           <li><strong>INTEMPOREL & TENDANCE :</strong> Des classiques qui traversent les saisons.</li>
@@ -362,7 +357,6 @@
           <li><strong>VERSATILE :</strong> Du quotidien aux fêtes et mariages.</li>
         </ul>
     </div>
-
     <h3 style="font-size:14px; margin:0 0 8px; font-weight:bold; text-align:center; color:#8d3b42;">VOTRE MARGE COMMERCIALE</h3>
     <table class="profit-table">
         <tr><th>Article</th><th>Achat</th><th>Revente</th><th>Profit</th></tr>
@@ -440,7 +434,7 @@
   <div class="sticky-info">
     <span id="sticky-count">0</span> art. • <span id="sticky-sum">0,00 €</span>
   </div>
-  <button class="sticky-btn" onclick="scrollToCart()">Mon Panier 🛒</button>
+  <button class="sticky-btn" onclick="scrollToCart()">Voir Panier 🛒</button>
 </div>
 
 <footer>
@@ -468,7 +462,7 @@
   const PHOTO_BASE = "../photo/"; 
   const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTeb1HY3fqUcP26tcQ_crdY2PIIyjT_73TakK1neuc0cxwq-QMyChF2w5Q5kYSkmd14GRSGwYeZCION/pub?output=csv";
 
-  /* IMAGE MAPPING (Configuration Manuelle) */
+  /* IMAGE MAPPING */
   const categoryImages = {
     "Bague anneau": "bague-anneau-perles-colorees-dore-safran.webp",
     "Boucles d'oreilles & Créoles": "boucles-d-oreilles-creole-dore-bleu-canard.webp",
@@ -748,10 +742,9 @@
     }
 
     updateCartUI();
-    
-    let currentTotal = cart.reduce((acc, i) => acc + (i.prixSolus * i.qty), 0);
-    const hasSeenPopup = sessionStorage.getItem('promoPopupShown');
-    if (currentTotal > 0 && currentTotal < 300 && !hasSeenPopup) {
+
+    // DÉCLENCHEMENT POPUP AU PREMIER AJOUT (Check Storage)
+    if (!sessionStorage.getItem('promoPopupShown')) {
        document.getElementById("promo-popup").style.display = "flex";
        sessionStorage.setItem('promoPopupShown', 'true');
     }
@@ -777,7 +770,7 @@
     }
 
     section.style.display = "block";
-    sticky.style.display = "flex";
+    sticky.style.display = "flex"; // STICKY TOUJOURS VISIBLE
 
     let total = cart.reduce((acc, i) => acc + (i.prixSolus * i.qty), 0);
     const count = cart.reduce((acc, i) => acc + i.qty, 0);
@@ -793,6 +786,8 @@
       </table>
     `;
     totalDisplay.innerText = "Total TTC : " + formatPrix(total);
+    
+    // MISE A JOUR BARRE STICKY
     document.getElementById("sticky-count").innerText = count;
     document.getElementById("sticky-sum").innerText = formatPrix(total);
   }
@@ -800,7 +795,7 @@
   document.getElementById("btn-clear").onclick = () => { cart = []; updateCartUI(); };
 
   /* -------------------------------
-     COMMANDE PAR EMAIL
+      COMMANDE PAR EMAIL
   --------------------------------*/
   document.getElementById("btn-email-order").onclick = () => {
     if (!cart.length) return;
@@ -823,7 +818,7 @@
   };
 
   /* -------------------------------
-     COMMANDE PAR WHATSAPP
+      COMMANDE PAR WHATSAPP
   --------------------------------*/
   document.getElementById("btn-whatsapp").onclick = () => {
     if (!cart.length) return;
@@ -844,7 +839,7 @@
     let finalTotal = total;
     if (total >= 300) {
         let remise = total * 0.10;
-        finalTotal = total - remise;
+        let finalTotal = total - remise;
         msg += `\n🎁 *PROMO PRO -10% APPLIQUÉE*`;
         msg += `\n💰 Sous-total : ${formatPrix(total)}`;
         msg += `\n✅ *TOTAL FINAL TTC : ${formatPrix(finalTotal)}*`;
