@@ -2,9 +2,9 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Catalogue Solustoc – Grossiste Bijoux France</title>
+  <title>Catalogue Solustoc – Grossiste Bijoux Créateur France</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Grossiste bijoux acier inoxydable. Rentabilité x4. Stock France. Commande WhatsApp.">
+  <meta name="description" content="Grossiste bijoux acier inoxydable et créateur. Rentabilité x4. Stock France. Commande WhatsApp.">
 
   <script>
   !function(f,b,e,v,n,t,s)
@@ -28,7 +28,8 @@
     
     header { background: #fff7ea; text-align: center; padding: 20px 14px 10px; }
     header img { max-width: 180px; height: auto; }
-    .header-subtitle { font-size: 13px; color: #666; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 5px; }
+    .header-contact { font-size: 13px; color: #555; margin-top: 5px; font-weight: 500; }
+    .header-contact a { color: #555; text-decoration: none; border-bottom: 1px dotted #555; }
 
     .wrapper { width: 94%; max-width: 1100px; margin: 10px auto 40px; }
 
@@ -38,16 +39,21 @@
       margin-bottom: 20px; 
     }
     .text-center { text-align: center; }
-    .section-title { margin: 0 0 12px; font-size: 18px; font-weight: bold; color: #8d3b42; }
+    .section-title { margin: 0 0 12px; font-size: 18px; font-weight: bold; color: #8d3b42; text-transform: uppercase; letter-spacing: 0.5px; }
     
-    /* BOUTON D'ANCRE (ACCÈS RAPIDE) */
+    /* BADGES RASSURANCE */
+    .trust-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 10px 0; }
+    .badge { background: #f6e5c1; padding: 5px 12px; border-radius: 4px; font-size: 12px; font-weight: bold; color: #333; border: 1px solid #e0cdb0; }
+
+    /* BOUTON ANCRE */
     .btn-anchor {
       display: block; width: 100%; max-width: 280px; margin: 15px auto 0;
       background: #8d3b42; color: #fff; text-decoration: none;
-      padding: 14px 20px; border-radius: 50px; font-weight: bold; font-size: 16px;
-      box-shadow: 0 4px 10px rgba(141, 59, 66, 0.3); transition: transform 0.2s;
+      padding: 14px 20px; border-radius: 6px; font-weight: bold; font-size: 16px;
+      text-transform: uppercase; box-shadow: 0 4px 10px rgba(141, 59, 66, 0.3); transition: transform 0.2s; cursor: pointer; border: none;
     }
     .btn-anchor:active { transform: scale(0.98); }
+    .btn-secondary { background: #fff; color: #8d3b42; border: 1px solid #8d3b42; margin-top: 10px; font-size: 13px; padding: 10px 20px; border-radius: 6px; cursor: pointer; width: 100%; max-width: 280px; }
 
     /* BLOC COMMENT ÇA MARCHE */
     .how-it-works {
@@ -55,7 +61,7 @@
       border: 1px dashed #c9a66b;
       border-radius: 12px;
       padding: 15px;
-      margin: 15px 0;
+      margin: 15px 0 5px;
       text-align: left;
     }
     .step-row { display: flex; gap: 10px; margin-bottom: 8px; align-items: flex-start; }
@@ -71,6 +77,11 @@
       padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; 
       margin-top: 5px; border: 1px solid #c8e6c9;
     }
+
+    /* POURQUOI NOUS CHOISIR */
+    .why-us-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 15px; }
+    .why-item { background: #fffdf8; border: 1px solid #eaddc5; padding: 10px; border-radius: 8px; font-size: 12px; text-align: center; }
+    .why-icon { font-size: 20px; display: block; margin-bottom: 4px; }
 
     ul.sales-points { list-style: none; padding: 0; margin: 0; font-size: 14px; line-height: 1.6; }
     ul.sales-points li { margin-bottom: 6px; padding-left: 20px; position: relative; }
@@ -141,10 +152,18 @@
     .cart-table td { padding: 6px; border-bottom: 1px solid #eee; text-align: left; }
     .cart-total-line { text-align: right; font-weight: bold; font-size: 16px; margin-top: 10px; color: #b32121; }
 
-    footer { background: #e8f9ec; padding: 24px 14px; font-size: 12px; text-align: center; color: #555; border-top: 1px solid #cdecd6; margin-top: 40px; line-height: 1.6; }
+    /* FAQ & FORM */
+    .faq-item { border-bottom: 1px solid #eee; padding: 10px 0; text-align: left; }
+    .faq-q { font-weight: bold; font-size: 14px; color: #333; margin-bottom: 4px; }
+    .faq-a { font-size: 13px; color: #555; line-height: 1.4; }
+
+    .contact-form { margin-top: 10px; }
+    .contact-form input, .contact-form textarea { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; box-sizing: border-box; }
+    .contact-form button { background: #444; color: #fff; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%; }
+
+    footer { background: #e8f9ec; padding: 30px 14px; font-size: 12px; text-align: center; color: #555; border-top: 1px solid #cdecd6; margin-top: 40px; line-height: 1.6; }
     footer strong { color: #333; font-size: 13px; }
     footer a { color: #8d3b42; text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
 
     .popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 10000; display: none; justify-content: center; align-items: center; }
     .popup-content { background: #fff; padding: 30px 20px; border-radius: 16px; text-align: center; max-width: 320px; width: 90%; box-shadow: 0 10px 25px rgba(0,0,0,0.2); position: relative; animation: popIn 0.4s ease-out; }
@@ -159,6 +178,18 @@
     .lightbox-close { position: fixed; top: 15px; right: 20px; font-size: 30px; color: #fff; cursor: pointer; }
     
     .error-msg { background: #ffebee; color: #c62828; padding: 10px; border-radius: 8px; margin: 10px 0; display: none; text-align: center; font-size: 13px; }
+
+    /* STYLE IMPRESSION (PDF) */
+    @media print {
+        header, .how-it-works, .section-card, .cat-nav-container, .sticky-cart, footer, .popup-overlay, .btn-add, .qty-row, .btn-anchor, .filter-bar { display: none !important; }
+        .wrapper { margin: 0; width: 100%; max-width: 100%; }
+        .grid { display: block; }
+        .card { border: 1px solid #ccc; break-inside: avoid; margin-bottom: 10px; page-break-inside: avoid; box-shadow: none; }
+        .card img { max-width: 100px; float: left; margin-right: 15px; }
+        .card h3 { font-size: 16px; margin-top: 0; }
+        body { background: #fff; color: #000; padding: 0; }
+        #products::before { content: "Catalogue SOLUSTOC - Bijoux de Mimi - Stock France"; display: block; font-size: 20px; font-weight: bold; margin-bottom: 20px; text-align: center; }
+    }
   </style>
 </head>
 
@@ -167,35 +198,36 @@
 <div id="promo-popup" class="popup-overlay">
   <div class="popup-content">
     <span class="popup-close" onclick="closePopup()">×</span>
-    <div class="popup-title">🎁 Offre Spéciale</div>
-    <div class="popup-text">Obtenez <strong>-10%</strong> sur votre commande dès <strong>300 € d'achat !</strong></div>
+    <div class="popup-title">🎁 Offre Pro</div>
+    <div class="popup-text">Profitez de <strong>-10%</strong> sur votre commande dès <strong>300 € d'achat</strong>.</div>
     <button class="btn-popup" onclick="closePopup()">J'en profite !</button>
   </div>
 </div>
 
 <header>
-  <img src="../img/logosbijouxfrancais.webp" alt="Les Bijoux Français / Solustoc">
-  <div class="header-subtitle">Espace Revendeurs & Grossiste</div>
+  <img src="../img/logosbijouxfrancais.webp" alt="SOLUSTOC Grossiste Bijoux">
+  <div class="header-contact">
+    📞 <a href="tel:0756923323">07 56 92 33 23</a> • 📧 <a href="mailto:contact@solustoc.fr">contact@solustoc.fr</a>
+  </div>
 </header>
 
 <div class="wrapper">
 
   <div class="section-card text-center">
-    <h1 class="section-title">Achat à la pièce – Qualité Boutique</h1>
+    <h1 class="section-title">SOLUSTOC - Grossiste Bijoux & Créations</h1>
+    <p style="font-size:14px; margin-bottom:12px; color:#444;">
+      Fournisseur pour boutiques, marchés et e-commerces.<br>
+      <strong>Stock permanent • Achat à l'unité • Sans minimum</strong>
+    </p>
     
-    <div style="margin-bottom:15px;">
-      <p style="font-size:14px; margin:5px 0;"><strong>Solustoc SAS</strong><br>69 bis rue du Bêle, 44200 Nantes</p>
-      <div style="font-size:12px; color:#555; margin-top:6px;">SIREN : 929 179 579<br>Expédition depuis la France 🇫🇷</div>
-    </div>
-
-    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-bottom:10px;">
-      <span style="background:#f6e5c1; padding:5px 10px; border-radius:20px; font-size:12px; font-weight:bold;">Livraison offerte dès 200€</span>
-      <span style="background:#f6e5c1; padding:5px 10px; border-radius:20px; font-size:12px; font-weight:bold;">Stock Réel 24/48h</span>
+    <div class="trust-badges">
+      <span class="badge">🇫🇷 Stock Physique France</span>
+      <span class="badge">📦 Expédition sous 24h</span>
+      <span class="badge">💎 Qualité Créateur</span>
     </div>
 
     <div class="how-it-works">
       <div style="font-weight:bold; color:#8d3b42; margin-bottom:10px; text-align:center;">Comment commander ?</div>
-      
       <div class="step-row">
         <div class="step-num">1</div>
         <div class="step-text"><strong>Remplissez votre panier</strong><br>Choisissez vos modèles et quantités.</div>
@@ -208,21 +240,45 @@
         <div class="step-num">3</div>
         <div class="step-text"><strong>Paiement & Envoi</strong><br>Nous confirmons le stock et la facture ensemble.</div>
       </div>
-
       <div style="text-align:center; margin-top:5px;">
         <span class="no-payment-badge">🔒 Aucun paiement en ligne immédiat</span>
       </div>
     </div>
 
-    <a href="#catalogue-start" class="btn-anchor">Voir les bijoux disponibles ⬇</a>
+    <a href="#catalogue-start" class="btn-anchor">VOIR LE CATALOGUE ⬇</a>
+    <div style="text-align:center;">
+        <button class="btn-secondary" onclick="window.print()">🖨️ Télécharger le Catalogue (PDF)</button>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h2 class="section-title text-center" style="font-size:16px;">Pourquoi les pros nous choisissent ?</h2>
+    <div class="why-us-grid">
+      <div class="why-item">
+        <span class="why-icon">🔓</span>
+        <strong>Achat Unitaire</strong><br>Sans minimum imposé
+      </div>
+      <div class="why-item">
+        <span class="why-icon">📦</span>
+        <strong>Stock Réel</strong><br>Expédition Immédiate
+      </div>
+      <div class="why-item">
+        <span class="why-icon">🚀</span>
+        <strong>Rapidité</strong><br>Départ 24h de Nantes
+      </div>
+      <div class="why-item">
+        <span class="why-icon">💰</span>
+        <strong>Marge x4</strong><br>Prix nets grossiste
+      </div>
+    </div>
   </div>
 
   <div class="section-card" style="padding:15px;">
-    <h2 class="section-title text-center" style="font-size:16px;">Ventes réelles & Ambiance</h2>
+    <h2 class="section-title text-center" style="font-size:16px;">Logistique & Ambiance</h2>
     <div class="ambiance-grid">
       <img src="../img/ambiance-packshot.webp" alt="Stock">
-      <img src="../img/marche-noel.webp" alt="Idéal Marché de Noël">
-      <img src="../img/packaging.webp" alt="Emballage Individuel">
+      <img src="../img/marche-noel.webp" alt="Revendeurs">
+      <img src="../img/packaging.webp" alt="Packaging Individuel">
     </div>
   </div>
 
@@ -235,39 +291,49 @@
   <div id="sheet-error" class="error-msg"></div>
 
   <div id="products" class="grid">
-    <p style="text-align:center; grid-column:1/-1;">Chargement des produits en cours...</p>
-  </div>
-
-  <div class="section-card" style="margin-top:30px;">
-    <h2 class="section-title text-center">Pourquoi ça se vend ?</h2>
-    <div style="display:flex; flex-wrap:wrap; gap:20px;">
-      <div style="flex:1; min-width:240px;">
-        <ul class="sales-points">
-          <li><strong>Acier inoxydable :</strong> fiable, durable.</li>
-          <li><strong>Dorure 0,4 μm :</strong> qualité boutique.</li>
-          <li><strong>Emballage Individuel :</strong> Reçu propre, prêt à vendre.</li>
-          <li><strong>Prix public réel :</strong> 5 € à 15 €.</li>
-          <li><strong>Marge revendeur :</strong> x3 à x4.</li>
-        </ul>
-      </div>
-      <div style="flex:1; min-width:240px;">
-        <h3 style="font-size:14px; margin:0 0 8px; font-weight:bold; text-align:center;">Votre Marge</h3>
-        <table class="profit-table">
-          <tr><th>Article</th><th>Achat</th><th>Revente</th><th>Profit</th></tr>
-          <tr><td>Bracelet</td><td>2,00 €</td><td>8,00 €</td><td class="profit-highlight">+6 €</td></tr>
-          <tr><td>Collier</td><td>3,00 €</td><td>12,00 €</td><td class="profit-highlight">+9 €</td></tr>
-        </table>
-      </div>
-    </div>
+    <p style="text-align:center; grid-column:1/-1;">Chargement du catalogue...</p>
   </div>
 
   <div id="cart-block" class="section-card cart-section" style="margin-top:20px;">
-    <h2 class="section-title">Votre sélection</h2>
+    <h2 class="section-title">Votre Bon de Commande</h2>
+    <div style="font-size:12px; color:#555; margin-bottom:10px;">Récapitulatif avant validation WhatsApp</div>
     <div id="cart-content"></div>
     <div class="cart-total-line" id="cart-total-display"></div>
-    <div id="discount-msg" style="color:#2e7d32; font-weight:bold; font-size:14px; margin-top:5px; display:none;">🎉 Bravo ! -10% appliqué sur la commande !</div>
-    <button id="btn-whatsapp" class="btn-add" style="margin-top:15px; background:#25D366; font-size:16px;">📲 Valider ma commande sur WhatsApp</button>
-    <button id="btn-clear" style="margin-top:10px; background:none; border:none; text-decoration:underline; cursor:pointer; font-size:12px; color:#666;">Vider le panier</button>
+    <div id="discount-msg" style="color:#2e7d32; font-weight:bold; font-size:14px; margin-top:5px; display:none;">🎉 Remise Pro -10% appliquée !</div>
+    
+    <button id="btn-whatsapp" class="btn-add" style="margin-top:15px; background:#25D366; font-size:16px;">📲 VALIDER SUR WHATSAPP BUSINESS</button>
+    <p style="font-size:11px; color:#777; margin-top:8px;">Confirmation de stock & Facture pro immédiate.</p>
+    <button id="btn-clear" style="margin-top:5px; background:none; border:none; text-decoration:underline; cursor:pointer; font-size:12px; color:#666;">Vider le panier</button>
+  </div>
+
+  <div class="section-card">
+    <h2 class="section-title text-center" style="font-size:16px;">Questions Fréquentes</h2>
+    <div class="faq-item">
+      <div class="faq-q">💎 Quelle est la qualité des bijoux ?</div>
+      <div class="faq-a">Ce sont des créations françaises "Bijoux de Mimi". Acier Inoxydable doré à l'or fin (0,4 µm), ne ternit pas et résistant à l'eau.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">📦 Le stock est-il en France ?</div>
+      <div class="faq-a">Oui, tout notre stock est physique et situé dans nos locaux à Nantes. Expédition immédiate, pas de dropshipping.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">💳 Comment payer ma commande ?</div>
+      <div class="faq-a">Après validation du stock ensemble sur WhatsApp, vous pourrez régler par Virement Bancaire ou par Carte Bancaire (via un lien sécurisé Stripe).</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">🚚 Quels sont les délais ?</div>
+      <div class="faq-a">Toute commande validée avant 12h est expédiée le jour même. Livraison Colissimo ou Mondial Relay en 24/48h.</div>
+    </div>
+
+    <hr style="margin: 20px 0; border:0; border-top:1px dashed #ccc;">
+
+    <h2 class="section-title text-center" style="font-size:16px;">Pas de WhatsApp ?</h2>
+    <p style="font-size:13px; text-align:center; color:#555;">Contactez-nous directement par email :</p>
+    <form action="https://formspree.io/f/mrbyzegw" method="POST" class="contact-form">
+        <input type="email" name="email" placeholder="Votre Email" required>
+        <textarea name="message" rows="3" placeholder="Votre message ou demande..." required></textarea>
+        <button type="submit">Envoyer le message</button>
+    </form>
   </div>
 
 </div>
@@ -276,17 +342,20 @@
   <div class="sticky-info">
     <span id="sticky-count">0</span> art. • <span id="sticky-sum">0,00 €</span>
   </div>
-  <button class="sticky-btn" onclick="scrollToCart()">Voir Panier 🛒</button>
+  <button class="sticky-btn" onclick="scrollToCart()">Mon Panier 🛒</button>
 </div>
 
 <footer>
-  <strong>Solustoc – Déstockage pour les pros</strong><br>
-  Email : <a href="mailto:contact@solustoc.fr">contact@solustoc.fr</a><br>
-  WhatsApp : <a href="https://wa.me/33756923323">07 56 92 33 23</a><br><br>
-  <div style="font-size:11px; color:#666; margin-bottom:10px;">SIRET : 943 702 126 00013<br>Les Bijoux Français est une marque exploitée par la société SOLUSTOC SAS.</div>
-  <a href="https://lesbijouxfrancais.fr/mentions-legales" target="_blank">Mentions légales</a> · 
-  <a href="https://lesbijouxfrancais.fr/politique-de-confidentialite" target="_blank">Politique de confidentialité</a> · 
-  <a href="https://lesbijouxfrancais.fr/bijoux-de-mimi-bijoux-creation-francaise" target="_blank">À propos des Bijoux de Mimi</a>
+  <strong>SOLUSTOC - Grossiste Bijoux & Créations</strong><br>
+  69 bis rue du Bêle, 44200 Nantes<br>
+  SIREN : 929 179 579<br><br>
+  <a href="mailto:contact@solustoc.fr">contact@solustoc.fr</a> • 07 56 92 33 23<br><br>
+  
+  <div style="font-size:11px; color:#666;">
+    <a href="https://lesbijouxfrancais.fr/mentions-legales" target="_blank">Mentions Légales</a> | 
+    <a href="#" target="_blank">CGV Professionnels</a> | 
+    <a href="https://lesbijouxfrancais.fr/politique-de-confidentialite" target="_blank">Confidentialité</a>
+  </div>
 </footer>
 
 <div class="lightbox" id="lightbox">
@@ -295,19 +364,20 @@
 </div>
 
 <script>
+  /* CONFIGURATION */
   const PHOTO_BASE = "../photo/"; 
   const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTeb1HY3fqUcP26tcQ_crdY2PIIyjT_73TakK1neuc0cxwq-QMyChF2w5Q5kYSkmd14GRSGwYeZCION/pub?output=csv";
 
+  /* ETAT */
   const produits = [];
   let filteredProduits = [];
   let cart = [];
   let currentCategory = "";
 
-  /* POPUP INTELLIGENT (Supprimé au chargement, activé au panier) */
-  // On ne lance plus rien au chargement.
-  
+  /* POPUP LOGIC */
   window.closePopup = () => { document.getElementById("promo-popup").style.display = "none"; };
 
+  /* CSV PARSER */
   function CSVToArray(strData, strDelimiter) {
     strDelimiter = (strDelimiter || ",");
     var objPattern = new RegExp(("(\\" + strDelimiter + "|\\r?\\n|\\r|^)" + "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" + "([^\"\\" + strDelimiter + "\\r\\n]*))"), "gi");
@@ -417,7 +487,6 @@
   function generateNav() {
     const cats = [...new Set(produits.map(p => p.cat).filter(Boolean))].sort();
     
-    // Ordre forcé comme demandé
     cats.sort((a, b) => {
       const getPriority = (str) => {
         if (str.includes("Boucles")) return 1;
@@ -501,7 +570,6 @@
     if (exist) exist.qty += qty;
     else cart.push({...p, qty});
     
-    // TRACKING PIXEL
     if(typeof fbq !== 'undefined') {
         fbq('track', 'AddToCart', {
             content_name: p.nom, 
@@ -511,18 +579,15 @@
         });
     }
 
-    updateCartUI(); // Sauvegarde et met à jour l'UI
-
-    // STRATÉGIE POPUP : On déclenche SI c'est le 1er ajout OU si < 300€ et pas encore vu
+    updateCartUI();
+    
     let currentTotal = cart.reduce((acc, i) => acc + (i.prixSolus * i.qty), 0);
     const hasSeenPopup = sessionStorage.getItem('promoPopupShown');
-
     if (currentTotal > 0 && currentTotal < 300 && !hasSeenPopup) {
        document.getElementById("promo-popup").style.display = "flex";
-       sessionStorage.setItem('promoPopupShown', 'true'); // On ne le montre qu'une fois par session
+       sessionStorage.setItem('promoPopupShown', 'true');
     }
 
-    // Feedback visuel bouton
     const btn = event.target;
     const old = btn.innerText;
     btn.innerText = "✅ Ajouté !";
@@ -579,21 +644,21 @@
         });
     }
 
-    let msg = "👋 Bonjour Brice, voici ma commande Solustoc :\n\n";
+    let msg = "👋 Bonjour Solustoc (Commande Pro) :\n\n";
     cart.forEach(i => msg += `- ${i.nom} (x${i.qty})\n`);
     
     let finalTotal = total;
     if (total >= 300) {
         let remise = total * 0.10;
         finalTotal = total - remise;
-        msg += `\n🎁 *PROMO -10% ACTIVÉE !*`;
+        msg += `\n🎁 *PROMO PRO -10% APPLIQUÉE*`;
         msg += `\n💰 Sous-total : ${formatPrix(total)}`;
-        msg += `\n✅ *TOTAL MARCHANDISE TTC : ${formatPrix(finalTotal)}*`;
+        msg += `\n✅ *TOTAL FINAL TTC : ${formatPrix(finalTotal)}*`;
     } else {
-        msg += `\n💰 *Total Marchandise TTC : ${formatPrix(total)}*`;
+        msg += `\n💰 *Total Estimé TTC : ${formatPrix(total)}*`;
     }
 
-    msg += `\n\n🚚 Merci de confirmer le stock et les frais de port.`;
+    msg += `\n\nMerci de m'envoyer la facture pro et le lien de paiement.`;
     msg += `\n💳 *Je souhaite régler par CB (Lien Stripe) dès validation.*`;
 
     window.open("https://wa.me/33756923323/?text=" + encodeURIComponent(msg), "_blank");
