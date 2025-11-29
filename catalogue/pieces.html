@@ -95,6 +95,26 @@
     .ambiance-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
     .ambiance-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; border: 1px solid #eee; }
 
+    /* NOUVEAU : TÉMOIGNAGES */
+    .reviews-container { margin-top: 15px; }
+    .review-card { background: #fffdf8; border-left: 3px solid #8d3b42; padding: 10px 12px; margin-bottom: 10px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    .review-text { font-size: 13px; font-style: italic; color: #444; margin-bottom: 6px; line-height: 1.4; }
+    .review-author { font-size: 12px; font-weight: bold; color: #222; }
+    .stars { color: #f1c40f; font-size: 12px; margin-right: 5px; }
+
+    /* NOUVEAU : SALES NOTIFICATION (TOAST) */
+    .sales-toast {
+        position: fixed; bottom: 90px; left: 20px; 
+        background: #fff; padding: 12px 15px; border-radius: 8px; 
+        box-shadow: 0 4px 15px rgba(0,0,0,0.15); border-left: 4px solid #25D366;
+        display: flex; align-items: center; gap: 10px;
+        font-size: 13px; color: #333; z-index: 990;
+        opacity: 0; transform: translateY(20px); transition: all 0.5s ease-in-out;
+        pointer-events: none; max-width: 80%;
+    }
+    .sales-toast.show { opacity: 1; transform: translateY(0); }
+    .toast-icon { font-size: 18px; }
+
     /* NAVIGATION VISUELLE */
     .cat-nav-container {
       position: sticky; top: 0; z-index: 100;
@@ -181,7 +201,7 @@
 
     /* STYLE IMPRESSION (PDF) */
     @media print {
-        header, .how-it-works, .section-card, .cat-nav-container, .sticky-cart, footer, .popup-overlay, .btn-add, .qty-row, .btn-anchor, .filter-bar { display: none !important; }
+        header, .how-it-works, .section-card, .cat-nav-container, .sticky-cart, footer, .popup-overlay, .btn-add, .qty-row, .btn-anchor, .filter-bar, .sales-toast { display: none !important; }
         .wrapper { margin: 0; width: 100%; max-width: 100%; }
         .grid { display: block; }
         .card { border: 1px solid #ccc; break-inside: avoid; margin-bottom: 10px; page-break-inside: avoid; box-shadow: none; }
@@ -202,6 +222,11 @@
     <div class="popup-text">Profitez de <strong>-10%</strong> sur votre commande dès <strong>300 € d'achat</strong>.</div>
     <button class="btn-popup" onclick="closePopup()">J'en profite !</button>
   </div>
+</div>
+
+<div id="sales-toast" class="sales-toast">
+  <div class="toast-icon">⚡</div>
+  <div id="toast-text">Nouvelle commande</div>
 </div>
 
 <header>
@@ -270,6 +295,20 @@
         <span class="why-icon">💰</span>
         <strong>Marge x4</strong><br>Prix nets grossiste
       </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h2 class="section-title text-center" style="font-size:16px;">Ils revendent nos bijoux</h2>
+    <div class="reviews-container">
+        <div class="review-card">
+            <div class="review-text">"<span class="stars">★★★★★</span> Stock écoulé en 3 marchés. Excellent investissement."</div>
+            <div class="review-author">— Sophie M., Gérante de Pop-up Store, Rennes</div>
+        </div>
+        <div class="review-card">
+            <div class="review-text">"<span class="stars">★★★★★</span> Qualité premium. Mes clients redemandent. Parfait pour la revente."</div>
+            <div class="review-author">— Marc D., Propriétaire de Boutique, Lyon</div>
+        </div>
     </div>
   </div>
 
@@ -376,6 +415,37 @@
 
   /* POPUP LOGIC */
   window.closePopup = () => { document.getElementById("promo-popup").style.display = "none"; };
+
+  /* --- NOTIFICATIONS VENTE (TOAST RANDOM) --- */
+  const fomoData = [
+    { name: "Isabelle", city: "Strasbourg", amount: "350€" },
+    { name: "Sophie", city: "Rennes", amount: "210€" },
+    { name: "Claire", city: "Lyon", amount: "420€" },
+    { name: "Marie", city: "Bordeaux", amount: "180€" },
+    { name: "Julie", city: "Lille", amount: "290€" },
+    { name: "Nathalie", city: "Marseille", amount: "550€" }
+  ];
+
+  function showRandomFomo() {
+    const random = fomoData[Math.floor(Math.random() * fomoData.length)];
+    const toast = document.getElementById("sales-toast");
+    const text = document.getElementById("toast-text");
+    
+    text.innerHTML = `<strong>${random.name}</strong> de ${random.city}<br>vient de commander pour ${random.amount}`;
+    toast.classList.add("show");
+
+    // Cache après 5 secondes
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 5000);
+  }
+
+  // Lance le premier après 10s, puis toutes les 40s
+  setTimeout(() => {
+    setInterval(showRandomFomo, 40000);
+    showRandomFomo();
+  }, 10000);
+
 
   /* CSV PARSER */
   function CSVToArray(strData, strDelimiter) {
@@ -581,6 +651,7 @@
 
     updateCartUI();
     
+    // TRIGGER POPUP si <300€ et première fois
     let currentTotal = cart.reduce((acc, i) => acc + (i.prixSolus * i.qty), 0);
     const hasSeenPopup = sessionStorage.getItem('promoPopupShown');
     if (currentTotal > 0 && currentTotal < 300 && !hasSeenPopup) {
