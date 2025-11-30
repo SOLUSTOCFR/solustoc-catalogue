@@ -282,7 +282,7 @@
 <div class="top-bar">🇫🇷 STOCK FRANCE | 📦 LIVRAISON 48H | ✅ AUCUN MINIMUM | 💰 PORT OFFERT > 200€</div>
 
 <header>
-  <img src="../img/logosbijouxfrancais.webp" alt="SOLUSTOC Grossiste Bijoux">
+  <img src="img/logosbijouxfrancais.webp" alt="SOLUSTOC Grossiste Bijoux">
   <div class="header-contact">
     📞 <a href="tel:0756923323">07 56 92 33 23</a> • 📧 <a href="mailto:contact@solustoc.fr">contact@solustoc.fr</a>
   </div>
@@ -325,9 +325,9 @@
   <div class="section-card" style="padding:15px;">
     <h2 class="section-title text-center" style="font-size:16px;">Logistique & Ambiance</h2>
     <div class="ambiance-grid">
-      <img src="../img/ambiance-packshot.webp" alt="Stock">
-      <img src="../img/marche-noel.webp" alt="Revendeurs">
-      <img src="../img/packaging.webp" alt="Packaging Individuel">
+      <img src="img/ambiance-packshot.webp" alt="Stock">
+      <img src="img/marche-noel.webp" alt="Revendeurs">
+      <img src="img/packaging.webp" alt="Packaging Individuel">
     </div>
   </div>
 
@@ -459,10 +459,10 @@
 
 <script>
   /* CONFIGURATION */
-  const PHOTO_BASE = "../photo/"; 
+  const PHOTO_BASE = "photo/"; /* CORRECTION RACINE */
   const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTeb1HY3fqUcP26tcQ_crdY2PIIyjT_73TakK1neuc0cxwq-QMyChF2w5Q5kYSkmd14GRSGwYeZCION/pub?output=csv";
 
-  /* IMAGE MAPPING */
+  /* IMAGE MAPPING (Configuration Manuelle) */
   const categoryImages = {
     "Bague anneau": "bague-anneau-perles-colorees-dore-safran.webp",
     "Boucles d'oreilles & Créoles": "boucles-d-oreilles-creole-dore-bleu-canard.webp",
@@ -743,7 +743,7 @@
 
     updateCartUI();
 
-    // DÉCLENCHEMENT POPUP AU PREMIER AJOUT (Check Storage)
+    // DÉCLENCHEMENT POPUP AU PREMIER AJOUT
     if (!sessionStorage.getItem('promoPopupShown')) {
        document.getElementById("promo-popup").style.display = "flex";
        sessionStorage.setItem('promoPopupShown', 'true');
@@ -770,7 +770,7 @@
     }
 
     section.style.display = "block";
-    sticky.style.display = "flex"; // STICKY TOUJOURS VISIBLE
+    sticky.style.display = "flex";
 
     let total = cart.reduce((acc, i) => acc + (i.prixSolus * i.qty), 0);
     const count = cart.reduce((acc, i) => acc + i.qty, 0);
@@ -786,8 +786,6 @@
       </table>
     `;
     totalDisplay.innerText = "Total TTC : " + formatPrix(total);
-    
-    // MISE A JOUR BARRE STICKY
     document.getElementById("sticky-count").innerText = count;
     document.getElementById("sticky-sum").innerText = formatPrix(total);
   }
